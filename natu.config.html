@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>natu.config &mdash; Natural units in Python</title>
+    
+    <link rel="stylesheet" href="javascripts/custom.css" type="text/css" />
+    <link rel="stylesheet" href="javascripts/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/underscore.js"></script>
+    <script type="text/javascript" src="javascripts/doctools.js"></script>
+    <script type="text/javascript" src="javascripts/copybutton.js"></script>
+    <script type="text/javascript" src="javascripts/analytics.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Natural units in Python"
+          href="javascripts/opensearch.xml"/>
+    <link rel="shortcut icon" href="javascripts/favicon.ico"/>
+    <link rel="top" title="Natural units in Python" href="index.html" />
+    <link rel="next" title="natu.groups" href="natu.groups.html" />
+    <link rel="prev" title="natu" href="index.html" />
+    <meta name="description" content="Python module for natural units">
+    <meta name="keywords" content="quantity, quantities, unit, conversion, natural, SI, physics, dimension">
+    <meta name="author" content="Kevin Davies">
+    <link rel="icon" type="image/png" href="javascripts/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="javascripts/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="javascripts/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="javascripts/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="javascripts/favicon-32x32.png" sizes="32x32">
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="natu.groups.html" title="natu.groups"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="natu"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-natu.config">
+<span id="natu-config"></span><h1><a class="reference internal" href="#module-natu.config" title="natu.config"><tt class="xref py py-mod docutils literal"><span class="pre">natu.config</span></tt></a><a class="headerlink" href="#module-natu.config" title="Permalink to this headline">¶</a></h1>
+<p>Configuration settings</p>
+<p>This module contains the following settings (defaults summarized in
+parentheses):</p>
+<ul>
+<li><p class="first"><em>definitions</em> (<a class="reference external" href="base-ini.html">base-SI.ini</a>, <a class="reference external" href="derived-ini.html">derived.ini</a>, <a class="reference external" href="BIPM-ini.html">BIPM.ini</a>, and <a class="reference external" href="other-ini.html">other.ini</a> from the installation directory) - List of files that
+define the constants and units</p>
+</li>
+<li><p class="first"><em>use_quantities</em> (<em>True</em>) - <em>True</em> to use quantities to track dimensions
+and display units</p>
+<blockquote>
+<div><p>If <em>use_quantities</em> is <em>False</em>, then the constants and scalar units
+are <tt class="xref py py-class docutils literal"><span class="pre">float</span></tt> instances rather than <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a>
+and <a class="reference internal" href="natu.types.html#natu.types.ScalarUnit" title="natu.types.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a> instances.  This reduces the
+computational overhead of the <tt class="xref py py-mod docutils literal"><span class="pre">natu</span></tt> module to nearly zero
+while still allowing variables to be specified using various units.
+However, this disables dimension checking and the string formatting of
+quantities as the product of a number and a unit, so it is probably
+best to leave <em>use_quantities</em> set to <em>True</em> until you have validated
+your unit-dependent code.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><em>simplification_level</em> (2) - Number of non-minimizing substitutions
+that can be made in seeking the best display unit</p>
+<blockquote>
+<div><p>A higher number increases the likelihood that the simplest display
+unit will be found, but it also increases the time required to
+process <a class="reference external" href="https://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">str()</span></tt></a>, <a class="reference external" href="https://docs.python.org/library/functions.html#print" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">print()</span></tt></a>, <a class="reference external" href="https://docs.python.org/library/functions.html#format" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">format()</span></tt></a>, and related
+functions.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><em>unit_replacements</em>
+(in <a class="reference external" href="http://www.latex-project.org/">LaTeX</a> (&#8216;L&#8217; format code):
+&#8216;deg&#8217; → &#8216;^{\circ}&#8217;,
+&#8216;ohm&#8217; → &#8216;\Omega&#8217;, and
+&#8216;angstrom&#8217; → &#8216;\AA&#8217;;
+in pretty format (&#8216;P&#8217; format code; uses <a class="reference external" href="https://en.wikipedia.org/wiki/Unicode">Unicode</a>):
+&#8216;deg&#8217; → &#8216;°&#8217;,
+&#8216;ohm&#8217; → &#8216;Ω&#8217;, and
+&#8216;angstrom&#8217; → &#8216;Å&#8217;) - Dictionary of special replacements
+for formatting a unit string</p>
+<blockquote>
+<div><p>Each key is a format code and each value is a list of tuples of 1)
+the string to be replaced and 2) the string that it should be
+replaced with.</p>
+</div></blockquote>
+</li>
+</ul>
+<p>To change a setting from the default, import this module and change the
+setting before importing any other <tt class="xref py py-mod docutils literal"><span class="pre">natu</span></tt> submodules.</p>
+<p><strong>Examples:</strong></p>
+<p>To turn off unit simplification:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="o">.</span><span class="n">simplification_level</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>or to append a custom file of unit definitions:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="o">.</span><span class="n">definitions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;custom.ini&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then use the rest of <tt class="xref py py-mod docutils literal"><span class="pre">natu</span></tt>, for instance</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.units</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
+            </a></p><h3>Project Info</h3>
+  <ul>
+  <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
+  <li><a href="credits.html">Credits</a></li>
+  <li><a href="license.html">License</a></li>
+  <li><a href="changes.html">Change log</a></li>
+  </ul><h3><a href="definitions.html">Definition Files</a></h3>
+  <ul>
+  <li><a href="base-ini.html">Base constants</a></li>
+  <li><a href="derived-ini.html">Derived constants</a></li>
+  <li><a href="BIPM-ini.html">BIPM units</a></li>
+  <li><a href="other-ini.html">Other units</a></li>
+  </ul>
+<h3><a href="usermodules.html">User Modules</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href=""><tt class="docutils literal"><span class="pre">natu.config</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.groups.html"><tt class="docutils literal"><span class="pre">natu.groups</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.math.html"><tt class="docutils literal"><span class="pre">natu.math</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
+</ul>
+<h3><a href="apimodules.html">API Modules</a></h3>
+<ul>
+<!--
+  <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
+  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
+  <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
+-->
+</ul><h3>Useful Links</h3>
+  <ul>
+    <li><a href="https://pypi.python.org/pypi/natu">natu @ PyPI</a></li>
+    <li><a href="https://github.com/kdavies4/natu">Code in GitHub</a></li>
+    <li><a href="https://github.com/kdavies4/natu/issues">Issue tracker</a></li>
+  </ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3><a href="search.html">Search</a></h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Download</h3>
+  <ul>
+    <li><a itemprop="downloadUrl"
+           href="https://pypi.python.org/packages/source/M/natu/natu-.tar.gz"
+           rel="nofollow">Latest version<br>(v0, 2014-08-06)</a></li>
+  </ul>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="natu.groups.html" title="natu.groups"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="natu"
+             >previous</a> |</li>
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
+      Last updated on Aug 07, 2014.
+    </div>
+  </body>
+</html>

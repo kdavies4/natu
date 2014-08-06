@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>natu.math &mdash; Natural units in Python</title>
+    
+    <link rel="stylesheet" href="javascripts/custom.css" type="text/css" />
+    <link rel="stylesheet" href="javascripts/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/underscore.js"></script>
+    <script type="text/javascript" src="javascripts/doctools.js"></script>
+    <script type="text/javascript" src="javascripts/copybutton.js"></script>
+    <script type="text/javascript" src="javascripts/analytics.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Natural units in Python"
+          href="javascripts/opensearch.xml"/>
+    <link rel="shortcut icon" href="javascripts/favicon.ico"/>
+    <link rel="top" title="Natural units in Python" href="index.html" />
+    <link rel="next" title="natu.numpy" href="natu.numpy.html" />
+    <link rel="prev" title="natu.groups" href="natu.groups.html" />
+    <meta name="description" content="Python module for natural units">
+    <meta name="keywords" content="quantity, quantities, unit, conversion, natural, SI, physics, dimension">
+    <meta name="author" content="Kevin Davies">
+    <link rel="icon" type="image/png" href="javascripts/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="javascripts/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="javascripts/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="javascripts/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="javascripts/favicon-32x32.png" sizes="32x32">
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="natu.numpy.html" title="natu.numpy"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="natu.groups.html" title="natu.groups"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-natu.math">
+<span id="natu-math"></span><h1><a class="reference internal" href="#module-natu.math" title="natu.math"><tt class="xref py py-mod docutils literal"><span class="pre">natu.math</span></tt></a><a class="headerlink" href="#module-natu.math" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://docs.python.org/3/library/math.html">Python math</a>, adapted for use with physical quantities</p>
+<p>Many of the functions only accept dimensionless quantities, and they
+operate on the underlying values&#8212;not the values as represented in a
+particular display unit.  To operate on values in a display unit would be
+to favor a particular unit, which is against one of the <a class="reference external" href="kdavies4.github.io/natu/">design principles of
+the package</a>.</p>
+<p>The constants (<em>pi</em>, <em>e</em>) are exactly as they are in <a class="reference external" href="https://docs.python.org/3/library/math.html">Python math</a>.</p>
+<p>These functions accept floats, integers, and dimensionless quantities:</p>
+<ul class="simple">
+<li>Number-theoretic and representation functions: <tt class="xref py py-func docutils literal"><span class="pre">factorial()</span></tt>,
+<tt class="xref py py-func docutils literal"><span class="pre">frexp()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">modf()</span></tt>, and <tt class="xref py py-func docutils literal"><span class="pre">trunc()</span></tt></li>
+<li>Power and logarithmic functions: <tt class="xref py py-func docutils literal"><span class="pre">exp()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">expm1()</span></tt>,
+<tt class="xref py py-func docutils literal"><span class="pre">log10()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">log1p()</span></tt>, and <tt class="xref py py-func docutils literal"><span class="pre">log()</span></tt></li>
+<li>Hyperbolic functions: <tt class="xref py py-func docutils literal"><span class="pre">acosh()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">asinh()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">atanh()</span></tt>,
+<tt class="xref py py-func docutils literal"><span class="pre">cosh()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">sinh()</span></tt>, and <tt class="xref py py-func docutils literal"><span class="pre">tanh()</span></tt></li>
+<li>Special functions: <tt class="xref py py-func docutils literal"><span class="pre">erf()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">erfc()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">gamma()</span></tt>, and
+<tt class="xref py py-func docutils literal"><span class="pre">lgamma()</span></tt></li>
+</ul>
+<p>They are the same as those from <a class="reference external" href="https://docs.python.org/3/library/math.html">Python math</a>, except the documentation of
+<tt class="xref py py-func docutils literal"><span class="pre">acosh()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">asinh()</span></tt>, and <tt class="xref py py-func docutils literal"><span class="pre">atanh()</span></tt> has been corrected (see
+<a class="reference external" href="http://bugs.python.org/issue21902">http://bugs.python.org/issue21902</a>).  The functions cast quantities cast as
+floats and return floats, except for <tt class="xref py py-func docutils literal"><span class="pre">factorial()</span></tt>, which casts quantities
+as integers and returns integers.</p>
+<p>All of the other functions (below) are different than those in <a class="reference external" href="https://docs.python.org/3/library/math.html">Python
+math</a>.</p>
+<p>These functions accept angle as a quantity:</p>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">cos()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">sin()</span></tt>, and <tt class="xref py py-func docutils literal"><span class="pre">tan()</span></tt></li>
+</ul>
+<p>They return floats (as in <a class="reference external" href="https://docs.python.org/3/library/math.html">Python math</a>).</p>
+<p>These functions accept floats, integers, and dimensionless quantities:</p>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">acos()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">asin()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">atan()</span></tt>, and <tt class="xref py py-func docutils literal"><span class="pre">atan2()</span></tt></li>
+</ul>
+<p>They return angles as quantities.</p>
+<p><tt class="xref py py-func docutils literal"><span class="pre">atan2()</span></tt> accepts accept floats, integers, and quantities of the same
+dimension.  It returns angle as a quantity.</p>
+<p>These functions are no longer applicable and have been deleted since angle
+is a quantity:</p>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">degrees()</span></tt> and <tt class="xref py py-func docutils literal"><span class="pre">radians()</span></tt></li>
+</ul>
+<p>These functions accept floats, integers, and dimensionless quantities:</p>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">ceil()</span></tt> and <tt class="xref py py-func docutils literal"><span class="pre">floor()</span></tt></li>
+</ul>
+<p>If the input is a float or an integer, the output is a float.  If the
+input is a <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a
+<a class="reference internal" href="natu.types.html#natu.types.ScalarUnit" title="natu.types.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is the same and has the same
+<tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>, <tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt>, etc.</p>
+<p>These functions accept floats, integers, and quantities:</p>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">fabs()</span></tt> and <tt class="xref py py-func docutils literal"><span class="pre">copysign()</span></tt></li>
+</ul>
+<p>If the input is a float or an integer, the output is a float.  If the
+input is a <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a
+<a class="reference internal" href="natu.types.html#natu.types.ScalarUnit" title="natu.types.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is of the same type and has
+the same <tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>, <tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt>, etc. (of the first argument
+in the case of <tt class="xref py py-func docutils literal"><span class="pre">copysign()</span></tt>).</p>
+<p>These functions also accept floats, integers, and quantities:</p>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">ldexp()</span></tt>, <a class="reference external" href="https://docs.python.org/library/functions.html#pow" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">pow()</span></tt></a>, and <tt class="xref py py-func docutils literal"><span class="pre">sqrt()</span></tt></li>
+</ul>
+<p>If the input is an float or an integer, the output is a float.  If the
+input is a <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a
+<a class="reference internal" href="natu.types.html#natu.types.ScalarUnit" title="natu.types.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is the same.  The dimensions
+and display units are handled according to the power.</p>
+<p><tt class="xref py py-func docutils literal"><span class="pre">fmod()</span></tt> accepts floats, integers, and quantities of the same
+dimension. The output is always a float.</p>
+<p>These functions also accept floats, integers, and quantities of the same
+dimension:</p>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">fsum()</span></tt> and <tt class="xref py py-func docutils literal"><span class="pre">hypot()</span></tt></li>
+</ul>
+<p>The display unit (and <tt class="xref py py-attr docutils literal"><span class="pre">prefixable</span></tt> attribute, if applicable) of the
+first argument or entry is propagated to the output.</p>
+<p>These functions accept floats or quantities:</p>
+<ul class="simple">
+<li><tt class="xref py py-func docutils literal"><span class="pre">isinf()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">isfinite()</span></tt> (only available in Python &gt;= 3.2), and
+<tt class="xref py py-func docutils literal"><span class="pre">isnan()</span></tt></li>
+</ul>
+<p>Only the value of a quantity is used; dimension and display unit are
+ignored.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
+            </a></p><h3>Project Info</h3>
+  <ul>
+  <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
+  <li><a href="credits.html">Credits</a></li>
+  <li><a href="license.html">License</a></li>
+  <li><a href="changes.html">Change log</a></li>
+  </ul><h3><a href="definitions.html">Definition Files</a></h3>
+  <ul>
+  <li><a href="base-ini.html">Base constants</a></li>
+  <li><a href="derived-ini.html">Derived constants</a></li>
+  <li><a href="BIPM-ini.html">BIPM units</a></li>
+  <li><a href="other-ini.html">Other units</a></li>
+  </ul>
+<h3><a href="usermodules.html">User Modules</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="natu.config.html"><tt class="docutils literal"><span class="pre">natu.config</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.groups.html"><tt class="docutils literal"><span class="pre">natu.groups</span></tt></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href=""><tt class="docutils literal"><span class="pre">natu.math</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
+</ul>
+<h3><a href="apimodules.html">API Modules</a></h3>
+<ul>
+<!--
+  <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
+  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
+  <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
+-->
+</ul><h3>Useful Links</h3>
+  <ul>
+    <li><a href="https://pypi.python.org/pypi/natu">natu @ PyPI</a></li>
+    <li><a href="https://github.com/kdavies4/natu">Code in GitHub</a></li>
+    <li><a href="https://github.com/kdavies4/natu/issues">Issue tracker</a></li>
+  </ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3><a href="search.html">Search</a></h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Download</h3>
+  <ul>
+    <li><a itemprop="downloadUrl"
+           href="https://pypi.python.org/packages/source/M/natu/natu-.tar.gz"
+           rel="nofollow">Latest version<br>(v0, 2014-08-06)</a></li>
+  </ul>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="natu.numpy.html" title="natu.numpy"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="natu.groups.html" title="natu.groups"
+             >previous</a> |</li>
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
+      Last updated on Aug 07, 2014.
+    </div>
+  </body>
+</html>

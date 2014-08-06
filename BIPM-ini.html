@@ -1,0 +1,509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>BIPM units (BIPM.ini) &mdash; Natural units in Python</title>
+    
+    <link rel="stylesheet" href="javascripts/custom.css" type="text/css" />
+    <link rel="stylesheet" href="javascripts/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/underscore.js"></script>
+    <script type="text/javascript" src="javascripts/doctools.js"></script>
+    <script type="text/javascript" src="javascripts/copybutton.js"></script>
+    <script type="text/javascript" src="javascripts/analytics.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Natural units in Python"
+          href="javascripts/opensearch.xml"/>
+    <link rel="shortcut icon" href="javascripts/favicon.ico"/>
+    <link rel="top" title="Natural units in Python" href="index.html" />
+    <meta name="description" content="Python module for natural units">
+    <meta name="keywords" content="quantity, quantities, unit, conversion, natural, SI, physics, dimension">
+    <meta name="author" content="Kevin Davies">
+    <link rel="icon" type="image/png" href="javascripts/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="javascripts/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="javascripts/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="javascripts/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="javascripts/favicon-32x32.png" sizes="32x32">
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="bipm-units-bipm-ini">
+<h1>BIPM units (<a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/BIPM.ini">BIPM.ini</a>)<a class="headerlink" href="#bipm-units-bipm-ini" title="Permalink to this headline">¶</a></h1>
+<p>The table below lists the contents of the <a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/BIPM.ini">BIPM.ini</a> file.  It implements the
+definitions from <a class="reference internal" href="other-ini.html#bipm2006" id="id1">[BIPM2006]</a>, including the <a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">System International (SI) units</a>
+and some non-SI units.</p>
+<p>The definitions depend on the following items:</p>
+<ul class="simple">
+<li>Classes: <a class="reference internal" href="natu.types.html#natu.types.ScalarUnit" title="natu.types.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a></li>
+<li>Functions: <a class="reference external" href="https://docs.python.org/library/math.html#math.exp" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">math.exp()</span></tt></a>, <a class="reference external" href="https://docs.python.org/library/math.html#math.log" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">math.log()</span></tt></a>, and <a class="reference external" href="https://docs.python.org/library/math.html#math.log10" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">math.log10()</span></tt></a></li>
+<li>Mathematical constants: <em>pi</em></li>
+<li>Base physical constants: <em>R_inf</em>, <em>c</em>, <em>k_J</em>, <em>R_K</em>, <em>k_F</em>, and <em>R</em></li>
+<li>Units: cyc</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="22%" />
+<col width="4%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Symbol</th>
+<th class="head">Expression</th>
+<th class="head">Prefixable</th>
+<th class="head">Name &amp; notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="4">&#8212;&#8212; Mathematical relations &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td>rad</td>
+<td><tt class="docutils literal"><span class="pre">cyc/(2*pi)</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Rad_(unit)">radian</a></td>
+</tr>
+<tr class="row-even"><td colspan="4">&#8212;&#8212; Empirical relations &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td>m</td>
+<td><tt class="docutils literal"><span class="pre">10973731.568539*cyc/R_inf</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Metre">metre</a></td>
+</tr>
+<tr class="row-even"><td>s</td>
+<td><tt class="docutils literal"><span class="pre">299792458*m/c</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Second">second</a></td>
+</tr>
+<tr class="row-odd"><td>Wb</td>
+<td><tt class="docutils literal"><span class="pre">483597.870e9/k_J</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Weber_(unit)">weber</a></td>
+</tr>
+<tr class="row-even"><td>S</td>
+<td><tt class="docutils literal"><span class="pre">25812.807557/(R_K*cyc)</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Siemens_(unit)">siemens</a> (aka mho)</td>
+</tr>
+<tr class="row-odd"><td>mol</td>
+<td><tt class="docutils literal"><span class="pre">96485.3365*Wb*cyc*S/k_F</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Mole_(unit)">mole</a></td>
+</tr>
+<tr class="row-even"><td>K</td>
+<td><tt class="docutils literal"><span class="pre">8.3144621*(Wb*cyc)**2*S/(s*mol*R)</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Kelvin">kelvin</a></td>
+</tr>
+<tr class="row-odd"><td colspan="4">&#8212;&#8212; Units considered independent of the base constants &#8212;&#8212;</td>
+</tr>
+<tr class="row-even"><td>cd</td>
+<td><tt class="docutils literal"><span class="pre">ScalarUnit(1.,</span> <span class="pre">'J')</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Candela">candela</a> (independent of the base constants due to the <a class="reference external" href="http://en.wikipedia.org/wiki/Luminosity_function">luminosity function</a>)</td>
+</tr>
+<tr class="row-odd"><td colspan="4">&#8212;&#8212; Remaining SI base units (<a class="reference internal" href="#bipm2006">BIPM2006</a>, Table 1) and intermediate units &#8212;&#8212;</td>
+</tr>
+<tr class="row-even"><td>Hz</td>
+<td><tt class="docutils literal"><span class="pre">cyc/s</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Hertz">hertz</a></td>
+</tr>
+<tr class="row-odd"><td>V</td>
+<td><tt class="docutils literal"><span class="pre">Wb*Hz</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Volt">volt</a></td>
+</tr>
+<tr class="row-even"><td>A</td>
+<td><tt class="docutils literal"><span class="pre">V*S</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Ampere">ampere</a></td>
+</tr>
+<tr class="row-odd"><td>C</td>
+<td><tt class="docutils literal"><span class="pre">A*s</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Coulomb">coulomb</a></td>
+</tr>
+<tr class="row-even"><td>J</td>
+<td><tt class="docutils literal"><span class="pre">V*C</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Joule">joule</a></td>
+</tr>
+<tr class="row-odd"><td>Gy</td>
+<td><tt class="docutils literal"><span class="pre">m**2/s**2</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Gray_unit">gray</a></td>
+</tr>
+<tr class="row-even"><td>kg</td>
+<td><tt class="docutils literal"><span class="pre">J/Gy</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Kilogram">kilogram</a></td>
+</tr>
+<tr class="row-odd"><td>g</td>
+<td><tt class="docutils literal"><span class="pre">kg/1000</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Gram">gram</a> (included for prefixes other than k)</td>
+</tr>
+<tr class="row-even"><td colspan="4">&#8212;&#8212; Remaining coherent derived SI units (<a class="reference internal" href="#bipm2006">BIPM2006</a>, Table 3) &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td>sr</td>
+<td><tt class="docutils literal"><span class="pre">rad**2</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Steradian">steradian</a></td>
+</tr>
+<tr class="row-even"><td>lm</td>
+<td><tt class="docutils literal"><span class="pre">cd*sr</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Lumen_(unit)">lumen</a></td>
+</tr>
+<tr class="row-odd"><td>W</td>
+<td><tt class="docutils literal"><span class="pre">J/s</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Watt">watt</a></td>
+</tr>
+<tr class="row-even"><td>N</td>
+<td><tt class="docutils literal"><span class="pre">J/m</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Newton_unit">newton</a></td>
+</tr>
+<tr class="row-odd"><td>Pa</td>
+<td><tt class="docutils literal"><span class="pre">N/m**2</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Pascal_(unit)">pascal</a></td>
+</tr>
+<tr class="row-even"><td>T</td>
+<td><tt class="docutils literal"><span class="pre">Wb/m**2</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Tesla_(unit)">tesla</a></td>
+</tr>
+<tr class="row-odd"><td>lx</td>
+<td><tt class="docutils literal"><span class="pre">lm/m**2</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Lux">lux</a></td>
+</tr>
+<tr class="row-even"><td>F</td>
+<td><tt class="docutils literal"><span class="pre">s*S</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Farad">farad</a></td>
+</tr>
+<tr class="row-odd"><td>ohm</td>
+<td><tt class="docutils literal"><span class="pre">1/S</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Ohm">ohm</a></td>
+</tr>
+<tr class="row-even"><td>H</td>
+<td><tt class="docutils literal"><span class="pre">s/S</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Henry_(unit)">henry</a></td>
+</tr>
+<tr class="row-odd"><td>kat</td>
+<td><tt class="docutils literal"><span class="pre">mol/s</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Katal">katal</a></td>
+</tr>
+<tr class="row-even"><td>Sv</td>
+<td><tt class="docutils literal"><span class="pre">Gy</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Sievert">sievert</a></td>
+</tr>
+<tr class="row-odd"><td>Bq</td>
+<td><tt class="docutils literal"><span class="pre">s**-1</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Becquerel">becquerel</a></td>
+</tr>
+<tr class="row-even"><td>degC</td>
+<td><tt class="docutils literal"><span class="pre">(lambda</span> <span class="pre">n:</span> <span class="pre">(n</span> <span class="pre">+</span> <span class="pre">273.15)*K,</span> <span class="pre">lambda</span> <span class="pre">T:</span> <span class="pre">T/K</span> <span class="pre">-</span> <span class="pre">273.15)</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Celsius">degree Celsius</a></td>
+</tr>
+<tr class="row-odd"><td colspan="4">&#8212;&#8212; Non-SI units accepted for use with SI (<a class="reference internal" href="#bipm2006">BIPM2006</a>, Table 6) &#8212;&#8212;</td>
+</tr>
+<tr class="row-even"><td>min</td>
+<td><tt class="docutils literal"><span class="pre">60*s</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Minute">minute</a></td>
+</tr>
+<tr class="row-odd"><td>hr</td>
+<td><tt class="docutils literal"><span class="pre">60*min</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Hour">hour</a></td>
+</tr>
+<tr class="row-even"><td>d</td>
+<td><tt class="docutils literal"><span class="pre">24*hr</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Day">day</a></td>
+</tr>
+<tr class="row-odd"><td>deg</td>
+<td><tt class="docutils literal"><span class="pre">cyc/360</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Degree_(angle)">degree</a></td>
+</tr>
+<tr class="row-even"><td>arcmin</td>
+<td><tt class="docutils literal"><span class="pre">deg/60</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Arcminute">arcminute</a></td>
+</tr>
+<tr class="row-odd"><td>arcsec</td>
+<td><tt class="docutils literal"><span class="pre">arcmin/60</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Arcsecond">arcsecond</a></td>
+</tr>
+<tr class="row-even"><td>ha</td>
+<td><tt class="docutils literal"><span class="pre">hm**2</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Hectare">hectare</a></td>
+</tr>
+<tr class="row-odd"><td>L</td>
+<td><tt class="docutils literal"><span class="pre">dm**3</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Liter">liter</a></td>
+</tr>
+<tr class="row-even"><td>t</td>
+<td><tt class="docutils literal"><span class="pre">Mg</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Tonne">tonne</a></td>
+</tr>
+<tr class="row-odd"><td colspan="4">&#8212;&#8212; Other non-SI units (<a class="reference internal" href="#bipm2006">BIPM2006</a>, Table 8) &#8212;&#8212;</td>
+</tr>
+<tr class="row-even"><td><em>g_0</em></td>
+<td><tt class="docutils literal"><span class="pre">9.80665*m/s**2</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Standard_gravity">standard gravity</a> <a class="footnote-reference" href="#f1" id="id2">[1]</a>, <a class="footnote-reference" href="#f2" id="id3">[2]</a></td>
+</tr>
+<tr class="row-odd"><td>cc</td>
+<td><tt class="docutils literal"><span class="pre">cm**3</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Cubic_centimeter">cubic centimeter</a> <a class="footnote-reference" href="#f1" id="id4">[1]</a></td>
+</tr>
+<tr class="row-even"><td><em>Hg</em></td>
+<td><tt class="docutils literal"><span class="pre">13.5951*g*g_0/cc</span></tt></td>
+<td>&nbsp;</td>
+<td>force per volume of mercury under standard gravity <a class="footnote-reference" href="#f1" id="id5">[1]</a>, <a class="footnote-reference" href="#f2" id="id6">[2]</a></td>
+</tr>
+<tr class="row-odd"><td>mmHg</td>
+<td><tt class="docutils literal"><span class="pre">mm*Hg</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Millimeter_of_mercury">millimeter of mercury</a></td>
+</tr>
+<tr class="row-even"><td>bar</td>
+<td><tt class="docutils literal"><span class="pre">100*kPa</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Bar_(unit)">bar</a></td>
+</tr>
+<tr class="row-odd"><td>b</td>
+<td><tt class="docutils literal"><span class="pre">100*fm**2</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Barn_(unit)">barn</a></td>
+</tr>
+<tr class="row-even"><td>angstrom</td>
+<td><tt class="docutils literal"><span class="pre">0.1*nm</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Angstrom">angstrom</a></td>
+</tr>
+<tr class="row-odd"><td>M</td>
+<td><tt class="docutils literal"><span class="pre">1852*m</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Nautical_mile">nautical mile</a></td>
+</tr>
+<tr class="row-even"><td>kn</td>
+<td><tt class="docutils literal"><span class="pre">M/hr</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Knot_(unit)">knot</a></td>
+</tr>
+<tr class="row-odd"><td>Np</td>
+<td><tt class="docutils literal"><span class="pre">(exp,</span> <span class="pre">log)</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Neper">neper</a> (defined in terms of amplitude ratio, not power)</td>
+</tr>
+<tr class="row-even"><td>B</td>
+<td><tt class="docutils literal"><span class="pre">(lambda</span> <span class="pre">n:</span> <span class="pre">10**n,</span> <span class="pre">log10)</span></tt></td>
+<td><em>True</em></td>
+<td>bel (defined in terms of power ratio, not amplitude)</td>
+</tr>
+<tr class="row-odd"><td>dB</td>
+<td><tt class="docutils literal"><span class="pre">dB</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Decibel">decibel</a> (explicitly included with prefix)</td>
+</tr>
+</tbody>
+</table>
+<p>Since angle is explicit, some definitions are different than in <a class="reference internal" href="other-ini.html#bipm2006" id="id7">[BIPM2006]</a> and
+<a class="reference internal" href="other-ini.html#nist2014" id="id8">[NIST2014]</a>:</p>
+<ul class="simple">
+<li>m ≈ 10973732 cyc <em>R_inf</em><sup>-1</sup> (i.e.,
+<em>R_inf</em> ≈ 10973732 cyc m<sup>-1</sup>) <a class="footnote-reference" href="#f3" id="id9">[3]</a></li>
+<li>S ≈ 25813 <em>R_K</em><sup>-1</sup> cyc<sup>-1</sup> (i.e.,
+<em>R_K</em> ≈ 25813 ohm cyc<sup>-1</sup>) <a class="footnote-reference" href="#f3" id="id10">[3]</a></li>
+<li>Hz = cyc s<sup>-1</sup> <a class="footnote-reference" href="#f4" id="id11">[4]</a></li>
+<li>V = Wb Hz (i.e., Wb = V s cyc<sup>-1</sup>) <a class="footnote-reference" href="#f4" id="id12">[4]</a></li>
+<li>H = s S<sup>-1</sup> (i.e., H = ohm s = V s A<sup>-1</sup>;
+H ≠ Wb A<sup>-1</sup>)</li>
+</ul>
+<p>Note that frequency can be expressed in Hz or rad s<sup>-1</sup> but not
+s<sup>-1</sup>.  Torque can be expressed in N m rad<sup>-1</sup> or
+J rad<sup>-1</sup> but not N m or J.  Also note that the <a class="reference external" href="http://en.wikipedia.org/wiki/Steradian">steradian
+(sr)</a>, a unit of <a class="reference external" href="http://en.wikipedia.org/wiki/Solid_angle">solid angle</a>, has dimension A<sup>2</sup>.</p>
+<p>deg, arcmin, and arcsec are used as the symbols for the <a class="reference external" href="http://en.wikipedia.org/wiki/Degree_(angle)">degree</a>, <a class="reference external" href="http://en.wikipedia.org/wiki/Arcminute">arcminute</a>, and
+<a class="reference external" href="http://en.wikipedia.org/wiki/Arcsecond">arcsecond</a> since the symbols in Table 6 of <a class="reference internal" href="other-ini.html#bipm2006" id="id13">[BIPM2006]</a> are not valid Python
+names.  hr is used as the symbol for the <a class="reference external" href="http://en.wikipedia.org/wiki/Hour">hour</a> since <em>h</em> is used for the <a class="reference external" href="http://en.wikipedia.org/wiki/Planck_constant">Planck
+constant</a>.</p>
+<p>In general, prefixes are not included because they are added as needed upon
+import.  However, <a class="reference internal" href="other-ini.html#bipm2006" id="id14">[BIPM2006]</a> (and <a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/BIPM.ini">BIPM.ini</a>) includes two units with explicit
+prefixes: kg and dB.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="bipm2006" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[BIPM2006]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id13">3</a>, <a class="fn-backref" href="#id14">4</a>, <a class="fn-backref" href="#id15">5</a>, <a class="fn-backref" href="#id17">6</a>)</em> International Bureau of Weights and Measures (BIPM),
+&#8220;<a class="reference external" href="http://www.bipm.org/utils/common/pdf/si_brochure_8_en.pdf">The International System of Units (SI)</a>,&#8221;
+8th ed., 2006.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="nist2014" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[NIST2014]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> National Institute of Science and Technology, &#8220;Fundamental
+Physical Constants: Complete Listing,&#8221;
+<a class="reference external" href="http://physics.nist.gov/constants">http://physics.nist.gov/constants</a>, accessed 2014.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>, <a class="fn-backref" href="#id5">3</a>)</em> a constant (not a unit), but useful here</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> not defined in <a class="reference internal" href="other-ini.html#bipm2006" id="id15">[BIPM2006]</a>, but useful here</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id9">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> Traditionally, angle is dropped <a class="reference internal" href="other-ini.html#nist2014" id="id16">[NIST2014]</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id11">1</a>, <a class="fn-backref" href="#id12">2</a>)</em> Angle is dropped in <a class="reference internal" href="other-ini.html#bipm2006" id="id17">[BIPM2006]</a>.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
+            </a></p><h3>Project Info</h3>
+  <ul>
+  <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
+  <li><a href="credits.html">Credits</a></li>
+  <li><a href="license.html">License</a></li>
+  <li><a href="changes.html">Change log</a></li>
+  </ul><h3><a href="definitions.html">Definition Files</a></h3>
+  <ul>
+  <li><a href="base-ini.html">Base constants</a></li>
+  <li><a href="derived-ini.html">Derived constants</a></li>
+  <li><a href="BIPM-ini.html">BIPM units</a></li>
+  <li><a href="other-ini.html">Other units</a></li>
+  </ul>
+<h3><a href="usermodules.html">User Modules</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="natu.config.html"><tt class="docutils literal"><span class="pre">natu.config</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.groups.html"><tt class="docutils literal"><span class="pre">natu.groups</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.math.html"><tt class="docutils literal"><span class="pre">natu.math</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
+</ul>
+<h3><a href="apimodules.html">API Modules</a></h3>
+<ul>
+<!--
+  <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
+  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
+  <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
+-->
+</ul><h3>Useful Links</h3>
+  <ul>
+    <li><a href="https://pypi.python.org/pypi/natu">natu @ PyPI</a></li>
+    <li><a href="https://github.com/kdavies4/natu">Code in GitHub</a></li>
+    <li><a href="https://github.com/kdavies4/natu/issues">Issue tracker</a></li>
+  </ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3><a href="search.html">Search</a></h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Download</h3>
+  <ul>
+    <li><a itemprop="downloadUrl"
+           href="https://pypi.python.org/packages/source/M/natu/natu-.tar.gz"
+           rel="nofollow">Latest version<br>(v0, 2014-08-06)</a></li>
+  </ul>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
+      Last updated on Aug 06, 2014.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>natu.util &mdash; Natural units in Python</title>
+    
+    <link rel="stylesheet" href="javascripts/custom.css" type="text/css" />
+    <link rel="stylesheet" href="javascripts/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/underscore.js"></script>
+    <script type="text/javascript" src="javascripts/doctools.js"></script>
+    <script type="text/javascript" src="javascripts/copybutton.js"></script>
+    <script type="text/javascript" src="javascripts/analytics.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Natural units in Python"
+          href="javascripts/opensearch.xml"/>
+    <link rel="shortcut icon" href="javascripts/favicon.ico"/>
+    <link rel="top" title="Natural units in Python" href="index.html" />
+    <meta name="description" content="Python module for natural units">
+    <meta name="keywords" content="quantity, quantities, unit, conversion, natural, SI, physics, dimension">
+    <meta name="author" content="Kevin Davies">
+    <link rel="icon" type="image/png" href="javascripts/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="javascripts/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="javascripts/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="javascripts/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="javascripts/favicon-32x32.png" sizes="32x32">
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-natu.util">
+<span id="natu-util"></span><h1><a class="reference internal" href="#module-natu.util" title="natu.util"><tt class="xref py py-mod docutils literal"><span class="pre">natu.util</span></tt></a><a class="headerlink" href="#module-natu.util" title="Permalink to this headline">¶</a></h1>
+<p>General supporting functions</p>
+<p><strong>Functions:</strong></p>
+<ul class="simple">
+<li><a class="reference internal" href="#natu.util.delayed_exit" title="natu.util.delayed_exit"><tt class="xref py py-func docutils literal"><span class="pre">delayed_exit()</span></tt></a> - Exit with a message and a delay.</li>
+<li><a class="reference internal" href="#natu.util.flatten_list" title="natu.util.flatten_list"><tt class="xref py py-func docutils literal"><span class="pre">flatten_list()</span></tt></a> - Flatten a nested list.</li>
+<li><a class="reference internal" href="#natu.util.format_e" title="natu.util.format_e"><tt class="xref py py-func docutils literal"><span class="pre">format_e()</span></tt></a>: Format the scientific notation in a numeric string</li>
+<li><a class="reference internal" href="#natu.util.get_group" title="natu.util.get_group"><tt class="xref py py-func docutils literal"><span class="pre">get_group()</span></tt></a> - Return a tuple with the contents of a parenthetical
+expression and everything after it.</li>
+<li><a class="reference internal" href="#natu.util.list_packages" title="natu.util.list_packages"><tt class="xref py py-func docutils literal"><span class="pre">list_packages()</span></tt></a> - Return a list of the names of a module and its
+subpackages.</li>
+<li><a class="reference internal" href="#natu.util.multiglob" title="natu.util.multiglob"><tt class="xref py py-func docutils literal"><span class="pre">multiglob()</span></tt></a> - Return a set of filenames that match sets of pathnames
+and extensions.</li>
+<li><a class="reference internal" href="#natu.util.num2superscript" title="natu.util.num2superscript"><tt class="xref py py-func docutils literal"><span class="pre">num2superscript()</span></tt></a> - Convert a number to <a class="reference external" href="http://www.unicode.org/">Unicode</a> superscript.</li>
+<li><a class="reference internal" href="#natu.util.product" title="natu.util.product"><tt class="xref py py-func docutils literal"><span class="pre">product()</span></tt></a> - Return the product of a list of numbers.</li>
+<li><a class="reference internal" href="#natu.util.replace" title="natu.util.replace"><tt class="xref py py-func docutils literal"><span class="pre">replace()</span></tt></a> - Perform a list of replacements on the text in a list of
+files.</li>
+<li><a class="reference internal" href="#natu.util.str2superscript" title="natu.util.str2superscript"><tt class="xref py py-func docutils literal"><span class="pre">str2superscript()</span></tt></a> - Convert a numeric string to <a class="reference external" href="http://www.unicode.org/">Unicode</a> superscript.</li>
+<li><a class="reference internal" href="#natu.util.yes" title="natu.util.yes"><tt class="xref py py-func docutils literal"><span class="pre">yes()</span></tt></a> - Ask a yes/no question and return <em>True</em> if the answer is &#8216;Y&#8217;
+or &#8216;y&#8217;.</li>
+</ul>
+<dl class="function">
+<dt id="natu.util.delayed_exit">
+<tt class="descclassname">natu.util.</tt><tt class="descname">delayed_exit</tt><big>(</big><em>message=u'Exiting...'</em>, <em>t=0.5</em><big>)</big><a class="headerlink" href="#natu.util.delayed_exit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exit with a message (<em>message</em>) and a delay of <em>t</em> seconds.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">delayed_exit</span><span class="p">()</span> 
+<span class="go">Exiting...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="natu.util.flatten_list">
+<tt class="descclassname">natu.util.</tt><tt class="descname">flatten_list</tt><big>(</big><em>l</em>, <em>ltypes=(&lt;type 'list'&gt;</em>, <em>&lt;type 'tuple'&gt;)</em><big>)</big><a class="headerlink" href="#natu.util.flatten_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flatten a nested list.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><p class="first"><em>l</em>: List (may be nested to an arbitrary depth)</p>
+<blockquote>
+<div><p>If the type of <em>l</em> is not in ltypes, then it is placed in a list.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><em>ltypes</em>: Tuple (not list) of accepted indexable types</p>
+</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">flatten_list</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">]]])</span>
+<span class="go">[1, 2, 3, 4]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="natu.util.format_e">
+<tt class="descclassname">natu.util.</tt><tt class="descname">format_e</tt><big>(</big><em>num_str</em>, <em>code</em><big>)</big><a class="headerlink" href="#natu.util.format_e" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format the scientific notation in a numeric string</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><p class="first"><em>num_str</em>: A numeric string</p>
+<blockquote>
+<div><p>If the string does not contain &#8216;e&#8217; (no scientific notation), then it is
+returned directly.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><em>code</em>: Format code</p>
+<blockquote>
+<div><p>&#8216;H&#8217; is for HTML, &#8216;L&#8217; is for <a class="reference external" href="http://www.latex-project.org/">LaTeX</a>, and &#8216;P&#8217; is for pretty format
+(using <a class="reference external" href="http://www.unicode.org/">Unicode</a>).</p>
+</div></blockquote>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="natu.util.get_group">
+<tt class="descclassname">natu.util.</tt><tt class="descname">get_group</tt><big>(</big><em>expr</em><big>)</big><a class="headerlink" href="#natu.util.get_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return 1) the contents of a parenthetical expression and 2)
+everything after it.</p>
+<p>The parenthetical expression starts at the beginning of <em>expr</em> and may
+be nested.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">get_group</span><span class="p">(</span><span class="s">&quot;((abc)*d)*2&quot;</span><span class="p">)</span>
+<span class="go">(&#39;(abc)*d&#39;, &#39;*2&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="natu.util.list_packages">
+<tt class="descclassname">natu.util.</tt><tt class="descname">list_packages</tt><big>(</big><em>package</em><big>)</big><a class="headerlink" href="#natu.util.list_packages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of the names of a package and its subpackages.</p>
+<p>This only works if the package has a <tt class="xref py py-attr docutils literal"><span class="pre">__path__</span></tt> attribute, which
+is not the case for some (all?) of the built-in packages.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu</span> <span class="kn">import</span> <span class="n">groups</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">list_packages</span><span class="p">(</span><span class="n">groups</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">package</span><span class="p">)</span>
+<span class="go">natu.groups</span>
+<span class="go">natu.groups.acceleration</span>
+<span class="go">natu.groups.amount</span>
+<span class="go">natu.groups.angle</span>
+<span class="go">natu.groups.area</span>
+<span class="go">natu.groups.charge</span>
+<span class="go">natu.groups.conductance</span>
+<span class="go">natu.groups.constants</span>
+<span class="go">natu.groups.current</span>
+<span class="go">natu.groups.dimensionless</span>
+<span class="go">natu.groups.energy</span>
+<span class="go">natu.groups.force</span>
+<span class="go">natu.groups.frequency</span>
+<span class="go">natu.groups.length</span>
+<span class="go">natu.groups.magnetic_flux</span>
+<span class="go">natu.groups.magnetic_flux_density</span>
+<span class="go">natu.groups.mass</span>
+<span class="go">natu.groups.potential</span>
+<span class="go">natu.groups.power</span>
+<span class="go">natu.groups.pressure</span>
+<span class="go">natu.groups.resistance</span>
+<span class="go">natu.groups.si</span>
+<span class="go">natu.groups.temperature</span>
+<span class="go">natu.groups.time</span>
+<span class="go">natu.groups.velocity</span>
+<span class="go">natu.groups.volume</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="natu.util.multiglob">
+<tt class="descclassname">natu.util.</tt><tt class="descname">multiglob</tt><big>(</big><em>pathnames</em>, <em>extensions=set([u'*.mat'])</em><big>)</big><a class="headerlink" href="#natu.util.multiglob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a set of filenames that match a pathname pattern.</p>
+<blockquote>
+<div><p>Unlike Python&#8217;s <a class="reference external" href="https://docs.python.org/library/glob.html#glob.glob" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">glob.glob()</span></tt></a> function, this function runs an additional
+expansion on matches that are directories.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><p class="first"><em>pathnames</em>: String or set of strings used to match files or folders</p>
+<blockquote>
+<div><p>This may contain Unix shell-style patterns:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Character(s)</th>
+<th class="head">Role</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>*</td>
+<td>Matches everything</td>
+</tr>
+<tr class="row-odd"><td>?</td>
+<td>Matches any single character</td>
+</tr>
+<tr class="row-even"><td>[seq]</td>
+<td>Matches any character in seq</td>
+</tr>
+<tr class="row-odd"><td>[!seq]</td>
+<td>Matches any char not in seq</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p class="first"><em>extensions</em>: Filename pattern or set of patterns that should be used to
+match files in any directories generated from <em>pathnames</em></p>
+<blockquote>
+<div><p>These may also use the shell-style patterns above.</p>
+</div></blockquote>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="natu.util.num2superscript">
+<tt class="descclassname">natu.util.</tt><tt class="descname">num2superscript</tt><big>(</big><em>num</em><big>)</big><a class="headerlink" href="#natu.util.num2superscript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a number to <a class="reference external" href="http://www.unicode.org/">Unicode</a> superscript.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="natu.util.product">
+<tt class="descclassname">natu.util.</tt><tt class="descname">product</tt><big>(</big><em>factors</em><big>)</big><a class="headerlink" href="#natu.util.product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the product of a sequence of numbers (<em>factors</em>).</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">product</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">6</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="natu.util.replace">
+<tt class="descclassname">natu.util.</tt><tt class="descname">replace</tt><big>(</big><em>fnames</em>, <em>rpls</em><big>)</big><a class="headerlink" href="#natu.util.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a list of replacements on the text in a list of files.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><p class="first"><em>fnames</em>: Filename or list of filenames</p>
+</li>
+<li><p class="first"><em>rpl</em>: List of replacements to make</p>
+<blockquote>
+<div><p>Each entry is a tuple of (<em>src</em>, <em>dest</em>), where <em>dest</em> is a string that
+will replace the <em>src</em> string.  Each string can use Python&#8217;s <a class="reference external" href="https://docs.python.org/library/re.html#module-re" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">re</span></tt></a>
+expressions; see <a class="reference external" href="https://docs.python.org/2/library/re.html">https://docs.python.org/2/library/re.html</a> for details.</p>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="s">&#39;temp.txt&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;apple orange banana&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">replace</span><span class="p">([</span><span class="n">fname</span><span class="p">],</span> <span class="p">[(</span><span class="s">&#39;ba(.*)&#39;</span><span class="p">,</span> <span class="s">r&#39;ba\1\1&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="go">apple orange banananana</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="natu.util.str2superscript">
+<tt class="descclassname">natu.util.</tt><tt class="descname">str2superscript</tt><big>(</big><em>num_str</em><big>)</big><a class="headerlink" href="#natu.util.str2superscript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a numeric string to <a class="reference external" href="http://www.unicode.org/">Unicode</a> superscript.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="natu.util.yes">
+<tt class="descclassname">natu.util.</tt><tt class="descname">yes</tt><big>(</big><em>question</em><big>)</big><a class="headerlink" href="#natu.util.yes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ask a yes/no question and return <em>True</em> if the answer is &#8216;Y&#8217; or &#8216;y&#8217;.</p>
+<p><strong>Arguments:</strong></p>
+<ul class="simple">
+<li><em>question</em>: String representing the question to the user</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">yes</span><span class="p">(</span><span class="s">&quot;Do you want to print hello (y/n)?&quot;</span><span class="p">):</span> 
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
+            </a></p><h3>Project Info</h3>
+  <ul>
+  <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
+  <li><a href="credits.html">Credits</a></li>
+  <li><a href="license.html">License</a></li>
+  <li><a href="changes.html">Change log</a></li>
+  </ul><h3><a href="definitions.html">Definition Files</a></h3>
+  <ul>
+  <li><a href="base-ini.html">Base constants</a></li>
+  <li><a href="derived-ini.html">Derived constants</a></li>
+  <li><a href="BIPM-ini.html">BIPM units</a></li>
+  <li><a href="other-ini.html">Other units</a></li>
+  </ul>
+<h3><a href="usermodules.html">User Modules</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="natu.config.html"><tt class="docutils literal"><span class="pre">natu.config</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.groups.html"><tt class="docutils literal"><span class="pre">natu.groups</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.math.html"><tt class="docutils literal"><span class="pre">natu.math</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
+</ul>
+<h3><a href="apimodules.html">API Modules</a></h3>
+<ul>
+<!--
+  <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
+  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
+  <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
+-->
+</ul><h3>Useful Links</h3>
+  <ul>
+    <li><a href="https://pypi.python.org/pypi/natu">natu @ PyPI</a></li>
+    <li><a href="https://github.com/kdavies4/natu">Code in GitHub</a></li>
+    <li><a href="https://github.com/kdavies4/natu/issues">Issue tracker</a></li>
+  </ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3><a href="search.html">Search</a></h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Download</h3>
+  <ul>
+    <li><a itemprop="downloadUrl"
+           href="https://pypi.python.org/packages/source/M/natu/natu-.tar.gz"
+           rel="nofollow">Latest version<br>(v0, 2014-08-06)</a></li>
+  </ul>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
+      Last updated on Aug 07, 2014.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Base physical constants (base-*.ini) &mdash; Natural units in Python</title>
+    
+    <link rel="stylesheet" href="javascripts/custom.css" type="text/css" />
+    <link rel="stylesheet" href="javascripts/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/underscore.js"></script>
+    <script type="text/javascript" src="javascripts/doctools.js"></script>
+    <script type="text/javascript" src="javascripts/copybutton.js"></script>
+    <script type="text/javascript" src="javascripts/analytics.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Natural units in Python"
+          href="javascripts/opensearch.xml"/>
+    <link rel="shortcut icon" href="javascripts/favicon.ico"/>
+    <link rel="top" title="Natural units in Python" href="index.html" />
+    <meta name="description" content="Python module for natural units">
+    <meta name="keywords" content="quantity, quantities, unit, conversion, natural, SI, physics, dimension">
+    <meta name="author" content="Kevin Davies">
+    <link rel="icon" type="image/png" href="javascripts/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="javascripts/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="javascripts/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="javascripts/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="javascripts/favicon-32x32.png" sizes="32x32">
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="base-physical-constants-base-ini">
+<h1>Base physical constants (base-*.ini)<a class="headerlink" href="#base-physical-constants-base-ini" title="Permalink to this headline">¶</a></h1>
+<p>The tables below list the physical constants which are defined in the
+<tt class="file docutils literal"><span class="pre">base-*.ini</span></tt> files.  All other units and constants are derived from these
+constants <a class="footnote-reference" href="#f1" id="id1">[1]</a>, and they can be charged to establish various unit systems.</p>
+<p>The derived electromagnetic constants also depend on the <em>rational</em> setting.  If
+<em>rational</em> is <em>True</em>, the constants are rationalized
+(<tt class="docutils literal"><span class="pre">epsilon_0</span> <span class="pre">=</span> <span class="pre">1/(4*pi*k_C)</span></tt>) ala <a class="reference external" href="http://en.wikipedia.org/wiki/Lorentz%E2%80%93Heaviside_units">Lorentz-Heaviside</a>; otherwise,
+<tt class="docutils literal"><span class="pre">epsilon_0</span> <span class="pre">=</span> <span class="pre">1/k_C</span></tt> like the <a class="reference external" href="http://en.wikipedia.org/wiki/Gaussian_units">Gaussian units</a>.</p>
+<p>The following items are automatically provided for use in the definitions:</p>
+<ul class="simple">
+<li>Classes: <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a></li>
+<li>Mathematical constants: <em>pi</em></li>
+</ul>
+<p>The default is the <a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">SI unit system</a> (<a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/base-SI.ini">base-SI.ini</a>), with the following
+definitions:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="42%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Symbol</th>
+<th class="head">Expression</th>
+<th class="head">Name &amp; notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="3">&#8212;&#8212; Base physical constants &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td><em>R_inf</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(10973731.568539*2*pi,</span> <span class="pre">'A/L',</span> <span class="pre">'cyc/m')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Rydberg_constant">Rydberg constant</a></td>
+</tr>
+<tr class="row-even"><td><em>c</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(299792458,</span> <span class="pre">'L/T',</span> <span class="pre">'m/s')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Speed_of_light">speed of light</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_J</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(483597.870e9*2*pi,</span> <span class="pre">'A*I*T2/(L2*M)',</span> <span class="pre">'1/Wb')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Josephson_constant">Josephson constant</a></td>
+</tr>
+<tr class="row-even"><td><em>R_K</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(25812.807557/(2*pi),</span> <span class="pre">'L2*M/(A*I2*T3)',</span> <span class="pre">'ohm/cyc')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Von_Klitzing_constant">von Klitzing constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_F</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(96485.3365,</span> <span class="pre">'I*T/N',</span> <span class="pre">'C/mol')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Faraday_constant">Faraday constant</a></td>
+</tr>
+<tr class="row-even"><td><em>R</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(8.3144621,</span> <span class="pre">'L2*M/(N*T2*Theta)',</span> <span class="pre">'J/(mol*K)')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Gas_constant">gas constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_Aprime</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(2*pi,</span> <span class="pre">'A',</span> <span class="pre">'rad')*R_K/c</span></tt></td>
+<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A/(alpha*rad)</span></tt>)</td>
+</tr>
+<tr class="row-even"><td colspan="3">&#8212;&#8212; Settings &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td><em>rational</em></td>
+<td><em>True</em></td>
+<td><em>True</em> if the unit system is rationalized</td>
+</tr>
+</tbody>
+</table>
+<p>The second argument of the <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> constructor is
+comprised of <a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">SI</a> dimensions (current (I), length (L), mass (M), amount (N),
+time (T), and temperature (Theta)) and an additional dimension to track angle
+(A).  The value of <em>k_Aprime</em> for <a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">SI</a> and most of the other unit systems is
+chosen so that the <a class="reference external" href="http://en.wikipedia.org/wiki/Radian">radian (rad)</a> has a value of one as defined by
+<a class="reference internal" href="other-ini.html#bipm2006" id="id2">[BIPM2006]</a>.<a class="footnote-reference" href="#f2" id="id3">[2]</a>  However, this is not possible in the <a class="reference external" href="http://en.wikipedia.org/wiki/Planck_units">Planck unit
+system</a>, so the <a class="reference external" href="http://en.wikipedia.org/wiki/Josephson_constant">Josephson constant</a> is (arbitrarily) given a value of one
+instead.<a class="footnote-reference" href="#f3" id="id4">[3]</a></p>
+<p>For the <a class="reference external" href="http://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units#Electrostatic_units_.28EMU.29">ESU</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/Gaussian_units">Gaussian</a> unit systems (<a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/base-ESU.ini">base-ESU.ini</a>):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="44%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Symbol</th>
+<th class="head">Expression</th>
+<th class="head">Name &amp; notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="3">&#8212;&#8212; Base physical constants &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td><em>R_inf</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(109737.31568539*2*pi,</span> <span class="pre">'A/L',</span> <span class="pre">'cyc/cm')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Rydberg_constant">Rydberg constant</a></td>
+</tr>
+<tr class="row-even"><td><em>c</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(29979245800,</span> <span class="pre">'L/T',</span> <span class="pre">'cm/s')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Speed_of_light">speed of light</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_J</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(4835978.70*2*pi,</span> <span class="pre">'A*T/(L(3/2)*M(1/2))',</span> <span class="pre">'s/(Mx*cm)')*c</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Josephson_constant">Josephson constant</a></td>
+</tr>
+<tr class="row-even"><td><em>R_K</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(25812.807557e9/(2*pi),</span> <span class="pre">'L/(A*T)',</span> <span class="pre">'cm/(s*cyc)')/c**2</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Von_Klitzing_constant">von Klitzing constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_F</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(9648.53365,</span> <span class="pre">'M(1/2)*L(1/2)/N',</span> <span class="pre">'g(1/2)*cm(1/2)/mol')*c</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Faraday_constant">Faraday constant</a></td>
+</tr>
+<tr class="row-even"><td><em>R</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(8.3144621e7,</span> <span class="pre">'L2*M/(N*T2*Theta)',</span> <span class="pre">'erg/(mol*K)')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Gas_constant">gas constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_Aprime</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(2*pi,</span> <span class="pre">'A',</span> <span class="pre">'rad')*R_K/c</span></tt></td>
+<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A/(alpha*rad)</span></tt>)</td>
+</tr>
+<tr class="row-even"><td colspan="3">&#8212;&#8212; Settings &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td><em>rational</em></td>
+<td><em>False</em></td>
+<td><em>True</em> if the unit system is rationalized</td>
+</tr>
+</tbody>
+</table>
+<p>The same values are used for both of these unit systems.  The difference is in
+how <a class="reference external" href="http://en.wikipedia.org/wiki/Maxwell's_equations">Maxwell&#8217;s equations</a> are expressed, not in the definition of the constants
+and units.  The <a class="reference external" href="http://en.wikipedia.org/wiki/Lorentz%E2%80%93Heaviside_units">Lorentz-Heaviside unit system</a> can be established with the
+same constants but with <em>rational</em> = <em>True</em>.</p>
+<p>For the <a class="reference external" href="http://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units#Electromagnetic_units_.28EMU.29">electromagnetic unit (EMU) system</a> (<a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/base-EMU.ini">base-EMU.ini</a>):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="43%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Symbol</th>
+<th class="head">Expression</th>
+<th class="head">Name &amp; notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="3">&#8212;&#8212; Base physical constants &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td><em>R_inf</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(109737.31568539*2*pi,</span> <span class="pre">'A/L',</span> <span class="pre">'cyc/cm')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Rydberg_constant">Rydberg constant</a></td>
+</tr>
+<tr class="row-even"><td><em>c</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(29979245800,</span> <span class="pre">'L/T',</span> <span class="pre">'cm/s')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Speed_of_light">speed of light</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_J</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(4835978.70*2*pi,</span> <span class="pre">'A*T/(L(3/2)*M(1/2))',</span> <span class="pre">'s/(Mx*cm)')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Josephson_constant">Josephson constant</a></td>
+</tr>
+<tr class="row-even"><td><em>R_K</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(25812.807557e9/(2*pi),</span> <span class="pre">'L/(A*T)',</span> <span class="pre">'cm/(s*cyc)')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Von_Klitzing_constant">von Klitzing constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_F</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(9648.53365,</span> <span class="pre">'M(1/2)*L(1/2)/N',</span> <span class="pre">'g(1/2)*cm(1/2)/mol')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Faraday_constant">Faraday constant</a></td>
+</tr>
+<tr class="row-even"><td><em>R</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(8.3144621e7,</span> <span class="pre">'L2*M/(N*T2*Theta)',</span> <span class="pre">'erg/(mol*K)')</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Gas_constant">gas constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_Aprime</em></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(2*pi,</span> <span class="pre">'A',</span> <span class="pre">'rad')*R_K/c</span></tt></td>
+<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A/(alpha*rad)</span></tt>)</td>
+</tr>
+<tr class="row-even"><td colspan="3">&#8212;&#8212; Settings &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td><em>rational</em></td>
+<td><em>False</em></td>
+<td><em>True</em> if the unit system is rationalized</td>
+</tr>
+</tbody>
+</table>
+<p>The next two unit systems are fully <a class="reference external" href="http://en.wikipedia.org/wiki/Natural_units">natural</a>, so all of the quantities are
+dimensionless.  In the definitions, floating point numbers are used instead of
+the <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> class.</p>
+<p>For the <a class="reference external" href="http://en.wikipedia.org/wiki/Atomic_units">Hartree unit system</a> (<a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/base-Hartree.ini">base-Hartree.ini</a>):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="27%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Symbol</th>
+<th class="head">Expression</th>
+<th class="head">Name &amp; notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="3">&#8212;&#8212; Base physical constants &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td><em>R_inf</em></td>
+<td><tt class="docutils literal"><span class="pre">299792458e-7*pi/25812.807557</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Rydberg_constant">Rydberg constant</a></td>
+</tr>
+<tr class="row-even"><td><em>c</em></td>
+<td><tt class="docutils literal"><span class="pre">1/(2*R_inf)</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Speed_of_light">speed of light</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_J</em></td>
+<td><tt class="docutils literal"><span class="pre">2</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Josephson_constant">Josephson constant</a></td>
+</tr>
+<tr class="row-even"><td><em>R_K</em></td>
+<td><tt class="docutils literal"><span class="pre">2</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Von_Klitzing_constant">von Klitzing constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_F</em></td>
+<td><tt class="docutils literal"><span class="pre">1</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Faraday_constant">Faraday constant</a></td>
+</tr>
+<tr class="row-even"><td><em>R</em></td>
+<td><tt class="docutils literal"><span class="pre">k_F</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Gas_constant">gas constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_Aprime</em></td>
+<td><tt class="docutils literal"><span class="pre">2*pi*R_K/c</span></tt></td>
+<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A/(alpha*rad)</span></tt>)</td>
+</tr>
+<tr class="row-even"><td colspan="3">&#8212;&#8212; Settings &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td><em>rational</em></td>
+<td><em>False</em></td>
+<td><em>True</em> if the unit system is rationalized</td>
+</tr>
+</tbody>
+</table>
+<p>For the <a class="reference external" href="http://en.wikipedia.org/wiki/Planck_units">Planck unit system</a> (<a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/base-Planck.ini">base-Planck.ini</a>):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="53%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Symbol</th>
+<th class="head">Expression</th>
+<th class="head">Name &amp; notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="3">&#8212;&#8212; Base physical constants &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td>G</td>
+<td><tt class="docutils literal"><span class="pre">1</span></tt></td>
+<td><a class="reference external" href="https://en.wikipedia.org/wiki/Gravitational_constant">gravitational constant</a></td>
+</tr>
+<tr class="row-even"><td><em>c</em></td>
+<td><tt class="docutils literal"><span class="pre">1</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Speed_of_light">speed of light</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_J</em></td>
+<td><tt class="docutils literal"><span class="pre">1</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Josephson_constant">Josephson constant</a></td>
+</tr>
+<tr class="row-even"><td><em>R_K</em></td>
+<td><tt class="docutils literal"><span class="pre">sqrt(25812.807557/(2*299792458*1e-7))/(pi*k_J)</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Von_Klitzing_constant">von Klitzing constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_F</em></td>
+<td><tt class="docutils literal"><span class="pre">1</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Faraday_constant">Faraday constant</a></td>
+</tr>
+<tr class="row-even"><td><em>R</em></td>
+<td><tt class="docutils literal"><span class="pre">k_F*k_J*R_K*sqrt(pi)</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Gas_constant">gas constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>k_Aprime</em></td>
+<td><tt class="docutils literal"><span class="pre">2*(pi*k_J*R_K)**2/c</span></tt></td>
+<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A/(alpha*rad)</span></tt>)</td>
+</tr>
+<tr class="row-even"><td colspan="3">&#8212;&#8212; Empirical &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td><em>R_inf</em></td>
+<td><tt class="docutils literal"><span class="pre">10973731.568539*k_J*c**2*sqrt(k_Aprime*6.67384e-11/(G*R_K*25812.807557*299792458**3))/483597.870e9</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Rydberg_constant">Rydberg constant</a></td>
+</tr>
+<tr class="row-even"><td colspan="3">&#8212;&#8212; Derived &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td><em>l_P</em></td>
+<td><tt class="docutils literal"><span class="pre">sqrt(k_Aprime*G/2)/(c*k_J*R_K*pi)</span></tt></td>
+<td><a class="reference external" href="https://en.wikipedia.org/wiki/Planck_length">Planck length</a></td>
+</tr>
+<tr class="row-even"><td><em>M_P</em></td>
+<td><tt class="docutils literal"><span class="pre">l_P*c**2/G</span></tt></td>
+<td><a class="reference external" href="https://en.wikipedia.org/wiki/Planck_mass">Planck mass</a></td>
+</tr>
+<tr class="row-odd"><td><em>t_P</em></td>
+<td><tt class="docutils literal"><span class="pre">l_P/c</span></tt></td>
+<td><a class="reference external" href="https://en.wikipedia.org/wiki/Planck_time">Planck time</a></td>
+</tr>
+<tr class="row-even"><td><em>E_P</em></td>
+<td><tt class="docutils literal"><span class="pre">M_P*c**2</span></tt></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Planck_energy">Planck energy</a></td>
+</tr>
+<tr class="row-odd"><td><em>T_P</em></td>
+<td><tt class="docutils literal"><span class="pre">E_P*k_F*k_J*R_K*sqrt(pi)/R</span></tt></td>
+<td><a class="reference external" href="https://en.wikipedia.org/wiki/Planck_temperature">Planck temperature</a></td>
+</tr>
+<tr class="row-even"><td colspan="3">&#8212;&#8212; Settings &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td><em>rational</em></td>
+<td><em>True</em></td>
+<td><em>True</em> if the unit system is rationalized</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the <a class="reference external" href="https://en.wikipedia.org/wiki/Gravitational_constant">gravitational constant</a> is included as a base constant.  The
+<a class="reference external" href="http://en.wikipedia.org/wiki/Rydberg_constant">Rydberg constant</a> is no longer a base constant but is empirically related to
+the base constants.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="bipm2006" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[BIPM2006]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id29">2</a>)</em> International Bureau of Weights and Measures (BIPM),
+&#8220;<a class="reference external" href="http://www.bipm.org/utils/common/pdf/si_brochure_8_en.pdf">The International System of Units (SI)</a>,&#8221;
+8th ed., 2006.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>... except for the <a class="reference external" href="https://en.wikipedia.org/wiki/Candela">candela (cd)</a>, which is not directly related due
+to the <a class="reference external" href="https://en.wikipedia.org/wiki/Luminosity_function">luminosity function</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>However, note that there is a contradiction in the <a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">SI unit system</a>.
+Since rad = 1, it should follow that a cycle or revolution is 2*<em>pi</em>, yet
+<a class="reference internal" href="other-ini.html#bipm2006" id="id29">[BIPM2006]</a> defines the <a class="reference external" href="http://en.wikipedia.org/wiki/Hertz">hertz</a> (generally accepted as cycles per second) as
+1/s.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td>When considering angle as a dimension, the <a class="reference external" href="http://en.wikipedia.org/wiki/Planck_units">Planck unit system</a> only
+places a constraint on the product of the <a class="reference external" href="http://en.wikipedia.org/wiki/Josephson_constant">Josephson constant</a> and the <a class="reference external" href="http://en.wikipedia.org/wiki/Von_Klitzing_constant">von
+Klitzing constant</a>, not on either constant individually.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
+            </a></p><h3>Project Info</h3>
+  <ul>
+  <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
+  <li><a href="credits.html">Credits</a></li>
+  <li><a href="license.html">License</a></li>
+  <li><a href="changes.html">Change log</a></li>
+  </ul><h3><a href="definitions.html">Definition Files</a></h3>
+  <ul>
+  <li><a href="base-ini.html">Base constants</a></li>
+  <li><a href="derived-ini.html">Derived constants</a></li>
+  <li><a href="BIPM-ini.html">BIPM units</a></li>
+  <li><a href="other-ini.html">Other units</a></li>
+  </ul>
+<h3><a href="usermodules.html">User Modules</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="natu.config.html"><tt class="docutils literal"><span class="pre">natu.config</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.groups.html"><tt class="docutils literal"><span class="pre">natu.groups</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.math.html"><tt class="docutils literal"><span class="pre">natu.math</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
+</ul>
+<h3><a href="apimodules.html">API Modules</a></h3>
+<ul>
+<!--
+  <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
+  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
+  <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
+-->
+</ul><h3>Useful Links</h3>
+  <ul>
+    <li><a href="https://pypi.python.org/pypi/natu">natu @ PyPI</a></li>
+    <li><a href="https://github.com/kdavies4/natu">Code in GitHub</a></li>
+    <li><a href="https://github.com/kdavies4/natu/issues">Issue tracker</a></li>
+  </ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3><a href="search.html">Search</a></h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Download</h3>
+  <ul>
+    <li><a itemprop="downloadUrl"
+           href="https://pypi.python.org/packages/source/M/natu/natu-.tar.gz"
+           rel="nofollow">Latest version<br>(v0, 2014-08-06)</a></li>
+  </ul>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
+      Last updated on Aug 06, 2014.
+    </div>
+  </body>
+</html>

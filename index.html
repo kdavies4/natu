@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>natu &mdash; Natural units in Python</title>
+    
+    <link rel="stylesheet" href="javascripts/custom.css" type="text/css" />
+    <link rel="stylesheet" href="javascripts/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/underscore.js"></script>
+    <script type="text/javascript" src="javascripts/doctools.js"></script>
+    <script type="text/javascript" src="javascripts/copybutton.js"></script>
+    <script type="text/javascript" src="javascripts/analytics.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Natural units in Python"
+          href="javascripts/opensearch.xml"/>
+    <link rel="shortcut icon" href="javascripts/favicon.ico"/>
+    <link rel="top" title="Natural units in Python" href="#" />
+    <link rel="next" title="natu.config" href="natu.config.html" />
+    <meta name="description" content="Python module for natural units">
+    <meta name="keywords" content="quantity, quantities, unit, conversion, natural, SI, physics, dimension">
+    <meta name="author" content="Kevin Davies">
+    <link rel="icon" type="image/png" href="javascripts/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="javascripts/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="javascripts/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="javascripts/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="javascripts/favicon-32x32.png" sizes="32x32">
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="natu.config.html" title="natu.config"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="natu">
+<h1>natu<a class="headerlink" href="#natu" title="Permalink to this headline">¶</a></h1>
+<p><strong>Natural units in Python</strong></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This project is currently in a pre-release state because it has not
+been fully tested.  It will be officially released once the unit tests are
+complete.</p>
+</div>
+<p>natu is a free, open-source package to represent physical quantities.  There are
+many <a class="reference external" href="http://www.python.org/">Python</a> packages that deal with units and quantities (see the
+<a class="reference internal" href="#seealso"><em>list below</em></a>), but natu is unique because it is truly
+system-independent.  The units are derived from physical constants with
+adjustable values and dimensions.  The value of a unit is factored into a
+quantity so that the quantity is not &#8220;in&#8221; any particular unit.  This offers the
+following advantages:</p>
+<ul class="simple">
+<li><strong>Flexibility</strong>: Different unit systems, including natural units (hence the
+name &#8220;natu&#8221;), can be represented by simply adjusting the physical constants.</li>
+<li><strong>Simplicity</strong>: Unit conversion is inherent.  This results in quick
+computations and a small code base (&lt;1500 lines).  By default, dimensions and
+display units are tracked to catch errors and for string formatting,
+respectively.  However, this feature can be turned off to reduce the
+computational overhead to nearly zero while still allowing input and output in
+mixed units.</li>
+<li><strong>Scalability</strong>: Numerical scaling is independent of the units used to create
+quantities.  This can be used to prevent exponent overflow <a class="reference internal" href="#davies2012" id="id1">[Davies2012]</a>,
+<a class="footnote-reference" href="#f1" id="id2">[1]</a>.</li>
+<li><strong>Intuitive</strong>: Each unit is a fixed quantity which can be treated as a
+mathematical entity.  A variable quantity is expressed as the product of a
+number and a unit, as stated in <a class="reference internal" href="other-ini.html#bipm2006" id="id3">[BIPM2006]</a>.</li>
+<li><strong>Representative</strong>: The structure of the package reflects the way modern units
+are defined: standards organizations such as <a class="reference external" href="http://www.nist.gov/">NIST</a> assign values to universal
+physical constants so that the values of units can be determined by physical
+experiments instead of prototypes.</li>
+</ul>
+<p>Please <a class="reference external" href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/release/examples/tutorial.ipynb">view the tutorial</a>
+to see how natu is used.  natu incorporates some of the best features of the
+existing packages and introduces some novel features:</p>
+<ul class="simple">
+<li>All units are defined in <a class="reference external" href="definitions.html">INI files</a>.  Units can be added
+or removed.</li>
+<li>Units can involve offsets (e.g., <a class="reference external" href="http://en.wikipedia.org/wiki/Celsius">degree Celsius (degC)</a>) or even nonlinear
+functions (e.g., <a class="reference external" href="http://en.wikipedia.org/wiki/Decibel">decibel (dB)</a>).</li>
+<li>Display units can be simplified automatically using <a class="reference external" href="http://en.wikipedia.org/wiki/Coherence_(units_of_measurement)">coherent relations</a>
+gathered from the unit definitions.</li>
+<li>All units can be imported directly (<tt class="docutils literal"><span class="pre">from</span> <span class="pre">natu.units</span> <span class="pre">import</span> <span class="pre">*</span></tt>), selectively
+imported (<tt class="docutils literal"><span class="pre">from</span> <span class="pre">natu.units</span> <span class="pre">import</span> <span class="pre">m,</span> <span class="pre">kg,</span> <span class="pre">s</span></tt>), or used from within a package
+(<tt class="docutils literal"><span class="pre">from</span> <span class="pre">natu</span> <span class="pre">import</span> <span class="pre">units</span> <span class="pre">as</span> <span class="pre">U;</span> <span class="pre">length</span> <span class="pre">=</span> <span class="pre">10*U.m</span></tt>).</li>
+<li>Prefixes are automatically applied to units upon import or access.</li>
+<li>Units are automatically copied and sorted into convenient groups (see
+<a class="reference internal" href="natu.groups.html#module-natu.groups" title="natu.groups"><tt class="xref py py-mod docutils literal"><span class="pre">natu.groups</span></tt></a>).</li>
+<li>Rationalized or unrationalized unit systems can be represented.</li>
+<li>Modules are provided as drop-in quantity-aware replacements for <a class="reference external" href="https://docs.python.org/library/math.html#module-math" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">math</span></tt></a>
+and <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.8)"><tt class="xref py py-mod docutils literal"><span class="pre">numpy</span></tt></a>.</li>
+<li>natu runs in Python 2 and 3.</li>
+<li>There are no external dependencies.  Only the <a class="reference external" href="https://docs.python.org/3/library/">Python Standard Library</a> is
+required; <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.8)"><tt class="xref py py-mod docutils literal"><span class="pre">numpy</span></tt></a> is optional.</li>
+<li>Fractional exponents can be used for units as well as quantities (e.g., in the
+definition of the <a class="reference external" href="http://en.wikipedia.org/wiki/Statcoulomb">statcoulomb</a>).</li>
+</ul>
+<p>The links in the sidebar provide the full documentation and more examples.</p>
+<p><strong>Installation</strong></p>
+<p>The easiest way to install natu is to use <a class="reference external" href="https://pypi.python.org/pypi/pip">pip</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt; pip install natu
+</pre></div>
+</div>
+<p>On Linux, it may be necessary to have root privileges:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ sudo pip install natu
+</pre></div>
+</div>
+<p>Another way is to download and extract a copy of the package from the sidebar on
+the left.  Run the following command from the base folder:</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt; python setup.py install
+</pre></div>
+</div>
+<p>Or, on Linux:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ sudo python setup.py install
+</pre></div>
+</div>
+<p><strong>License terms and development</strong></p>
+<p>natu is published under a <a class="reference external" href="license.html">BSD-compatible license</a>.  Please
+share any improvements you make, preferably as a pull request to the <tt class="docutils literal"><span class="pre">master</span></tt>
+branch of the <a class="reference external" href="https://github.com/kdavies4/natu">GitHub repository</a>.  There are useful development scripts in
+the <a class="reference external" href="https://github.com/kdavies4/natu/blob/master/hooks/">hooks folder</a>.  If
+you find a bug or have a suggestion, please <a class="reference external" href="https://github.com/kdavies4/natu/issues/new">open an issue</a>.</p>
+<p id="seealso"><strong>See also</strong></p>
+<ul class="simple">
+<li><a class="reference external" href="http://astropy.readthedocs.org/en/latest/units/">astropy.units</a></li>
+<li><a class="reference external" href="http://code.google.com/p/buckingham/">Buckingham</a></li>
+<li><a class="reference external" href="http://juanreyero.com/open/magnitude/">Magnitude</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/numericalunits">NumericalUnits</a></li>
+<li><a class="reference external" href="http://pint.readthedocs.org/">Pint</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/quantities">Python-quantities</a></li>
+<li><a class="reference external" href="http://russp.us/scalar-guide.htm">Scalar</a></li>
+<li><a class="reference external" href="http://dirac.cnrs-orleans.fr/ScientificPython/ScientificPythonManual/Scientific.Physics.PhysicalQuantities-module.html">Scientific.Physics.PhysicalQuantities</a></li>
+<li><a class="reference external" href="http://scimath.readthedocs.org/en/latest/units/intro.html">SciMath</a></li>
+<li><a class="reference external" href="http://docs.sympy.org/dev/modules/physics/units.html">sympy.physics.units</a></li>
+<li><a class="reference external" href="https://github.com/blazetopher/udunitspy">udunitspy</a></li>
+<li><a class="reference external" href="https://bitbucket.org/adonohue/units/">Units</a></li>
+<li><a class="reference external" href="https://bitbucket.org/kiv/unum/">Unum</a></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="davies2012" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[Davies2012]</a></td><td>K. Davies and C. Paredis, &#8220;<a class="reference external" href="http://www.ep.liu.se/ecp_article/index.en.aspx?issue=076;article=082">Natural Unit Representation in
+Modelica</a>,&#8221;
+in Modelica Conference (Munich, Germany), Modelica Assoc.,
+Sep. 2012.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="bipm2006" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[BIPM2006]</a></td><td>International Bureau of Weights and Measures (BIPM),
+&#8220;<a class="reference external" href="http://www.bipm.org/utils/common/pdf/si_brochure_8_en.pdf">The International System of Units (SI)</a>,&#8221;
+8th ed., 2006.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><p class="first">Post by C. Bruns at
+<a class="reference external" href="http://stackoverflow.com/questions/2125076/unit-conversion-in-python">http://stackoverflow.com/questions/2125076/unit-conversion-in-python</a>
+(Feb. 5, 2010):</p>
+<blockquote class="last">
+<div>&#8220;Units are NOT necessarily stored in terms of SI units internally.  This
+is very important for me, because one important application area for us is
+at the molecular scale.  Using SI units internally can lead to exponent
+overflow in commonly used molecular force calculations.&#8221;</div></blockquote>
+</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="#">
+              <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
+            </a></p><h3>Project Info</h3>
+  <ul>
+  <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
+  <li><a href="credits.html">Credits</a></li>
+  <li><a href="license.html">License</a></li>
+  <li><a href="changes.html">Change log</a></li>
+  </ul><h3><a href="definitions.html">Definition Files</a></h3>
+  <ul>
+  <li><a href="base-ini.html">Base constants</a></li>
+  <li><a href="derived-ini.html">Derived constants</a></li>
+  <li><a href="BIPM-ini.html">BIPM units</a></li>
+  <li><a href="other-ini.html">Other units</a></li>
+  </ul>
+<h3><a href="usermodules.html">User Modules</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="natu.config.html"><tt class="docutils literal"><span class="pre">natu.config</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.groups.html"><tt class="docutils literal"><span class="pre">natu.groups</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.math.html"><tt class="docutils literal"><span class="pre">natu.math</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
+</ul>
+<h3><a href="apimodules.html">API Modules</a></h3>
+<ul>
+<!--
+  <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
+  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
+  <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
+-->
+</ul><h3>Useful Links</h3>
+  <ul>
+    <li><a href="https://pypi.python.org/pypi/natu">natu @ PyPI</a></li>
+    <li><a href="https://github.com/kdavies4/natu">Code in GitHub</a></li>
+    <li><a href="https://github.com/kdavies4/natu/issues">Issue tracker</a></li>
+  </ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3><a href="search.html">Search</a></h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Download</h3>
+  <ul>
+    <li><a itemprop="downloadUrl"
+           href="https://pypi.python.org/packages/source/M/natu/natu-.tar.gz"
+           rel="nofollow">Latest version<br>(v0, 2014-08-06)</a></li>
+  </ul>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="natu.config.html" title="natu.config"
+             >next</a> |</li>
+        <li><a href="#">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
+      Last updated on Aug 07, 2014.
+    </div>
+  </body>
+</html>

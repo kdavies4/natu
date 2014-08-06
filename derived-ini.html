@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Derived physical constants (derived.ini) &mdash; Natural units in Python</title>
+    
+    <link rel="stylesheet" href="javascripts/custom.css" type="text/css" />
+    <link rel="stylesheet" href="javascripts/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/underscore.js"></script>
+    <script type="text/javascript" src="javascripts/doctools.js"></script>
+    <script type="text/javascript" src="javascripts/copybutton.js"></script>
+    <script type="text/javascript" src="javascripts/analytics.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Natural units in Python"
+          href="javascripts/opensearch.xml"/>
+    <link rel="shortcut icon" href="javascripts/favicon.ico"/>
+    <link rel="top" title="Natural units in Python" href="index.html" />
+    <meta name="description" content="Python module for natural units">
+    <meta name="keywords" content="quantity, quantities, unit, conversion, natural, SI, physics, dimension">
+    <meta name="author" content="Kevin Davies">
+    <link rel="icon" type="image/png" href="javascripts/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="javascripts/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="javascripts/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="javascripts/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="javascripts/favicon-32x32.png" sizes="32x32">
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="derived-physical-constants-derived-ini">
+<h1>Derived physical constants (<a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/derived.ini">derived.ini</a>)<a class="headerlink" href="#derived-physical-constants-derived-ini" title="Permalink to this headline">¶</a></h1>
+<p>The table below lists the contents of the <a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/derived.ini">derived.ini</a> file.  It contains
+constants that are derived from the base physical constants.</p>
+<p>The definitions depend on the following items:</p>
+<ul class="simple">
+<li>Mathematical constants: <em>pi</em></li>
+<li>Base physical constants: <em>R_inf</em>, <em>c</em>, <em>k_J</em>, <em>R_K</em>, <em>k_F</em>, <em>R</em>, and
+<em>k_Aprime</em></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="14%" />
+<col width="5%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Symbol</th>
+<th class="head">Expression</th>
+<th class="head">Prefixable</th>
+<th class="head">Name &amp; notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="4">&#8212;&#8212; Derived physical constants and intermediate units &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td><em>Phi_0</em></td>
+<td><tt class="docutils literal"><span class="pre">1/k_J</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Magnetic_flux_quantum">magnetic flux quantum</a></td>
+</tr>
+<tr class="row-even"><td><em>G_0</em></td>
+<td><tt class="docutils literal"><span class="pre">2/R_K</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Conductance_quantum">conductance quantum</a></td>
+</tr>
+<tr class="row-odd"><td><em>e</em></td>
+<td><tt class="docutils literal"><span class="pre">Phi_0*G_0</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Elementary_charge">elementary charge</a></td>
+</tr>
+<tr class="row-even"><td><em>h</em></td>
+<td><tt class="docutils literal"><span class="pre">2*e*Phi_0</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Planck_constant">Planck constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>N_A</em></td>
+<td><tt class="docutils literal"><span class="pre">k_F/e</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Avogadro_number">Avogadro number</a></td>
+</tr>
+<tr class="row-even"><td><em>k_B</em></td>
+<td><tt class="docutils literal"><span class="pre">R/N_A</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Boltzmann_constant">Boltzmann constant</a></td>
+</tr>
+<tr class="row-odd"><td>cyc</td>
+<td><tt class="docutils literal"><span class="pre">k_Aprime*c/R_K</span></tt></td>
+<td><em>False</em></td>
+<td>cycle (aka circle, revolution, <a class="reference external" href="http://en.wikipedia.org/wiki/Turn_(geometry)">turn</a>) (a unit&#8212;not a constant&#8212;but useful here)</td>
+</tr>
+<tr class="row-even"><td><em>c_1</em></td>
+<td><tt class="docutils literal"><span class="pre">2*pi*h*c**2/cyc**3</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://physics.nist.gov/cgi-bin/cuu/Value?c11strc">first radiation constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>c_2</em></td>
+<td><tt class="docutils literal"><span class="pre">h*c/k_B</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://physics.nist.gov/cgi-bin/cuu/Value?c22ndrc|search_for=second+radiation">second radiation constant</a></td>
+</tr>
+<tr class="row-even"><td><em>c_3_f</em></td>
+<td><tt class="docutils literal"><span class="pre">2.821439372122079*c/c_2</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Wien's_displacement_law">Wien frequency displacement constant</a> (the number is <em>x</em>, where exp(<em>x</em>)*(3 - <em>x</em>) = 3)</td>
+</tr>
+<tr class="row-odd"><td><em>c_3_lambda</em></td>
+<td><tt class="docutils literal"><span class="pre">c_2/4.965114231744276</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Wien's_displacement_law">Wien wavelength displacement constant</a> (the number is <em>x</em>, where exp(<em>x</em>)*(5 - <em>x</em>) = 5)</td>
+</tr>
+<tr class="row-even"><td><em>sigma</em></td>
+<td><tt class="docutils literal"><span class="pre">c_1/15*(pi/c_2)**4</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Stefan%E2%80%93Boltzmann_constant">Stefan-Boltzmann constant</a></td>
+</tr>
+<tr class="row-odd"><td><em>Ry</em></td>
+<td><tt class="docutils literal"><span class="pre">h*c*R_inf</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Rydberg_constant#Value_of_the_Rydberg_constant_and_Rydberg_unit_of_energy">Rydberg energy</a></td>
+</tr>
+<tr class="row-even"><td><em>Ha</em></td>
+<td><tt class="docutils literal"><span class="pre">2*Ry</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Hartree">Hartree energy</a> (aka hartree)</td>
+</tr>
+<tr class="row-odd"><td><em>T_H</em></td>
+<td><tt class="docutils literal"><span class="pre">Ha/k_B</span></tt></td>
+<td>&nbsp;</td>
+<td>Hartree temperature</td>
+</tr>
+</tbody>
+</table>
+<p>Since angle is explicit, it appears in several of the constants:</p>
+<ul class="simple">
+<li><em>Phi_0</em> ≈ 2.068×10<sup>-15</sup> Wb <a class="footnote-reference" href="#f1" id="id1">[1]</a></li>
+<li><em>G_0</em> ≈ 7.748×10<sup>-5</sup> S cyc <a class="footnote-reference" href="#f2" id="id2">[2]</a></li>
+<li><em>h</em> ≈ 6.626×10<sup>-34</sup> J Hz<sup>-1</sup> <a class="footnote-reference" href="#f1" id="id3">[1]</a></li>
+<li><em>c_1</em> ≈ 3.742×10<sup>-16</sup> W m<sup>2</sup>/cyc<sup>4</sup> <a class="footnote-reference" href="#f2" id="id4">[2]</a></li>
+<li><em>c_2</em> ≈ 1.438×10<sup>-2</sup> m K cyc<sup>-1</sup> <a class="footnote-reference" href="#f2" id="id5">[2]</a></li>
+<li><em>c_3_f</em> ≈ 5.879×10<sup>10</sup> Hz K<sup>-1</sup> <a class="footnote-reference" href="#f1" id="id6">[1]</a></li>
+<li><em>c_3_lambda</em> ≈ 2.898×10<sup>-3</sup> m K cyc<sup>-1</sup> <a class="footnote-reference" href="#f2" id="id7">[2]</a></li>
+</ul>
+<p>The definition of the <a class="reference external" href="http://en.wikipedia.org/wiki/Planck_constant">Planck constant</a> implies that
+<em>h</em>*cyc ≈ 6.626×10<sup>-34</sup> J (the traditional expression of
+<em>h</em>) and <em>h</em>*rad ≈ 1.05457×10<sup>-34</sup> J (the traditional
+expression of <em>ħ</em>).  Note that the cycle (cyc) is not an abbreviation for cycles
+per second as it became in the <a class="reference external" href="https://en.wikipedia.org/wiki/MKS_system_of_units">MKS system of units</a>.  It is a unit of angle.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="nist2014" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[NIST2014]</a></td><td>National Institute of Science and Technology, &#8220;Fundamental
+Physical Constants: Complete Listing,&#8221;
+<a class="reference external" href="http://physics.nist.gov/constants">http://physics.nist.gov/constants</a>, accessed 2014.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id6">3</a>)</em> See the <a class="reference external" href="BIPM-ini">BIPM units</a> regarding the weber (Wb) and the hertz
+(Hz).</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>, <a class="fn-backref" href="#id5">3</a>, <a class="fn-backref" href="#id7">4</a>)</em> Traditionally, angle is dropped <a class="reference internal" href="other-ini.html#nist2014" id="id9">[NIST2014]</a>.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
+            </a></p><h3>Project Info</h3>
+  <ul>
+  <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
+  <li><a href="credits.html">Credits</a></li>
+  <li><a href="license.html">License</a></li>
+  <li><a href="changes.html">Change log</a></li>
+  </ul><h3><a href="definitions.html">Definition Files</a></h3>
+  <ul>
+  <li><a href="base-ini.html">Base constants</a></li>
+  <li><a href="derived-ini.html">Derived constants</a></li>
+  <li><a href="BIPM-ini.html">BIPM units</a></li>
+  <li><a href="other-ini.html">Other units</a></li>
+  </ul>
+<h3><a href="usermodules.html">User Modules</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="natu.config.html"><tt class="docutils literal"><span class="pre">natu.config</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.groups.html"><tt class="docutils literal"><span class="pre">natu.groups</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.math.html"><tt class="docutils literal"><span class="pre">natu.math</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
+</ul>
+<h3><a href="apimodules.html">API Modules</a></h3>
+<ul>
+<!--
+  <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
+  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
+  <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
+-->
+</ul><h3>Useful Links</h3>
+  <ul>
+    <li><a href="https://pypi.python.org/pypi/natu">natu @ PyPI</a></li>
+    <li><a href="https://github.com/kdavies4/natu">Code in GitHub</a></li>
+    <li><a href="https://github.com/kdavies4/natu/issues">Issue tracker</a></li>
+  </ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3><a href="search.html">Search</a></h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Download</h3>
+  <ul>
+    <li><a itemprop="downloadUrl"
+           href="https://pypi.python.org/packages/source/M/natu/natu-.tar.gz"
+           rel="nofollow">Latest version<br>(v0, 2014-08-06)</a></li>
+  </ul>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
+      Last updated on Aug 06, 2014.
+    </div>
+  </body>
+</html>
