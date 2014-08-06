@@ -1,0 +1,3 @@
+:orphan:
+
+.. include:: ../CREDITS.txt

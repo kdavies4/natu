@@ -1,0 +1,39 @@
+Credits
+=======
+
+natu_ was written by `Kevin Davies`_.  Some aspects of the project were inspired
+by or copied from these packages:
+
+- `Pint <http://pint.readthedocs.org/>`_ (`BSD license
+  <https://raw.githubusercontent.com/hgrecco/pint/master/LICENSE>`_):
+
+  - Copied and modified some of the functions for string formatting
+  - Used the idea of unit definition files
+  - Copied some of the unit definitions
+
+- `SciMath <http://scimath.readthedocs.org/en/latest/units/intro.html>`_ (`BSD
+  license
+  <https://raw.githubusercontent.com/enthought/scimath/master/LICENSE.txt>`_):
+
+  - Adapted the approach for tracking dimensions
+  - Copied some of the unit definitions
+
+The logo was copied and modified from `an image of the electron shell transitions
+of hydrogen <http://en.wikipedia.org/wiki/File:Hydrogen_transitions.svg>`_ by
+`Szdori <http://commons.wikimedia.org/w/index.php?title=User:Szdori>`_ (Mar. 19
+2009).
+
+:func:`natu.util.list_packages` is based on `unutbu
+<http://stackoverflow.com/users/190597/unutbu>`_'s `post on Stack Overflow
+<http://stackoverflow.com/questions/1707709>`_ (Nov. 10 2009).
+
+If you use natu_ or concepts from it in shared work, please cite the following:
+
+   K. Davies and C. Paredis, "`Natural Unit Representation in
+   Modelica <http://www.ep.liu.se/ecp_article/index.en.aspx?issue=076;article=082>`_,"
+   in Modelica Conference (Munich, Germany), Modelica Assoc.,
+   Sep. 2012.
+
+
+.. _natu: http://kdavies4.github.io/natu/
+.. _Kevin Davies: http://www.hnei.hawaii.edu/staff/kevin-davies

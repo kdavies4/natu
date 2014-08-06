@@ -1,5 +1,5 @@
 #!/usr/bin/python
-"""Script to clean, build, and release the ModelicaRes code.
+"""Script to clean, build, and release the natu code.
 """
 
 # pylint: disable=I0011, C0103, C0325, E0611
@@ -10,13 +10,13 @@ import os
 from time import strftime
 from collections import namedtuple
 from docutils.core import publish_string
-from sh import bash, git, python, rm
+from sh import bash, git, python, python3, rm
 from natu import util
 
 setup = python.bake('setup.py')
 
 
-def set_version(version, fname='modelicares/__init__.py'):
+def set_version(version, fname='natu/__init__.py'):
     """Update the version in a file.
     """
     util.replace(fname, [('(__version__) *= *.+', r"\1 = %s" % version)])
@@ -48,7 +48,7 @@ def build():
     # lastversion = git.describe('--tag', abbrev=0).stdout.rstrip()
     version = raw_input("Enter the version number (last was %s): "
                         % lastversion)
-    # In modelicares/__init__.py:
+    # In natu/__init__.py:
     set_version("'%s'" % version)
     # In CHANGES.txt:
     date = strftime('%Y-%-m-%-d')
@@ -64,7 +64,9 @@ def build():
     setup.build()
     os.system('sudo python setup.py install')
     os.system('sudo python3 setup.py install')
-    print(bash('runtests.sh'))
+    # TODO: re-enable:
+    # print(python('setup.py test'))
+    # print(python3('setup.py test'))
 
     # Create a tarball and zip (*.tar.gz and *.zip).
     setup.sdist(formats='gztar,zip')
@@ -77,7 +79,7 @@ def clean():
     """Clean/remove the built code.
     """
     setup.clean('--all')
-    rm('-rf', "ModelicaRes.egg-info")
+    rm('-rf', "natu.egg-info")
 
 
 def release():
@@ -101,13 +103,13 @@ def release():
     setup.sdist.upload()
 
     # Reset the version number.
-    # In modelicares/__init__.py:
+    # In natu/__init__.py:
     set_version('None')
     # In CHANGES.txt:
     newheading = ('TBD (in `GitHub <https://github.com/kdavies4/natu>`_ '
                   'only) -- Updates:')
     newlink = ('.. _vx.x.x: '
-               'https://github.com/kdavies4/ModelicaRes/archive/vx.x.x.zip')
+               'https://github.com/kdavies4/natu/archive/vx.x.x.zip')
     rpls = [(r'(<http://semver.org>`_\.)',
              r'\1\n\n' + newheading),
             (r'(Initial release\n\n\n)',

@@ -1,0 +1,17 @@
+include MANIFEST.in
+include *.md
+include *.txt
+include *.sh
+include *.ini
+
+# Files to build the documentation
+include doc/*.md
+include doc/*.pws
+include doc/*.py
+include doc/*.rst
+include doc/_static/*
+include doc/_templates/*
+include doc/extra/*
+
+# Test scripts and data files
+include tests/*
