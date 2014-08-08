@@ -1,10 +1,10 @@
 This folder contains scripts that help with the development and distribution of
-ModelicaRes.
+natu.
 
 The [pre-commit script](pre-commit) prevents commits if there are errors in the
 Python source or there are filenames with non-ASCII characters.  It also adds
-an "UNRELEASED COPY" markdown file in the base folder if there is no version
-marked in [modelicares/__init__.py](../modelicares/__init__.py).
+an "UNRELEASED" markdown file in the base folder if there is no version marked
+in [natu/__init__.py](../natu/__init__.py).
 
 The [post-checkout script](post-checkout) removes byte-compiled Python files
 (*.pyc) when switching branches.  Since the source may change when upon
@@ -84,16 +84,15 @@ To count the number of lines of code:
 All releases and updates are on the `master` branch.  During the build process,
 (`git code build`), releases are tagged  as "v*major*.*minor*.*micro*", where
 *major*, *minor*, and *micro* are the integer parts of the version number.  The
-unreleased updates have an "UNRELEASED COPY.md" file in the base folder with the
+unreleased updates have an "UNRELEASED.md" file in the base folder with the
 commit date/time and the author.
 
-The version number is recorded in
-[modelicares/__init__.py](../modelicares/__init__.py).  It is *None* for
-unreleased copies.  When the documentation is built (`git doc build`), the
-download link and text is updated with information from the last tag, which
-corresponds to the last release.
+The version number is recorded in [natu/__init__.py](../natu/__init__.py).  It
+is *None* for unreleased copies.  When the documentation is built
+(`git doc build`), the download link and text is updated with information from
+the last tag, which corresponds to the last release.
 
 
 [git]: http://git-scm.com/
-[GitHub webpage]: kdavies4.github.io/ModelicaRes/
-[PyPI]: https://pypi.python.org/pypi/ModelicaRes
+[GitHub webpage]: kdavies4.github.io/natu/
+[PyPI]: https://pypi.python.org/pypi/natu

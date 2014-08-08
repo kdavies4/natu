@@ -1,4 +1,4 @@
-personal_ws-1.1 en 268 
+personal_ws-1.1 en 264 
 banananana
 atm
 statA
@@ -98,7 +98,6 @@ arcsinh
 lbf
 fmod
 PyPI
-aa
 subpackages
 bary
 Redistributions
@@ -131,7 +130,6 @@ fc
 dm
 Wien
 statampere
-fd
 fe
 dyne
 fm
@@ -209,7 +207,6 @@ mul
 Instantiation
 abV
 Wh
-afd
 submodule
 statvolt
 tuple
@@ -256,7 +253,6 @@ Biot
 CFR
 invertible
 dde
-TBD
 Sep
 ldexp
 sqrt

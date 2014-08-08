@@ -8,4 +8,4 @@ grep TODO $locations -n --colour=always |
     column -s $'\x01' -t
 # The sed part removes the leading whitespace.
 echo
-echo See also the issues at https://github.com/kdavies4/ModelicaRes/issues.
+echo See also the issues at https://github.com/kdavies4/natu/issues.
