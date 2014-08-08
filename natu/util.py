@@ -149,8 +149,11 @@ def get_group(expr):
 
     **Example:**
 
-    >>> get_group("((abc)*d)*2")
+    >>> get_group("((abc)*d)*2") # doctest: +SKIP
     ('(abc)*d', '*2')
+
+    .. testcleanup::
+       >>> assert get_group("((abc)*d)*2") == ('(abc)*d', '*2')
     """
     i = 0
     count = 0

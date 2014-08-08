@@ -3,6 +3,10 @@ Change log
 
 The releases are numbered according to the `Semantic Versioning Specification`_.
 
+TBD (in `GitHub <https://github.com/kdavies4/ModelicaRes>`_ only) -- Updates:
+
+   - Fixed tests (still need to add more tests)
+
 v0.1.0-a_ (2014-8-7) -- Initial pre-release
 
 

@@ -174,10 +174,12 @@ from .config import simplification_level, use_quantities, unit_replacements
 from .exponents import Exponents, split_code, u, i
 
 try:
-    from configparser import RawConfigParser, DuplicateOptionError, ParsingError
+    from configparser import (RawConfigParser, ParsingError,
+                              Error as ConfigParserError)
 except ImportError:
     # For Python 2:
-    from ConfigParser import RawConfigParser, DuplicateOptionError, ParsingError
+    from ConfigParser import (RawConfigParser, ParsingError,
+                              Error as ConfigParserError)
 
 # Compile the formatted unit replacements.
 UNIT_REPLACEMENTS = {fmt:
@@ -196,8 +198,14 @@ def assert_homogeneous(*args):
 
     **Example:**
 
+    >>> from natu.units import m, ft, s
     >>> assert_homogeneous(m, ft)
-    >>> assert_homogeneous(m, s)
+    >>> assert_homogeneous(m, s) # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    ...
+    AssertionError: The quantities must have the same dimension.
+
+
     """
     dim = dimension(args[0])
     for arg in args[1:]:
@@ -214,8 +222,9 @@ def dimension(quantity):
 
     **Example:**
 
-    >>> print(dimension(m))
-    'L'
+    >>> from natu.units import Pa
+    >>> print(dimension(Pa))
+    M/(L*T2)
     """
     try:
         return quantity.dimension
@@ -244,8 +253,9 @@ def display(quantity):
 
     **Example:**
 
+    >>> from natu.units import m
     >>> print(display(100*m))
-    'm'
+    m
     """
     try:
         return quantity.display
@@ -262,9 +272,10 @@ def merge(value, prototype):
 
     **Example:**
 
-    >>> from natu.units import m
-    >>> merge(10, m)
-    Quantity(10, 'L', 'm') (10.0 m)
+    >>> from natu.units import m, km
+    >>> from natu.types import merge
+    >>> merge(value(1000*m), km)
+    Quantity(1000, 'L', 'km') (1.0 km)
     """
     try:
         return Quantity(value, prototype.dimension, prototype.display)
@@ -308,9 +319,12 @@ def value(x):
 
     **Example:**
 
-    >>> from natu.units import ft
-    >>> value(10*m)
+    >>> from natu.units import m
+    >>> value(10*m) # doctest: +SKIP
     10
+
+    .. testcleanup::
+       >>> assert abs(value(10*m) - 10) < 1e-10
     """
     try:
         return x._value
@@ -398,7 +412,7 @@ def homogeneous(func):
 # Classes
 # -------
 
-class DefinitionError(StandardError): # TODO Exception?
+class DefinitionError(Exception):
 
     """Error in the definition of a unit or constant in an INI file
     """
@@ -435,9 +449,9 @@ class CompoundUnit(Exponents):
     **Example:**
 
     >>> unit = CompoundUnit('m/s')*2
-    >>> dim
+    >>> unit
     CompoundUnit({'m': 2, 's': -2})
-    >>> print(dim)
+    >>> print(unit)
     m2/s2
     """
     # pylint: disable=I0011, R0904
@@ -559,8 +573,11 @@ class Quantity(DimensionedObject):
     >>> import natu.units
     >>> mass = Quantity(1, 'M', 'kg')
     >>> velocity = Quantity(1, 'L/T', 'm/s')
-    >>> 0.5*mass*velocity**2
-    Quantity(0.5, 'L2*M/T2', 'J') (0.5 J)
+    >>> energy = mass*velocity**2
+    >>> print(energy.dimension)
+    L2*M/T2
+    >>> print(energy.display)
+    kg*m2/s2
 
     However, it is easier to create a quantity as the product of a number
     and unit(s); see :mod:`natu.units`.
@@ -568,13 +585,13 @@ class Quantity(DimensionedObject):
     Changing the display unit:
 
     >>> mass.display = 'lb'
-    >>> print(mass)
-    2.20462 lb
+    >>> print(mass) # doctest: +ELLIPSIS
+    2.20462... lb
 
     Note that the value is unchanged:
 
-    >>> mass
-    Quantity(1, 'M', 'lb') (2.20462 lb)
+    >>> mass # doctest: +ELLIPSIS
+    Quantity(1, 'M', 'lb') (2.20462... lb)
 
     Although the :attr:`display` property can be changed, quantities are
     otherwise immutable.  The in-place operators create new instances:
@@ -582,6 +599,7 @@ class Quantity(DimensionedObject):
     >>> initial_id = id(velocity)
     >>> velocity *= 0.5
     >>> id(velocity) == initial_id
+    False
 
 
     .. _Python: https://www.python.org/
@@ -724,7 +742,7 @@ class Quantity(DimensionedObject):
 
         >>> from natu.units import *
         >>> print(1*m)
-        1 m
+        1.0 m
         """
         return format(self)
 
@@ -739,7 +757,7 @@ class Quantity(DimensionedObject):
 
         >>> from natu.units import *
         >>> 1*m
-        Quantity(1, 'L', 'm') (1 m)
+        Quantity(1, 'L', 'm') (1.0 m)
         """
         # Run this first to simplify self.display:
         string = format(self)
@@ -958,15 +976,18 @@ class ScalarUnit(Quantity, Unit):
     >>> from natu.units import kg, m, s
     >>> # F
     >>> kg
-    ScalarUnit(1, 'M', 'kg', False) (1 kg)
+    ScalarUnit(1, 'M', 'kg', False) (kg)
     >>> kg*m**2/s**2
-    ScalarUnit(1, 'L2*M/T2', 'J', False) (1 J)
+    ScalarUnit(1, 'L2*M/T2', 'J', False) (J)
 
     Note that it's possible to change the display unit:
 
     >>> m.display = 'ft'
-    >>> m
-    ScalarUnit(1, 'L', 'ft', True) (3.28084 ft)
+    >>> m # doctest: +ELLIPSIS
+    ScalarUnit(1, 'L', 'ft', True) (3.2808... ft)
+
+    .. testcleanup::
+       >>> m.display = 'm'
 
     Now any quantity generated from m will display in ft instead.
     However, notice that the value is unchanged; m still represents the
@@ -998,7 +1019,13 @@ class ScalarUnit(Quantity, Unit):
         **Example:**
 
         >>> from natu.units import ns
-        >>> ScalarUnit.fromQuantity(10*ns, 'shake')
+        >>> shake = ScalarUnit.fromQuantity(10*ns, 'shake')
+
+        .. testcleanup::
+           >>> from natu import units
+           >>> units.shake = shake
+           >>> shake
+           ScalarUnit(1e-08, 'T', 'shake', False) (shake)
         """
         quantity.__class__ = cls
         quantity.display = display
@@ -1336,7 +1363,7 @@ class Units(dict):
 
         >>> from natu.units import _units
         >>> _units(lbf=1, inch=-2)
-        ScalarUnit(6894.76, 'M/(L*T2)', 'psi', False) (1.0 psi)
+        ScalarUnit(6894.76, 'M/(L*T2)', 'psi', False) (psi)
 
         Here, the unit was automatically simplified to psi using
         :attr:`_units.coherent_relations`.
@@ -1357,14 +1384,14 @@ class Units(dict):
            >>> from natu.config import definitions
 
            >>> units = Units()
-           >>> units.load_ini(definitions[0])
+           >>> units.load_ini([definitions[0]])
            >>> units.keys() # doctest: +SKIP
-           ['R', 'R_K', 'R_inf', 'c', 'coherent_relations', 'cyc', 'k_F', 'k_J', 'mu_0']
+           ['R', 'R_K', 'R_inf', 'c', 'k_Aprime', 'k_F', 'k_J', 'rational']
 
         .. testcleanup::
 
            >>> sorted(units.keys())
-           ['c', 'k_F', 'coherent_relations', 'R_inf', 'mu_0', 'cyc', 'k_J', 'R_K', 'R']
+           ['R', 'R_K', 'R_inf', 'c', 'k_Aprime', 'k_F', 'k_J', 'rational']
         """
         # pylint: disable=I0011, R0912, R0914
 
@@ -1379,8 +1406,11 @@ class Units(dict):
         self.update(provided)
 
         # Load the units from the *.ini files.
-        config = RawConfigParser(interpolation=None,
-                                 inline_comment_prefixes=[';'])
+        try:
+            config = RawConfigParser(interpolation=None,
+                                     inline_comment_prefixes=[';'])
+        except TypeError:
+            config = RawConfigParser()
         config.optionxform = str  # Units are case sensitive.
         if len(config.read(files)) != len(files):
             raise DefinitionError("Failed to open/find all definition files")
@@ -1435,7 +1465,7 @@ class Units(dict):
                         else:
                             # The unit is dimensionless.
                             unit = ScalarUnit(unit, {}, symbol, prefixable)
-                except (AssertionError, AttributeError, DuplicateOptionError,
+                except (AssertionError, AttributeError, ConfigParserError,
                         NameError, SyntaxError, TypeError, ValueError) as e:
                     raise DefinitionError("can't load '%s' due to %s"
                                           % (symbol, type(e).__name__))
@@ -1485,13 +1515,13 @@ class Units(dict):
 
         >>> # High-level:
         >>> from natu.units import *
-        >>> print(kg/(m*s))
-        Pa*s
+        >>> print(kg*m**2/s**2)
+        J
 
         >>> # Low-level:
         >>> from natu.units import _units
-        >>> print(_units.simplify('kg/(m*s)'))
-        Pa*s
+        >>> print(_units.simplify('kg*m2/s2'))
+        J
         """
         # pylint: disable=I0011, E1103
 

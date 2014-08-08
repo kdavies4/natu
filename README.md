@@ -36,8 +36,9 @@ following advantages:
 
 Please
 [view the tutorial](http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb)
-to see how natu is used.  For the full documentation and more examples, visit
-the [main website].
+to see how natu is used.  natu incorporates some of the best features of the
+existing packages and introduces some novel features.  For the full
+documentation and more examples, visit the [main website].
 
 #### Installation
 

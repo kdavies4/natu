@@ -40,8 +40,9 @@ Please `view the tutorial
 to see how natu is used.  natu incorporates some of the best features of the
 existing packages and introduces some novel features:
 
-- All units are defined in `INI files <definitions.html>`_.  Units can be added
-  or removed.
+- All units are defined in `INI files
+  <http://kdavies4.github.io/natu/definitions.html>`_.  Units can be added or
+  removed.
 - Units can involve offsets (e.g., `degree Celsius (degC)`_) or even nonlinear
   functions (e.g., `decibel (dB)`_).
 - Display units can be simplified automatically using `coherent relations`_
