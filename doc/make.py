@@ -66,8 +66,8 @@ def html():
     else:
         date = git.log('-1', lastversion,
                        date='short', format='%ad').stdout[8:18]
-        rpls = [(r'(natu)-.+(\.tar)', r'\1-%s\2' % lastversion[1:]),
-                (r'(Latest version<br>\().+(\)</a>)',
+        rpls = [(r'(natu)-.*(\.tar)', r'\1-%s\2' % lastversion[1:]),
+                (r'(Latest version<br>\().*(\)</a>)',
                  r'\1%s, %s\2' % (lastversion, date)),
                ]
         util.replace('_templates/download.html', rpls)

@@ -6,7 +6,6 @@ See README.md for instructions.
 
 # pylint: disable=C0103
 
-import sys
 import re
 
 from os import path
@@ -23,8 +22,6 @@ with open(path.join(here, 'natu', '__init__.py')) as f:
 
 with open(path.join(here, 'README.txt')) as f:
     long_description = f.read()
-
-configparser_str = 'configparser' if sys.version > '2' else 'ConfigParser'
 
 setup(name='natu',
       version=version if version else '0',

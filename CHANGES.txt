@@ -3,6 +3,10 @@ Change log
 
 The releases are numbered according to the `Semantic Versioning Specification`_.
 
+v0.1.0-a1_ (2014-8-8) -- Updates:
+
+   - Fixed tests (still need to add more tests)
+
 v0.1.0-a_ (2014-8-7) -- Initial pre-release
 
 

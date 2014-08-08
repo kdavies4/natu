@@ -64,9 +64,8 @@ def build():
     setup.build()
     os.system('sudo python setup.py install')
     os.system('sudo python3 setup.py install')
-    # TODO: re-enable:
-    # print(python('setup.py test'))
-    # print(python3('setup.py test'))
+    os.system('python setup.py test')
+    os.system('python3 setup.py test')
 
     # Create a tarball and zip (*.tar.gz and *.zip).
     setup.sdist(formats='gztar,zip')

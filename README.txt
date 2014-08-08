@@ -1,6 +1,6 @@
-#############
- natu
-#############
+########
+  natu
+########
 
 **Natural units in Python**
 
@@ -34,7 +34,7 @@ any particular unit.  This offers the following advantages:
   experiments instead of prototypes.
 
 Please `view the tutorial
-<http://nbviewer.ipython.org/github/kdavies4/natu/blob/release/examples/tutorial.ipynb>`_
+<http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb>`_
 to see how natu is used.  natu incorporates some of the best features of the
 existing packages and introduces some novel features:
 
@@ -62,7 +62,7 @@ existing packages and introduces some novel features:
 For the full documentation and more examples, please see the `main website`_.
 
 For a list of changes, please see the `change log
-<http://kdavies4.github.io/natu/changelog.html>`_.
+<http://kdavies4.github.io/natu/changes.html>`_.
 
 Installation
 ~~~~~~~~~~~~
@@ -88,7 +88,7 @@ License terms and development
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 natu is published under a `BSD-compatible license
-<https://github.com/kdavies4/natu/blob/release/LICENSE.txt>`_.  Please share any
+<https://github.com/kdavies4/natu/blob/master/LICENSE.txt>`_.  Please share any
 improvements you make, preferably as a pull request to the ``master`` branch of
 the `GitHub repository`_.  There are useful development scripts in the `hooks
 folder <https://github.com/kdavies4/natu/blob/master/hooks/>`_.  If you find a

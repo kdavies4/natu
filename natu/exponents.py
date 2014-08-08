@@ -280,12 +280,8 @@ class Exponents(Counter):
     **Example:**
 
     >>> x = Exponents(a=1, b=2, c=-1, d=-3)
-    >>> format(x) # doctest: +SKIP
+    >>> format(x)
     'a*b2/(c*d3)'
-
-       .. testcleanup::
-          >>> format(x) # doctest: +ELLIPSIS
-          ...'a*b2/(c*d3)'
 
 
     .. _Unicode: https://en.wikipedia.org/wiki/Unicode
@@ -305,12 +301,11 @@ class Exponents(Counter):
         >>> e.update(a=1)
         >>> e.update(dict(b=2), c=3)
         >>> e.update('1/d')
-        >>> e # docttest: +SKIP
+        >>> e # doctest: +SKIP
         Exponents({'a': 1, 'b': 2, 'c': 3, 'd': -1})
 
-           .. testcleanup::
-              >>> e == dict(a=1, b=2, c=3, d=-1)
-              True
+        .. testcleanup::
+           >>> assert e == dict(a=1, b=2, c=3, d=-1)
         """
         try:
             # Assume args[0] is a string.

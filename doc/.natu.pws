@@ -1,4 +1,4 @@
-personal_ws-1.1 en 266 
+personal_ws-1.1 en 268 
 banananana
 atm
 statA
@@ -70,7 +70,6 @@ txt
 searchbox
 Bruns
 exp
-docttest
 toquantity
 submodules
 erfc
@@ -99,6 +98,7 @@ arcsinh
 lbf
 fmod
 PyPI
+aa
 subpackages
 bary
 Redistributions
@@ -115,10 +115,10 @@ da
 weber
 acosh
 de
-df
 au
-Bq
+df
 eb
+Bq
 html
 thermochemical
 ec
@@ -127,10 +127,11 @@ cP
 fb
 fabs
 kPa
-dm
 fc
+dm
 Wien
 statampere
+fd
 fe
 dyne
 fm
@@ -142,8 +143,8 @@ kA
 statWb
 mho
 mmHg
-Gy
 io
+Gy
 fromQuantity
 CoherentRelations
 Scalability
@@ -155,15 +156,15 @@ maxwell
 ltypes
 decametre
 lm
-ln
 nd
+ln
 util
 statcoulomb
 Oe
 mod
 barrie
-pc
 nm
+pc
 abcoloumb
 lx
 ly
@@ -171,19 +172,19 @@ np
 lumen
 deciam
 modf
-mol
 Pag
-ns
+mol
 Mx
+ns
 google
 copysign
 arcsecond
 getitem
 filenames
 abA
-darcy
 abC
 abc
+darcy
 si
 py
 LaTeX
@@ -208,6 +209,7 @@ mul
 Instantiation
 abV
 Wh
+afd
 submodule
 statvolt
 tuple
@@ -236,7 +238,6 @@ fnames
 pre
 MERCHANTABILITY
 lgamma
-cef
 ppq
 ceil
 LambdaUnit
@@ -255,6 +256,7 @@ Biot
 CFR
 invertible
 dde
+TBD
 Sep
 ldexp
 sqrt
