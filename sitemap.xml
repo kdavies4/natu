@@ -6,477 +6,602 @@
                       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/BIPM-ini.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/apimodules.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/base-ini.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/changes.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/credits.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/definitions.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/derived-ini.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/genindex.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
-  <priority>0.5000</priority>
- </url>
- <url>
-  <loc>http://kdavies4.github.io/ModelicaRes/images/inheritance-21f02cbc73d1e85539c608181e71cf80f1b8260a.png</loc>
-  <lastmod>2014-08-05T21:12:34Z</lastmod>
-  <priority>0.5000</priority>
- </url>
- <url>
-  <loc>http://kdavies4.github.io/ModelicaRes/images/inheritance-21f02cbc73d1e85539c608181e71cf80f1b8260a.png.map</loc>
-  <lastmod>2014-08-05T21:12:34Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/images/inheritance-3542970798ba25a215e97553539182b636d9765f.png</loc>
-  <lastmod>2014-08-05T21:12:34Z</lastmod>
+  <lastmod>2014-08-08T17:30:12Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/images/inheritance-3542970798ba25a215e97553539182b636d9765f.png.map</loc>
-  <lastmod>2014-08-05T21:12:34Z</lastmod>
+  <lastmod>2014-08-08T17:30:12Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/license.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.config.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.exponents.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.acceleration.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.amount.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.angle.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.area.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.charge.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.conductance.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.constants.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.current.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.dimensionless.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.energy.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.force.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.frequency.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.length.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.magnetic_flux.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.magnetic_flux_density.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.mass.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.potential.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.power.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.pressure.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.resistance.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.si.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.temperature.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.time.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.velocity.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.groups.volume.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.math.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.numpy.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.types.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.units.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu.util.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/__init__.pyc</loc>
-  <lastmod>2014-08-08T06:40:32Z</lastmod>
+  <lastmod>2014-08-08T17:57:31Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/__pycache__/</loc>
-  <lastmod>2014-08-06T15:47:26Z</lastmod>
+  <lastmod>2014-08-08T17:57:31Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/__pycache__/__init__.cpython-34.pyc</loc>
-  <lastmod>2014-08-06T15:45:12Z</lastmod>
+  <lastmod>2014-08-08T17:57:31Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/__pycache__/_decorators.cpython-34.pyc</loc>
-  <lastmod>2014-07-18T16:18:01Z</lastmod>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/__pycache__/_prefixes.cpython-34.pyc</loc>
-  <lastmod>2014-08-06T15:45:12Z</lastmod>
+  <lastmod>2014-08-08T15:32:42Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/__pycache__/exponents.cpython-34.pyc</loc>
-  <lastmod>2014-08-06T15:45:12Z</lastmod>
+  <lastmod>2014-08-08T17:34:44Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/__pycache__/math.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/__pycache__/numpy.cpython-34.pyc</loc>
-  <lastmod>2014-07-18T16:18:00Z</lastmod>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/__pycache__/types.cpython-34.pyc</loc>
-  <lastmod>2014-08-06T15:47:26Z</lastmod>
+  <lastmod>2014-08-08T17:34:44Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/__pycache__/units.cpython-34.pyc</loc>
-  <lastmod>2014-08-06T15:45:12Z</lastmod>
+  <lastmod>2014-08-08T15:32:42Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/__pycache__/util.cpython-34.pyc</loc>
-  <lastmod>2014-08-06T15:45:12Z</lastmod>
+  <lastmod>2014-08-08T17:34:44Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/_decorators.pyc</loc>
-  <lastmod>2014-08-08T06:40:32Z</lastmod>
+  <lastmod>2014-08-08T14:28:38Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/_prefixes.pyc</loc>
-  <lastmod>2014-08-08T06:40:32Z</lastmod>
+  <lastmod>2014-08-08T14:28:38Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/config/</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/config/__init__.pyc</loc>
-  <lastmod>2014-08-08T06:40:32Z</lastmod>
+  <lastmod>2014-08-08T14:28:38Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/config/__pycache__/</loc>
-  <lastmod>2014-08-06T15:45:12Z</lastmod>
+  <lastmod>2014-08-08T15:32:42Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/config/__pycache__/__init__.cpython-34.pyc</loc>
-  <lastmod>2014-08-06T15:45:12Z</lastmod>
+  <lastmod>2014-08-08T15:32:42Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/exponents.pyc</loc>
-  <lastmod>2014-08-08T06:40:32Z</lastmod>
+  <lastmod>2014-08-08T17:34:44Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__init__.pyc</loc>
-  <lastmod>2014-08-08T06:40:32Z</lastmod>
+  <lastmod>2014-08-08T14:28:38Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/</loc>
-  <lastmod>2014-07-17T20:56:30Z</lastmod>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/__init__.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/acceleration.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/amount.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/angle.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/area.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/charge.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/conductance.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/constants.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/current.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/dimensionless.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/energy.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/force.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/frequency.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/length.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/magnetic_flux.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/magnetic_flux_density.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/mass.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/potential.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/power.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/pressure.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/resistance.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/si.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/temperature.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/time.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/velocity.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/__pycache__/volume.cpython-34.pyc</loc>
+  <lastmod>2014-08-08T16:15:41Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/acceleration.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/amount.pyc</loc>
-  <lastmod>2014-07-18T00:37:59Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/angle.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/area.pyc</loc>
-  <lastmod>2014-08-05T22:43:51Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/charge.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/conductance.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/constants.pyc</loc>
-  <lastmod>2014-07-18T00:37:59Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/current.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/dimensionless.pyc</loc>
-  <lastmod>2014-07-18T00:37:59Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/energy.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/force.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/frequency.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/length.pyc</loc>
-  <lastmod>2014-08-07T07:08:16Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/magnetic_flux.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/magnetic_flux_density.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/mass.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/potential.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/power.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/pressure.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/resistance.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/si.pyc</loc>
-  <lastmod>2014-08-05T21:09:47Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/temperature.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/time.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/velocity.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/groups/volume.pyc</loc>
-  <lastmod>2014-08-05T22:27:30Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/math.pyc</loc>
-  <lastmod>2014-08-05T15:27:57Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/numpy.pyc</loc>
-  <lastmod>2014-08-05T21:09:47Z</lastmod>
+  <lastmod>2014-08-08T15:46:09Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
@@ -486,47 +611,37 @@
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/types.pyc</loc>
-  <lastmod>2014-08-08T06:40:32Z</lastmod>
+  <lastmod>2014-08-08T17:34:44Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/units.pyc</loc>
-  <lastmod>2014-08-08T06:40:32Z</lastmod>
+  <lastmod>2014-08-08T14:28:38Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/natu/util.pyc</loc>
-  <lastmod>2014-08-08T06:40:32Z</lastmod>
+  <lastmod>2014-08-08T17:34:44Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/other-ini.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/py-modindex.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/search.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
-  <priority>0.5000</priority>
- </url>
- <url>
-  <loc>http://kdavies4.github.io/ModelicaRes/setup.pyc</loc>
-  <lastmod>2014-07-18T21:14:27Z</lastmod>
-  <priority>0.5000</priority>
- </url>
- <url>
-  <loc>http://kdavies4.github.io/ModelicaRes/types.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/ModelicaRes/usermodules.html</loc>
-  <lastmod>2014-08-08T07:01:50Z</lastmod>
+  <lastmod>2014-08-08T18:02:11Z</lastmod>
   <priority>0.5000</priority>
  </url>
 </urlset>
