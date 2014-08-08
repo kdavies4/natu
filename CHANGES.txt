@@ -10,6 +10,7 @@ v0.1.0-a1_ (2014-8-8) -- Updates:
 v0.1.0-a_ (2014-8-7) -- Initial pre-release
 
 
+.. _v0.1.0-a1: https://github.com/kdavies4/natu/archive/v0.1.0-a1.zip
 .. _v0.1.0-a: https://github.com/kdavies4/natu/archive/v0.1.0-a.zip
 
 .. _Semantic Versioning Specification: http://semver.org

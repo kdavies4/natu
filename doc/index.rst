@@ -36,15 +36,15 @@ following advantages:
   experiments instead of prototypes.
 
 Please `view the tutorial
-<http://nbviewer.ipython.org/github/kdavies4/natu/blob/release/examples/tutorial.ipynb>`_
+<http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb>`_
 to see how natu is used.  natu incorporates some of the best features of the
 existing packages and introduces some novel features:
 
-- All units are defined in `INI files
+- All constants and units are defined in `INI files
   <http://kdavies4.github.io/natu/definitions.html>`_.  Units can be added or
   removed.
-- Units can involve offsets (e.g., `degree Celsius (degC)`_) or even nonlinear
-  functions (e.g., `decibel (dB)`_).
+- Units with offsets (e.g., `degree Celsius (degC)`_) and even nonlinear
+  functions (e.g., `decibel (dB)`_) are supported.
 - Display units can be simplified automatically using `coherent relations`_
   gathered from the unit definitions.
 - All units can be imported directly (``from natu.units import *``), selectively
@@ -53,10 +53,9 @@ existing packages and introduces some novel features:
 - Prefixes are automatically applied to units upon import or access.
 - Units are automatically copied and sorted into convenient groups (see
   :mod:`natu.groups`).
-- Rationalized or unrationalized unit systems can be represented.
+- Rationalized and unrationalized unit systems are supported.
 - Modules are provided as drop-in quantity-aware replacements for :mod:`math`
   and :mod:`numpy`.
-- natu runs in Python 2 and 3.
 - There are no external dependencies.  Only the `Python Standard Library`_ is
   required; :mod:`numpy` is optional.
 - Fractional exponents can be used for units as well as quantities (e.g., in the
@@ -89,8 +88,8 @@ natu is published under a `BSD-compatible license <license.html>`_.  Please
 share any improvements you make, preferably as a pull request to the ``master``
 branch of the `GitHub repository`_.  There are useful development scripts in
 the `hooks folder <https://github.com/kdavies4/natu/blob/master/hooks/>`_.  If
-you find a bug or have a suggestion, please `open an issue
-<https://github.com/kdavies4/natu/issues/new>`_.
+you find a bug, have a suggestion, or just want to leave a comment, please `open
+an issue <https://github.com/kdavies4/natu/issues/new>`_.
 
 .. _seealso:
 

@@ -38,7 +38,7 @@ Please
 [view the tutorial](http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb)
 to see how natu is used.  natu incorporates some of the best features of the
 existing packages and introduces some novel features.  For the full
-documentation and more examples, visit the [main website].
+documentation, visit the [main website].
 
 #### Installation
 
@@ -65,7 +65,8 @@ Or, on Linux:
 natu is published under a [BSD-compatible license](LICENSE.txt).  Please
 share any improvements you make, preferably as a pull request to the ``master``
 branch of the [GitHub repository].  There are useful development scripts in the
-[hooks folder](hooks).  If you find a bug or have a suggestion, please
+[hooks folder](hooks).  If you find a bug, have a suggestion, or just want to
+leave a comment, please
 [open an issue](https://github.com/kdavies4/natu/issues/new).
 
 [![Build Status](https://travis-ci.org/kdavies4/natu.svg?branch=travis)](https://travis-ci.org/kdavies4/natu)

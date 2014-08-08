@@ -38,10 +38,11 @@ Please `view the tutorial
 to see how natu is used.  natu incorporates some of the best features of the
 existing packages and introduces some novel features:
 
-- All units are defined in `INI files <definitions.html>`_.  Units can be added
-  or removed.
-- Units can involve offsets (e.g., `degree Celsius (degC)`_) or even nonlinear
-  functions (e.g., `decibel (dB)`_).
+- All constants and units are defined in `INI files
+  <http://kdavies4.github.io/natu/definitions.html>`_.  Units can be added or
+  removed.
+- Units can with offsets (e.g., `degree Celsius (degC)`_) and even nonlinear
+  functions (e.g., `decibel (dB)`_) are supported.
 - Display units can be simplified automatically using `coherent relations`_
   gathered from the unit definitions.
 - All units can be imported directly (``from natu.units import *``), selectively
@@ -50,16 +51,15 @@ existing packages and introduces some novel features:
 - Prefixes are automatically applied to units upon import or access.
 - Units are automatically copied and sorted into convenient groups (see
   `natu.groups <http://kdavies4.github.io/natu/natu.groups.html>`_).
-- Rationalized or unrationalized unit systems can be represented.
+- Rationalized and unrationalized unit systems are supported.
 - Modules are provided as drop-in quantity-aware replacements for math_ and
   numpy_.
 - There are no external dependencies.  Only the `Python Standard Library`_ is
   required; numpy_ is optional.
-- natu runs in Python 2 and 3.
 - Fractional exponents can be used for units as well as quantities (e.g., in the
   definition of the statcoulomb_).
 
-For the full documentation and more examples, please see the `main website`_.
+For the full documentation, please see the `main website`_.
 
 For a list of changes, please see the `change log
 <http://kdavies4.github.io/natu/changes.html>`_.
@@ -92,7 +92,7 @@ natu is published under a `BSD-compatible license
 improvements you make, preferably as a pull request to the ``master`` branch of
 the `GitHub repository`_.  There are useful development scripts in the `hooks
 folder <https://github.com/kdavies4/natu/blob/master/hooks/>`_.  If you find a
-bug or have a suggestion, please `open an issue
+bug, have a suggestion, or just want to leave a comment, please `open an issue
 <https://github.com/kdavies4/natu/issues/new>`_.
 
 See also
