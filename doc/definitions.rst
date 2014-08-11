@@ -41,7 +41,7 @@ Some units such as `degC <http://en.wikipedia.org/wiki/Celsius>`_ and `Np
 "Expression" entry of these units contains a tuple with two functions.  The
 first function maps a number to a quantity.  The second function is the inverse
 of the first.  These are the first two arguments to construct a
-lambda unit (:class:`~natu.types.LambdaUnit`).
+lambda unit (:class:`~natu.core.LambdaUnit`).
 
 `SI prefixes`_ can be applied to previously defined symbols except in the
 definition of lambda units.

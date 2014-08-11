@@ -54,8 +54,8 @@ These functions accept floats, integers, and dimensionless quantities:
 - :func:`ceil` and :func:`floor`
 
 If the input is a float or an integer, the output is a float.  If the
-input is a :class:`~natu.types.Quantity` or a
-:class:`~natu.types.ScalarUnit`, the result is the same and has the same
+input is a :class:`~natu.core.Quantity` or a
+:class:`~natu.core.ScalarUnit`, the result is the same and has the same
 :attr:`dimension`, :attr:`display`, etc.
 
 These functions accept floats, integers, and quantities:
@@ -63,8 +63,8 @@ These functions accept floats, integers, and quantities:
 - :func:`fabs` and :func:`copysign`
 
 If the input is a float or an integer, the output is a float.  If the
-input is a :class:`~natu.types.Quantity` or a
-:class:`~natu.types.ScalarUnit`, the result is of the same type and has
+input is a :class:`~natu.core.Quantity` or a
+:class:`~natu.core.ScalarUnit`, the result is of the same type and has
 the same :attr:`dimension`, :attr:`display`, etc. (of the first argument
 in the case of :func:`copysign`).
 
@@ -73,8 +73,8 @@ These functions also accept floats, integers, and quantities:
 - :func:`ldexp`, :func:`pow`, and :func:`sqrt`
 
 If the input is an float or an integer, the output is a float.  If the
-input is a :class:`~natu.types.Quantity` or a
-:class:`~natu.types.ScalarUnit`, the result is the same.  The dimensions
+input is a :class:`~natu.core.Quantity` or a
+:class:`~natu.core.ScalarUnit`, the result is the same.  The dimensions
 and display units are handled according to the power.
 
 :func:`fmod` accepts floats, integers, and quantities of the same

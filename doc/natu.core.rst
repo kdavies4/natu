@@ -1,9 +1,9 @@
 :orphan:
 
-:mod:`natu.types`
-=================
+:mod:`natu.core`
+================
 
-.. automodule:: natu.types
+.. automodule:: natu.core
    :members:
    :undoc-members:
    :show-inheritance:

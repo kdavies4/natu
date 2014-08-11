@@ -149,7 +149,7 @@ Known issues:
 # Always use floating division:
 from __future__ import division
 
-# So that math and types are the modules from the Python Standard Library:
+# So that math is the modules from the Python Standard Library:
 from __future__ import absolute_import
 
 __author__ = "Kevin Davies"
@@ -267,13 +267,13 @@ def merge(value, prototype):
     (:attr:`~Quantity.dimension` and :attr:`~Quantity.display`) of
     *prototype*.
 
-    If *prototype* is not a :class:`~natu.types.Quantity`, then *value* is
+    If *prototype* is not a :class:`~natu.core.Quantity`, then *value* is
     returned directly---as a quantity.
 
     **Example:**
 
     >>> from natu.units import m, km
-    >>> from natu.types import merge
+    >>> from natu.core import merge
     >>> merge(value(1000*m), km)
     Quantity(1000, 'L', 'km') (1.0 km)
     """
@@ -381,7 +381,7 @@ def as_scalarunit(meth):
 
 
 def copy_props(func):
-    """Decorate a function to return a :class:`~natu.types.Quantity` that
+    """Decorate a function to return a :class:`~natu.core.Quantity` that
     matches the first argument except for the computed value.
     """
     @wraps(func)
@@ -1380,7 +1380,7 @@ class Units(dict):
 
         .. code-block:: python
 
-           >>> from natu.types import Units
+           >>> from natu.core import Units
            >>> from natu.config import definitions
 
            >>> units = Units()

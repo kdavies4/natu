@@ -97,6 +97,7 @@ an issue <https://github.com/kdavies4/natu/issues/new>`_.
 
 - `astropy.units <http://astropy.readthedocs.org/en/latest/units/>`_
 - `Buckingham <http://code.google.com/p/buckingham/>`_
+- `DimPy <http://www.inference.phy.cam.ac.uk/db410/>`_
 - `Magnitude <http://juanreyero.com/open/magnitude/>`_
 - `NumericalUnits <https://pypi.python.org/pypi/numericalunits>`_
 - `Pint <http://pint.readthedocs.org/>`_

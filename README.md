@@ -78,6 +78,7 @@ leave a comment, please
 
 - [astropy.units](http://astropy.readthedocs.org/en/latest/units/)
 - [Buckingham](http://code.google.com/p/buckingham/)
+- [DimPy](http://www.inference.phy.cam.ac.uk/db410/)
 - [Magnitude](http://juanreyero.com/open/magnitude/)
 - [NumericalUnits](https://pypi.python.org/pypi/numericalunits)
 - [Pint](http://pint.readthedocs.org/)

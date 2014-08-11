@@ -14,8 +14,8 @@ parentheses):
   and display units
 
      If *use_quantities* is *False*, then the constants and scalar units
-     are :class:`float` instances rather than :class:`~natu.types.Quantity`
-     and :class:`~natu.types.ScalarUnit` instances.  This reduces the
+     are :class:`float` instances rather than :class:`~natu.core.Quantity`
+     and :class:`~natu.core.ScalarUnit` instances.  This reduces the
      computational overhead of the :mod:`natu` module to nearly zero
      while still allowing variables to be specified using various units.
      However, this disables dimension checking and the string formatting of
@@ -36,7 +36,7 @@ parentheses):
   'deg' → '^{\\circ}',
   'ohm' → '\\Omega', and
   'angstrom' → '\\AA';
-  in pretty format ('P' format code; uses Unicode_):
+  in Unicode_ ('U' format code):
   'deg' → '°',
   'ohm' → 'Ω', and
   'angstrom' → 'Å') - Dictionary of special replacements
@@ -93,7 +93,7 @@ unit_replacements = {'L':  # In LaTeX
                      [('deg', r'^{\circ}'),
                       ('ohm', r'\Omega'),
                       ('angstrom', r'\AA')],
-                     'P':  # In pretty format
+                     'U':  # In Unicode format
                      [('deg', '°'),
                       ('ohm', 'Ω'),
                       ('angstrom', 'Å')],

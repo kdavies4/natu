@@ -50,7 +50,7 @@ _FORMATS = {
     dict(_DEFAULT_FORMAT,
          mul='.',
          ),
-    'P':  # Pretty format
+    'U':  # Unicode format
     dict(_DEFAULT_FORMAT,
          mul=' ',
          div=None,
@@ -230,10 +230,9 @@ class Exponents(Counter):
 
     **Formatting**
 
-    An :class:`Exponents` instance can be expressed using advanced string
-    formatting (`PEP 3101
-    <http://legacy.python.org/dev/peps/pep-3101/>`_).  The format codes
-    are:
+    An :class:`Exponents` instance can be expressed using `string format syntax
+    <https://docs.python.org/2/library/string.html#format-string-syntax>`_.  The
+    format codes are:
 
     - '' (default):
 
@@ -263,7 +262,7 @@ class Exponents(Counter):
     - 'M' ([Modelica]_): Same as default except '.' indicates
        multiplication
 
-    - 'P' (pretty-formatted):
+    - 'U' (Unicode_):
 
          - Exponents are indicated by Unicode_ superscripts.  Only integer
            exponents are supported.

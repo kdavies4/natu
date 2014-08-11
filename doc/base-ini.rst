@@ -12,7 +12,7 @@ The derived electromagnetic constants also depend on the *rational* setting.  If
 
 The following items are automatically provided for use in the definitions:
 
-- Classes: :class:`~natu.types.Quantity`
+- Classes: :class:`~natu.core.Quantity`
 - Mathematical constants: *pi*
 
 The default is the `SI unit system`_ (base-SI.ini_), with the following
@@ -35,7 +35,7 @@ Symbol     Expression                                                     Name &
 *rational* *True*                                                         *True* if the unit system is rationalized
 ========== ============================================================== ============
 
-The second argument of the :class:`~natu.types.Quantity` constructor is
+The second argument of the :class:`~natu.core.Quantity` constructor is
 comprised of SI_ dimensions (current (I), length (L), mass (M), amount (N),
 time (T), and temperature (Theta)) and an additional dimension to track angle
 (A).  The value of *k_Aprime* for SI_ and most of the other unit systems is
@@ -90,7 +90,7 @@ Symbol     Expression                                                        Nam
 The next two unit systems are fully `natural
 <http://en.wikipedia.org/wiki/Natural_units>`_, so all of the quantities are
 dimensionless.  In the definitions, floating point numbers are used instead of
-the :class:`~natu.types.Quantity` class.
+the :class:`~natu.core.Quantity` class.
 
 For the `Hartree unit system`_ (base-Hartree.ini_):
 

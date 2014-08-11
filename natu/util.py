@@ -113,8 +113,7 @@ def format_e(num_str, code):
 
     - *code*: Format code
 
-         'H' is for HTML, 'L' is for LaTeX_, and 'P' is for pretty format
-         (using Unicode_).
+         'H' is for HTML, 'L' is for LaTeX_, and 'U' is for Unicode_.
 
 
     .. _LaTeX: http://www.latex-project.org/
@@ -341,7 +340,6 @@ def replace(fnames, rpls):
     apple orange banananana
 
     .. testcleanup::
-
        >>> os.remove(fname)
     """
 

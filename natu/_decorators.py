@@ -5,8 +5,8 @@
 # pylint: disable=I0011, C0103, C0111, E0611, E1101, W0141, W0142, W0621
 
 from sys import version
-from . import types
-from .types import (Quantity, ScalarUnit, assert_homogeneous, homogeneous,
+from . import core
+from .core import (Quantity, ScalarUnit, assert_homogeneous, homogeneous,
                     value, dimensionless_value)
 from .units import rad
 
@@ -74,17 +74,17 @@ else:
 
 
 def merge(value, prototype):
-    """Merge *value* into a new :class:`~natu.types.ScalarUnit` or
-    :class:`~natu.types.Quantity` with the properties (:attr:`dimension`,
+    """Merge *value* into a new :class:`~natu.core.ScalarUnit` or
+    :class:`~natu.core.Quantity` with the properties (:attr:`dimension`,
     :attr:`display`, etc.) of *prototype*.
 
-    If *prototype* is not a :class:`~natu.types.ScalarUnit` or
-    :class:`~natu.types.Quantity`, then return *value* directly.
+    If *prototype* is not a :class:`~natu.core.ScalarUnit` or
+    :class:`~natu.core.Quantity`, then return *value* directly.
     """
     if isinstance(prototype, ScalarUnit):
         return ScalarUnit(value, prototype.dimension, prototype.display,
                           prototype.prefixable)
-    return types.merge(value, prototype)
+    return core.merge(value, prototype)
 
 
 def merge_raise(value, prototype, power):
@@ -151,8 +151,8 @@ def change_doc(func, doc=None):
 
 
 def copy_props(func):
-    """Decorate a function to return a :class:`~natu.types.ScalarUnit` or
-    :class:`~natu.types.Quantity` instance that matches the first argument
+    """Decorate a function to return a :class:`~natu.core.ScalarUnit` or
+    :class:`~natu.core.Quantity` instance that matches the first argument
     except for the computed value.
     """
     @wraps(func)

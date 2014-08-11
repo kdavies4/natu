@@ -5,7 +5,7 @@
 
 from . import _update_module
 from ..units import _units
-from ..types import Quantity, Unit
+from ..core import Quantity, Unit
 
 # Constants are quantities but not units.
 units = {symbol: quantity for symbol, quantity in _units.items()

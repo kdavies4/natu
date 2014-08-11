@@ -8,5 +8,5 @@ its internal operation, or interface with it at a low level:
 
 - :mod:`natu.exponents` - Class and supporting functions to represent the
   product of factors with exponents
-- :mod:`natu.types` - Core classes of natu
+- :mod:`natu.core` - Core classes of natu
 - :mod:`natu.util` - General supporting functions

@@ -7,7 +7,7 @@ and some non-SI units.
 
 The definitions depend on the following items:
 
-- Classes: :class:`~natu.types.ScalarUnit`
+- Classes: :class:`~natu.core.ScalarUnit`
 - Functions: :func:`math.exp`, :func:`math.log`, and :func:`math.log10`
 - Mathematical constants: *pi*
 - Base physical constants: *R_inf*, *c*, *k_J*, *R_K*, *k_F*, and *R*

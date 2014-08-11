@@ -18,6 +18,6 @@ if __name__ == '__main__':
 else:
     # Replace the module with a UnitsModule for dynamic unit prefixing.
     from sys import modules
-    from .types import UnitsModule
+    from .core import UnitsModule
     from .config import definitions
     modules[__name__] = UnitsModule(modules[__name__], definitions)
