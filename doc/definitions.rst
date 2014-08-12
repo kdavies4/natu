@@ -24,8 +24,8 @@ starts the last column ("Name & notes").
 
 The "Prefixable" column may be *True*, *False*, or empty.  A unit has a *True*
 or a *False* "Prefixable" entry.  If a unit is prefixable, `SI prefixes`_ are
-added as needed (upon import).  A constant has an empty "Prefixable" entry.
-Constants are never prefixable.
+added upon access.  A constant has an empty "Prefixable" entry.  Constants are
+never prefixable.
 
 Single-character `SI prefixes`_ take precedence over the two-character prefix
 'da' (`deca <https://en.wikipedia.org/wiki/Deca->`_).  As a hypothetical
@@ -39,15 +39,15 @@ The "Name & notes" column is ignored.  It is only included for reference.
 Some units such as `degC <http://en.wikipedia.org/wiki/Celsius>`_ and `Np
 <http://en.wikipedia.org/wiki/Neper>`_ are not simple scaling factors.  The
 "Expression" entry of these units contains a tuple with two functions.  The
-first function maps a number to a quantity.  The second function is the inverse
-of the first.  These are the first two arguments to construct a
-lambda unit (:class:`~natu.core.LambdaUnit`).
+first function maps a number to a quantity.  The second function is its inverse.
+These are the first two arguments to construct a lambda unit
+(:class:`~natu.core.LambdaUnit`).
 
 `SI prefixes`_ can be applied to previously defined symbols except in the
 definition of lambda units.
 
 The sections of the INI_ files are only for organization (though required).  The
-:mod:`natu.groups` submodules do not rely on the sections.  The dimensions of
+submodules :mod:`natu.groups` do not rely on the sections.  The dimensions of
 the derived constants and units are calculated and used instead.
 
 

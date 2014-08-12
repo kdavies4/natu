@@ -4,8 +4,8 @@
 Many of the functions only accept dimensionless quantities, and they
 operate on the underlying values---not the values as represented in a
 particular display unit.  To operate on values in a display unit would be
-to favor a particular unit, which is against one of the `design principles of
-the package <kdavies4.github.io/natu/>`_.
+to favor a particular unit, which is against the `design of the package
+<index.html>`_.
 
 The constants (*pi*, *e*) are exactly as they are in :mod:`numpy`.
 

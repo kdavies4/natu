@@ -27,7 +27,7 @@ Wb       ``483597.870e9/k_J``                                   *True*     `webe
 S        ``25812.8074434/(R_K*cyc)``                            *True*     `siemens <http://en.wikipedia.org/wiki/Siemens_(unit)>`_ (aka mho)
 mol      ``96485.3365*Wb*cyc*S/k_F``                            *True*     `mole <http://en.wikipedia.org/wiki/Mole_(unit)>`_
 K        ``8.3144621*(Wb*cyc)**2*S/(s*mol*R)``                  *True*     `kelvin <http://en.wikipedia.org/wiki/Kelvin>`_
------- Units considered independent of the base constants ------
+------ Units decoupled from the base constants ------
 ---------------------------------------------------------------------------------------
 cd       ``ScalarUnit(1., 'J')``                                *True*     `candela <http://en.wikipedia.org/wiki/Candela>`_ (independent of the base constants due to the `luminosity function <http://en.wikipedia.org/wiki/Luminosity_function>`_)
 ------ Remaining SI base units (BIPM2006_, Table 1) and intermediate units ------
@@ -71,15 +71,15 @@ t        ``Mg``                                                 *False*    `tonn
 ---------------------------------------------------------------------------------------
 *g_0*    ``9.80665*m/s**2``                                                `standard gravity <http://en.wikipedia.org/wiki/Standard_gravity>`_ [#f1]_, [#f2]_
 cc       ``cm**3``                                              *False*    `cubic centimeter <http://en.wikipedia.org/wiki/Cubic_centimeter>`_ [#f1]_
-*Hg*     ``13.5951*g*g_0/cc``                                              force per volume of mercury under standard gravity [#f1]_, [#f2]_
+*Hg*     ``13.5951*g*g_0/cc``                                   *False*    force per volume of mercury under standard gravity [#f1]_, [#f2]_
 mmHg     ``mm*Hg``                                              *False*    `millimeter of mercury <http://en.wikipedia.org/wiki/Millimeter_of_mercury>`_
 bar      ``100*kPa``                                            *True*     `bar <http://en.wikipedia.org/wiki/Bar_(unit)>`_
 b        ``100*fm**2``                                          *False*    `barn <http://en.wikipedia.org/wiki/Barn_(unit)>`_
 angstrom ``0.1*nm``                                             *False*    `angstrom <http://en.wikipedia.org/wiki/Angstrom>`_
 M        ``1852*m``                                             *False*    `nautical mile <http://en.wikipedia.org/wiki/Nautical_mile>`_
 kn       ``M/hr``                                               *False*    `knot <http://en.wikipedia.org/wiki/Knot_(unit)>`_
-Np       ``(exp, log)``                                         *False*    `neper <http://en.wikipedia.org/wiki/Neper>`_ (defined in terms of amplitude ratio, not power)
-B        ``(lambda n: 10**n, log10)``                           *True*     bel (defined in terms of power ratio, not amplitude)
+Np       ``(exp, log)``                                         *False*    `neper <http://en.wikipedia.org/wiki/Neper>`_ (in terms of amplitude ratio, not power ratio)
+B        ``(lambda n: 10**n, log10)``                           *True*     bel (in terms of power ratio, not amplitude ratio)
 dB       ``dB``                                                 *False*    `decibel <http://en.wikipedia.org/wiki/Decibel>`_ (explicitly included with prefix)
 ======== ====================================================== ========== ============
 
@@ -102,12 +102,12 @@ J rad\ :superscript:`-1` but not N m or J.  Also note that the `steradian
 
 deg, arcmin, and arcsec are used as the symbols for the degree_, arcminute_, and
 arcsecond_ since the symbols in Table 6 of [BIPM2006]_ are not valid Python
-names.  hr is used as the symbol for the hour_ since *h* is used for the `Planck
-constant`_.
+names.  hr is used as the symbol for the hour_ (instead of h as in [BIPM2006]_)
+since *h* is used for the `Planck constant`_.
 
-In general, prefixes are not included because they are added as needed upon
-import.  However, [BIPM2006]_ (and BIPM.ini_) includes two units with explicit
-prefixes: kg and dB.
+In general, prefixes are not included because they are added upon access.
+However, [BIPM2006]_ (and BIPM.ini_) includes two units with explicit prefixes:
+kg and dB.
 
 
 .. _BIPM.ini: https://github.com/kdavies4/natu/blob/master/natu/config/BIPM.ini

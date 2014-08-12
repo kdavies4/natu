@@ -19,7 +19,7 @@ Symbol       Expression                  Prefixable Name & notes
 *G_0*        ``2/R_K``                              `conductance quantum <http://en.wikipedia.org/wiki/Conductance_quantum>`_
 *e*          ``Phi_0*G_0``                          `elementary charge <http://en.wikipedia.org/wiki/Elementary_charge>`_
 *h*          ``2*e*Phi_0``                          `Planck constant <http://en.wikipedia.org/wiki/Planck_constant>`_
-*N_A*        ``k_F/e``                              `Avogadro number <http://en.wikipedia.org/wiki/Avogadro_number>`_
+*N_A*        ``k_F/e``                              `Avogadro constant <http://en.wikipedia.org/wiki/Avogadro_constant>`_
 *k_B*        ``R/N_A``                              `Boltzmann constant <http://en.wikipedia.org/wiki/Boltzmann_constant>`_
 cyc          ``k_Aprime*c/R_K``          *False*    cycle (aka circle, revolution, `turn <http://en.wikipedia.org/wiki/Turn_(geometry)>`_) (a unit---not a constant---but useful here)
 *c_1*        ``2*pi*h*c**2/cyc**3``                 `first radiation constant <http://physics.nist.gov/cgi-bin/cuu/Value?c11strc>`_

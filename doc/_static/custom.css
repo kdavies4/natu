@@ -20,5 +20,5 @@ img {
 }
 
 div.body {
-    min-height:750px; /* Be sure there's room for the sidebar. */
+    min-height:800px; /* Be sure there's room for the sidebar. */
 }

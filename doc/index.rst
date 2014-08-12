@@ -9,23 +9,21 @@
    complete.
 
 natu is a free, open-source package to represent physical quantities.  There are
-many Python_ packages that deal with units and quantities (see the
-:ref:`list below <seealso>`), but natu is unique because it is truly
-system-independent.  The units are derived from physical constants with
-adjustable values and dimensions.  The value of a unit is factored into a
-quantity so that the quantity is not "in" any particular unit.  This offers the
-following advantages:
+many Python_ packages that deal with units and quantities (see `here
+<seealso>`_), but natu is uniquely system-independent.  The units are derived
+from physical constants with adjustable values and dimensions.  The value of a
+unit is factored into a quantity so that the quantity is not "in" any particular
+unit.  This has the following advantages:
 
 - **Flexibility**: Different unit systems, including natural units (hence the
   name "natu"), can be represented by simply adjusting the physical constants.
 - **Simplicity**: Unit conversion is inherent.  This results in quick
-  computations and a small code base (<1500 lines).  By default, dimensions and
-  display units are tracked to catch errors and for string formatting,
-  respectively.  However, this feature can be turned off to reduce the
-  computational overhead to nearly zero while still allowing input and output in
-  mixed units.
-- **Scalability**: Numerical scaling is independent of the units used to create
-  quantities.  This can be used to prevent exponent overflow [Davies2012]_,
+  computations and a small code base.  By default, dimensions and display units
+  are tracked to catch errors and for string formatting, respectively.  However,
+  this can be turned off to reduce the computational overhead to nearly zero
+  while still providing the core features.
+- **Scalability**: The values of the base physical constants can scaled to
+  prevent exponent overflow, regardless of the units used [Davies2012]_,
   [#f1]_.
 - **Intuitive**: Each unit is a fixed quantity which can be treated as a
   mathematical entity.  A variable quantity is expressed as the product of a
@@ -35,52 +33,36 @@ following advantages:
   physical constants so that the values of units can be determined by physical
   experiments instead of prototypes.
 
-Please `view the tutorial
-<http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb>`_
-to see how natu is used.  natu incorporates some of the best features of the
-existing packages and introduces some novel features:
+natu incorporates some of the best features of the existing packages and
+introduces some novel features:
 
-- All constants and units are defined in `INI files
-  <http://kdavies4.github.io/natu/definitions.html>`_.  Units can be added or
-  removed.
-- Units with offsets (e.g., `degree Celsius (degC)`_) and even nonlinear
-  functions (e.g., `decibel (dB)`_) are supported.
+- Constants and units are defined in `INI files <definitions.html>`_.  Units can
+  be added or removed.
+- Units with offsets (e.g., `Celsius`_) and even nonlinear functions (e.g., the
+  `decibel`_) are supported.
 - Display units can be simplified automatically using `coherent relations`_
   gathered from the unit definitions.
-- All units can be imported directly (``from natu.units import *``), selectively
-  imported (``from natu.units import m, kg, s``), or used from within a package
-  (``from natu import units as U; length = 10*U.m``).
-- Prefixes are automatically applied to units upon import or access.
-- Units are automatically copied and sorted into convenient groups (see
+- Units are automatically copied and sorted into convenient submodules (see
   :mod:`natu.groups`).
+- Prefixes are automatically available.
 - Rationalized and unrationalized unit systems are supported.
-- Modules are provided as drop-in quantity-aware replacements for :mod:`math`
-  and :mod:`numpy`.
+- Drop-in, quantity-aware replacements are available for :mod:`math` and
+  :mod:`numpy`.
 - There are no external dependencies.  Only the `Python Standard Library`_ is
   required; :mod:`numpy` is optional.
-- Fractional exponents can be used for units as well as quantities (e.g., in the
-  definition of the statcoulomb_).
+- Fractional exponents can be used for units and quantities (e.g., for the
+  statcoulomb_).
 
-The links in the sidebar provide the full documentation and more examples.
+For example, you can do this:
 
-**Installation**
+    >>> from natu.units import degC, K
+    >>> print(0*degC + 100*K)
+    100.0 degC
 
-The easiest way to install natu is to use pip_::
-
-    > pip install natu
-
-On Linux, it may be necessary to have root privileges::
-
-    $ sudo pip install natu
-
-Another way is to download and extract a copy of the package from the sidebar on
-the left.  Run the following command from the base folder::
-
-    > python setup.py install
-
-Or, on Linux::
-
-    $ sudo python setup.py install
+Please `see the tutorial
+<http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb>`_
+for more examples.  The links in the sidebar give the `installation instructions
+<install.html>`_ and more information.
 
 **License terms and development**
 
@@ -90,25 +72,6 @@ branch of the `GitHub repository`_.  There are useful development scripts in
 the `hooks folder <https://github.com/kdavies4/natu/blob/master/hooks/>`_.  If
 you find a bug, have a suggestion, or just want to leave a comment, please `open
 an issue <https://github.com/kdavies4/natu/issues/new>`_.
-
-.. _seealso:
-
-**See also**
-
-- `astropy.units <http://astropy.readthedocs.org/en/latest/units/>`_
-- `Buckingham <http://code.google.com/p/buckingham/>`_
-- `DimPy <http://www.inference.phy.cam.ac.uk/db410/>`_
-- `Magnitude <http://juanreyero.com/open/magnitude/>`_
-- `NumericalUnits <https://pypi.python.org/pypi/numericalunits>`_
-- `Pint <http://pint.readthedocs.org/>`_
-- `Python-quantities <https://pypi.python.org/pypi/quantities>`_
-- `Scalar <http://russp.us/scalar-guide.htm>`_
-- `Scientific.Physics.PhysicalQuantities <http://dirac.cnrs-orleans.fr/ScientificPython/ScientificPythonManual/Scientific.Physics.PhysicalQuantities-module.html>`_
-- `SciMath <http://scimath.readthedocs.org/en/latest/units/intro.html>`_
-- `sympy.physics.units <http://docs.sympy.org/dev/modules/physics/units.html>`_
-- `udunitspy <https://github.com/blazetopher/udunitspy>`_
-- `Units <https://bitbucket.org/adonohue/units/>`_
-- `Unum <https://bitbucket.org/kiv/unum/>`_
 
 .. toctree::
    :hidden:
@@ -125,9 +88,8 @@ an issue <https://github.com/kdavies4/natu/issues/new>`_.
 .. _GitHub repository: https://github.com/kdavies4/natu
 .. _NIST: http://www.nist.gov/
 .. _BIPM: http://www.bipm.org/
-.. _pip: https://pypi.python.org/pypi/pip
-.. _degree Celsius (degC): http://en.wikipedia.org/wiki/Celsius
-.. _decibel (dB): http://en.wikipedia.org/wiki/Decibel
+.. _Celsius: http://en.wikipedia.org/wiki/Celsius
+.. _decibel: http://en.wikipedia.org/wiki/Decibel
 .. _coherent relations: http://en.wikipedia.org/wiki/Coherence_(units_of_measurement)
 .. _statcoulomb: http://en.wikipedia.org/wiki/Statcoulomb
 

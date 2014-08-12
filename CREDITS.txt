@@ -35,5 +35,5 @@ If you use natu_ or concepts from it in shared work, please cite the following:
    Sep. 2012.
 
 
-.. _natu: http://kdavies4.github.io/natu/
+.. _natu: index.html
 .. _Kevin Davies: http://www.hnei.hawaii.edu/staff/kevin-davies
