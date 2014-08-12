@@ -24,7 +24,7 @@ y           ``365.25*d``                                                 *False*
 ly          ``c*y``                                                      *True*     `light year <http://en.wikipedia.org/wiki/Light_year>`_
 au          ``149597870700*m``                                           *False*    `astronomical unit <http://en.wikipedia.org/wiki/Astronomical_unit>`_
 pc          ``au*648e3/pi``                                              *False*    `parsec <http://en.wikipedia.org/wiki/Parsec>`_
-inch        ``0.0254*m``                                                 *False*    `inch <http://en.wikipedia.org/wiki/Inch>`_
+inch        ``2.54*cm``                                                  *False*    `inch <http://en.wikipedia.org/wiki/Inch>`_
 ft          ``12*inch``                                                  *False*    `foot <http://en.wikipedia.org/wiki/Foot_(unit)>`_
 yd          ``3*ft``                                                     *False*    `yard <http://en.wikipedia.org/wiki/Yard_(unit)>`_
 mi          ``1760*yd``                                                  *False*    `mile <http://en.wikipedia.org/wiki/Mile>`_
@@ -105,14 +105,15 @@ P           ``Ba*s``                                                     *True* 
 St          ``cm**2/s``                                                  *True*     `stokes <http://en.wikipedia.org/wiki/Stokes_(unit)>`_ (aka stoke; unit of kinematic viscosity)
 ------ CGS units (EMU) ------
 -------------------------------------------------------------------------------------------------
-Gs          ``1e-4*T``                                                   *True*     `gauss <http://en.wikipedia.org/wiki/Gauss_(unit)>`_ (unit of magnetic flux density)
-Mx          ``Gs*cm**2``                                                 *True*     `maxwell <http://en.wikipedia.org/wiki/Maxwell_(unit)>`_ (unit of magnetic flux)
-Oe          ``kA*rad/(2*m)``                                             *True*     `oersted <http://en.wikipedia.org/wiki/Oersted>`_ (unit of the auxiliary magnetic field)
-abA         ``10*A``                                                     *True*     `abampere <https://en.wikipedia.org/wiki/Abampere>`_ (aka Biot (Bi))
+abA         ``daA``                                                      *True*     `abampere <https://en.wikipedia.org/wiki/Abampere>`_ (aka decaampere or Biot (Bi))
 abC         ``abA*s``                                                    *True*     `abcoloumb <https://en.wikipedia.org/wiki/Abcoulomb>`_
 abV         ``erg/abC``                                                  *True*     `abvolt <https://en.wikipedia.org/wiki/Abvolt>`_
-abohm       ``abV/abA``                                                  *True*     `abohm <https://en.wikipedia.org/wiki/Abohm>`_
-abF         ``s/abohm``                                                  *True*     `abfarad <https://en.wikipedia.org/wiki/Abfarad#CGS_units>`_
+Mx          ``erg/(abA*cyc)``                                            *True*     `maxwell <http://en.wikipedia.org/wiki/Maxwell_(unit)>`_ (unit of magnetic flux)
+Gs          ``Mx/cm**2``                                                 *True*     `gauss <http://en.wikipedia.org/wiki/Gauss_(unit)>`_ (unit of magnetic flux density)
+pole        ``4*pi*Mx``                                                  *False*    unit pole
+Oe          ``dyn/pole``                                                 *True*     `oersted <http://en.wikipedia.org/wiki/Oersted>`_ (unit of the auxiliary magnetic field)
+abF         ``abC/abV``                                                  *True*     `abfarad <https://en.wikipedia.org/wiki/Abfarad#CGS_units>`_
+abohm       ``s/abF``                                                    *True*     `abohm <https://en.wikipedia.org/wiki/Abohm>`_
 abH         ``abohm*s``                                                  *True*     `abhenry <http://en.wikipedia.org/wiki/Abhenry>`_
 ------ CGS units (ESU and Gaussian) ------
 -------------------------------------------------------------------------------------------------
@@ -125,30 +126,29 @@ statT       ``statWb/cm**2``                                             *True* 
 -------------------------------------------------------------------------------------------------
 *k_A*       ``dyn/abA**2``                                                          Ampere constant (aka magnetic force constant)
 *k_C*       ``k_A*c**2``                                                            `Coulomb constant <https://en.wikipedia.org/wiki/Coulomb_constant>`_ (aka electric force constant or electrostatic constant)
-*mu_0*      ``k_A/(sr if rational else sp)``                                        `magnetic constant <http://en.wikipedia.org/wiki/Vacuum_permeability>`_ (aka vacuum permeability or permeability of free space)
-*epsilon_0* ``1/(mu_0*sp*c**2)``                                                    `electric constant <http://en.wikipedia.org/wiki/Vacuum_permittivity>`_ (aka vacuum permittivity or permittivity of free space)
+*mu_0*      ``4*pi*k_A/(sr if rational else sp)``                                   `magnetic constant <http://en.wikipedia.org/wiki/Vacuum_permeability>`_ (aka vacuum permeability or permeability of free space)
+*epsilon_0* ``1/(mu_0*sr*c**2)``                                                    `electric constant <http://en.wikipedia.org/wiki/Vacuum_permittivity>`_ (aka vacuum permittivity or permittivity of free space)
 *Z_0*       ``2*k_A*c/rad``                                                         `characteristic impedance of vacuum <http://en.wikipedia.org/wiki/Impedance_of_free_space>`_
-*alpha*     ``k_A/(k_Aprime*rad)``                                                  `fine structure constant <http://en.wikipedia.org/wiki/Fine_structure_constant>`_
-*a_0*       ``alpha*sp/(4*R_inf)``                                                  `Bohr radius <https://en.wikipedia.org/wiki/Bohr_radius>`_
-*lambda_e*  ``2*pi*alpha*a_0``                                                      electron `Compton wavelength <https://en.wikipedia.org/wiki/Compton_wavelength>`_
-*r_e*       ``lambda_e*c*k_A*k_J/2``                                                `classical electron radius per elementary charge <http://en.wikipedia.org/wiki/Classical_electron_radius>`_ (aka Lorentz radius or Thomson scattering length)
-*m_e*       ``k_A/r_e``                                                             `electron rest mass per elementary charge <http://en.wikipedia.org/wiki/Electron_mass>`_
-*mu_B*      ``h*cyc*rad/(2*m_e)``                                                   `Bohr magnetron <https://en.wikipedia.org/wiki/Bohr_magneton>`_
-*kappa*     ``Phi_0/m_e``                                                           quantum of circulation
+*alpha*     ``k_A*c/R_K``                                                           `fine structure constant <http://en.wikipedia.org/wiki/Fine_structure_constant>`_
+*a_0*       ``alpha/(2*R_inf)``                                                     `Bohr radius <https://en.wikipedia.org/wiki/Bohr_radius>`_ (aka Hartree length)
+*lambda_e*  ``alpha*a_0/sr``                                                        electron `Compton wavelength <https://en.wikipedia.org/wiki/Compton_wavelength>`_
+*kappa*     ``lambda_e*c/2``                                                        quantum of circulation
+*m_e*       ``Phi_0/kappa``                                                         `electron rest mass per elementary charge <http://en.wikipedia.org/wiki/Electron_mass>`_
+*r_e*       ``k_A/m_e``                                                             `classical electron radius per elementary charge <http://en.wikipedia.org/wiki/Classical_electron_radius>`_ (aka Lorentz radius or Thomson scattering length)
+*mu_B*      ``kappa*e*sp/2``                                                        `Bohr magnetron <https://en.wikipedia.org/wiki/Bohr_magneton>`_
 *M_e*       ``m_e*e``                                                               mass of an electron (aka Hartree mass)
-*l_H*       ``(2*Phi_0*rad)**2/(k_C*M_e)``                                          Hartree length
-*t_H*       ``l_H*sqrt(M_e/Ha)``                                                    Hartree time
+*t_H*       ``a_0*sqrt(M_e/Ha)``                                                    Hartree time
 ------ Misc. units and constants ------
 -------------------------------------------------------------------------------------------------
 AT          ``A*cyc``                                                    *False*    `ampere-turn <http://en.wikipedia.org/wiki/Ampere-turn>`_
-D           ``cm**2*cP/(atm*s)``                                         *True*     `darcy <http://en.wikipedia.org/wiki/Darcy_(unit)>`_
+D           ``cdyn/atm``                                                 *True*     `darcy <http://en.wikipedia.org/wiki/Darcy_(unit)>`_
 u           ``g/mol``                                                    *True*     `unified atomic mass unit <https://en.wikipedia.org/wiki/Atomic_mass_unit>`_ (aka dalton (Da))
-M_u         ``u/N_A``                                                               `atomic mass constant <https://en.wikipedia.org/wiki/Atomic_mass_constant>`_
+*M_u*       ``u/N_A``                                                               `atomic mass constant <https://en.wikipedia.org/wiki/Atomic_mass_constant>`_
 =========== ============================================================ ========== =============
 
 Since angle is explicit, it appears in several of the constants and units:
 
-- *mu_0* ≈ 10\ :superscript:`-7` H m\ :superscript:`-1` sr\ :superscript:`-1`
+- *mu_0* ≈ 4 *pi* 10\ :superscript:`-7` H m\ :superscript:`-1` cyc\ :superscript:`-2`
   [#f1]_
 - *Z_0* ≈ 376.730 ohm cyc\ :superscript:`-1` [#f1]_
 - *kappa* ≈ 3.637×10\ :superscript:`-4` m\ :superscript:`2` s\ :superscript:`-1` cyc\ :superscript:`-1`
@@ -159,9 +159,9 @@ Since angle is explicit, it appears in several of the constants and units:
 - Oe = 5 kA rad m\ :superscript:`-1`
   = 0.25 kA cyc *pi*\ :superscript:`-1` m\ :superscript:`-1`
   = 250 AT *pi*\ :superscript:`-1` m\ :superscript:`-1`
-- Gs = 10\ :superscript:`-4` T = 10\ :superscript:`-4` Wb m\ :superscript:`-2`
+- Mx = erg abA\ :superscript:`-1` cyc\ :superscript:`-1` = 10\ :superscript:`-8` V Hz\ :superscript:`-1` [#f2]_
+- Gs = Mx cm\ :superscript:`2` = 10\ :superscript:`-4` Wb m\ :superscript:`-2`
   = 10\ :superscript:`-4` V Hz\ :superscript:`-1` m\ :superscript:`-2` [#f2]_
-- Mx = Gs cm\ :superscript:`2` = 10\ :superscript:`-8` V Hz\ :superscript:`-1` [#f2]_
 - statWb = statV Hz\ :superscript:`-1` [#f2]_
 - statT = statWb cm\ :superscript:`2`
   = statV Hz\ :superscript:`-1` cm\ :superscript:`2` [#f2]_

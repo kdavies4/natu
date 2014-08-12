@@ -26,7 +26,7 @@ cyc          ``k_Aprime*c/R_K``          *False*    cycle (aka circle, revolutio
 *c_2*        ``h*c/k_B``                            `second radiation constant <http://physics.nist.gov/cgi-bin/cuu/Value?c22ndrc|search_for=second+radiation>`_
 *c_3_f*      ``2.821439372122079*c/c_2``            `Wien frequency displacement constant <http://en.wikipedia.org/wiki/Wien's_displacement_law>`_ (the number is *x*, where exp(*x*)*(3 - *x*) = 3)
 *c_3_lambda* ``c_2/4.965114231744276``              `Wien wavelength displacement constant <http://en.wikipedia.org/wiki/Wien's_displacement_law>`_ (the number is *x*, where exp(*x*)*(5 - *x*) = 5)
-*sigma*      ``c_1/15*(pi/c_2)**4``                 `Stefan-Boltzmann constant <http://en.wikipedia.org/wiki/Stefan%E2%80%93Boltzmann_constant>`_
+*sigma*      ``c_1/15*(pi/c_2)**4``                 `Stefan-Boltzmann constant <http://en.wikipedia.org/wiki/Stefan%E2%80%93Boltzmann_constant>`_ (aka Stefan's constant)
 *Ry*         ``h*c*R_inf``                          `Rydberg energy <http://en.wikipedia.org/wiki/Rydberg_constant#Value_of_the_Rydberg_constant_and_Rydberg_unit_of_energy>`_
 *Ha*         ``2*Ry``                               `Hartree energy <http://en.wikipedia.org/wiki/Hartree>`_ (aka hartree)
 *T_H*        ``Ha/k_B``                             Hartree temperature
@@ -37,10 +37,10 @@ Since angle is explicit, it appears in several of the constants:
 - *Phi_0* ≈ 2.068×10\ :superscript:`-15` Wb [#f1]_
 - *G_0* ≈ 7.748×10\ :superscript:`-5` S cyc [#f2]_
 - *h* ≈ 6.626×10\ :superscript:`-34` J Hz\ :superscript:`-1` [#f1]_
-- *c_1* ≈ 3.742×10\ :superscript:`-16` W m\ :superscript:`2`\ /cyc\ :superscript:`4` [#f2]_
+- *c_1* ≈ 3.742×10\ :superscript:`-16` W m\ :superscript:`2` cyc\ :superscript:`-4` [#f2]_
 - *c_2* ≈ 1.438×10\ :superscript:`-2` m K cyc\ :superscript:`-1` [#f2]_
 - *c_3_f* ≈ 5.879×10\ :superscript:`10` Hz K\ :superscript:`-1` [#f1]_
-- *c_3_lambda* ≈ 2.898×10\ :superscript:`-3` m K cyc\ :superscript:`-1` [#f2]_
+- *c_3_lambda* ≈ 2.898×10\ :superscript:`-3` K m cyc\ :superscript:`-1` [#f2]_
 
 The definition of the `Planck constant`_ implies that
 *h*\*cyc ≈ 6.626×10\ :superscript:`-34` J (the traditional expression of

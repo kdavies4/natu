@@ -24,7 +24,7 @@ rad      ``cyc/(2*pi)``                                         *True*     `radi
 m        ``10973731.568539*cyc/R_inf``                          *True*     `metre <http://en.wikipedia.org/wiki/Metre>`_
 s        ``299792458*m/c``                                      *True*     `second <http://en.wikipedia.org/wiki/Second>`_
 Wb       ``483597.870e9/k_J``                                   *True*     `weber <http://en.wikipedia.org/wiki/Weber_(unit)>`_
-S        ``25812.807557/(R_K*cyc)``                             *True*     `siemens <http://en.wikipedia.org/wiki/Siemens_(unit)>`_ (aka mho)
+S        ``25812.8074434/(R_K*cyc)``                            *True*     `siemens <http://en.wikipedia.org/wiki/Siemens_(unit)>`_ (aka mho)
 mol      ``96485.3365*Wb*cyc*S/k_F``                            *True*     `mole <http://en.wikipedia.org/wiki/Mole_(unit)>`_
 K        ``8.3144621*(Wb*cyc)**2*S/(s*mol*R)``                  *True*     `kelvin <http://en.wikipedia.org/wiki/Kelvin>`_
 ------ Units considered independent of the base constants ------
@@ -50,7 +50,7 @@ Pa       ``N/m**2``                                             *True*     `pasc
 T        ``Wb/m**2``                                            *True*     `tesla <http://en.wikipedia.org/wiki/Tesla_(unit)>`_
 lx       ``lm/m**2``                                            *True*     `lux <http://en.wikipedia.org/wiki/Lux>`_
 F        ``s*S``                                                *True*     `farad <http://en.wikipedia.org/wiki/Farad>`_
-ohm      ``1/S``                                                *True*     `ohm <http://en.wikipedia.org/wiki/Ohm>`_
+ohm      ``S**-1``                                              *True*     `ohm <http://en.wikipedia.org/wiki/Ohm>`_
 H        ``s/S``                                                *True*     `henry <http://en.wikipedia.org/wiki/Henry_(unit)>`_
 kat      ``mol/s``                                              *True*     `katal <http://en.wikipedia.org/wiki/Katal>`_
 Sv       ``Gy``                                                 *True*     `sievert <http://en.wikipedia.org/wiki/Sievert>`_
@@ -92,8 +92,8 @@ Since angle is explicit, some definitions are different than in [BIPM2006]_ and
   *R_K* ≈ 25813 ohm cyc\ :superscript:`-1`) [#f3]_
 - Hz = cyc s\ :superscript:`-1` [#f4]_
 - V = Wb Hz (i.e., Wb = V s cyc\ :superscript:`-1`) [#f4]_
-- H = s S\ :superscript:`-1` (i.e., H = ohm s = V s A\ :superscript:`-1`;
-  H ≠ Wb A\ :superscript:`-1`)
+- H = ohm s = V s A\ :superscript:`-1`
+  (H ≠ Wb A\ :superscript:`-1`)
 
 Note that frequency can be expressed in Hz or rad s\ :superscript:`-1` but not
 s\ :superscript:`-1`.  Torque can be expressed in N m rad\ :superscript:`-1` or
