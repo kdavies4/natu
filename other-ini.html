@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Other units (other.ini) &mdash; Natural units in Python</title>
+    <title>Other units and constants (other.ini) &mdash; Natural units in Python</title>
     
     <link rel="stylesheet" href="javascripts/custom.css" type="text/css" />
     <link rel="stylesheet" href="javascripts/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.0-a2',
+        VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -51,7 +51,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">natu v0.1.0-a2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -60,8 +60,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="other-units-other-ini">
-<h1>Other units (<a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/other.ini">other.ini</a>)<a class="headerlink" href="#other-units-other-ini" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="other-units-and-constants-other-ini">
+<h1>Other units and constants (<a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/other.ini">other.ini</a>)<a class="headerlink" href="#other-units-and-constants-other-ini" title="Permalink to this headline">¶</a></h1>
 <p>The table below lists the contents of the <a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/other.ini">other.ini</a> file.  It establishes some
 units besides the <a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">SI</a> and non-SI units from <a class="reference internal" href="#bipm2006" id="id1">[BIPM2006]</a>.</p>
 <p>The definitions below depend on the following items:</p>
@@ -111,7 +111,7 @@ units besides the <a class="reference external" href="http://en.wikipedia.org/wi
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Parsec">parsec</a></td>
 </tr>
 <tr class="row-even"><td>inch</td>
-<td><tt class="docutils literal"><span class="pre">0.0254*m</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">2.54*cm</span></tt></td>
 <td><em>False</em></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Inch">inch</a></td>
 </tr>
@@ -356,7 +356,7 @@ units besides the <a class="reference external" href="http://en.wikipedia.org/wi
 <td><em>False</em></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Parts_per_quadrillion">parts per quadrillion</a></td>
 </tr>
-<tr class="row-odd"><td colspan="4">&#8212;&#8212; CGS units (general) &#8212;&#8212;</td>
+<tr class="row-odd"><td colspan="4">&#8212;&#8212; <a class="reference external" href="&lt;http://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units">CGS units</a> (general) &#8212;&#8212;</td>
 </tr>
 <tr class="row-even"><td>cm</td>
 <td><tt class="docutils literal"><span class="pre">cm</span></tt></td>
@@ -393,154 +393,154 @@ units besides the <a class="reference external" href="http://en.wikipedia.org/wi
 <td><em>True</em></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Stokes_(unit)">stokes</a> (aka stoke; unit of kinematic viscosity)</td>
 </tr>
-<tr class="row-odd"><td colspan="4">&#8212;&#8212; CGS units (EMU) &#8212;&#8212;</td>
+<tr class="row-odd"><td colspan="4">&#8212;&#8212; CGS units (<a class="reference external" href="&lt;http://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units#Electromagnetic_units_.28EMU.29">EMU</a>) &#8212;&#8212;</td>
 </tr>
-<tr class="row-even"><td>Gs</td>
-<td><tt class="docutils literal"><span class="pre">1e-4*T</span></tt></td>
+<tr class="row-even"><td>abA</td>
+<td><tt class="docutils literal"><span class="pre">daA</span></tt></td>
 <td><em>True</em></td>
-<td><a class="reference external" href="http://en.wikipedia.org/wiki/Gauss_(unit)">gauss</a> (unit of magnetic flux density)</td>
+<td><a class="reference external" href="https://en.wikipedia.org/wiki/Abampere">abampere</a> (aka decaampere or Biot (Bi))</td>
 </tr>
-<tr class="row-odd"><td>Mx</td>
-<td><tt class="docutils literal"><span class="pre">Gs*cm**2</span></tt></td>
-<td><em>True</em></td>
-<td><a class="reference external" href="http://en.wikipedia.org/wiki/Maxwell_(unit)">maxwell</a> (unit of magnetic flux)</td>
-</tr>
-<tr class="row-even"><td>Oe</td>
-<td><tt class="docutils literal"><span class="pre">kA*rad/(2*m)</span></tt></td>
-<td><em>True</em></td>
-<td><a class="reference external" href="http://en.wikipedia.org/wiki/Oersted">oersted</a> (unit of the auxiliary magnetic field)</td>
-</tr>
-<tr class="row-odd"><td>abA</td>
-<td><tt class="docutils literal"><span class="pre">10*A</span></tt></td>
-<td><em>True</em></td>
-<td><a class="reference external" href="https://en.wikipedia.org/wiki/Abampere">abampere</a> (aka Biot (Bi))</td>
-</tr>
-<tr class="row-even"><td>abC</td>
+<tr class="row-odd"><td>abC</td>
 <td><tt class="docutils literal"><span class="pre">abA*s</span></tt></td>
 <td><em>True</em></td>
 <td><a class="reference external" href="https://en.wikipedia.org/wiki/Abcoulomb">abcoloumb</a></td>
 </tr>
-<tr class="row-odd"><td>abV</td>
+<tr class="row-even"><td>abV</td>
 <td><tt class="docutils literal"><span class="pre">erg/abC</span></tt></td>
 <td><em>True</em></td>
 <td><a class="reference external" href="https://en.wikipedia.org/wiki/Abvolt">abvolt</a></td>
 </tr>
-<tr class="row-even"><td>abohm</td>
-<td><tt class="docutils literal"><span class="pre">abV/abA</span></tt></td>
+<tr class="row-odd"><td>Mx</td>
+<td><tt class="docutils literal"><span class="pre">erg/(abA*cyc)</span></tt></td>
 <td><em>True</em></td>
-<td><a class="reference external" href="https://en.wikipedia.org/wiki/Abohm">abohm</a></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Maxwell_(unit)">maxwell</a> (unit of magnetic flux)</td>
+</tr>
+<tr class="row-even"><td>Gs</td>
+<td><tt class="docutils literal"><span class="pre">Mx/cm**2</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Gauss_(unit)">gauss</a> (unit of magnetic flux density)</td>
+</tr>
+<tr class="row-odd"><td>pole</td>
+<td><tt class="docutils literal"><span class="pre">4*pi*Mx</span></tt></td>
+<td><em>False</em></td>
+<td>unit pole</td>
+</tr>
+<tr class="row-even"><td>Oe</td>
+<td><tt class="docutils literal"><span class="pre">dyn/pole</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Oersted">oersted</a> (unit of the auxiliary magnetic field)</td>
 </tr>
 <tr class="row-odd"><td>abF</td>
-<td><tt class="docutils literal"><span class="pre">s/abohm</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">abC/abV</span></tt></td>
 <td><em>True</em></td>
 <td><a class="reference external" href="https://en.wikipedia.org/wiki/Abfarad#CGS_units">abfarad</a></td>
 </tr>
-<tr class="row-even"><td>abH</td>
+<tr class="row-even"><td>abohm</td>
+<td><tt class="docutils literal"><span class="pre">s/abF</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="https://en.wikipedia.org/wiki/Abohm">abohm</a></td>
+</tr>
+<tr class="row-odd"><td>abH</td>
 <td><tt class="docutils literal"><span class="pre">abohm*s</span></tt></td>
 <td><em>True</em></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Abhenry">abhenry</a></td>
 </tr>
-<tr class="row-odd"><td colspan="4">&#8212;&#8212; CGS units (ESU and Gaussian) &#8212;&#8212;</td>
+<tr class="row-even"><td colspan="4">&#8212;&#8212; CGS units (<a class="reference external" href="&lt;http://en.wikipedia.org/wiki/Electrostatic_units">ESU</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/Gaussian_units">Gaussian</a>) &#8212;&#8212;</td>
 </tr>
-<tr class="row-even"><td>statC</td>
+<tr class="row-odd"><td>statC</td>
 <td><tt class="docutils literal"><span class="pre">abA*cm</span></tt></td>
 <td><em>True</em></td>
 <td><a class="reference external" href="https://en.wikipedia.org/wiki/Statcoulomb">statcoulomb</a> (aka franklin (Fr) or electrostatic unit (esu) of charge)</td>
 </tr>
-<tr class="row-odd"><td>statA</td>
+<tr class="row-even"><td>statA</td>
 <td><tt class="docutils literal"><span class="pre">statC/s</span></tt></td>
 <td><em>True</em></td>
 <td>statampere</td>
 </tr>
-<tr class="row-even"><td>statV</td>
+<tr class="row-odd"><td>statV</td>
 <td><tt class="docutils literal"><span class="pre">erg/statC</span></tt></td>
 <td><em>True</em></td>
 <td><a class="reference external" href="https://en.wikipedia.org/wiki/Statvolt">statvolt</a></td>
 </tr>
-<tr class="row-odd"><td>statWb</td>
+<tr class="row-even"><td>statWb</td>
 <td><tt class="docutils literal"><span class="pre">statV/Hz</span></tt></td>
 <td><em>True</em></td>
 <td>statweber</td>
 </tr>
-<tr class="row-even"><td>statT</td>
+<tr class="row-odd"><td>statT</td>
 <td><tt class="docutils literal"><span class="pre">statWb/cm**2</span></tt></td>
 <td><em>True</em></td>
 <td>stattesla</td>
 </tr>
-<tr class="row-odd"><td colspan="4">&#8212;&#8212; Constants related to Ampere&#8217;s force law &#8212;&#8212;</td>
+<tr class="row-even"><td colspan="4">&#8212;&#8212; Constants related to <a class="reference external" href="&lt;http://en.wikipedia.org/wiki/Amp%C3%A8re's_force_law">Ampere&#8217;s force law</a> &#8212;&#8212;</td>
 </tr>
-<tr class="row-even"><td><em>k_A</em></td>
+<tr class="row-odd"><td><em>k_A</em></td>
 <td><tt class="docutils literal"><span class="pre">dyn/abA**2</span></tt></td>
 <td>&nbsp;</td>
 <td>Ampere constant (aka magnetic force constant)</td>
 </tr>
-<tr class="row-odd"><td><em>k_C</em></td>
+<tr class="row-even"><td><em>k_C</em></td>
 <td><tt class="docutils literal"><span class="pre">k_A*c**2</span></tt></td>
 <td>&nbsp;</td>
 <td><a class="reference external" href="https://en.wikipedia.org/wiki/Coulomb_constant">Coulomb constant</a> (aka electric force constant or electrostatic constant)</td>
 </tr>
-<tr class="row-even"><td><em>mu_0</em></td>
-<td><tt class="docutils literal"><span class="pre">k_A/(sr</span> <span class="pre">if</span> <span class="pre">rational</span> <span class="pre">else</span> <span class="pre">sp)</span></tt></td>
+<tr class="row-odd"><td><em>mu_0</em></td>
+<td><tt class="docutils literal"><span class="pre">4*pi*k_A/(sr</span> <span class="pre">if</span> <span class="pre">rational</span> <span class="pre">else</span> <span class="pre">sp)</span></tt></td>
 <td>&nbsp;</td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Vacuum_permeability">magnetic constant</a> (aka vacuum permeability or permeability of free space)</td>
 </tr>
-<tr class="row-odd"><td><em>epsilon_0</em></td>
-<td><tt class="docutils literal"><span class="pre">1/(mu_0*sp*c**2)</span></tt></td>
+<tr class="row-even"><td><em>epsilon_0</em></td>
+<td><tt class="docutils literal"><span class="pre">1/(mu_0*sr*c**2)</span></tt></td>
 <td>&nbsp;</td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Vacuum_permittivity">electric constant</a> (aka vacuum permittivity or permittivity of free space)</td>
 </tr>
-<tr class="row-even"><td><em>Z_0</em></td>
+<tr class="row-odd"><td><em>Z_0</em></td>
 <td><tt class="docutils literal"><span class="pre">2*k_A*c/rad</span></tt></td>
 <td>&nbsp;</td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Impedance_of_free_space">characteristic impedance of vacuum</a></td>
 </tr>
-<tr class="row-odd"><td><em>alpha</em></td>
-<td><tt class="docutils literal"><span class="pre">k_A/(k_Aprime*rad)</span></tt></td>
+<tr class="row-even"><td><em>alpha</em></td>
+<td><tt class="docutils literal"><span class="pre">k_A*c/R_K</span></tt></td>
 <td>&nbsp;</td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Fine_structure_constant">fine structure constant</a></td>
 </tr>
-<tr class="row-even"><td><em>a_0</em></td>
-<td><tt class="docutils literal"><span class="pre">alpha*sp/(4*R_inf)</span></tt></td>
+<tr class="row-odd"><td><em>a_0</em></td>
+<td><tt class="docutils literal"><span class="pre">alpha/(2*R_inf)</span></tt></td>
 <td>&nbsp;</td>
-<td><a class="reference external" href="https://en.wikipedia.org/wiki/Bohr_radius">Bohr radius</a></td>
+<td><a class="reference external" href="https://en.wikipedia.org/wiki/Bohr_radius">Bohr radius</a> (aka Hartree length)</td>
 </tr>
-<tr class="row-odd"><td><em>lambda_e</em></td>
-<td><tt class="docutils literal"><span class="pre">2*pi*alpha*a_0</span></tt></td>
+<tr class="row-even"><td><em>lambda_e</em></td>
+<td><tt class="docutils literal"><span class="pre">alpha*a_0/sr</span></tt></td>
 <td>&nbsp;</td>
 <td>electron <a class="reference external" href="https://en.wikipedia.org/wiki/Compton_wavelength">Compton wavelength</a></td>
 </tr>
-<tr class="row-even"><td><em>r_e</em></td>
-<td><tt class="docutils literal"><span class="pre">lambda_e*c*k_A*k_J/2</span></tt></td>
-<td>&nbsp;</td>
-<td><a class="reference external" href="http://en.wikipedia.org/wiki/Classical_electron_radius">classical electron radius per elementary charge</a> (aka Lorentz radius or Thomson scattering length)</td>
-</tr>
-<tr class="row-odd"><td><em>m_e</em></td>
-<td><tt class="docutils literal"><span class="pre">k_A/r_e</span></tt></td>
-<td>&nbsp;</td>
-<td><a class="reference external" href="http://en.wikipedia.org/wiki/Electron_mass">electron rest mass per elementary charge</a></td>
-</tr>
-<tr class="row-even"><td><em>mu_B</em></td>
-<td><tt class="docutils literal"><span class="pre">h*cyc*rad/(2*m_e)</span></tt></td>
-<td>&nbsp;</td>
-<td><a class="reference external" href="https://en.wikipedia.org/wiki/Bohr_magneton">Bohr magnetron</a></td>
-</tr>
 <tr class="row-odd"><td><em>kappa</em></td>
-<td><tt class="docutils literal"><span class="pre">Phi_0/m_e</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">lambda_e*c/2</span></tt></td>
 <td>&nbsp;</td>
 <td>quantum of circulation</td>
 </tr>
-<tr class="row-even"><td><em>M_e</em></td>
+<tr class="row-even"><td><em>m_e</em></td>
+<td><tt class="docutils literal"><span class="pre">Phi_0/kappa</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Electron_mass">electron rest mass per elementary charge</a></td>
+</tr>
+<tr class="row-odd"><td><em>r_e</em></td>
+<td><tt class="docutils literal"><span class="pre">k_A/m_e</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Classical_electron_radius">classical electron radius per elementary charge</a> (aka Lorentz radius or Thomson scattering length)</td>
+</tr>
+<tr class="row-even"><td><em>mu_B</em></td>
+<td><tt class="docutils literal"><span class="pre">kappa*e*sp/2</span></tt></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="https://en.wikipedia.org/wiki/Bohr_magneton">Bohr magnetron</a></td>
+</tr>
+<tr class="row-odd"><td><em>M_e</em></td>
 <td><tt class="docutils literal"><span class="pre">m_e*e</span></tt></td>
 <td>&nbsp;</td>
 <td>mass of an electron (aka Hartree mass)</td>
 </tr>
-<tr class="row-odd"><td><em>l_H</em></td>
-<td><tt class="docutils literal"><span class="pre">(2*Phi_0*rad)**2/(k_C*M_e)</span></tt></td>
-<td>&nbsp;</td>
-<td>Hartree length</td>
-</tr>
 <tr class="row-even"><td><em>t_H</em></td>
-<td><tt class="docutils literal"><span class="pre">l_H*sqrt(M_e/Ha)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">a_0*sqrt(M_e/Ha)</span></tt></td>
 <td>&nbsp;</td>
 <td>Hartree time</td>
 </tr>
@@ -552,7 +552,7 @@ units besides the <a class="reference external" href="http://en.wikipedia.org/wi
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Ampere-turn">ampere-turn</a></td>
 </tr>
 <tr class="row-odd"><td>D</td>
-<td><tt class="docutils literal"><span class="pre">cm**2*cP/(atm*s)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">cdyn/atm</span></tt></td>
 <td><em>True</em></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Darcy_(unit)">darcy</a></td>
 </tr>
@@ -561,7 +561,7 @@ units besides the <a class="reference external" href="http://en.wikipedia.org/wi
 <td><em>True</em></td>
 <td><a class="reference external" href="https://en.wikipedia.org/wiki/Atomic_mass_unit">unified atomic mass unit</a> (aka dalton (Da))</td>
 </tr>
-<tr class="row-odd"><td>M_u</td>
+<tr class="row-odd"><td><em>M_u</em></td>
 <td><tt class="docutils literal"><span class="pre">u/N_A</span></tt></td>
 <td>&nbsp;</td>
 <td><a class="reference external" href="https://en.wikipedia.org/wiki/Atomic_mass_constant">atomic mass constant</a></td>
@@ -570,7 +570,7 @@ units besides the <a class="reference external" href="http://en.wikipedia.org/wi
 </table>
 <p>Since angle is explicit, it appears in several of the constants and units:</p>
 <ul class="simple">
-<li><em>mu_0</em> ≈ 10<sup>-7</sup> H m<sup>-1</sup> sr<sup>-1</sup>
+<li><em>mu_0</em> ≈ 4 <em>pi</em> 10<sup>-7</sup> H m<sup>-1</sup> cyc<sup>-2</sup>
 <a class="footnote-reference" href="#f1" id="id4">[1]</a></li>
 <li><em>Z_0</em> ≈ 376.730 ohm cyc<sup>-1</sup> <a class="footnote-reference" href="#f1" id="id5">[1]</a></li>
 <li><em>kappa</em> ≈ 3.637×10<sup>-4</sup> m<sup>2</sup> s<sup>-1</sup> cyc<sup>-1</sup>
@@ -581,9 +581,9 @@ units besides the <a class="reference external" href="http://en.wikipedia.org/wi
 <li>Oe = 5 kA rad m<sup>-1</sup>
 = 0.25 kA cyc <em>pi</em><sup>-1</sup> m<sup>-1</sup>
 = 250 AT <em>pi</em><sup>-1</sup> m<sup>-1</sup></li>
-<li>Gs = 10<sup>-4</sup> T = 10<sup>-4</sup> Wb m<sup>-2</sup>
-= 10<sup>-4</sup> V Hz<sup>-1</sup> m<sup>-2</sup> <a class="footnote-reference" href="#f2" id="id7">[2]</a></li>
-<li>Mx = Gs cm<sup>2</sup> = 10<sup>-8</sup> V Hz<sup>-1</sup> <a class="footnote-reference" href="#f2" id="id8">[2]</a></li>
+<li>Mx = erg abA<sup>-1</sup> cyc<sup>-1</sup> = 10<sup>-8</sup> V Hz<sup>-1</sup> <a class="footnote-reference" href="#f2" id="id7">[2]</a></li>
+<li>Gs = Mx cm<sup>2</sup> = 10<sup>-4</sup> Wb m<sup>-2</sup>
+= 10<sup>-4</sup> V Hz<sup>-1</sup> m<sup>-2</sup> <a class="footnote-reference" href="#f2" id="id8">[2]</a></li>
 <li>statWb = statV Hz<sup>-1</sup> <a class="footnote-reference" href="#f2" id="id9">[2]</a></li>
 <li>statT = statWb cm<sup>2</sup>
 = statV Hz<sup>-1</sup> cm<sup>2</sup> <a class="footnote-reference" href="#f2" id="id10">[2]</a></li>
@@ -701,12 +701,12 @@ London, July 1956.</td></tr>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">natu v0.1.0-a2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
-      Last updated on Aug 08, 2014.
+      Last updated on Aug 12, 2014.
     </div>
   </body>
 </html>

@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.0-a2',
+        VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -59,7 +59,7 @@
         <li class="right" >
           <a href="natu.groups.html" title="natu.groups"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">natu v0.1.0-a2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -74,7 +74,7 @@
 <p>Many of the functions only accept dimensionless quantities, and they
 operate on the underlying values&#8212;not the values as represented in a
 particular display unit.  To operate on values in a display unit would be
-to favor a particular unit, which is against one of the <a class="reference external" href="kdavies4.github.io/natu/">design principles of
+to favor a particular unit, which is against one of the <a class="reference external" href="index.html">design principles of
 the package</a>.</p>
 <p>The constants (<em>pi</em>, <em>e</em>) are exactly as they are in <a class="reference external" href="https://docs.python.org/3/library/math.html">Python math</a>.</p>
 <p>These functions accept floats, integers, and dimensionless quantities:</p>
@@ -117,16 +117,16 @@ is a quantity:</p>
 <li><tt class="xref py py-func docutils literal"><span class="pre">ceil()</span></tt> and <tt class="xref py py-func docutils literal"><span class="pre">floor()</span></tt></li>
 </ul>
 <p>If the input is a float or an integer, the output is a float.  If the
-input is a <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a
-<a class="reference internal" href="natu.types.html#natu.types.ScalarUnit" title="natu.types.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is the same and has the same
+input is a <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a
+<a class="reference internal" href="natu.core.html#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is the same and has the same
 <tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>, <tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt>, etc.</p>
 <p>These functions accept floats, integers, and quantities:</p>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">fabs()</span></tt> and <tt class="xref py py-func docutils literal"><span class="pre">copysign()</span></tt></li>
 </ul>
 <p>If the input is a float or an integer, the output is a float.  If the
-input is a <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a
-<a class="reference internal" href="natu.types.html#natu.types.ScalarUnit" title="natu.types.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is of the same type and has
+input is a <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a
+<a class="reference internal" href="natu.core.html#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is of the same type and has
 the same <tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>, <tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt>, etc. (of the first argument
 in the case of <tt class="xref py py-func docutils literal"><span class="pre">copysign()</span></tt>).</p>
 <p>These functions also accept floats, integers, and quantities:</p>
@@ -134,8 +134,8 @@ in the case of <tt class="xref py py-func docutils literal"><span class="pre">co
 <li><tt class="xref py py-func docutils literal"><span class="pre">ldexp()</span></tt>, <a class="reference external" href="https://docs.python.org/library/functions.html#pow" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">pow()</span></tt></a>, and <tt class="xref py py-func docutils literal"><span class="pre">sqrt()</span></tt></li>
 </ul>
 <p>If the input is an float or an integer, the output is a float.  If the
-input is a <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a
-<a class="reference internal" href="natu.types.html#natu.types.ScalarUnit" title="natu.types.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is the same.  The dimensions
+input is a <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a
+<a class="reference internal" href="natu.core.html#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is the same.  The dimensions
 and display units are handled according to the power.</p>
 <p><tt class="xref py py-func docutils literal"><span class="pre">fmod()</span></tt> accepts floats, integers, and quantities of the same
 dimension. The output is always a float.</p>
@@ -233,12 +233,12 @@ ignored.</p>
         <li class="right" >
           <a href="natu.groups.html" title="natu.groups"
              >previous</a> |</li>
-        <li><a href="index.html">natu v0.1.0-a2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
-      Last updated on Aug 08, 2014.
+      Last updated on Aug 12, 2014.
     </div>
   </body>
 </html>

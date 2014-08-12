@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.0-a2',
+        VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -51,7 +51,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">natu v0.1.0-a2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -71,7 +71,7 @@ constants <a class="footnote-reference" href="#f1" id="id1">[1]</a>, and they ca
 <tt class="docutils literal"><span class="pre">epsilon_0</span> <span class="pre">=</span> <span class="pre">1/k_C</span></tt> like the <a class="reference external" href="http://en.wikipedia.org/wiki/Gaussian_units">Gaussian units</a>.</p>
 <p>The following items are automatically provided for use in the definitions:</p>
 <ul class="simple">
-<li>Classes: <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a></li>
+<li>Classes: <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a></li>
 <li>Mathematical constants: <em>pi</em></li>
 </ul>
 <p>The default is the <a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">SI unit system</a> (<a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/base-SI.ini">base-SI.ini</a>), with the following
@@ -80,7 +80,7 @@ definitions:</p>
 <colgroup>
 <col width="7%" />
 <col width="42%" />
-<col width="52%" />
+<col width="51%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Symbol</th>
@@ -104,7 +104,7 @@ definitions:</p>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Josephson_constant">Josephson constant</a></td>
 </tr>
 <tr class="row-even"><td><em>R_K</em></td>
-<td><tt class="docutils literal"><span class="pre">Quantity(25812.807557/(2*pi),</span> <span class="pre">'L2*M/(A*I2*T3)',</span> <span class="pre">'ohm/cyc')</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(25812.8074434/(2*pi),</span> <span class="pre">'L2*M/(A*I2*T3)',</span> <span class="pre">'ohm/cyc')</span></tt></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Von_Klitzing_constant">von Klitzing constant</a></td>
 </tr>
 <tr class="row-odd"><td><em>k_F</em></td>
@@ -117,7 +117,7 @@ definitions:</p>
 </tr>
 <tr class="row-odd"><td><em>k_Aprime</em></td>
 <td><tt class="docutils literal"><span class="pre">Quantity(2*pi,</span> <span class="pre">'A',</span> <span class="pre">'rad')*R_K/c</span></tt></td>
-<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A/(alpha*rad)</span></tt>)</td>
+<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A*cyc/alpha</span></tt>)</td>
 </tr>
 <tr class="row-even"><td colspan="3">&#8212;&#8212; Settings &#8212;&#8212;</td>
 </tr>
@@ -127,7 +127,7 @@ definitions:</p>
 </tr>
 </tbody>
 </table>
-<p>The second argument of the <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> constructor is
+<p>The second argument of the <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> constructor is
 comprised of <a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">SI</a> dimensions (current (I), length (L), mass (M), amount (N),
 time (T), and temperature (Theta)) and an additional dimension to track angle
 (A).  The value of <em>k_Aprime</em> for <a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">SI</a> and most of the other unit systems is
@@ -140,7 +140,7 @@ instead.<a class="footnote-reference" href="#f3" id="id4">[3]</a></p>
 <colgroup>
 <col width="6%" />
 <col width="44%" />
-<col width="50%" />
+<col width="49%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Symbol</th>
@@ -160,15 +160,15 @@ instead.<a class="footnote-reference" href="#f3" id="id4">[3]</a></p>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Speed_of_light">speed of light</a></td>
 </tr>
 <tr class="row-odd"><td><em>k_J</em></td>
-<td><tt class="docutils literal"><span class="pre">Quantity(4835978.70*2*pi,</span> <span class="pre">'A*T/(L(3/2)*M(1/2))',</span> <span class="pre">'s/(Mx*cm)')*c</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(4835978.70*2*pi,</span> <span class="pre">'A*T/(L(3/2)*M(1/2))',</span> <span class="pre">'s/(statT*cm3)')</span></tt></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Josephson_constant">Josephson constant</a></td>
 </tr>
 <tr class="row-even"><td><em>R_K</em></td>
-<td><tt class="docutils literal"><span class="pre">Quantity(25812.807557e9/(2*pi),</span> <span class="pre">'L/(A*T)',</span> <span class="pre">'cm/(s*cyc)')/c**2</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(25812.8074434e9/(2*pi),</span> <span class="pre">'L/(A*T)',</span> <span class="pre">'cm/(s*cyc)')</span></tt></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Von_Klitzing_constant">von Klitzing constant</a></td>
 </tr>
 <tr class="row-odd"><td><em>k_F</em></td>
-<td><tt class="docutils literal"><span class="pre">Quantity(9648.53365,</span> <span class="pre">'M(1/2)*L(1/2)/N',</span> <span class="pre">'g(1/2)*cm(1/2)/mol')*c</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(9648.53365,</span> <span class="pre">'M(1/2)*L(1/2)/N',</span> <span class="pre">'g(1/2)*cm(1/2)/mol')</span></tt></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Faraday_constant">Faraday constant</a></td>
 </tr>
 <tr class="row-even"><td><em>R</em></td>
@@ -176,8 +176,8 @@ instead.<a class="footnote-reference" href="#f3" id="id4">[3]</a></p>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Gas_constant">gas constant</a></td>
 </tr>
 <tr class="row-odd"><td><em>k_Aprime</em></td>
-<td><tt class="docutils literal"><span class="pre">Quantity(2*pi,</span> <span class="pre">'A',</span> <span class="pre">'rad')*R_K/c</span></tt></td>
-<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A/(alpha*rad)</span></tt>)</td>
+<td><tt class="docutils literal"><span class="pre">Quantity(2*pi,</span> <span class="pre">'A',</span> <span class="pre">'cyc')*R_K/c</span></tt></td>
+<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A*cyc/alpha</span></tt>)</td>
 </tr>
 <tr class="row-even"><td colspan="3">&#8212;&#8212; Settings &#8212;&#8212;</td>
 </tr>
@@ -195,7 +195,7 @@ same constants but with <em>rational</em> = <em>True</em>.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="7%" />
-<col width="43%" />
+<col width="42%" />
 <col width="51%" />
 </colgroup>
 <thead valign="bottom">
@@ -216,15 +216,15 @@ same constants but with <em>rational</em> = <em>True</em>.</p>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Speed_of_light">speed of light</a></td>
 </tr>
 <tr class="row-odd"><td><em>k_J</em></td>
-<td><tt class="docutils literal"><span class="pre">Quantity(4835978.70*2*pi,</span> <span class="pre">'A*T/(L(3/2)*M(1/2))',</span> <span class="pre">'s/(Mx*cm)')</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(4835978.70*2*pi,</span> <span class="pre">'A*T/(L(3/2)*M(1/2))',</span> <span class="pre">'1/Mx')</span></tt></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Josephson_constant">Josephson constant</a></td>
 </tr>
 <tr class="row-even"><td><em>R_K</em></td>
-<td><tt class="docutils literal"><span class="pre">Quantity(25812.807557e9/(2*pi),</span> <span class="pre">'L/(A*T)',</span> <span class="pre">'cm/(s*cyc)')</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(25812.8074434e9/(2*pi),</span> <span class="pre">'L/(A*T)',</span> <span class="pre">'cm/(s*cyc)')</span></tt></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Von_Klitzing_constant">von Klitzing constant</a></td>
 </tr>
 <tr class="row-odd"><td><em>k_F</em></td>
-<td><tt class="docutils literal"><span class="pre">Quantity(9648.53365,</span> <span class="pre">'M(1/2)*L(1/2)/N',</span> <span class="pre">'g(1/2)*cm(1/2)/mol')</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">Quantity(9648.53365,</span> <span class="pre">'L(1/2)*M(1/2)/N',</span> <span class="pre">'abC*s/(cm*mol)')*c</span></tt></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Faraday_constant">Faraday constant</a></td>
 </tr>
 <tr class="row-even"><td><em>R</em></td>
@@ -232,8 +232,8 @@ same constants but with <em>rational</em> = <em>True</em>.</p>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Gas_constant">gas constant</a></td>
 </tr>
 <tr class="row-odd"><td><em>k_Aprime</em></td>
-<td><tt class="docutils literal"><span class="pre">Quantity(2*pi,</span> <span class="pre">'A',</span> <span class="pre">'rad')*R_K/c</span></tt></td>
-<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A/(alpha*rad)</span></tt>)</td>
+<td><tt class="docutils literal"><span class="pre">Quantity(2*pi,</span> <span class="pre">'A',</span> <span class="pre">'cyc')*R_K/c</span></tt></td>
+<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A*cyc/alpha</span></tt>)</td>
 </tr>
 <tr class="row-even"><td colspan="3">&#8212;&#8212; Settings &#8212;&#8212;</td>
 </tr>
@@ -245,13 +245,13 @@ same constants but with <em>rational</em> = <em>True</em>.</p>
 </table>
 <p>The next two unit systems are fully <a class="reference external" href="http://en.wikipedia.org/wiki/Natural_units">natural</a>, so all of the quantities are
 dimensionless.  In the definitions, floating point numbers are used instead of
-the <a class="reference internal" href="natu.types.html#natu.types.Quantity" title="natu.types.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> class.</p>
+the <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> class.</p>
 <p>For the <a class="reference external" href="http://en.wikipedia.org/wiki/Atomic_units">Hartree unit system</a> (<a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/base-Hartree.ini">base-Hartree.ini</a>):</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="8%" />
-<col width="27%" />
-<col width="65%" />
+<col width="28%" />
+<col width="64%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Symbol</th>
@@ -263,7 +263,7 @@ the <a class="reference internal" href="natu.types.html#natu.types.Quantity" tit
 <tr class="row-even"><td colspan="3">&#8212;&#8212; Base physical constants &#8212;&#8212;</td>
 </tr>
 <tr class="row-odd"><td><em>R_inf</em></td>
-<td><tt class="docutils literal"><span class="pre">299792458e-7*pi/25812.807557</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">299792458e-7*pi/25812.8074434</span></tt></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Rydberg_constant">Rydberg constant</a></td>
 </tr>
 <tr class="row-even"><td><em>c</em></td>
@@ -288,7 +288,7 @@ the <a class="reference internal" href="natu.types.html#natu.types.Quantity" tit
 </tr>
 <tr class="row-odd"><td><em>k_Aprime</em></td>
 <td><tt class="docutils literal"><span class="pre">2*pi*R_K/c</span></tt></td>
-<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A/(alpha*rad)</span></tt>)</td>
+<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A*cyc/alpha</span></tt>)</td>
 </tr>
 <tr class="row-even"><td colspan="3">&#8212;&#8212; Settings &#8212;&#8212;</td>
 </tr>
@@ -303,7 +303,7 @@ the <a class="reference internal" href="natu.types.html#natu.types.Quantity" tit
 <colgroup>
 <col width="5%" />
 <col width="53%" />
-<col width="42%" />
+<col width="41%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Symbol</th>
@@ -327,7 +327,7 @@ the <a class="reference internal" href="natu.types.html#natu.types.Quantity" tit
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Josephson_constant">Josephson constant</a></td>
 </tr>
 <tr class="row-even"><td><em>R_K</em></td>
-<td><tt class="docutils literal"><span class="pre">sqrt(25812.807557/(2*299792458*1e-7))/(pi*k_J)</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">sqrt(25812.8074434/(2*299792458*1e-7))/(pi*k_J)</span></tt></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Von_Klitzing_constant">von Klitzing constant</a></td>
 </tr>
 <tr class="row-odd"><td><em>k_F</em></td>
@@ -340,12 +340,12 @@ the <a class="reference internal" href="natu.types.html#natu.types.Quantity" tit
 </tr>
 <tr class="row-odd"><td><em>k_Aprime</em></td>
 <td><tt class="docutils literal"><span class="pre">2*(pi*k_J*R_K)**2/c</span></tt></td>
-<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A/(alpha*rad)</span></tt>)</td>
+<td>modified Ampere constant (<tt class="docutils literal"><span class="pre">k_A*cyc/alpha</span></tt>)</td>
 </tr>
 <tr class="row-even"><td colspan="3">&#8212;&#8212; Empirical &#8212;&#8212;</td>
 </tr>
 <tr class="row-odd"><td><em>R_inf</em></td>
-<td><tt class="docutils literal"><span class="pre">10973731.568539*k_J*c**2*sqrt(k_Aprime*6.67384e-11/(G*R_K*25812.807557*299792458**3))/483597.870e9</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">10973731.568539*k_J*c**2*sqrt(k_Aprime*6.67384e-11/(G*R_K*25812.8074434*299792458**3))/483597.870e9</span></tt></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Rydberg_constant">Rydberg constant</a></td>
 </tr>
 <tr class="row-even"><td colspan="3">&#8212;&#8212; Derived &#8212;&#8212;</td>
@@ -489,12 +489,12 @@ Klitzing constant</a>, not on either constant individually.</td></tr>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">natu v0.1.0-a2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">natu documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
-      Last updated on Aug 08, 2014.
+      Last updated on Aug 12, 2014.
     </div>
   </body>
 </html>
