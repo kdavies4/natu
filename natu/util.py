@@ -19,14 +19,14 @@
 - :func:`multiglob` - Return a set of filenames that match sets of pathnames
   and extensions.
 
-- :func:`num2superscript` - Convert a number to Unicode_ superscript.
+- :func:`num2super` - Convert a number to Unicode_ superscript.
 
 - :func:`product` - Return the product of a list of numbers.
 
 - :func:`replace` - Perform a list of replacements on the text in a list of
   files.
 
-- :func:`str2superscript` - Convert a numeric string to Unicode_ superscript.
+- :func:`str2super` - Convert a numeric string to Unicode_ superscript.
 
 - :func:`yes` - Ask a yes/no question and return *True* if the answer is 'Y'
   or 'y'.
@@ -136,7 +136,7 @@ def format_e(num_str, code):
         if code == 'L':
             return base + r' \times 10^{%s}' % exp
         if code == 'P':
-            return base + r'✕10' + str2superscript(exp)
+            return base + r'✕10' + str2super(exp)
     return num_str
 
 def get_group(expr):
@@ -271,16 +271,16 @@ def multiglob(pathnames, extensions={'*.mat'}):
 # - Copyright 2013 by Pint Authors
 # - BSD license
 
-def num2superscript(num):
+def num2super(num):
     """Convert a number to Unicode_ superscript.
     """
     assert num % 1 == 0, "Only whole numbers are supported."
     # As of 7/16/14, there is no Unicode decimal or division sign.
-    return str2superscript('%i' % num)
+    return str2super('%i' % num)
 
 # In Python3, can do this (simpler and probably faster):
 # EXP_TRANS = str.maketrans('0123456789', _UNICODE_EXPS)
-# def num2superscript(num):
+# def num2super(num):
 #     """Return a number as a Unicode superscript.
 #     """
 #     assert num % 1 == 0, "Only whole numbers are supported."
@@ -288,7 +288,7 @@ def num2superscript(num):
 
 _UNICODE_EXPS = '⁰¹²³⁴⁵⁶⁷⁸⁹'
 
-def str2superscript(num_str):
+def str2super(num_str):
     """Convert a numeric string to Unicode_ superscript.
     """
     exp_str = num_str.replace('-', '⁻')

@@ -16,7 +16,7 @@ import re
 
 from collections import Counter
 from fractions import Fraction
-from .util import get_group, num2superscript
+from .util import get_group, num2super
 
 # Default keyword arguments sent to format()
 _DEFAULT_FORMAT = dict(
@@ -54,7 +54,7 @@ _FORMATS = {
     dict(_DEFAULT_FORMAT,
          mul=' ',
          div=None,
-         exp_call=num2superscript,
+         exp_call=num2super,
          ),
     'V':  # Verbose
     dict(_DEFAULT_FORMAT,
@@ -239,7 +239,7 @@ class Exponents(Counter):
          - Exponents directly follow the symbols of the bases.
          - '*' indicates multiplication and '/' indicates division.
          - If the denominator contains multiple factors, they are grouped
-           with parentheses.
+           in parentheses.
 
     - 'H' (HTML):
 
@@ -247,7 +247,7 @@ class Exponents(Counter):
          - A non-breaking space ('&nbsp;') indicates multiplication and
            '/' indicates division.
          - If the denominator contains multiple factors, they are grouped
-           with parentheses.
+           in parentheses.
 
     - 'L' (LaTeX_ math):
 
@@ -255,7 +255,7 @@ class Exponents(Counter):
          - Back-to-back factors indicate multiplication and '/' indicates
            division.
          - If the denominator contains multiple factors, they are grouped
-           with parentheses.
+           in parentheses.
          - The output must be typeset in LaTeX_ math mode (e.g.,
            surround it with '$...$').
 
@@ -274,7 +274,7 @@ class Exponents(Counter):
          - Exponents are prefixed by '**'.
          - ' * ' indicates multiplication and ' / ' indicates division.
          - If the denominator contains multiple factors, they are grouped
-           with parentheses.
+           in parentheses.
 
     **Example:**
 
@@ -285,7 +285,10 @@ class Exponents(Counter):
 
     .. _Unicode: https://en.wikipedia.org/wiki/Unicode
     .. _LaTeX: http://www.latex-project.org/
-    .. [Modelica]: Modelica Specification, version 3.3, p. 235--236
+
+    .. rubric:: References
+
+    .. [Modelica] Modelica Specification, version 3.3, p. 235--236
        (https://www.modelica.org/documents)
     """
 

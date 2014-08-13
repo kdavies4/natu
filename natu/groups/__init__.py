@@ -3,8 +3,8 @@ r"""Modules with groups of units
 
 The :mod:`~natu.groups.si` module includes all of the base and derived `SI
 units`_.  The :mod:`~natu.groups.constants` module contains all constants
-(physical quantities which are not units).  The following modules contain
-all of the constants and units with the indicated dimension:
+(physical quantities which are not units).  These modules contain all of the
+constants and units with the indicated dimension:
 
 - :mod:`~natu.groups.acceleration`
 - :mod:`~natu.groups.amount`

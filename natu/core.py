@@ -168,7 +168,7 @@ from os.path import dirname
 from types import ModuleType
 from functools import wraps
 # from warnings import warn
-from .util import format_e, product, str2superscript
+from .util import format_e, product, str2super
 from ._prefixes import PREFIXES
 from .config import simplification_level, use_quantities, unit_replacements
 from .exponents import Exponents, split_code, u, i
@@ -1593,8 +1593,7 @@ class UnitsModule(ModuleType):
 
     Only one :class:`UnitsModule` can be instantiated from \*.ini files
     per Python session.  This prevents conflicts that might arise if the
-    units were reloaded with different base constants.  However,
-    additional units can be loaded later; see :mod:`natu.units`.
+    units were reloaded with different base constants.
     """
 
     def __init__(self, module, definitions):
