@@ -1,4 +1,4 @@
-2014-08-13 21:13:51Z
+2014-08-13 22:04:41Z
 
 Kevin Davies
 
@@ -10,4 +10,4 @@ For a released copy, please see the
 [main project page](http://kdavies4.github.io/natu/),
 [PyPI](https://pypi.python.org/pypi/natu), or the release tags in the
 [GitHub repository](https://github.com/kdavies4/natu).
-The last version was v0.1.0-a2.
+The last version was v0.1.0-a3.

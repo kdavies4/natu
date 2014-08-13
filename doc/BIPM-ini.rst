@@ -76,7 +76,7 @@ mmHg     ``mm*Hg``                                              *False*    `mill
 bar      ``100*kPa``                                            *True*     `bar <http://en.wikipedia.org/wiki/Bar_(unit)>`_
 b        ``100*fm**2``                                          *False*    `barn <http://en.wikipedia.org/wiki/Barn_(unit)>`_
 angstrom ``0.1*nm``                                             *False*    `angstrom <http://en.wikipedia.org/wiki/Angstrom>`_
-M        ``1852*m``                                             *False*    `nautical mile <http://en.wikipedia.org/wiki/Nautical_mile>`_
+nmi      ``1852*m``                                             *False*    `nautical mile <http://en.wikipedia.org/wiki/Nautical_mile>`_
 kn       ``M/hr``                                               *False*    `knot <http://en.wikipedia.org/wiki/Knot_(unit)>`_
 Np       ``(exp, log)``                                         *False*    `neper <http://en.wikipedia.org/wiki/Neper>`_ (in terms of amplitude ratio, not power ratio)
 B        ``(lambda n: 10**n, log10)``                           *True*     bel (in terms of power ratio, not amplitude ratio)
@@ -102,8 +102,9 @@ J rad\ :superscript:`-1` but not N m or J.  Also note that the `steradian
 
 deg, arcmin, and arcsec are used as the symbols for the degree_, arcminute_, and
 arcsecond_ since the symbols in Table 6 of [BIPM2006]_ are not valid Python
-names.  hr is used as the symbol for the hour_ (instead of h as in [BIPM2006]_)
-since *h* is used for the `Planck constant`_.
+names.  hr is used as the symbol for the hour_ (instead of h per [BIPM2006]_)
+since *h* is used for the `Planck constant`_.  nmi is used as the symbol
+(instead of M per [BIPM2006]_) since M is used for the `unit molar`_.
 
 In general, prefixes are not included because they are added upon access.
 However, [BIPM2006]_ (and BIPM.ini_) includes two units with explicit prefixes:
@@ -116,6 +117,7 @@ kg and dB.
 .. _henry (H): http://en.wikipedia.org/wiki/Henry_(unit)
 .. _solid angle: http://en.wikipedia.org/wiki/Solid_angle
 .. _Planck constant: http://en.wikipedia.org/wiki/Planck_constant
+.. _unit molar: http://en.wikipedia.org/wiki/Molar_concentration#Units
 
 .. rubric:: References
 

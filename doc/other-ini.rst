@@ -89,7 +89,7 @@ degR        ``K*5/9``                                                    *False*
 degF        ``(lambda n: (n + 459.67)*degR, lambda T: T/degR - 459.67)`` *False*    `degree Fahrenheit <http://en.wikipedia.org/wiki/Fahrenheit>`_
 ------ Dimensionless ------
 -------------------------------------------------------------------------------------------------
-pct         ``0.01``                                                     *False*    `percent (%) <http://en.wikipedia.org/wiki/Percent>`_
+pct         ``0.01``                                                     *False*    `percent <http://en.wikipedia.org/wiki/Percent>`_ (%)
 ppm         ``1e-6``                                                     *False*    `parts per million <http://en.wikipedia.org/wiki/Parts_per_million>`_
 ppb         ``1e-9``                                                     *False*    `parts per billion <http://en.wikipedia.org/wiki/Parts_per_billion>`_
 ppt         ``1e-12``                                                    *False*    `parts per trillion <http://en.wikipedia.org/wiki/Parts_per_trillion>`_
@@ -143,6 +143,7 @@ statT       ``statWb/cm**2``                                             *True* 
 AT          ``A*cyc``                                                    *False*    `ampere-turn <http://en.wikipedia.org/wiki/Ampere-turn>`_
 D           ``cdyn/atm``                                                 *True*     `darcy <http://en.wikipedia.org/wiki/Darcy_(unit)>`_
 u           ``g/mol``                                                    *True*     `unified atomic mass unit <https://en.wikipedia.org/wiki/Atomic_mass_unit>`_ (aka dalton (Da))
+M           ``mol/L``                                                    *True*     `molar <http://en.wikipedia.org/wiki/Molar_concentration#Units>`_
 *M_u*       ``u/N_A``                                                               `atomic mass constant <https://en.wikipedia.org/wiki/Atomic_mass_constant>`_
 =========== ============================================================ ========== =============
 

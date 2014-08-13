@@ -4,9 +4,8 @@
 
 **Natural units in Python**
 
-.. warning:: This project is currently in a pre-release state because it has not
-   been fully tested.  It will be officially released once the unit tests are
-   complete.
+.. warning:: This project is currently in a pre-release state.  It will be
+   officially released once the unit tests are complete.
 
 natu_ is a free, open-source package to represent physical quantities.  There
 are many Python_ packages that deal with units and quantities (see `here
@@ -80,5 +79,4 @@ bug, have a suggestion, or just want to leave a comment, please `open an issue
 .. _statcoulomb: http://en.wikipedia.org/wiki/Statcoulomb
 .. _math: https://docs.python.org/3/library/math.html
 .. _numpy: http://numpy.scipy.org/
-.. _natu: http://kdavies4.github.io/natu/
 .. _visit the main website: http://kdavies4.github.io/natu/
