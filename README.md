@@ -3,9 +3,8 @@ natu
 
 **Natural units in Python**
 
-**Warning:** This project is currently in a pre-release state because it has not
-been fully tested.  It will be officially released once the unit tests are
-complete.
+**Warning:** This project is currently in a pre-release state.  It will be
+officially released once the unit tests are complete.
 
 [natu] is a free, open-source package to represent physical quantities.  There are
 many [Python] packages that deal with units and quantities (see
