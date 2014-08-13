@@ -40,9 +40,8 @@ For example, you can do this:
 
 Please `see the tutorial
 <http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb>`_
-for more examples.  natu_ incorporates some of the best features of the
-existing packages and introduces some novel features.  For the full
-documentation, please `visit the main website`_.
+for more examples.  For the full documentation, please `visit the main
+website`_.
 
 Installation
 ~~~~~~~~~~~~

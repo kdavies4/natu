@@ -142,9 +142,8 @@ statT       ``statWb/cm**2``                                             *True* 
 -------------------------------------------------------------------------------------------------
 AT          ``A*cyc``                                                    *False*    `ampere-turn <http://en.wikipedia.org/wiki/Ampere-turn>`_
 D           ``cdyn/atm``                                                 *True*     `darcy <http://en.wikipedia.org/wiki/Darcy_(unit)>`_
-u           ``g/mol``                                                    *True*     `unified atomic mass unit <https://en.wikipedia.org/wiki/Atomic_mass_unit>`_ (aka dalton (Da))
+u           ``g/(N_A*mol)``                                              *True*     `unified atomic mass unit <https://en.wikipedia.org/wiki/Atomic_mass_unit>`_ (aka dalton (Da))
 M           ``mol/L``                                                    *True*     `molar <http://en.wikipedia.org/wiki/Molar_concentration#Units>`_
-*M_u*       ``u/N_A``                                                               `atomic mass constant <https://en.wikipedia.org/wiki/Atomic_mass_constant>`_
 =========== ============================================================ ========== =============
 
 Since angle is explicit, it appears in several of the constants and units:

@@ -39,9 +39,7 @@ For example, you can do this:
 
 Please
 [see the tutorial](http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb)
-for more examples.  [natu] incorporates some of the best features of the
-existing packages and introduces some novel features.  For the full
-documentation, [visit the main website][natu].
+for more examples.  For the full documentation, [visit the main website][natu].
 
 #### Installation
 
