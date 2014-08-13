@@ -69,28 +69,24 @@
 <p><strong>Natural units in Python</strong></p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This project is currently in a pre-release state because it has not
-been fully tested.  It will be officially released once the unit tests are
-complete.</p>
+<p class="last">This project is currently in a pre-release state.  It will be
+officially released once the unit tests are complete.</p>
 </div>
 <p>natu is a free, open-source package to represent physical quantities.  There are
-many <a class="reference external" href="http://www.python.org/">Python</a> packages that deal with units and quantities (see the
-<a class="reference internal" href="#seealso"><em>list below</em></a>), but natu is unique because it is truly
-system-independent.  The units are derived from physical constants with
-adjustable values and dimensions.  The value of a unit is factored into a
-quantity so that the quantity is not &#8220;in&#8221; any particular unit.  This offers the
-following advantages:</p>
+many <a class="reference external" href="http://www.python.org/">Python</a> packages that deal with units and quantities (see <a class="reference external" href="seealso">here</a>), but natu is uniquely system-independent.  The units are derived
+from physical constants with adjustable values and dimensions.  The value of a
+unit is factored into a quantity so that the quantity is not &#8220;in&#8221; any particular
+unit.  This has the following advantages:</p>
 <ul class="simple">
 <li><strong>Flexibility</strong>: Different unit systems, including natural units (hence the
 name &#8220;natu&#8221;), can be represented by simply adjusting the physical constants.</li>
 <li><strong>Simplicity</strong>: Unit conversion is inherent.  This results in quick
-computations and a small code base (&lt;1500 lines).  By default, dimensions and
-display units are tracked to catch errors and for string formatting,
-respectively.  However, this feature can be turned off to reduce the
-computational overhead to nearly zero while still allowing input and output in
-mixed units.</li>
-<li><strong>Scalability</strong>: Numerical scaling is independent of the units used to create
-quantities.  This can be used to prevent exponent overflow <a class="reference internal" href="#davies2012" id="id1">[Davies2012]</a>,
+computations and a small code base.  By default, dimensions and display units
+are tracked to catch errors and for string formatting, respectively.  However,
+this can be turned off to reduce the computational overhead to nearly zero
+while still providing the core features.</li>
+<li><strong>Scalability</strong>: The values of the base physical constants can scaled to
+prevent exponent overflow, regardless of the units used <a class="reference internal" href="#davies2012" id="id1">[Davies2012]</a>,
 <a class="footnote-reference" href="#f1" id="id2">[1]</a>.</li>
 <li><strong>Intuitive</strong>: Each unit is a fixed quantity which can be treated as a
 mathematical entity.  A variable quantity is expressed as the product of a
@@ -100,49 +96,34 @@ are defined: standards organizations such as <a class="reference external" href=
 physical constants so that the values of units can be determined by physical
 experiments instead of prototypes.</li>
 </ul>
-<p>Please <a class="reference external" href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">view the tutorial</a>
-to see how natu is used.  natu incorporates some of the best features of the
-existing packages and introduces some novel features:</p>
+<p>natu incorporates some of the best features of the existing packages and
+introduces some novel features:</p>
 <ul class="simple">
-<li>All constants and units are defined in <a class="reference external" href="http://kdavies4.github.io/natu/definitions.html">INI files</a>.  Units can be added or
-removed.</li>
-<li>Units with offsets (e.g., <a class="reference external" href="http://en.wikipedia.org/wiki/Celsius">degree Celsius (degC)</a>) and even nonlinear
-functions (e.g., <a class="reference external" href="http://en.wikipedia.org/wiki/Decibel">decibel (dB)</a>) are supported.</li>
+<li>Constants and units are defined in <a class="reference external" href="definitions.html">INI files</a>.  Units can
+be added or removed.</li>
+<li>Units with offsets (e.g., <a class="reference external" href="http://en.wikipedia.org/wiki/Celsius">Celsius</a>) and even nonlinear functions (e.g., the
+<a class="reference external" href="http://en.wikipedia.org/wiki/Decibel">decibel</a>) are supported.</li>
 <li>Display units can be simplified automatically using <a class="reference external" href="http://en.wikipedia.org/wiki/Coherence_(units_of_measurement)">coherent relations</a>
 gathered from the unit definitions.</li>
-<li>All units can be imported directly (<tt class="docutils literal"><span class="pre">from</span> <span class="pre">natu.units</span> <span class="pre">import</span> <span class="pre">*</span></tt>), selectively
-imported (<tt class="docutils literal"><span class="pre">from</span> <span class="pre">natu.units</span> <span class="pre">import</span> <span class="pre">m,</span> <span class="pre">kg,</span> <span class="pre">s</span></tt>), or used from within a package
-(<tt class="docutils literal"><span class="pre">from</span> <span class="pre">natu</span> <span class="pre">import</span> <span class="pre">units</span> <span class="pre">as</span> <span class="pre">U;</span> <span class="pre">length</span> <span class="pre">=</span> <span class="pre">10*U.m</span></tt>).</li>
-<li>Prefixes are automatically applied to units upon import or access.</li>
-<li>Units are automatically copied and sorted into convenient groups (see
+<li>Units are automatically copied and sorted into convenient submodules (see
 <a class="reference internal" href="natu.groups.html#module-natu.groups" title="natu.groups"><tt class="xref py py-mod docutils literal"><span class="pre">natu.groups</span></tt></a>).</li>
+<li>Prefixes are automatically available.</li>
 <li>Rationalized and unrationalized unit systems are supported.</li>
-<li>Modules are provided as drop-in quantity-aware replacements for <a class="reference external" href="https://docs.python.org/library/math.html#module-math" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">math</span></tt></a>
-and <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.8)"><tt class="xref py py-mod docutils literal"><span class="pre">numpy</span></tt></a>.</li>
+<li>Drop-in, quantity-aware replacements are available for <a class="reference external" href="https://docs.python.org/library/math.html#module-math" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">math</span></tt></a> and
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.8)"><tt class="xref py py-mod docutils literal"><span class="pre">numpy</span></tt></a>.</li>
 <li>There are no external dependencies.  Only the <a class="reference external" href="https://docs.python.org/3/library/">Python Standard Library</a> is
 required; <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.8)"><tt class="xref py py-mod docutils literal"><span class="pre">numpy</span></tt></a> is optional.</li>
-<li>Fractional exponents can be used for units as well as quantities (e.g., in the
-definition of the <a class="reference external" href="http://en.wikipedia.org/wiki/Statcoulomb">statcoulomb</a>).</li>
+<li>Fractional exponents can be used for units and quantities (e.g., for the
+<a class="reference external" href="http://en.wikipedia.org/wiki/Statcoulomb">statcoulomb</a>).</li>
 </ul>
-<p>The links in the sidebar provide the full documentation and more examples.</p>
-<p><strong>Installation</strong></p>
-<p>The easiest way to install natu is to use <a class="reference external" href="https://pypi.python.org/pypi/pip">pip</a>:</p>
-<div class="highlight-python"><div class="highlight"><pre>&gt; pip install natu
+<p>For example, you can do this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.units</span> <span class="kn">import</span> <span class="n">degC</span><span class="p">,</span> <span class="n">K</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="mi">0</span><span class="o">*</span><span class="n">degC</span> <span class="o">+</span> <span class="mi">100</span><span class="o">*</span><span class="n">K</span><span class="p">)</span>
+<span class="go">100.0 degC</span>
 </pre></div>
 </div>
-<p>On Linux, it may be necessary to have root privileges:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ sudo pip install natu
-</pre></div>
-</div>
-<p>Another way is to download and extract a copy of the package from the sidebar on
-the left.  Run the following command from the base folder:</p>
-<div class="highlight-python"><div class="highlight"><pre>&gt; python setup.py install
-</pre></div>
-</div>
-<p>Or, on Linux:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ sudo python setup.py install
-</pre></div>
-</div>
+<p>Please <a class="reference external" href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">see the tutorial</a>
+for more examples.  The links in the sidebar give the <a class="reference external" href="install.html">installation instructions</a> and more information.</p>
 <p><strong>License terms and development</strong></p>
 <p>natu is published under a <a class="reference external" href="license.html">BSD-compatible license</a>.  Please
 share any improvements you make, preferably as a pull request to the <tt class="docutils literal"><span class="pre">master</span></tt>
@@ -150,23 +131,6 @@ branch of the <a class="reference external" href="https://github.com/kdavies4/na
 the <a class="reference external" href="https://github.com/kdavies4/natu/blob/master/hooks/">hooks folder</a>.  If
 you find a bug, have a suggestion, or just want to leave a comment, please <a class="reference external" href="https://github.com/kdavies4/natu/issues/new">open
 an issue</a>.</p>
-<p id="seealso"><strong>See also</strong></p>
-<ul class="simple">
-<li><a class="reference external" href="http://astropy.readthedocs.org/en/latest/units/">astropy.units</a></li>
-<li><a class="reference external" href="http://code.google.com/p/buckingham/">Buckingham</a></li>
-<li><a class="reference external" href="http://www.inference.phy.cam.ac.uk/db410/">DimPy</a></li>
-<li><a class="reference external" href="http://juanreyero.com/open/magnitude/">Magnitude</a></li>
-<li><a class="reference external" href="https://pypi.python.org/pypi/numericalunits">NumericalUnits</a></li>
-<li><a class="reference external" href="http://pint.readthedocs.org/">Pint</a></li>
-<li><a class="reference external" href="https://pypi.python.org/pypi/quantities">Python-quantities</a></li>
-<li><a class="reference external" href="http://russp.us/scalar-guide.htm">Scalar</a></li>
-<li><a class="reference external" href="http://dirac.cnrs-orleans.fr/ScientificPython/ScientificPythonManual/Scientific.Physics.PhysicalQuantities-module.html">Scientific.Physics.PhysicalQuantities</a></li>
-<li><a class="reference external" href="http://scimath.readthedocs.org/en/latest/units/intro.html">SciMath</a></li>
-<li><a class="reference external" href="http://docs.sympy.org/dev/modules/physics/units.html">sympy.physics.units</a></li>
-<li><a class="reference external" href="https://github.com/blazetopher/udunitspy">udunitspy</a></li>
-<li><a class="reference external" href="https://bitbucket.org/adonohue/units/">Units</a></li>
-<li><a class="reference external" href="https://bitbucket.org/kiv/unum/">Unum</a></li>
-</ul>
 <div class="toctree-wrapper compound">
 </div>
 <p class="rubric">References</p>
@@ -214,6 +178,7 @@ overflow in commonly used molecular force calculations.&#8221;</div></blockquote
               <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
             </a></p><h3>Project Info</h3>
   <ul>
+  <li><a href="install.html">Installation</a></li>
   <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
   <li><a href="credits.html">Credits</a></li>
   <li><a href="license.html">License</a></li>
@@ -245,6 +210,7 @@ overflow in commonly used molecular force calculations.&#8221;</div></blockquote
     <li><a href="https://pypi.python.org/pypi/natu">natu @ PyPI</a></li>
     <li><a href="https://github.com/kdavies4/natu">Code in GitHub</a></li>
     <li><a href="https://github.com/kdavies4/natu/issues">Issue tracker</a></li>
+    <li><a href="seealso.html">See also</a></li>
   </ul>
 <div id="searchbox" style="display: none" role="search">
   <h3><a href="search.html">Search</a></h3>
@@ -260,8 +226,8 @@ overflow in commonly used molecular force calculations.&#8221;</div></blockquote
 <script type="text/javascript">$('#searchbox').show(0);</script><h3>Download</h3>
   <ul>
     <li><a itemprop="downloadUrl"
-           href="https://pypi.python.org/packages/source/n/natu/natu-0.1.0-a2.tar.gz"
-           rel="nofollow">Latest version<br>(v0.1.0-a2, 2014-08-08)</a></li>
+           href="https://pypi.python.org/packages/source/n/natu/natu-0.1.0-a3.tar.gz"
+           rel="nofollow">Latest version<br>(v0.1.0-a3, 2014-08-13)</a></li>
   </ul>
         </div>
       </div>
@@ -284,7 +250,7 @@ overflow in commonly used molecular force calculations.&#8221;</div></blockquote
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
-      Last updated on Aug 12, 2014.
+      Last updated on Aug 13, 2014.
     </div>
   </body>
 </html>

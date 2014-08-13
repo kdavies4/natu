@@ -1,7 +1,0 @@
-<map id="inheritance23f6634170" name="inheritance23f6634170">
-<area shape="rect" id="node1" href="#natu.types.DimensionedObject" title="Base type that tracks physical dimension and display unit" alt="" coords="5,30,224,55"/>
-<area shape="rect" id="node3" href="#natu.types.Unit" title="Base class for a unit" alt="" coords="287,5,407,30"/>
-<area shape="rect" id="node4" href="#natu.types.Quantity" title="Class to represent a physical quantity" alt="" coords="273,54,421,79"/>
-<area shape="rect" id="node2" href="#natu.types.LambdaUnit" title="Unit that involves a offset or other operations besides scaling" alt="" coords="470,5,642,30"/>
-<area shape="rect" id="node5" href="#natu.types.ScalarUnit" title="Unit that involves just a scaling factor" alt="" coords="476,54,636,79"/>
-</map>
