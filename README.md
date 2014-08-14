@@ -7,14 +7,13 @@ natu
 officially released once the unit tests are complete.
 
 [natu] is a free, open-source package to represent physical quantities.  There are
-many [Python] packages that deal with units and quantities (see
-[here](http://kdavies4.github.io/natu/seealso.html)), but [natu] is uniquely
-system-independent.  The units are derived from physical constants with
-adjustable values and dimensions.  The value of a unit is factored into a
-quantity so that the quantity is not "in" any particular unit.  This has the
-following advantages:
+[many Python packages that deal with units and quantities](http://kdavies4.github.io/natu/seealso.html),
+but [natu] is uniquely system-independent.  The units are derived from physical
+constants with adjustable values and dimensions.  The value of a unit is
+factored into a quantity so that the quantity is not "in" any particular unit.
+This has the following advantages:
 
-- **Flexibility**: Different unit systems, including natural units (hence the
+- **Flexibility**: Different unit systems, including [natural units] (hence the
   name "natu"), can be represented by simply adjusting the physical constants.
 - **Simplicity**: Unit conversion is inherent.  This results in quick
   computations and a small code base.  By default, dimensions and display units
@@ -65,14 +64,13 @@ leave a comment, please
 [![Code Health](https://landscape.io/github/kdavies4/natu/master/landscape.png)](https://landscape.io/github/kdavies4/natu)
 
 
-[Python]: http://www.python.org/
 [natu]: http://kdavies4.github.io/natu
+[natural units]: http://en.wikipedia.org/wiki/Natural_units
 [Python Standard Library]: https://docs.python.org/3/library/
 [GitHub repository]: https://github.com/kdavies4/natu
 [NIST]: http://www.nist.gov/
 [BIPM]: http://www.bipm.org/
 [pip]: https://pypi.python.org/pypi/pip
-[Python]: http://www.python.org/
 [pip]: https://pypi.python.org/pypi/pip
 [degree Celsius (degC)]: http://en.wikipedia.org/wiki/Celsius
 [decibel (dB)]: http://en.wikipedia.org/wiki/Decibel
