@@ -71,7 +71,7 @@ t        ``Mg``                                                 *False*    `tonn
 ---------------------------------------------------------------------------------------
 *g_0*    ``9.80665*m/s**2``                                                `standard gravity <http://en.wikipedia.org/wiki/Standard_gravity>`_ [#f1]_, [#f2]_
 cc       ``cm**3``                                              *False*    `cubic centimeter <http://en.wikipedia.org/wiki/Cubic_centimeter>`_ [#f1]_
-*Hg*     ``13.5951*g*g_0/cc``                                   *False*    force per volume of mercury under standard gravity [#f1]_, [#f2]_
+*Hg*     ``13.5951*g*g_0/cc``                                              force per volume of `mercury <http://en.wikipedia.org/wiki/Mercury_(element)>`_ under `standard gravity`_ [#f1]_, [#f2]_
 mmHg     ``mm*Hg``                                              *False*    `millimeter of mercury <http://en.wikipedia.org/wiki/Millimeter_of_mercury>`_
 bar      ``100*kPa``                                            *True*     `bar <http://en.wikipedia.org/wiki/Bar_(unit)>`_
 b        ``100*fm**2``                                          *False*    `barn <http://en.wikipedia.org/wiki/Barn_(unit)>`_
