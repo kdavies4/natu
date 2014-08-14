@@ -32,6 +32,7 @@ pica        ``inch/6``                                                   *False*
 point       ``pica/12``                                                  *False*    `point <http://en.wikipedia.org/wiki/Point_(typography)>`_
 ------ Mass ------
 -------------------------------------------------------------------------------------------------
+u           ``g/(N_A*mol)``                                              *True*     `unified atomic mass unit <https://en.wikipedia.org/wiki/Atomic_mass_unit>`_ (aka dalton (Da))
 oz          ``28.349523125*g``                                           *False*    `avoirdupois ounce <http://en.wikipedia.org/wiki/Ounce#International_avoirdupois_ounce>`_
 lb          ``16*oz``                                                    *False*    `pound <http://en.wikipedia.org/wiki/Pound_(mass)>`_
 ton         ``2e3*lb``                                                   *False*    `short ton <http://en.wikipedia.org/wiki/Short_ton>`_
@@ -82,7 +83,7 @@ mph         ``mi/hr``                                                    *False*
 kph         ``km/hr``                                                    *False*    `kilometres per hour <http://en.wikipedia.org/wiki/Kilometers_per_hour>`_
 ------ Frequency/Angular velocity ------
 -------------------------------------------------------------------------------------------------
-rpm         ``cyc/min``                                                  *False*    `revolutions per minute <http://en.wikipedia.org/wiki/Revolutions_per_minute>`_
+rpm         ``cyc/min``                                                  *False*    `revolution per minute <http://en.wikipedia.org/wiki/Revolutions_per_minute>`_
 ------ Temperature ------
 -------------------------------------------------------------------------------------------------
 degR        ``K*5/9``                                                    *False*    `degree Rankine <http://en.wikipedia.org/wiki/Rankine_scale>`_
@@ -117,7 +118,7 @@ abohm       ``s/abF``                                                    *True* 
 abH         ``abohm*s``                                                  *True*     `abhenry <http://en.wikipedia.org/wiki/Abhenry>`_
 ------ CGS units (ESU_ and Gaussian_) ------
 -------------------------------------------------------------------------------------------------
-statC       ``abA*cm``                                                   *True*     `statcoulomb <https://en.wikipedia.org/wiki/Statcoulomb>`_ (aka franklin (Fr) or electrostatic unit (esu) of charge)
+statC       ``sqrt(g*m**3)/s``                                           *True*     `statcoulomb <https://en.wikipedia.org/wiki/Statcoulomb>`_ (aka franklin (Fr) or electrostatic unit (esu) of charge)
 statA       ``statC/s``                                                  *True*     statampere
 statV       ``erg/statC``                                                *True*     `statvolt <https://en.wikipedia.org/wiki/Statvolt>`_
 statWb      ``statV/Hz``                                                 *True*     statweber
@@ -126,8 +127,8 @@ statT       ``statWb/cm**2``                                             *True* 
 -------------------------------------------------------------------------------------------------
 *k_A*       ``dyn/abA**2``                                                          Ampere constant (aka magnetic force constant)
 *k_C*       ``k_A*c**2``                                                            `Coulomb constant <https://en.wikipedia.org/wiki/Coulomb_constant>`_ (aka electric force constant or electrostatic constant)
-*mu_0*      ``4*pi*k_A/(sr if rational else sp)``                                   `magnetic constant <http://en.wikipedia.org/wiki/Vacuum_permeability>`_ (aka vacuum permeability or permeability of free space)
-*epsilon_0* ``1/(mu_0*sr*c**2)``                                                    `electric constant <http://en.wikipedia.org/wiki/Vacuum_permittivity>`_ (aka vacuum permittivity or permittivity of free space)
+*epsilon_0* ``1/(k_C*(4*pi if rational else 1))``                                   `electric constant <http://en.wikipedia.org/wiki/Vacuum_permittivity>`_ (aka vacuum permittivity or permittivity of free space)
+*mu_0*      ``1/(epsilon_0*sr*c**2)``                                               `magnetic constant <http://en.wikipedia.org/wiki/Vacuum_permeability>`_ (aka vacuum permeability or permeability of free space)
 *Z_0*       ``2*k_A*c/rad``                                                         `characteristic impedance of vacuum <http://en.wikipedia.org/wiki/Impedance_of_free_space>`_
 *alpha*     ``k_A*c/R_K``                                                           `fine structure constant <http://en.wikipedia.org/wiki/Fine_structure_constant>`_
 *a_0*       ``alpha/(2*R_inf)``                                                     `Bohr radius <https://en.wikipedia.org/wiki/Bohr_radius>`_ (aka Hartree length)
@@ -142,7 +143,6 @@ statT       ``statWb/cm**2``                                             *True* 
 -------------------------------------------------------------------------------------------------
 AT          ``A*cyc``                                                    *False*    `ampere-turn <http://en.wikipedia.org/wiki/Ampere-turn>`_
 D           ``cdyn/atm``                                                 *True*     `darcy <http://en.wikipedia.org/wiki/Darcy_(unit)>`_
-u           ``g/(N_A*mol)``                                              *True*     `unified atomic mass unit <https://en.wikipedia.org/wiki/Atomic_mass_unit>`_ (aka dalton (Da))
 M           ``mol/L``                                                    *True*     `molar <http://en.wikipedia.org/wiki/Molar_concentration#Units>`_
 =========== ============================================================ ========== =============
 

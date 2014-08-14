@@ -29,7 +29,7 @@ mol      ``96485.3365*Wb*cyc*S/k_F``                            *True*     `mole
 K        ``8.3144621*(Wb*cyc)**2*S/(s*mol*R)``                  *True*     `kelvin <http://en.wikipedia.org/wiki/Kelvin>`_
 ------ Units decoupled from the base constants ------
 ---------------------------------------------------------------------------------------
-cd       ``ScalarUnit(1., 'J')``                                *True*     `candela <http://en.wikipedia.org/wiki/Candela>`_ (independent of the base constants due to the `luminosity function <http://en.wikipedia.org/wiki/Luminosity_function>`_)
+cd       ``ScalarUnit(1., 'J')``                                *True*     `candela <http://en.wikipedia.org/wiki/Candela>`_ (decoupled from the base constants by the `luminosity function <http://en.wikipedia.org/wiki/Luminosity_function>`_)
 ------ Remaining SI base units (BIPM2006_, Table 1) and intermediate units ------
 ---------------------------------------------------------------------------------------
 Hz       ``cyc/s``                                              *True*     `hertz <http://en.wikipedia.org/wiki/Hertz>`_
