@@ -38,7 +38,7 @@ For example, you can do this:
 
 Please
 [see the tutorial](http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb)
-for more examples.  For the full documentation, [visit the main website][natu].
+for more examples and [visit the main website][natu] for the full documentation.
 
 #### Installation
 

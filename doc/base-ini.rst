@@ -24,7 +24,7 @@ Symbol     Expression                                                      Name 
 ------ Base physical constants ------
 ---------------------------------------------------------------------------------------
 *R_inf*    ``Quantity(10973731.568539*2*pi, 'A/L', 'cyc/m')``              `Rydberg constant <http://en.wikipedia.org/wiki/Rydberg_constant>`_
-*c*        ``Quantity(299792458, 'L/T', 'm/s')``                           `speed of light <http://en.wikipedia.org/wiki/Speed_of_light>`_
+*c*        ``Quantity(299792458, 'L/T', 'm/s')``                           `speed of light <http://en.wikipedia.org/wiki/Speed_of_light>`_ (aka Planck, Stoney, or natural unit of velocity)
 *k_J*      ``Quantity(483597.870e9*2*pi, 'A*I*T2/(L2*M)', '1/Wb')``        `Josephson constant <http://en.wikipedia.org/wiki/Josephson_constant>`_
 *R_K*      ``Quantity(25812.8074434/(2*pi), 'L2*M/(A*I2*T3)', 'ohm/cyc')`` `von Klitzing constant <http://en.wikipedia.org/wiki/Von_Klitzing_constant>`_
 *k_F*      ``Quantity(96485.3365, 'I*T/N', 'C/mol')``                      `Faraday constant <http://en.wikipedia.org/wiki/Faraday_constant>`_
@@ -51,7 +51,7 @@ Symbol     Expression                                                           
 ------ Base physical constants ------
 ---------------------------------------------------------------------------------------------
 *R_inf*    ``Quantity(109737.31568539*2*pi, 'A/L', 'cyc/cm')``                   `Rydberg constant <http://en.wikipedia.org/wiki/Rydberg_constant>`_
-*c*        ``Quantity(29979245800, 'L/T', 'cm/s')``                              `speed of light <http://en.wikipedia.org/wiki/Speed_of_light>`_
+*c*        ``Quantity(29979245800, 'L/T', 'cm/s')``                              `speed of light <http://en.wikipedia.org/wiki/Speed_of_light>`_ (aka Planck, Stoney, or natural unit of velocity)
 *k_J*      ``Quantity(4835978.70*2*pi, 'A*T/(L(3/2)*M(1/2))', 's/(statT*cm3)')`` `Josephson constant <http://en.wikipedia.org/wiki/Josephson_constant>`_
 *R_K*      ``Quantity(25812.8074434e9/(2*pi), 'L/(A*T)', 'cm/(s*cyc)')``         `von Klitzing constant <http://en.wikipedia.org/wiki/Von_Klitzing_constant>`_
 *k_F*      ``Quantity(9648.53365, 'M(1/2)*L(1/2)/N', 'g(1/2)*cm(1/2)/mol')``     `Faraday constant <http://en.wikipedia.org/wiki/Faraday_constant>`_
@@ -75,7 +75,7 @@ Symbol     Expression                                                      Name 
 ------ Base physical constants ------
 ---------------------------------------------------------------------------------------
 *R_inf*    ``Quantity(109737.31568539*2*pi, 'A/L', 'cyc/cm')``             `Rydberg constant <http://en.wikipedia.org/wiki/Rydberg_constant>`_
-*c*        ``Quantity(29979245800, 'L/T', 'cm/s')``                        `speed of light <http://en.wikipedia.org/wiki/Speed_of_light>`_
+*c*        ``Quantity(29979245800, 'L/T', 'cm/s')``                        `speed of light <http://en.wikipedia.org/wiki/Speed_of_light>`_ (aka Planck, Stoney, or natural unit of velocity)
 *k_J*      ``Quantity(4835978.70*2*pi, 'A*T/(L(3/2)*M(1/2))', '1/Mx')``    `Josephson constant <http://en.wikipedia.org/wiki/Josephson_constant>`_
 *R_K*      ``Quantity(25812.8074434e9/(2*pi), 'L/(A*T)', 'cm/(s*cyc)')``   `von Klitzing constant <http://en.wikipedia.org/wiki/Von_Klitzing_constant>`_
 *k_F*      ``Quantity(9648.53365, 'L(1/2)*M(1/2)/N', 'abC*s/(cm*mol)')*c`` `Faraday constant <http://en.wikipedia.org/wiki/Faraday_constant>`_
@@ -99,7 +99,7 @@ Symbol     Expression                        Name & notes
 ------ Base physical constants ------
 ---------------------------------------------------------
 *R_inf*    ``299792458e-7*pi/25812.8074434`` `Rydberg constant <http://en.wikipedia.org/wiki/Rydberg_constant>`_
-*c*        ``1/(2*R_inf)``                   `speed of light <http://en.wikipedia.org/wiki/Speed_of_light>`_
+*c*        ``1/(2*R_inf)``                   `speed of light <http://en.wikipedia.org/wiki/Speed_of_light>`_ (aka Planck, Stoney, or natural unit of velocity)
 *k_J*      ``2``                             `Josephson constant <http://en.wikipedia.org/wiki/Josephson_constant>`_
 *R_K*      ``2``                             `von Klitzing constant <http://en.wikipedia.org/wiki/Von_Klitzing_constant>`_
 *k_F*      ``1``                             `Faraday constant <http://en.wikipedia.org/wiki/Faraday_constant>`_
@@ -118,7 +118,7 @@ Symbol     Expression                                                           
 ------ Base physical constants ------
 -------------------------------------------------------------------------------------------------------------------------------
 G          ``1``                                                                                                   `gravitational constant <https://en.wikipedia.org/wiki/Gravitational_constant>`_
-*c*        ``1``                                                                                                   `speed of light <http://en.wikipedia.org/wiki/Speed_of_light>`_
+*c*        ``1``                                                                                                   `speed of light <http://en.wikipedia.org/wiki/Speed_of_light>`_ (aka Planck, Stoney, or natural unit of velocity)
 *k_J*      ``1``                                                                                                   `Josephson constant <http://en.wikipedia.org/wiki/Josephson_constant>`_
 *R_K*      ``sqrt(25812.8074434/(2*299792458*1e-7))/(pi*k_J)``                                                     `von Klitzing constant <http://en.wikipedia.org/wiki/Von_Klitzing_constant>`_
 *k_F*      ``1``                                                                                                   `Faraday constant <http://en.wikipedia.org/wiki/Faraday_constant>`_

@@ -59,7 +59,7 @@ eV          ``e*V``                                                      *True* 
 hp          ``550*ft*lbf/s``                                             *False*    `mechanical horsepower <http://en.wikipedia.org/wiki/Horsepower#Mechanical_horsepower>`_
 ------ Area ------
 -------------------------------------------------------------------------------------------------
-acre        ``43560*ft**2``                                              *False*    `acre <http://en.wikipedia.org/wiki/Acre>`_
+ac          ``mi**2/640``                                               *False*    `acre <http://en.wikipedia.org/wiki/Acre>`_
 ------ Volume ------
 -------------------------------------------------------------------------------------------------
 gallon      ``231*inch**3``                                              *False*    `US gallon <http://en.wikipedia.org/wiki/US_gallon>`_
@@ -118,7 +118,7 @@ abohm       ``s/abF``                                                    *True* 
 abH         ``abohm*s``                                                  *True*     `abhenry <http://en.wikipedia.org/wiki/Abhenry>`_
 ------ CGS units (ESU_ and Gaussian_) ------
 -------------------------------------------------------------------------------------------------
-statC       ``sqrt(g*m**3)/s``                                           *True*     `statcoulomb <https://en.wikipedia.org/wiki/Statcoulomb>`_ (aka franklin (Fr) or electrostatic unit (esu) of charge)
+statC       ``sqrt(g*cc)/s``                                             *True*     `statcoulomb <https://en.wikipedia.org/wiki/Statcoulomb>`_ (aka franklin (Fr) or electrostatic unit (esu) of charge)
 statA       ``statC/s``                                                  *True*     statampere
 statV       ``erg/statC``                                                *True*     `statvolt <https://en.wikipedia.org/wiki/Statvolt>`_
 statWb      ``statV/Hz``                                                 *True*     statweber
@@ -139,6 +139,8 @@ statT       ``statWb/cm**2``                                             *True* 
 *mu_B*      ``kappa*e*sp/2``                                                        `Bohr magnetron <https://en.wikipedia.org/wiki/Bohr_magneton>`_
 *M_e*       ``m_e*e``                                                               mass of an electron (aka Hartree mass)
 *t_H*       ``a_0*sqrt(M_e/Ha)``                                                    Hartree time
+*l_n*       ``h*rad/(M_e*c)``                                                       natural unit of length
+*t_n*       ``l_n/c``                                                               natural unit of time
 ------ Misc. units and constants ------
 -------------------------------------------------------------------------------------------------
 AT          ``A*cyc``                                                    *False*    `ampere-turn <http://en.wikipedia.org/wiki/Ampere-turn>`_
@@ -185,10 +187,10 @@ lbf ft.
               <http://www.bipm.org/utils/common/pdf/si_brochure_8_en.pdf>`_,"
               8th ed., 2006.
 .. [IT1956]   *Fifth International Conference on the Properties of Steam*,
+              London, July 1956.
 .. [NIST2014] National Institute of Science and Technology, "Fundamental
               Physical Constants: Complete Listing,"
               http://physics.nist.gov/constants, accessed 2014.
-              London, July 1956.
 
 .. rubric:: Footnotes
 
