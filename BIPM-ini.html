@@ -338,7 +338,7 @@ and some non-SI units.</p>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Nautical_mile">nautical mile</a></td>
 </tr>
 <tr class="row-even"><td>kn</td>
-<td><tt class="docutils literal"><span class="pre">M/hr</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">nmi/hr</span></tt></td>
 <td><em>False</em></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Knot_(unit)">knot</a></td>
 </tr>
@@ -357,17 +357,89 @@ and some non-SI units.</p>
 <td><em>False</em></td>
 <td><a class="reference external" href="http://en.wikipedia.org/wiki/Decibel">decibel</a> (explicitly included with prefix)</td>
 </tr>
+<tr class="row-even"><td colspan="4">&#8212;&#8212; Non-SI units associated with CGS and CGS-Gaussian system of units (<a class="reference internal" href="#bipm2006">BIPM2006</a>, Table 9) &#8212;&#8212;</td>
+</tr>
+<tr class="row-odd"><td>cm</td>
+<td><tt class="docutils literal"><span class="pre">cm</span></tt></td>
+<td><em>False</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Centimetre">centimetre</a> <a class="footnote-reference" href="#f3" id="id7">[3]</a></td>
+</tr>
+<tr class="row-even"><td>Gal</td>
+<td><tt class="docutils literal"><span class="pre">cm/s**2</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Gal_(unit)">gal</a> (unit of acceleration)</td>
+</tr>
+<tr class="row-odd"><td>dyn</td>
+<td><tt class="docutils literal"><span class="pre">g*Gal</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Dyne">dyne</a> (unit of force)</td>
+</tr>
+<tr class="row-even"><td>erg</td>
+<td><tt class="docutils literal"><span class="pre">dyn*cm</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Erg">erg</a> (unit of energy)</td>
+</tr>
+<tr class="row-odd"><td>Ba</td>
+<td><tt class="docutils literal"><span class="pre">dyn/cm**2</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Barye">barye</a> (aka barad, barrie, bary, baryd, baryed, or barie; unit of pressure) <a class="footnote-reference" href="#f2" id="id8">[2]</a></td>
+</tr>
+<tr class="row-even"><td>P</td>
+<td><tt class="docutils literal"><span class="pre">Ba*s</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Poise">poise</a> (unit of dynamic viscosity)</td>
+</tr>
+<tr class="row-odd"><td>St</td>
+<td><tt class="docutils literal"><span class="pre">cm**2/s</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Stokes_(unit)">stokes</a> (aka stoke; unit of kinematic viscosity)</td>
+</tr>
+<tr class="row-even"><td>sb</td>
+<td><tt class="docutils literal"><span class="pre">cd/cm**2</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Stilb_(unit)">stilb</a> (unit of luminance)</td>
+</tr>
+<tr class="row-odd"><td>ph</td>
+<td><tt class="docutils literal"><span class="pre">sb*sr</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Phot">phot</a> (unit of illuminance)</td>
+</tr>
+<tr class="row-even"><td>abA</td>
+<td><tt class="docutils literal"><span class="pre">daA</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="https://en.wikipedia.org/wiki/Abampere">abampere</a> (aka decaampere or Biot (Bi)) <a class="footnote-reference" href="#f2" id="id9">[2]</a></td>
+</tr>
+<tr class="row-odd"><td>Mx</td>
+<td><tt class="docutils literal"><span class="pre">erg/(abA*cyc)</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Maxwell_(unit)">maxwell</a> (unit of magnetic flux)</td>
+</tr>
+<tr class="row-even"><td>Gs</td>
+<td><tt class="docutils literal"><span class="pre">Mx/cm**2</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Gauss_(unit)">gauss</a> (unit of magnetic flux density)</td>
+</tr>
+<tr class="row-odd"><td>pole</td>
+<td><tt class="docutils literal"><span class="pre">4*pi*Mx</span></tt></td>
+<td><em>False</em></td>
+<td>unit pole <a class="footnote-reference" href="#f2" id="id10">[2]</a></td>
+</tr>
+<tr class="row-even"><td>Oe</td>
+<td><tt class="docutils literal"><span class="pre">dyn/pole</span></tt></td>
+<td><em>True</em></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Oersted">oersted</a> (unit of the auxiliary magnetic field)</td>
+</tr>
 </tbody>
 </table>
-<p>Since angle is explicit, some definitions are different than in <a class="reference internal" href="other-ini.html#bipm2006" id="id7">[BIPM2006]</a> and
-<a class="reference internal" href="other-ini.html#nist2014" id="id8">[NIST2014]</a>:</p>
+<p>Since angle is explicit, some definitions are different than in <a class="reference internal" href="other-ini.html#bipm2006" id="id11">[BIPM2006]</a> and
+<a class="reference internal" href="other-ini.html#nist2014" id="id12">[NIST2014]</a>:</p>
 <ul class="simple">
 <li>m ≈ 10973732 cyc <em>R_inf</em><sup>-1</sup> (i.e.,
-<em>R_inf</em> ≈ 10973732 cyc m<sup>-1</sup>) <a class="footnote-reference" href="#f3" id="id9">[3]</a></li>
+<em>R_inf</em> ≈ 10973732 cyc m<sup>-1</sup>) <a class="footnote-reference" href="#f4" id="id13">[4]</a></li>
 <li>S ≈ 25813 <em>R_K</em><sup>-1</sup> cyc<sup>-1</sup> (i.e.,
-<em>R_K</em> ≈ 25813 ohm cyc<sup>-1</sup>) <a class="footnote-reference" href="#f3" id="id10">[3]</a></li>
-<li>Hz = cyc s<sup>-1</sup> <a class="footnote-reference" href="#f4" id="id11">[4]</a></li>
-<li>V = Wb Hz (i.e., Wb = V s cyc<sup>-1</sup>) <a class="footnote-reference" href="#f4" id="id12">[4]</a></li>
+<em>R_K</em> ≈ 25813 ohm cyc<sup>-1</sup>) <a class="footnote-reference" href="#f4" id="id14">[4]</a></li>
+<li>Hz = cyc s<sup>-1</sup> <a class="footnote-reference" href="#f5" id="id15">[5]</a></li>
+<li>V = Wb Hz (i.e., Wb = V s cyc<sup>-1</sup>) <a class="footnote-reference" href="#f5" id="id16">[5]</a></li>
 <li>H = ohm s = V s A<sup>-1</sup>
 (H ≠ Wb A<sup>-1</sup>)</li>
 </ul>
@@ -376,18 +448,21 @@ s<sup>-1</sup>.  Torque can be expressed in N m rad<sup>-1</sup> or
 J rad<sup>-1</sup> but not N m or J.  Also note that the <a class="reference external" href="http://en.wikipedia.org/wiki/Steradian">steradian
 (sr)</a>, a unit of <a class="reference external" href="http://en.wikipedia.org/wiki/Solid_angle">solid angle</a>, has dimension A<sup>2</sup>.</p>
 <p>deg, arcmin, and arcsec are used as the symbols for the <a class="reference external" href="http://en.wikipedia.org/wiki/Degree_(angle)">degree</a>, <a class="reference external" href="http://en.wikipedia.org/wiki/Arcminute">arcminute</a>, and
-<a class="reference external" href="http://en.wikipedia.org/wiki/Arcsecond">arcsecond</a> since the symbols in Table 6 of <a class="reference internal" href="other-ini.html#bipm2006" id="id13">[BIPM2006]</a> are not valid Python
-names.  hr is used as the symbol for the <a class="reference external" href="http://en.wikipedia.org/wiki/Hour">hour</a> (instead of h per <a class="reference internal" href="other-ini.html#bipm2006" id="id14">[BIPM2006]</a>)
-since <em>h</em> is used for the <a class="reference external" href="http://en.wikipedia.org/wiki/Planck_constant">Planck constant</a>.  nmi is used as the symbol
-(instead of M per <a class="reference internal" href="other-ini.html#bipm2006" id="id15">[BIPM2006]</a>) since M is used for the <a class="reference external" href="http://en.wikipedia.org/wiki/Molar_concentration#Units">unit molar</a>.</p>
+<a class="reference external" href="http://en.wikipedia.org/wiki/Arcsecond">arcsecond</a> since the symbols in Table 6 of <a class="reference internal" href="other-ini.html#bipm2006" id="id17">[BIPM2006]</a> are not valid Python
+names.  hr is used as the symbol for the <a class="reference external" href="http://en.wikipedia.org/wiki/Hour">hour</a> (instead of h per <a class="reference internal" href="other-ini.html#bipm2006" id="id18">[BIPM2006]</a>)
+since <em>h</em> is used for the <a class="reference external" href="http://en.wikipedia.org/wiki/Planck_constant">Planck constant</a>.  nmi is used as the symbol for
+nautical mile (instead of M per <a class="reference internal" href="other-ini.html#bipm2006" id="id19">[BIPM2006]</a>) since M is used for the <a class="reference external" href="http://en.wikipedia.org/wiki/Molar_concentration#Units">unit
+molar</a>.   Gs is used as the symbol for
+the gauss mile (instead of G per <a class="reference internal" href="other-ini.html#bipm2006" id="id20">[BIPM2006]</a>) since G is used as the
+<a href="#id25"><span class="problematic" id="id26">`gravitational constant`_</span></a>.</p>
 <p>In general, prefixes are not included because they are added upon access.
-However, <a class="reference internal" href="other-ini.html#bipm2006" id="id16">[BIPM2006]</a> (and <a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/BIPM.ini">BIPM.ini</a>) includes two units with explicit prefixes:
+However, <a class="reference internal" href="other-ini.html#bipm2006" id="id21">[BIPM2006]</a> (and <a class="reference external" href="https://github.com/kdavies4/natu/blob/master/natu/config/BIPM.ini">BIPM.ini</a>) includes two units with explicit prefixes:
 kg and dB.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="bipm2006" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[BIPM2006]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id13">3</a>, <a class="fn-backref" href="#id14">4</a>, <a class="fn-backref" href="#id15">5</a>, <a class="fn-backref" href="#id16">6</a>, <a class="fn-backref" href="#id17">7</a>, <a class="fn-backref" href="#id19">8</a>)</em> International Bureau of Weights and Measures (BIPM),
+<tr><td class="label">[BIPM2006]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id11">2</a>, <a class="fn-backref" href="#id17">3</a>, <a class="fn-backref" href="#id18">4</a>, <a class="fn-backref" href="#id19">5</a>, <a class="fn-backref" href="#id20">6</a>, <a class="fn-backref" href="#id21">7</a>, <a class="fn-backref" href="#id22">8</a>, <a class="fn-backref" href="#id24">9</a>)</em> International Bureau of Weights and Measures (BIPM),
 &#8220;<a class="reference external" href="http://www.bipm.org/utils/common/pdf/si_brochure_8_en.pdf">The International System of Units (SI)</a>,&#8221;
 8th ed., 2006.</td></tr>
 </tbody>
@@ -395,7 +470,7 @@ kg and dB.</p>
 <table class="docutils citation" frame="void" id="nist2014" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[NIST2014]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id18">2</a>)</em> National Institute of Science and Technology, &#8220;Fundamental
+<tr><td class="label">[NIST2014]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id23">2</a>)</em> National Institute of Science and Technology, &#8220;Fundamental
 Physical Constants: Complete Listing,&#8221;
 <a class="reference external" href="http://physics.nist.gov/constants">http://physics.nist.gov/constants</a>, accessed 2014.</td></tr>
 </tbody>
@@ -410,19 +485,25 @@ Physical Constants: Complete Listing,&#8221;
 <table class="docutils footnote" frame="void" id="f2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> not defined in <a class="reference internal" href="other-ini.html#bipm2006" id="id17">[BIPM2006]</a>, but useful here</td></tr>
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id6">2</a>, <a class="fn-backref" href="#id8">3</a>, <a class="fn-backref" href="#id9">4</a>, <a class="fn-backref" href="#id10">5</a>)</em> not defined in <a class="reference internal" href="other-ini.html#bipm2006" id="id22">[BIPM2006]</a>, but useful here</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="f3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id9">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> Traditionally, angle is dropped <a class="reference internal" href="other-ini.html#nist2014" id="id18">[NIST2014]</a>.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id7">[3]</a></td><td>not included in Table 9, but explicitly provided since this is a CGS base unit</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="f4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id11">1</a>, <a class="fn-backref" href="#id12">2</a>)</em> Angle is dropped in <a class="reference internal" href="other-ini.html#bipm2006" id="id19">[BIPM2006]</a>.</td></tr>
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id14">2</a>)</em> Traditionally, angle is dropped <a class="reference internal" href="other-ini.html#nist2014" id="id23">[NIST2014]</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[5]</td><td><em>(<a class="fn-backref" href="#id15">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> Angle is dropped in <a class="reference internal" href="other-ini.html#bipm2006" id="id24">[BIPM2006]</a>.</td></tr>
 </tbody>
 </table>
 </div>
@@ -485,8 +566,8 @@ Physical Constants: Complete Listing,&#8221;
 <script type="text/javascript">$('#searchbox').show(0);</script><h3>Download</h3>
   <ul>
     <li><a itemprop="downloadUrl"
-           href="https://pypi.python.org/packages/source/n/natu/natu-0.1.0-a3.tar.gz"
-           rel="nofollow">Latest version<br>(v0.1.0-a3, 2014-08-13)</a></li>
+           href="https://pypi.python.org/packages/source/n/natu/natu-0.1.0-a4.tar.gz"
+           rel="nofollow">Latest version<br>(v0.1.0-a4, 2014-08-14)</a></li>
   </ul>
         </div>
       </div>
@@ -506,7 +587,7 @@ Physical Constants: Complete Listing,&#8221;
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
-      Last updated on Aug 13, 2014.
+      Last updated on Aug 14, 2014.
     </div>
   </body>
 </html>
