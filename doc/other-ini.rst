@@ -59,15 +59,15 @@ eV          ``e*V``                                                      *True* 
 hp          ``550*ft*lbf/s``                                             *False*    `mechanical horsepower <http://en.wikipedia.org/wiki/Horsepower#Mechanical_horsepower>`_
 ------ Area ------
 -------------------------------------------------------------------------------------------------
-ac          ``mi**2/640``                                               *False*    `acre <http://en.wikipedia.org/wiki/Acre>`_
+ac          ``mi**2/640``                                                *False*    `acre <http://en.wikipedia.org/wiki/Acre>`_
 ------ Volume ------
 -------------------------------------------------------------------------------------------------
-gallon      ``231*inch**3``                                              *False*    `US gallon <http://en.wikipedia.org/wiki/US_gallon>`_
-qt          ``gallon/4``                                                 *False*    `US quart <http://en.wikipedia.org/wiki/US_quart#United_States_liquid_quart>`_
+gal         ``231*inch**3``                                              *False*    `US gallon <http://en.wikipedia.org/wiki/US_gallon>`_
+qt          ``gal/4``                                                    *False*    `US quart <http://en.wikipedia.org/wiki/US_quart#United_States_liquid_quart>`_
 pt          ``qt/2``                                                     *False*    `US pint <http://en.wikipedia.org/wiki/US_pint>`_
 cup         ``pt/2``                                                     *False*    `US cup <http://en.wikipedia.org/wiki/Cup_(unit)#United_States_customary_cup>`_
 fluid_oz    ``cup/8``                                                    *False*    `US fluid ounce <http://en.wikipedia.org/wiki/US_fluid_ounce>`_
-bbl         ``42*gallon``                                                *False*    `oil barrel <http://en.wikipedia.org/wiki/Oil_barrel#Oil_barrel>`_
+bbl         ``42*gal``                                                   *False*    `oil barrel <http://en.wikipedia.org/wiki/Oil_barrel#Oil_barrel>`_
 ------ Angle ------
 -------------------------------------------------------------------------------------------------
 grad        ``cyc/400``                                                  *False*    `gradian <http://en.wikipedia.org/wiki/Gradian>`_
@@ -95,28 +95,14 @@ ppm         ``1e-6``                                                     *False*
 ppb         ``1e-9``                                                     *False*    `parts per billion <http://en.wikipedia.org/wiki/Parts_per_billion>`_
 ppt         ``1e-12``                                                    *False*    `parts per trillion <http://en.wikipedia.org/wiki/Parts_per_trillion>`_
 ppq         ``1e-15``                                                    *False*    `parts per quadrillion <http://en.wikipedia.org/wiki/Parts_per_quadrillion>`_
------- `CGS units`_ (general) ------
+------ Remaining EMU_ and Gaussian_ units (besides those in [BIPM2006]_) ------
 -------------------------------------------------------------------------------------------------
-cm          ``cm``                                                       *False*    `centimetre <http://en.wikipedia.org/wiki/Centimetre>`_
-gal         ``cm/s**2``                                                  *True*     `gal <http://en.wikipedia.org/wiki/Gal_(unit)>`_ (unit of acceleration)
-dyn         ``g*gal``                                                    *True*     `dyne <http://en.wikipedia.org/wiki/Dyne>`_ (unit of force)
-erg         ``dyn*cm``                                                   *True*     `erg <http://en.wikipedia.org/wiki/Erg>`_ (unit of energy)
-Ba          ``dyn/cm**2``                                                *True*     `barye <http://en.wikipedia.org/wiki/Barye>`_ (aka barad, barrie, bary, baryd, baryed, or barie; unit of pressure)
-P           ``Ba*s``                                                     *True*     `poise <http://en.wikipedia.org/wiki/Poise>`_ (unit of dynamic viscosity)
-St          ``cm**2/s``                                                  *True*     `stokes <http://en.wikipedia.org/wiki/Stokes_(unit)>`_ (aka stoke; unit of kinematic viscosity)
------- CGS units (EMU_) ------
--------------------------------------------------------------------------------------------------
-abA         ``daA``                                                      *True*     `abampere <https://en.wikipedia.org/wiki/Abampere>`_ (aka decaampere or Biot (Bi))
 abC         ``abA*s``                                                    *True*     `abcoloumb <https://en.wikipedia.org/wiki/Abcoulomb>`_
 abV         ``erg/abC``                                                  *True*     `abvolt <https://en.wikipedia.org/wiki/Abvolt>`_
-Mx          ``erg/(abA*cyc)``                                            *True*     `maxwell <http://en.wikipedia.org/wiki/Maxwell_(unit)>`_ (unit of magnetic flux)
-Gs          ``Mx/cm**2``                                                 *True*     `gauss <http://en.wikipedia.org/wiki/Gauss_(unit)>`_ (unit of magnetic flux density)
-pole        ``4*pi*Mx``                                                  *False*    unit pole
-Oe          ``dyn/pole``                                                 *True*     `oersted <http://en.wikipedia.org/wiki/Oersted>`_ (unit of the auxiliary magnetic field)
 abF         ``abC/abV``                                                  *True*     `abfarad <https://en.wikipedia.org/wiki/Abfarad#CGS_units>`_
 abohm       ``s/abF``                                                    *True*     `abohm <https://en.wikipedia.org/wiki/Abohm>`_
 abH         ``abohm*s``                                                  *True*     `abhenry <http://en.wikipedia.org/wiki/Abhenry>`_
------- CGS units (ESU_ and Gaussian_) ------
+------ Remaining ESU_ units (besides those in [BIPM2006]_) ------
 -------------------------------------------------------------------------------------------------
 statC       ``sqrt(g*cc)/s``                                             *True*     `statcoulomb <https://en.wikipedia.org/wiki/Statcoulomb>`_ (aka franklin (Fr) or electrostatic unit (esu) of charge)
 statA       ``statC/s``                                                  *True*     statampere

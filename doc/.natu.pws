@@ -1,4 +1,4 @@
-personal_ws-1.1 en 269 
+personal_ws-1.1 en 276 
 banananana
 atm
 statA
@@ -30,6 +30,7 @@ decaampere
 src
 args
 fname
+luminance
 deca
 atan
 arcsec
@@ -84,6 +85,7 @@ sinh
 gui
 fromstr
 henry
+phot
 dest
 prefixable
 sympy
@@ -94,6 +96,7 @@ kat
 multiglob
 UnitsModule
 ini
+stilb
 abvolt
 Unum
 barad
@@ -114,6 +117,7 @@ cd
 indexable
 ce
 da
+illuminance
 weber
 acosh
 de
@@ -131,6 +135,7 @@ fabs
 kPa
 dm
 fc
+Stoney
 Wien
 statampere
 fe
@@ -172,6 +177,7 @@ ly
 np
 lumen
 deciam
+ph
 modf
 mol
 Pag
@@ -180,14 +186,15 @@ Mx
 google
 copysign
 arcsecond
+sb
 getitem
 nmi
 filenames
 abA
-darcy
 abC
 abc
 si
+darcy
 py
 LaTeX
 lux
@@ -205,20 +212,20 @@ sr
 arccosh
 googledadb
 candela
-Sv
 Wb
+Sv
 mul
 Instantiation
 abV
 Wh
 submodule
-statvolt
 tuple
+statvolt
 unrationalized
 frexp
 magnetron
-arcmin
 num
+arcmin
 classmethod
 GitHub
 tesla
@@ -261,8 +268,8 @@ dde
 Sep
 ldexp
 sqrt
-neper
 CompoundDimension
+neper
 ded
 CGS
 abampere

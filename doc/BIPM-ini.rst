@@ -77,21 +77,37 @@ bar      ``100*kPa``                                            *True*     `bar 
 b        ``100*fm**2``                                          *False*    `barn <http://en.wikipedia.org/wiki/Barn_(unit)>`_
 angstrom ``0.1*nm``                                             *False*    `angstrom <http://en.wikipedia.org/wiki/Angstrom>`_
 nmi      ``1852*m``                                             *False*    `nautical mile <http://en.wikipedia.org/wiki/Nautical_mile>`_
-kn       ``M/hr``                                               *False*    `knot <http://en.wikipedia.org/wiki/Knot_(unit)>`_
+kn       ``nmi/hr``                                             *False*    `knot <http://en.wikipedia.org/wiki/Knot_(unit)>`_
 Np       ``(exp, log)``                                         *False*    `neper <http://en.wikipedia.org/wiki/Neper>`_ (in terms of amplitude ratio, not power ratio)
 B        ``(lambda n: 10**n, log10)``                           *True*     bel (in terms of power ratio, not amplitude ratio)
 dB       ``dB``                                                 *False*    `decibel <http://en.wikipedia.org/wiki/Decibel>`_ (explicitly included with prefix)
+------ Non-SI units associated with CGS and CGS-Gaussian system of units (BIPM2006_, Table 9) ------
+---------------------------------------------------------------------------------------
+cm       ``cm``                                                 *False*    `centimetre <http://en.wikipedia.org/wiki/Centimetre>`_ [#f3]_
+Gal      ``cm/s**2``                                            *True*     `gal <http://en.wikipedia.org/wiki/Gal_(unit)>`_ (unit of acceleration)
+dyn      ``g*Gal``                                              *True*     `dyne <http://en.wikipedia.org/wiki/Dyne>`_ (unit of force)
+erg      ``dyn*cm``                                             *True*     `erg <http://en.wikipedia.org/wiki/Erg>`_ (unit of energy)
+Ba       ``dyn/cm**2``                                          *True*     `barye <http://en.wikipedia.org/wiki/Barye>`_ (aka barad, barrie, bary, baryd, baryed, or barie; unit of pressure) [#f2]_
+P        ``Ba*s``                                               *True*     `poise <http://en.wikipedia.org/wiki/Poise>`_ (unit of dynamic viscosity)
+St       ``cm**2/s``                                            *True*     `stokes <http://en.wikipedia.org/wiki/Stokes_(unit)>`_ (aka stoke; unit of kinematic viscosity)
+sb       ``cd/cm**2``                                           *True*     `stilb <http://en.wikipedia.org/wiki/Stilb_(unit)>`_ (unit of luminance)
+ph       ``sb*sr``                                              *True*     `phot <http://en.wikipedia.org/wiki/Phot>`_ (unit of illuminance)
+abA      ``daA``                                                *True*     `abampere <https://en.wikipedia.org/wiki/Abampere>`_ (aka decaampere or Biot (Bi)) [#f2]_
+Mx       ``erg/(abA*cyc)``                                      *True*     `maxwell <http://en.wikipedia.org/wiki/Maxwell_(unit)>`_ (unit of magnetic flux)
+Gs       ``Mx/cm**2``                                           *True*     `gauss <http://en.wikipedia.org/wiki/Gauss_(unit)>`_ (unit of magnetic flux density)
+pole     ``4*pi*Mx``                                            *False*    unit pole [#f2]_
+Oe       ``dyn/pole``                                           *True*     `oersted <http://en.wikipedia.org/wiki/Oersted>`_ (unit of the auxiliary magnetic field)
 ======== ====================================================== ========== ============
 
 Since angle is explicit, some definitions are different than in [BIPM2006]_ and
 [NIST2014]_:
 
 - m ≈ 10973732 cyc *R_inf*\ :superscript:`-1` (i.e.,
-  *R_inf* ≈ 10973732 cyc m\ :superscript:`-1`) [#f3]_
+  *R_inf* ≈ 10973732 cyc m\ :superscript:`-1`) [#f4]_
 - S ≈ 25813 *R_K*\ :superscript:`-1` cyc\ :superscript:`-1` (i.e.,
-  *R_K* ≈ 25813 ohm cyc\ :superscript:`-1`) [#f3]_
-- Hz = cyc s\ :superscript:`-1` [#f4]_
-- V = Wb Hz (i.e., Wb = V s cyc\ :superscript:`-1`) [#f4]_
+  *R_K* ≈ 25813 ohm cyc\ :superscript:`-1`) [#f4]_
+- Hz = cyc s\ :superscript:`-1` [#f5]_
+- V = Wb Hz (i.e., Wb = V s cyc\ :superscript:`-1`) [#f5]_
 - H = ohm s = V s A\ :superscript:`-1`
   (H ≠ Wb A\ :superscript:`-1`)
 
@@ -103,10 +119,11 @@ J rad\ :superscript:`-1` but not N m or J.  Also note that the `steradian
 deg, arcmin, and arcsec are used as the symbols for the degree_, arcminute_, and
 arcsecond_ since the symbols in Table 6 of [BIPM2006]_ are not valid Python
 names.  hr is used as the symbol for the hour_ (instead of h per [BIPM2006]_)
-since *h* is used for the `Planck constant`_.  nmi is used as the symbol
-(instead of M per [BIPM2006]_) since M is used for the `unit molar`_.
-
- **Gs instead of G
+since *h* is used for the `Planck constant`_.  nmi is used as the symbol for
+nautical mile (instead of M per [BIPM2006]_) since M is used for the `unit
+molar`_.   Gs is used as the symbol for
+the gauss mile (instead of G per [BIPM2006]_) since G is used as the
+`gravitational constant`_.
 
 In general, prefixes are not included because they are added upon access.
 However, [BIPM2006]_ (and BIPM.ini_) includes two units with explicit prefixes:
@@ -135,5 +152,6 @@ kg and dB.
 
 .. [#f1] a constant (not a unit), but useful here
 .. [#f2] not defined in [BIPM2006]_, but useful here
-.. [#f3] Traditionally, angle is dropped [NIST2014]_.
-.. [#f4] Angle is dropped in [BIPM2006]_.
+.. [#f3] not included in Table 9, but explicitly provided since this is a CGS base unit
+.. [#f4] Traditionally, angle is dropped [NIST2014]_.
+.. [#f5] Angle is dropped in [BIPM2006]_.
