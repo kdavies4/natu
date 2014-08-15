@@ -106,6 +106,8 @@ names.  hr is used as the symbol for the hour_ (instead of h per [BIPM2006]_)
 since *h* is used for the `Planck constant`_.  nmi is used as the symbol
 (instead of M per [BIPM2006]_) since M is used for the `unit molar`_.
 
+ **Gs instead of G
+
 In general, prefixes are not included because they are added upon access.
 However, [BIPM2006]_ (and BIPM.ini_) includes two units with explicit prefixes:
 kg and dB.
