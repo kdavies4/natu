@@ -1,5 +1,4 @@
-This folder contains scripts that help with the development and distribution of
-natu.
+This folder contains scripts that help with the development and release of natu.
 
 The [pre-commit script](pre-commit) prevents commits if there are errors in the
 Python source or there are filenames with non-ASCII characters.  It also adds
@@ -10,8 +9,8 @@ The [post-checkout script](post-checkout) removes byte-compiled Python files
 (*.pyc) when switching branches.  Since the source may change when upon
 checkout, the *.pyc files should be recompiled to prevent confusion.
 
-Other scripts ([code.sh](code.sh), [doc.sh](doc.sh), and
-[diff-matplotlibrc.sh](diff-matplotlibrc.sh)) are linked to [git] via aliases.
+Other scripts ([code.sh](code.sh), [doc.sh](doc.sh), etc.) are linked to [git]
+via aliases.
 
 #### Installation
 
@@ -26,8 +25,6 @@ Add to *.git/config*:
         pylint = !bash `git rev-parse --show-toplevel`/hooks/pylint.sh
 	    doc = !bash `git rev-parse --show-toplevel`/hooks/doc.sh
 	    code = !bash `git rev-parse --show-toplevel`/hooks/code.sh
-	    build = !bash `git rev-parse --show-toplevel`/hooks/build.sh
-	    release = !bash `git rev-parse --show-toplevel`/hooks/release.sh
 
 #### Usage
 
@@ -59,11 +56,6 @@ images and spellcheck the pages:
 To release/publish the documentation to the [GitHub webpage]\:
 
     git doc release
-
-##### Integrated:
-
-To run `git code build` and then `git doc build`, use `git build`.
-To run `git code release` and `git doc release`, use `git release`.
 
 ##### Other:
 

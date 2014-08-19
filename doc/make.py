@@ -177,7 +177,7 @@ def spellcheck():
     """Spellcheck the HTML docs.
     """
     # Options
-    wordfile = os.path.abspath('.natu.pws') # Name of custom word file
+    wordfile = os.path.abspath('natu.pws') # Name of custom word file
     html_files = glob('build/html/*.html') # Names of the HTML files
 
     print("If there are misspellings, fix them in the Python or ReST "

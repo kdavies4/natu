@@ -30,7 +30,8 @@ setup(name='natu',
       author='Kevin Davies',
       author_email='kdavies4@gmail.com',
       license='BSD-compatible (see LICENSE.txt)',
-      keywords='quantity quantities unit conversion natural SI CGS Planck Hartree',
+      keywords=('quantity calculus quantities unit conversion natural SI CGS '
+                'Planck Hartree'),
       url='http://kdavies4.github.io/natu/',
       download_url=('https://github.com/kdavies4/natu/archive/v%s.zip'
                     % version if version else ''),
