@@ -31,7 +31,7 @@
     <link rel="shortcut icon" href="javascripts/favicon.ico"/>
     <link rel="top" title="Natural units in Python" href="index.html" />
     <meta name="description" content="Python module for natural units">
-    <meta name="keywords" content="quantity, quantities, unit, conversion, natural, SI, physics, dimension">
+    <meta name="keywords" content="quantity, calculus, quantities, unit, conversion, natural, SI, physics, dimension">
     <meta name="author" content="Kevin Davies">
     <link rel="icon" type="image/png" href="javascripts/favicon-196x196.png" sizes="196x196">
     <link rel="icon" type="image/png" href="javascripts/favicon-160x160.png" sizes="160x160">
@@ -75,10 +75,10 @@ and some non-SI units.</p>
 </ul>
 <table border="1" class="docutils">
 <colgroup>
-<col width="3%" />
-<col width="23%" />
 <col width="4%" />
-<col width="70%" />
+<col width="25%" />
+<col width="5%" />
+<col width="66%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Symbol</th>
@@ -132,7 +132,7 @@ and some non-SI units.</p>
 <tr class="row-even"><td>cd</td>
 <td><tt class="docutils literal"><span class="pre">ScalarUnit(1.,</span> <span class="pre">'J')</span></tt></td>
 <td><em>True</em></td>
-<td><a class="reference external" href="http://en.wikipedia.org/wiki/Candela">candela</a> (decoupled from the base constants by the <a class="reference external" href="http://en.wikipedia.org/wiki/Luminosity_function">luminosity function</a>)</td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Candela">candela</a> (decoupled by the <a class="reference external" href="http://en.wikipedia.org/wiki/Luminosity_function">luminosity function</a>)</td>
 </tr>
 <tr class="row-odd"><td colspan="4">&#8212;&#8212; Remaining SI base units (<a class="reference internal" href="#bipm2006">BIPM2006</a>, Table 1) and intermediate units &#8212;&#8212;</td>
 </tr>
@@ -268,7 +268,7 @@ and some non-SI units.</p>
 <tr class="row-odd"><td>deg</td>
 <td><tt class="docutils literal"><span class="pre">cyc/360</span></tt></td>
 <td><em>False</em></td>
-<td><a class="reference external" href="http://en.wikipedia.org/wiki/Degree_(angle)">degree</a></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Degree_(angle)">degree</a> (aka degree of arc, arc degree, or arcdegree)</td>
 </tr>
 <tr class="row-even"><td>arcmin</td>
 <td><tt class="docutils literal"><span class="pre">deg/60</span></tt></td>
@@ -305,7 +305,7 @@ and some non-SI units.</p>
 <tr class="row-odd"><td>cc</td>
 <td><tt class="docutils literal"><span class="pre">cm**3</span></tt></td>
 <td><em>False</em></td>
-<td><a class="reference external" href="http://en.wikipedia.org/wiki/Cubic_centimeter">cubic centimeter</a> <a class="footnote-reference" href="#f1" id="id4">[1]</a></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Cubic_centimetre">cubic centimetre</a> <a class="footnote-reference" href="#f1" id="id4">[1]</a></td>
 </tr>
 <tr class="row-even"><td><em>Hg</em></td>
 <td><tt class="docutils literal"><span class="pre">13.5951*g*g_0/cc</span></tt></td>
@@ -315,7 +315,7 @@ and some non-SI units.</p>
 <tr class="row-odd"><td>mmHg</td>
 <td><tt class="docutils literal"><span class="pre">mm*Hg</span></tt></td>
 <td><em>False</em></td>
-<td><a class="reference external" href="http://en.wikipedia.org/wiki/Millimeter_of_mercury">millimeter of mercury</a></td>
+<td><a class="reference external" href="http://en.wikipedia.org/wiki/Millimetre_of_mercury">millimetre of mercury</a></td>
 </tr>
 <tr class="row-even"><td>bar</td>
 <td><tt class="docutils literal"><span class="pre">100*kPa</span></tt></td>
@@ -432,7 +432,7 @@ and some non-SI units.</p>
 </tbody>
 </table>
 <p>Since angle is explicit, some definitions are different than in <a class="reference internal" href="other-ini.html#bipm2006" id="id11">[BIPM2006]</a> and
-<a class="reference internal" href="other-ini.html#nist2014" id="id12">[NIST2014]</a>:</p>
+<a class="reference internal" href="derived-ini.html#nist2014" id="id12">[NIST2014]</a>:</p>
 <ul class="simple">
 <li>m ≈ 10973732 cyc <em>R_inf</em><sup>-1</sup> (i.e.,
 <em>R_inf</em> ≈ 10973732 cyc m<sup>-1</sup>) <a class="footnote-reference" href="#f4" id="id13">[4]</a></li>
@@ -497,7 +497,7 @@ Physical Constants: Complete Listing,&#8221;
 <table class="docutils footnote" frame="void" id="f4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id14">2</a>)</em> Traditionally, angle is dropped <a class="reference internal" href="other-ini.html#nist2014" id="id23">[NIST2014]</a>.</td></tr>
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id14">2</a>)</em> Traditionally, angle is dropped <a class="reference internal" href="derived-ini.html#nist2014" id="id23">[NIST2014]</a>.</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="f5" rules="none">
@@ -587,7 +587,7 @@ Physical Constants: Complete Listing,&#8221;
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and Georgia Tech Research Corporation.
-      Last updated on Aug 14, 2014.
+      Last updated on Aug 21, 2014.
     </div>
   </body>
 </html>
