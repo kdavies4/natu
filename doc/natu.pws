@@ -1,4 +1,4 @@
-personal_ws-1.1 en 252 
+personal_ws-1.1 en 277 
 banananana
 atm
 statA
@@ -7,6 +7,7 @@ statC
 sin
 paren
 tonumber
+atanh
 DimensionedObject
 u'Exiting
 sudo
@@ -20,6 +21,7 @@ statT
 radian
 statV
 cdyn
+isinf
 div
 numpy
 baryed
@@ -30,6 +32,7 @@ args
 fname
 luminance
 deca
+atan
 arcsec
 DimPy
 config
@@ -38,21 +41,28 @@ sievert
 cyc
 str
 NumericalUnits
+tanh
+asin
+trunc
 franklin
 degC
 Modelica
 degF
 erf
 siemens
+asinh
 Aprime
 degR
-SciMath
 scimath
+SciMath
+isnan
+acos
 unutbu
 stattesla
 steradian
 dyn
 esu
+arctanh
 pathnames
 kcal
 GTRC
@@ -66,10 +76,12 @@ Bruns
 exp
 toquantity
 submodules
+erfc
 ScalarUnit
 abfarad
 natu
 tuples
+sinh
 gui
 fromstr
 henry
@@ -88,7 +100,9 @@ stilb
 abvolt
 Unum
 barad
+arcsinh
 lbf
+fmod
 PyPI
 subpackages
 bary
@@ -105,6 +119,7 @@ ce
 da
 illuminance
 weber
+acosh
 de
 df
 au
@@ -116,6 +131,7 @@ ec
 barie
 cP
 fb
+fabs
 kPa
 dm
 Stoney
@@ -138,6 +154,7 @@ io
 fromQuantity
 CoherentRelations
 Scalability
+radians
 udunitspy
 Paredis
 Versioning
@@ -161,11 +178,13 @@ np
 lumen
 deciam
 ph
+modf
 mol
 Pag
 ns
 Mx
 google
+copysign
 arcsecond
 sb
 getitem
@@ -190,6 +209,7 @@ permittivity
 barye
 sp
 sr
+arccosh
 googledadb
 candela
 Wb
@@ -202,6 +222,7 @@ submodule
 tuple
 statvolt
 unrationalized
+frexp
 millimetre
 magnetron
 num
@@ -215,17 +236,20 @@ NIST
 bel
 abhenry
 kwargs
+expm
 ppb
 Filename
+isfinite
 denom
 expr
 hypot
-LinearUnit
 fnames
 pre
 MERCHANTABILITY
 daA
+lgamma
 ppq
+ceil
 LambdaUnit
 ppt
 statweber
@@ -243,6 +267,7 @@ CFR
 invertible
 dde
 Sep
+ldexp
 sqrt
 CompoundDimension
 neper

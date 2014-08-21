@@ -61,6 +61,6 @@ per second as it became in the `MKS system of units
 
 .. rubric:: Footnotes
 
-.. [#f1] See the `BIPM units <BIPM-ini>`_ regarding the weber (Wb) and the hertz
-   (Hz).
+.. [#f1] See the `BIPM units <BIPM-ini.html>`_ regarding the weber (Wb) and the
+   hertz (Hz).
 .. [#f2] Traditionally, angle is dropped [NIST2014]_.

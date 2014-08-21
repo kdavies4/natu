@@ -8,11 +8,11 @@
    officially released once the unit tests are complete.
 
 natu is a free, open-source package to represent physical quantities.  There are
-`many Python packages that deal with units and quantities <seealso>`_, but natu
-is uniquely system-independent.  The units are derived from physical constants
-with adjustable values and dimensions.  The value of a unit is factored into a
-quantity so that the quantity is not "in" any particular unit.  This has the
-following advantages:
+`many Python packages that deal with units and quantities <seealso.html>`_, but
+natu is uniquely system-independent.  The units are derived from physical
+constants with adjustable values and dimensions.  The value of a unit is
+factored into a quantity so that the quantity is not "in" any particular unit.
+This has the following advantages:
 
 - **Flexibility**: Different unit systems, including `natural units`_ (hence the
   name "natu"), can be represented by simply adjusting the physical constants.

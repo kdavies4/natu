@@ -160,9 +160,9 @@ lbf ft.
 
 .. _other.ini: https://github.com/kdavies4/natu/blob/master/natu/config/other.ini
 .. _SI: http://en.wikipedia.org/wiki/International_System_of_Units
-.. _CGS units: <http://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units
-.. _EMU: <http://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units#Electromagnetic_units_.28EMU.29
-.. _ESU: <http://en.wikipedia.org/wiki/Electrostatic_units
+.. _CGS units: http://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units
+.. _EMU: http://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units#Electromagnetic_units_.28EMU.29
+.. _ESU: http://en.wikipedia.org/wiki/Electrostatic_units
 .. _Gaussian: http://en.wikipedia.org/wiki/Gaussian_units
 .. _Ampere's force law: http://en.wikipedia.org/wiki/Amp%C3%A8re's_force_law
 
