@@ -68,7 +68,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'natu'
-copyright = ('2013-2014, Kevin Davies, Hawaii Natural Energy Institute, and '
+copyright = ('2013-2014, Kevin Davies, Hawaii Natural Energy Institute and '
              'Georgia Tech Research Corporation')
 
 # The version info for the project you're documenting, acts as replacement for
