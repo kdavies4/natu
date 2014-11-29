@@ -1,5 +1,6 @@
 #!/usr/bin/python
-"""Aliases for constants and units of electrical conductance, with support for prefixes
+"""Aliases for constants and units of electrical conductance, with support for
+prefixes
 """
 # pylint: disable=I0011, E0611
 

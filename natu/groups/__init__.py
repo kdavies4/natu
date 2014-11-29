@@ -43,9 +43,8 @@ Each module can only be reloaded once.\ [#f1]_
 
 .. [#f1] This is not unusual in Python.  From :func:`imp.reload`:
 
-   "In many cases, however, extension modules are not designed to be
-   initialized more than once, and may fail in arbitrary ways when
-   reloaded."
+   "In many cases, however, extension modules are not designed to be initialized
+   more than once, and may fail in arbitrary ways when reloaded."
 """
 __author__ = "Kevin Davies"
 __email__ = "kdavies4@gmail.com"
@@ -56,13 +55,13 @@ __license__ = "BSD-compatible (see LICENSE.txt)"
 import sys
 
 from textwrap import fill
-from ..core import DimensionedObject, UnitsModule, Unit
+from ..core import DimObject, UnitsModule, Unit
 
 DOC_LINE_LENGTH = 74
 
 def _update_module(name, units, dimension=None):
-    """Update the module with name *name* (:class`str`) to contain the
-    units in :class:`dict` *units*, optionally filtered to those with
+    """Update the module with name *name* (:class`str`) to contain the units in
+    :class:`dict` *units*, optionally filtered to those with
     :class:`~natu.core.CompoundDimension` *dimension*.
 
     If *dimension* is *None*, all units are included.
@@ -76,7 +75,7 @@ def _update_module(name, units, dimension=None):
     else:
         units = {symbol: unit for symbol, unit in units.items()
                  if symbol != 'coherent_relations'
-                 and isinstance(unit, DimensionedObject)
+                 and isinstance(unit, DimObject)
                  and unit.dimension == dimension}
         module.__doc__ += "\nDefault contents:\n"
     module.__doc__ += fill(", ".join(sorted(units)), DOC_LINE_LENGTH)

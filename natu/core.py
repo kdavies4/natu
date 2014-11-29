@@ -8,7 +8,7 @@ units are essentially invertible functions that map between numbers and
 quantities.  All units and quantities are dimensioned objects, meaning that
 their physical dimension is recorded (even if dimensionless).
 
-.. inheritance-diagram:: DimensionedObject Unit ScalarUnit LambdaUnit Quantity
+.. inheritance-diagram:: DimObject Unit ScalarUnit LambdaUnit Quantity
 
 Numbers, scalar units, and quantities can be used together in mathematical
 expressions as long as the expression is dimensionally consistent.  Numbers
@@ -106,8 +106,7 @@ Classes in this module:
 - :class:`CompoundUnit` - Dictionary that contains the base factors of a display
   unit as keys and exponents of those units as values
 
-- :class:`DimensionedObject` - Base type that tracks physical dimension and
-  display unit
+- :class:`DimObject` - Base type that tracks physical dimension and display unit
 
 - :class:`LambdaUnit` - Unit that involves a offset or other operations besides
   scaling
@@ -157,7 +156,7 @@ __copyright__ = ("Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy "
                  "Institute, and Georgia Tech Research Corporation")
 __license__ = "BSD-compatible (see LICENSE.txt)"
 
-__all__ = ('CoherentRelations CompoundDimension CompoundUnit DimensionedObject '
+__all__ = ('CoherentRelations CompoundDimension CompoundUnit DimObject '
            'Quantity Unit ScalarUnit LambdaUnit Units UnitsModule'.split())
 
 import math
@@ -192,8 +191,8 @@ UNIT_REPLACEMENTS = {fmt:
 def assert_homogeneous(*args):
     r"""Assert that *\*args* have the same dimension.
 
-    If any argument does not have a :attr:`~DimensionedObject.dimension`
-    property, it is assumed to be dimensionless.
+    If any argument does not have a :attr:`~DimObject.dimension` property, it is
+    assumed to be dimensionless.
 
     **Example:**
 
@@ -217,8 +216,8 @@ def assert_homogeneous(*args):
 def dimension(quantity):
     """Return the dimension of *quantity*.
 
-    If *quantity* does not have a :attr:`~DimensionedObject.dimension` property,
-    it is assumed to be dimensionless and an empty :class:`CompoundDimension` is
+    If *quantity* does not have a :attr:`~DimObject.dimension` property, it is
+    assumed to be dimensionless and an empty :class:`CompoundDimension` is
     returned.
 
     **Example:**
@@ -249,8 +248,8 @@ def dimensionless_value(x):
 def display(quantity):
     """Return the display unit of *quantity*.
 
-    If *quantity* does not have a :attr:`~DimensionedObject.display` property,
-    then an empty :class:`CompoundUnit` is returned.
+    If *quantity* does not have a :attr:`~DimObject.display` property, then an
+    empty :class:`CompoundUnit` is returned.
 
     **Example:**
 
@@ -457,15 +456,15 @@ class CompoundUnit(Exponents):
     # pylint: disable=I0011, R0904
     pass
 
-# Note that in the DimensionedObject below, dimension and display are properties
-# that return copies of the internal _dimension and _display attributes.
-# Generally, only dimension and display should be accessed from the outside to
-# prevent mutating the internal _dimension and _display dictionaries.  However,
-# in the code below, this rule is strategically broken to avoid the overhead of
-# making copies.
+# Note that in the DimObject below, dimension and display are properties that
+# return copies of the internal _dimension and _display attributes.  Generally,
+# only dimension and display should be accessed from the outside to prevent
+# mutating the internal _dimension and _display dictionaries.  However, in the
+# code below, this rule is strategically broken to avoid the overhead of making
+# copies.
 
 
-class DimensionedObject(object):
+class DimObject(object):
 
     """Base type that tracks physical dimension and display unit
 
@@ -524,7 +523,7 @@ class DimensionedObject(object):
         self._display = CompoundUnit(display)
 
 
-class Quantity(DimensionedObject):
+class Quantity(DimObject):
 
     """Class to represent a physical quantity
 
@@ -611,7 +610,7 @@ class Quantity(DimensionedObject):
         self._value = value
 
         # Set the dimension and display unit.
-        DimensionedObject.__init__(self, dimension, display)
+        DimObject.__init__(self, dimension, display)
 
     @copy_props
     @homogeneous
@@ -653,7 +652,7 @@ class Quantity(DimensionedObject):
         try:
             value = y._value * x._value
         except AttributeError:
-            if isinstance(y, DimensionedObject):
+            if isinstance(y, DimObject):
                 return NotImplemented  # Defer; y could be a LambdaUnit.
             return Quantity(y * x._value, x.dimension, x.display)
         dimension = y._dimension + x._dimension
@@ -669,7 +668,7 @@ class Quantity(DimensionedObject):
         try:
             value = x._value / y._value
         except AttributeError:
-            if isinstance(y, DimensionedObject):
+            if isinstance(y, DimObject):
                 return NotImplemented  # Defer; y could be a LambdaUnit.
             return Quantity(x._value / y, x.dimension, x.display)
         dimension = x._dimension - y._dimension
@@ -880,7 +879,7 @@ class Quantity(DimensionedObject):
         return y % x
 
 
-class Unit(DimensionedObject):
+class Unit(DimObject):
 
     """Base class for a unit
 
@@ -894,7 +893,7 @@ class Unit(DimensionedObject):
 
         See the top-level class documentation.
         """
-        DimensionedObject.__init__(self, dimension, display)
+        DimObject.__init__(self, dimension, display)
         self._prefixable = prefixable
 
     @property
@@ -1633,11 +1632,11 @@ class UnitsModule(ModuleType):
     def __setattr__(self, name, value):
         """Set an attribute (*name*) to a value (*value*).
 
-        If *value* is a :class:`DimensionedObject`, it is added to the internal
-        units dictionary (:attr:`_units`).  Otherwise, it is added as a standard
+        If *value* is a :class:`DimObject`, it is added to the internal units
+        dictionary (:attr:`_units`).  Otherwise, it is added as a standard
         attribute.
         """
-        if isinstance(value, DimensionedObject):
+        if isinstance(value, DimObject):
             self._units[name] = value
         else:
             ModuleType.__setattr__(self, name, value)
