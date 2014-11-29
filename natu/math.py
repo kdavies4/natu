@@ -1,11 +1,10 @@
 #!/usr/bin/python
 """`Python math`_, adapted for use with physical quantities
 
-Many of the functions only accept dimensionless quantities, and they
-operate on the underlying values---not the values as represented in a
-particular display unit.  To operate on values in a display unit would be
-to favor a particular unit, which is against the `design of the package
-<index.html>`_.
+Many of the functions only accept dimensionless quantities, and they operate on
+the underlying values---not the values as represented in a particular display
+unit.  To operate on values in a display unit would be to favor a particular
+unit, which is against the `design of the package <index.html>`_.
 
 The constants (*pi*, *e*) are exactly as they are in `Python math`_.
 
@@ -13,8 +12,8 @@ These functions accept floats, integers, and dimensionless quantities:
 
 - Number-theoretic and representation functions: :func:`factorial`,
   :func:`frexp`, :func:`modf`, and :func:`trunc`
-- Power and logarithmic functions: :func:`exp`, :func:`expm1`,
-  :func:`log10`, :func:`log1p`, and :func:`log`
+- Power and logarithmic functions: :func:`exp`, :func:`expm1`, :func:`log10`,
+  :func:`log1p`, and :func:`log`
 - Hyperbolic functions: :func:`acosh`, :func:`asinh`, :func:`atanh`,
   :func:`cosh`, :func:`sinh`, and :func:`tanh`
 - Special functions: :func:`erf`, :func:`erfc`, :func:`gamma`, and
@@ -26,8 +25,7 @@ http://bugs.python.org/issue21902).  The functions cast quantities cast as
 floats and return floats, except for :func:`factorial`, which casts quantities
 as integers and returns integers.
 
-All of the other functions (below) are different than those in `Python
-math`_.
+All of the other functions (below) are different than those in `Python math`_.
 
 These functions accept angle as a quantity:
 
@@ -44,8 +42,8 @@ They return angles as quantities.
 :func:`atan2` accepts accept floats, integers, and quantities of the same
 dimension.  It returns angle as a quantity.
 
-These functions are no longer applicable and have been deleted since angle
-is a quantity:
+These functions are no longer applicable and have been deleted since angle is a
+quantity:
 
 - :func:`degrees` and :func:`radians`
 
@@ -53,48 +51,45 @@ These functions accept floats, integers, and dimensionless quantities:
 
 - :func:`ceil` and :func:`floor`
 
-If the input is a float or an integer, the output is a float.  If the
-input is a :class:`~natu.core.Quantity` or a
-:class:`~natu.core.ScalarUnit`, the result is the same and has the same
-:attr:`dimension`, :attr:`display`, etc.
+If the input is a float or an integer, the output is a float.  If the input is
+a :class:`~natu.core.Quantity` or a :class:`~natu.core.ScalarUnit`, the result
+is the same and has the same :attr:`dimension`, :attr:`display`, etc.
 
 These functions accept floats, integers, and quantities:
 
 - :func:`fabs` and :func:`copysign`
 
-If the input is a float or an integer, the output is a float.  If the
-input is a :class:`~natu.core.Quantity` or a
-:class:`~natu.core.ScalarUnit`, the result is of the same type and has
-the same :attr:`dimension`, :attr:`display`, etc. (of the first argument
-in the case of :func:`copysign`).
+If the input is a float or an integer, the output is a float.  If the input is a
+:class:`~natu.core.Quantity` or a :class:`~natu.core.ScalarUnit`, the result is
+of the same type and has the same :attr:`dimension`, :attr:`display`, etc. (of
+the first argument in the case of :func:`copysign`).
 
 These functions also accept floats, integers, and quantities:
 
 - :func:`ldexp`, :func:`pow`, and :func:`sqrt`
 
-If the input is an float or an integer, the output is a float.  If the
-input is a :class:`~natu.core.Quantity` or a
-:class:`~natu.core.ScalarUnit`, the result is the same.  The dimensions
-and display units are handled according to the power.
+If the input is an float or an integer, the output is a float.  If the input is
+a :class:`~natu.core.Quantity` or a :class:`~natu.core.ScalarUnit`, the result
+is the same.  The dimensions and display units are handled according to the
+power.
 
-:func:`fmod` accepts floats, integers, and quantities of the same
-dimension. The output is always a float.
+:func:`fmod` accepts floats, integers, and quantities of the same dimension.
+The output is always a float.
 
 These functions also accept floats, integers, and quantities of the same
 dimension:
 
 - :func:`fsum` and :func:`hypot`
 
-The display unit (and :attr:`prefixable` attribute, if applicable) of the
-first argument or entry is propagated to the output.
+The display unit (and :attr:`prefixable` attribute, if applicable) of the first
+argument or entry is propagated to the output.
 
 These functions accept floats or quantities:
 
 - :func:`isinf`, :func:`isfinite` (only available in Python >= 3.2), and
   :func:`isnan`
 
-Only the value of a quantity is used; dimension and display unit are
-ignored.
+Only the value of a quantity is used; dimension and display unit are ignored.
 
 
 .. _Python math: https://docs.python.org/3/library/math.html

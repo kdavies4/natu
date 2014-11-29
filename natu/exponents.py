@@ -1,6 +1,6 @@
 #!/usr/bin/python
-"""Contains a class and supporting functions to represent the product
-of factors with exponents
+"""Contains a class and supporting functions to represent the product of factors
+with exponents
 """
 # split_code(), _format(), _FORMATS, and _KNOWN_FORMATS are based on
 # pint.formatting
@@ -94,28 +94,26 @@ def _format(factors, **kwargs):
 
     **Arguments:**
 
-    *factors* - List of (symbol, exponent) pairs
+    - *factors*: List of (symbol, exponent) pairs
 
-       Each symbol is a string that represents the base of a factors and
-       each exponent is a number (:class:`numbers.Number` instance)
+       Each symbol is a string that represents the base of a factors and each
+       exponent is a number (:class:`numbers.Number` instance)
 
-    *mul* - String used for multiplication
+    - *mul*: String used for multiplication
 
-    *div* - String used for division
+    - *div*: String used for division
 
        If *div* is *None*, then negative powers are used instead of division.
 
-    *group* - Format used to group an expression
+    - *group*: Format used to group an expression
 
        This string must contain '{0}' as a placeholder for the grouped
-       expression.  If *group* is *None*, the multiple division
-       operators will be used if necessary.
+       expression.  If *group* is *None*, the multiple division operators will
+       be used if necessary.
 
-    *base_call* - Function that takes a symbol and formats it as a
-    string
+    - *base_call*: Function that takes a symbol and formats it as a string
 
-    *exp_call* - Function that takes an exponent and formats it as a
-    string
+    - *exp_call*: Function that takes an exponent and formats it as a string
     """
     # pylint: disable=I0011, R0912
 
@@ -205,26 +203,25 @@ class Exponents(Counter):
 
     r"""Dictionary-like class to track exponents of independent bases
 
-    The keys are the bases and the values are the exponents.  The
-    supported mathematical operations---addition, subtraction, negation,
-    multiplication, and division---operate on the exponents, not on the
-    bases.
+    The keys are the bases and the values are the exponents.  The supported
+    mathematical operations---addition, subtraction, negation, multiplication,
+    and division---operate on the exponents, not on the bases.
 
     **Initialization signatures:**
 
-    - :class:`Exponents`\(): Returns an :class:`Exponents` instance with
-      an empty set of factors
+    - :class:`Exponents`\(): Returns an :class:`Exponents` instance with and
+      empty set of factors
 
-    - :class:`Exponents`\(a=*exp1*, b=*exp2*, ...), where
-      *exp1* and *exp2* are numbers: Returns an :class:`Exponents`
-      instance that represents the product of symbol 'a' raised to the
-      power of *exp1* and symbol 'b' raised to the power of *exp2*
+    - :class:`Exponents`\(a=*exp1*, b=*exp2*, ...), where *exp1* and *exp2* are
+      numbers: Returns an :class:`Exponents` instance that represents the
+      product of symbol 'a' raised to the power of *exp1* and symbol 'b' raised
+      to the power of *exp2*
 
-    - :class:`Exponents`\(dict(a=*exp1*, b=*exp2*, ...)): Returns the
-      same result as the previous option
+    - :class:`Exponents`\(dict(a=*exp1*, b=*exp2*, ...)): Returns the same
+      result as the previous option
 
-    - :class:`Exponents`\(*string*): Returns an :class:`Exponents`
-      instance indicated by *string*
+    - :class:`Exponents`\(*string*): Returns an :class:`Exponents` instance
+      indicated by *string*
 
          *string* must follow the format accepted by :meth:`fromstr`.
 
@@ -238,29 +235,28 @@ class Exponents(Counter):
 
          - Exponents directly follow the symbols of the bases.
          - '*' indicates multiplication and '/' indicates division.
-         - If the denominator contains multiple factors, they are grouped
-           in parentheses.
+         - If the denominator contains multiple factors, they are grouped in
+           parentheses.
 
     - 'H' (HTML):
 
          - Exponents are written as superscripts ('<sup>...</sup>')
-         - A non-breaking space ('&nbsp;') indicates multiplication and
-           '/' indicates division.
-         - If the denominator contains multiple factors, they are grouped
-           in parentheses.
+         - A non-breaking space ('&nbsp;') indicates multiplication and '/'
+           indicates division.
+         - If the denominator contains multiple factors, they are grouped in
+           parentheses.
 
     - 'L' (LaTeX_ math):
 
          - Exponents are written as superscripts ('^...')
          - Back-to-back factors indicate multiplication and '/' indicates
            division.
-         - If the denominator contains multiple factors, they are grouped
-           in parentheses.
-         - The output must be typeset in LaTeX_ math mode (e.g.,
-           surround it with '$...$').
+         - If the denominator contains multiple factors, they are grouped in
+           parentheses.
+         - The output must be typeset in LaTeX_ math mode (e.g., surround it
+           with '$...$').
 
-    - 'M' ([Modelica]_): Same as default except '.' indicates
-       multiplication
+    - 'M' ([Modelica]_): Same as default except '.' indicates multiplication
 
     - 'U' (Unicode_):
 
@@ -273,8 +269,8 @@ class Exponents(Counter):
 
          - Exponents are prefixed by '**'.
          - ' * ' indicates multiplication and ' / ' indicates division.
-         - If the denominator contains multiple factors, they are grouped
-           in parentheses.
+         - If the denominator contains multiple factors, they are grouped in
+           parentheses.
 
     **Example:**
 
@@ -322,19 +318,16 @@ class Exponents(Counter):
 
     @classmethod
     def fromstr(cls, expr):
-        """Create an :class:`Exponents` instance from a string
-        expression.
+        """Create an :class:`Exponents` instance from a string expression.
 
         **Arguments:**
 
-        - *expr*: String expression that indicates the symbols and
-          exponents
+        - *expr*: String expression that indicates the symbols and exponents
 
-             Each symbol may be followed directly by an exponent.  If
-             the exponent is not an integer, it may be expressed using a
-             decimal or as a fraction (with '/') enclosed in parentheses.
-             Factors may be multiplied('*'), divided ('/'), or grouped
-             ('(...)').
+             Each symbol may be followed directly by an exponent.  If the
+             exponent is not an integer, it may be expressed using a decimal or
+             as a fraction (with '/') enclosed in parentheses.  Factors may be
+             multiplied('*'), divided ('/'), or grouped ('(...)').
 
         **Example:**
 
@@ -347,12 +340,10 @@ class Exponents(Counter):
         # is an option, but it's much slower than re.
 
         def process_expression(expr, exponents, add=True):
-            """Process a factor from the left of a string expression
-            (expr)
+            """Process a factor from the left of a string expression (expr).
 
             Add (if add == True) the factor to exponents if add == True.
-            Otherwise, subtract it.  Return the remainder of the
-            expression.
+            Otherwise, subtract it.  Return the remainder of the expression.
             """
             # Pass if the expression is unity.
             if expr[0] == '1':
@@ -487,7 +478,6 @@ class Exponents(Counter):
         return result
 
     def __str__(self):
-        """Return an informal string representation of the Exponents
-        instance.
+        """Return an informal string representation of the Exponents instance.
         """
         return format(self)

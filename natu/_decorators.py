@@ -31,16 +31,23 @@ else:
     def update_wrapper(wrapper, wrapped,
                        assigned=WRAPPER_ASSIGNMENTS,
                        updated=WRAPPER_UPDATES):
-        """Update a wrapper function to look like the wrapped function
+        """Update a wrapper function to look like the wrapped function.
 
-           wrapper is the function to be updated
-           wrapped is the original function
-           assigned is a tuple naming the attributes assigned directly
-           from the wrapped function to the wrapper function (defaults to
-           functools.WRAPPER_ASSIGNMENTS)
-           updated is a tuple naming the attributes of the wrapper that
-           are updated with the corresponding attribute from the wrapped
-           function (defaults to functools.WRAPPER_UPDATES)
+        **Arguments:**
+
+        - :func:`wrapper`: function to be updated
+
+        - :func:`wrapped`: original function
+
+        - *assigned*: tuple naming the attributes assigned directly from
+          :func:`wrapped` to :func:`wrapper`
+
+             *assigned* defaults to :const:`functools.WRAPPER_ASSIGNMENTS`.
+
+        - *updated*: tuple naming the attributes of :func:`wrapper` that are
+          updated with the corresponding attribute from :func:`wrapped`
+
+             *updated* defaults to :const:`functools.WRAPPER_UPDATES`.
         """
         wrapper.__wrapped__ = wrapped
         for attr in assigned:
@@ -52,19 +59,21 @@ else:
                 setattr(wrapper, attr, value)
         for attr in updated:
             getattr(wrapper, attr).update(getattr(wrapped, attr, {}))
-        # Return the wrapper so this can be used as a decorator via partial()
+
+        # Return the wrapper so this can be used as a decorator via partial().
         return wrapper
 
     def wraps(wrapped,
               assigned=WRAPPER_ASSIGNMENTS,
               updated=WRAPPER_UPDATES):
-        """Decorator factory to apply update_wrapper() to a wrapper function
+        """Apply :func:`update_wrapper` to a wrapper function.
 
-           Returns a decorator that invokes update_wrapper() with the decorated
-           function as the wrapper argument and the arguments to wraps() as the
-           remaining arguments. Default arguments are as for update_wrapper().
-           This is a convenience function to simplify applying partial() to
-           update_wrapper().
+        This decorator factory returns a decorator that invokes
+        :func:`update_wrapper` with the decorated function as the wrapper
+        argument and the arguments to this function as the remaining arguments.
+        Default arguments are as for :func:`update_wrapper`.  This is a
+        convenience function to simplify applying :func:`partial` to
+        :func:`update_wrapper`.
         """
         return partial(update_wrapper, wrapped=wrapped,
                        assigned=assigned, updated=updated)
@@ -89,7 +98,7 @@ def merge(value, prototype):
 
 def merge_raise(value, prototype, power):
     """Same as :func:`merge`, but raise the dimension and display unit to
-    to *power*
+    *power*
     """
     if isinstance(prototype, ScalarUnit):
         return ScalarUnit(value, power * prototype.dimension,
@@ -152,8 +161,8 @@ def change_doc(func, doc=None):
 
 def copy_props(func):
     """Decorate a function to return a :class:`~natu.core.ScalarUnit` or
-    :class:`~natu.core.Quantity` instance that matches the first argument
-    except for the computed value.
+    :class:`~natu.core.Quantity` instance that matches the first argument except
+    for the computed value.
     """
     @wraps(func)
     def wrapped(x, *args, **kwargs):

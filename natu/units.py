@@ -2,8 +2,8 @@
 r"""Module with all units defined by the :file:`\*.ini` files in
 :attr:`natu.config.definitions`
 
-This module cannot be reloaded.  This prevents conflicts that could arise
-if the units were redefined with different `base constants <base-ini.html>`_.
+This module cannot be reloaded.  This prevents conflicts that could arise if the
+units were redefined with different `base constants <base-ini.html>`_.
 """
 __author__ = "Kevin Davies"
 __email__ = "kdavies4@gmail.com"

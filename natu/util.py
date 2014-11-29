@@ -16,8 +16,8 @@
 - :func:`list_packages` - Return a list of the names of a module and its
   subpackages.
 
-- :func:`multiglob` - Return a set of filenames that match sets of pathnames
-  and extensions.
+- :func:`multiglob` - Return a set of filenames that match sets of pathnames and
+  extensions.
 
 - :func:`num2super` - Convert a number to Unicode_ superscript.
 
@@ -28,8 +28,8 @@
 
 - :func:`str2super` - Convert a numeric string to Unicode_ superscript.
 
-- :func:`yes` - Ask a yes/no question and return *True* if the answer is 'Y'
-  or 'y'.
+- :func:`yes` - Ask a yes/no question and return *True* if the answer is 'Y' or
+  'y'.
 
 
 .. _Unicode: http://www.unicode.org/
@@ -140,11 +140,11 @@ def format_e(num_str, code):
     return num_str
 
 def get_group(expr):
-    """Return 1) the contents of a parenthetical expression and 2)
-    everything after it.
+    """Return 1) the contents of a parenthetical expression and 2) everything
+    after it.
 
-    The parenthetical expression starts at the beginning of *expr* and may
-    be nested.
+    The parenthetical expression starts at the beginning of *expr* and may be
+    nested.
 
     **Example:**
 
@@ -170,8 +170,8 @@ def get_group(expr):
 def list_packages(package):
     """Return a list of the names of a package and its subpackages.
 
-    This only works if the package has a :attr:`__path__` attribute, which
-    is not the case for some (all?) of the built-in packages.
+    This only works if the package has a :attr:`__path__` attribute, which is
+    not the case for some (all?) of the built-in packages.
 
     **Example:**
 

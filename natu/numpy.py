@@ -1,11 +1,10 @@
 #!/usr/bin/python
 """:mod:`numpy`, adapted for use with physical quantities
 
-Many of the functions only accept dimensionless quantities, and they
-operate on the underlying values---not the values as represented in a
-particular display unit.  To operate on values in a display unit would be
-to favor a particular unit, which is against the `design of the package
-<index.html>`_.
+Many of the functions only accept dimensionless quantities, and they operate on
+the underlying values---not the values as represented in a particular display
+unit.  To operate on values in a display unit would be to favor a particular
+unit, which is against the `design of the package <index.html>`_.
 
 The constants (*pi*, *e*) are exactly as they are in :mod:`numpy`.
 
@@ -27,8 +26,8 @@ These functions accept floats, integers, and dimensionless quantities:
 
 They return angles as quantities.
 
-These functions are no longer applicable and have been deleted since angle
-is a quantity:
+These functions are no longer applicable and have been deleted since angle is a
+quantity:
 
 - :func:`degrees`, :func:`radians`, :func:`rad2deg`, and :func:`deg2rad`
 
