@@ -117,7 +117,6 @@ def format_e(num_str, code):
 
 
     .. _LaTeX: http://www.latex-project.org/
-
     """
     # TODO: Add examples.
     num_str = num_str.replace('E', 'e')

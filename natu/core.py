@@ -2,11 +2,13 @@
 # -*- coding: utf-8 -*-
 r"""Core classes of natu
 
-As shown in the diagram below, there are two types of units: scalar units and
-lambda units.  Scalar units are quantities, but lambda units are not.  Lambda
-units are essentially invertible functions that map between numbers and
-quantities.  All units and quantities are dimensioned objects, meaning that
-their physical dimension is recorded (even if dimensionless).
+As shown in the diagram below, there are two types of units (:class:`Unit`):
+scalar units (:class:`ScalarUnit`) and lambda units (:class:`LambdaUnit`).
+Scalar units are quantities, but lambda units are not.  Lambda units are
+essentially invertible functions that map between numbers and quantities
+(:class:`Quantity`).  All units and quantities are dimensioned objects
+(:class:`DimObject`), meaning that their physical dimension is recorded (even if
+dimensionless).
 
 .. inheritance-diagram:: DimObject Unit ScalarUnit LambdaUnit Quantity
 
@@ -15,7 +17,7 @@ expressions as long as the expression is dimensionally consistent.  Numbers
 (:class:`float`, :class:`int`, :class:`~fractions.Fraction`, etc.) are
 considered dimensionless.
 
-Lambda units can only be used with numbers and quantities in special cases.  A
+Lambda units can only be used with numbers and quantities in certain ways.  A
 lambda unit can be applied to generate a quantity for use in the rest of a
 mathematical expression.  The multiplication operator (``*``) is overloaded so
 that a number times a lambda unit calls the unit's method to map the number to a
@@ -23,16 +25,15 @@ quantity.  Likewise, the division operator (``/``) uses a lambda unit to map a
 quantity to a number.
 
 The tables below summarize the type of result given by simple mathematical
-operations among numbers, scalar units, lambda units, and quantities.  The
-product or quotient of a number and a quantity or scalar unit is a quantity.
-This is the case even if the number is zero; the product of zero and a unit or
-quantity still carries the dimension of the unit or quantity.  A quantity
-evaluates to *True* if its value is nonzero, but it is not equal to zero unless
-its value is zero and it is dimensionless.
-
+operations among numbers (N), scalar units (S), lambda units (L), and quantities
+(Q).  The product or quotient of a number and a quantity or scalar unit is a
+quantity.  This is the case even if the number is zero.  For example, the
+product of zero and a unit still carries the dimension of the unit.  In a
+Boolean expression, a quantity is cast as *False* if its value is zero.
+However, it is only equal to zero if its value is zero and it is dimensionless.
 The display unit of the first term in addition or subtraction takes precedence.
 If the first term is a number and the second term is a dimensionless quantity,
-the result is a number.
+then the result is a number.
 
 Results of multiplication and division:
 
@@ -41,13 +42,13 @@ Results of multiplication and division:
 |              +----+--------+--------+----+
 | 1st argument | N  | Q      | S      | L  |
 +==============+====+========+========+====+
-| N            | N  | Q      | Q      | Q  |
+| **N**        | N  | Q      | Q      | Q  |
 +--------------+----+--------+--------+----+
-| Q            | Q  | Q [1]_ | Q [1]_ | N  |
+| **Q**        | Q  | Q [1]_ | Q [1]_ | N  |
 +--------------+----+--------+--------+----+
-| S            | Q  | Q [1]_ | S [1]_ | -- |
+| **S**        | Q  | Q [1]_ | S [1]_ | -- |
 +--------------+----+--------+--------+----+
-| L            | -- | --     | --     | -- |
+| **L**        | -- | --     | --     | -- |
 +--------------+----+--------+--------+----+
 
 Results of addition and subtraction:
@@ -57,13 +58,13 @@ Results of addition and subtraction:
 |              +--------+--------+--------+----+
 | 1st argument | N      | Q      | S      | L  |
 +==============+========+========+========+====+
-| N            | N      | N [2]_ | N [2]_ | -- |
+| **N**        | N      | N [2]_ | N [2]_ | -- |
 +--------------+--------+--------+--------+----+
-| Q            | Q [2]_ | Q      | Q      | -- |
+| **Q**        | Q [2]_ | Q      | Q      | -- |
 +--------------+--------+--------+--------+----+
-| S            | Q [2]_ | Q      | Q      | -- |
+| **S**        | Q [2]_ | Q      | Q      | -- |
 +--------------+--------+--------+--------+----+
-| L            | --     | --     | --     | -- |
+| **L**        | --     | --     | --     | -- |
 +--------------+--------+--------+--------+----+
 
 Key:
@@ -74,7 +75,7 @@ Key:
 - L: :class:`LambdaUnit`
 - --: Not allowed
 
-.. [1] If the result is dimensionless, it is returned as a number instead.
+.. [1] If the result is dimensionless, then it is returned as a number instead.
 .. [2] The quantity must be dimensionless.
 
 Here are some consequences of this design:
@@ -85,7 +86,7 @@ Here are some consequences of this design:
 - Is ``0*m`` dimensionless? No
 - Is ``m/ft`` a quantity or a number? Number (float)
 - Is ``ohm*S`` a quantity or a number? Number (1.0)
-- Is ``m*m`` a unit? Yes (``'m2'``)
+- Is ``m*m`` a unit? Yes (with display unit ``'m2'``)
 - Is ``1*m*m`` a unit? No (only a quantity)
 - Is ``1*ppm`` a unit or a number? Neither (a dimensionless quantity)
 - Is ``m + 0`` (or ``0 + m``) valid? No
@@ -106,39 +107,40 @@ Classes in this module:
 - :class:`CompoundUnit` - Dictionary that contains the base factors of a display
   unit as keys and exponents of those units as values
 
-- :class:`DimObject` - Base type that tracks physical dimension and display unit
+- :class:`DimObject` - Base class that records physical dimension and display
+  unit
 
-- :class:`LambdaUnit` - Unit that involves a offset or other operations besides
+- :class:`LambdaUnit` - Unit that involves an offset or other operations besides
   scaling
 
 - :class:`Quantity` - Class to represent a physical quantity
 
-- :class:`ScalarUnit` - Unit that involves just a scaling factor
+- :class:`ScalarUnit` - Unit that involves only a scaling factor
 
 - :class:`Unit` - Base class for a unit
 
 - :class:`Units` - Dictionary of units with dynamic prefixing
 
-- :class:`UnitsModule` - Class that wraps the :class:`Units` dictionary as a
+- :class:`UnitsModule` - Class that wraps a :class:`Units` dictionary as a
   module
 
 .. warning::  Be careful if you use this package to produce conversion factors.
-   A factor may be the reciprocal of what you first think.  By the phrase
+   The factor may be the reciprocal of what you first think.  By the phrase
    "convert from x to y" (where x and y are units), we mean "convert from an
-   expression of the quantity in x to an expression of the quantity in y".
-   "Quantity in unit" is generally equivalent to "quantity *divided by* unit",
+   expression of the quantity in x to an expression of the quantity in y."
+   "Quantity in unit" is typically equivalent to "quantity *divided by* unit",
    and to get from *Q*/x (where *Q* is a quantity) to *Q*/y, we must multiply by
-   x/y.  As a practical example, the conversion factor from feet to meters is
-   ``ft/m`` (0.3048) using :mod:`natu.units`.
+   x/y.  For example, the conversion factor from feet to metres is ``ft/m``
+   (0.3048) using :mod:`natu.units`.
 
    - Adapted from SciMath
      (http://docs.enthought.com/scimath/units/intro.html, accessed
      7/10/2014)
 
-Known issues:
+.. note::  Known issues:
 
-- Python's built-in :func:`sum` will only accept dimensionless quantities.
-  Consider using :func:`natu.math.fsum` instead.
+   - Python's built-in :func:`sum` will only accept dimensionless quantities.
+     Consider using :func:`natu.math.fsum` instead.
 """
 
 # pylint: disable=I0011, C0103, C0111, C0301, C0325, E0213, E1101, F0401, R0903
@@ -422,8 +424,8 @@ class CompoundDimension(Exponents):
     """Dictionary that contains base physical dimensions as keys and exponents
     of those dimensions as values
 
-    This is :class:`natu.exponents.Exponents`---only extended and renamed for
-    clarity.  Please see that class for details.
+    This is :class:`natu.exponents.Exponents`, only renamed for clarity.
+    Please see that class for details and additional examples.
 
     **Example:**
 
@@ -442,8 +444,8 @@ class CompoundUnit(Exponents):
     """Dictionary that contains the base units of a display unit as keys and
     exponents of those units as values
 
-    This is :class:`natu.exponents.Exponents`---only extended and renamed for
-    clarity. Please see that class for details.
+    This is :class:`natu.exponents.Exponents`, only renamed for clarity.
+    Please see that class for details and additional examples.
 
     **Example:**
 
@@ -466,24 +468,28 @@ class CompoundUnit(Exponents):
 
 class DimObject(object):
 
-    """Base type that tracks physical dimension and display unit
+    """Base class that records physical dimension and display unit
 
     **Initialization arguments:**
 
     - *dimension*: Physical dimension
 
-         This can be a :class:`CompoundDimension` instance, a standard Python_
-         dictionary (:class:`dict`) of the same form, or a string following the
-         syntax described in :meth:`~natu.exponents.Exponents.fromstr`.
+         This can be a :class:`CompoundDimension` instance, a :class:`dict` of
+         similar form, or a string accepted by the
+         :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display*: Display unit
 
-         This can be a :class:`CompoundUnit` instance, a standard Python_
-         dictionary (:class:`dict`) of the same form, or a string following the
-         syntax described in :meth:`~natu.exponents.Exponents.fromstr`.
+         This can be a :class:`CompoundUnit` instance, a :class:`dict` of
+         similar form, or a string accepted by the
+         :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     Here, the physical dimension and the display unit are not checked for
     consistency.
+
+    :attr:`dimension` and :attr:`dimensionless` are read-only attributes (see
+    below), but :attr:`display` can be set using the same format as the
+    *display* argument above.
     """
 
     def __init__(self, dimension, display):
@@ -496,7 +502,7 @@ class DimObject(object):
 
     @property
     def dimension(self):
-        """Physical dimension"""
+        """Physical dimension as a :class:`CompoundDimension` instance"""
         return self._dimension.copy()
 
     @property
@@ -506,16 +512,16 @@ class DimObject(object):
 
     @property
     def display(self):
-        """Display unit"""
+        """Display unit as a :class:`CompoundUnit` instance"""
         return self._display.copy()
 
     @display.setter
     def display(self, display):
         """Set the display unit.
 
-        *display* can be a :class:`CompoundUnit` instance, a standard Python_
-        dictionary (:class:`dict`) of the same form, or a string following the
-        syntax described in :meth:`~natu.exponents.Exponents.fromstr`.
+        *display* can be a :class:`CompoundUnit` instance, a :class:`dict` of
+        similar form, or a string accepted by the
+        :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
         Here, the display unit is not checked for dimensional consistency (with
         :attr:`dimension`).
@@ -531,33 +537,21 @@ class Quantity(DimObject):
 
     - *value*: Value of the quantity (a :class:`numbers.Number` instance)
 
-         This can be expressed as the product of a number and the value of a
-         unit.  The value of a quantity is independent of the unit; the number
-         scales inversely to the unit.
+         This be expressed as the product of a number and the value of a
+         unit.  It is independent of the unit since the number scales inversely
+         to the unit.
 
     - *dimension*: Physical dimension
 
-         This can be a :class:`CompoundDimension` instance, a standard Python_
-         dictionary (:class:`dict`) of the same form, or a string following the
-         syntax described in :meth:`~natu.exponents.Exponents.fromstr`.
+         This can be a :class:`CompoundDimension` instance, a :class:`dict` of
+         similar form, or a string accepted by the
+         :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display*: Display unit
 
-         This can be a :class:`CompoundUnit` instance, a standard Python_
-         dictionary (:class:`dict`) of the same form, or a string following the
-         syntax described in :meth:`~natu.exponents.Exponents.fromstr`.
-
-    **Properties:**
-
-    - :attr:`dimension`: Physical dimension as a :class:`CompoundDimension`
-
-    - :attr:`dimensionless`: *True* if the quantity is dimensionless
-
-    - :attr:`display`: Display unit as a :class:`CompoundUnit`
-
-    :attr:`dimension` and :attr:`dimensionless` are read-only, but
-    :attr:`display` can be set using the same options as the *display* argument
-    above.
+         This can be a :class:`CompoundUnit` instance, a :class:`dict` of
+         similar form, or a string accepted by the
+         :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     **Examples:**
 
@@ -581,7 +575,7 @@ class Quantity(DimObject):
     >>> print(mass) # doctest: +ELLIPSIS
     2.20462... lb
 
-    Note that the value is unchanged:
+    Note that the value has not changed:
 
     >>> mass # doctest: +ELLIPSIS
     Quantity(1, 'M', 'lb') (2.20462... lb)
@@ -599,6 +593,7 @@ class Quantity(DimObject):
     """
 
     unitspace = None
+    """Underlying unit dictionary used to define quantities"""
 
     def __init__(self, value, dimension, display=''):
         """Initialize a quantity by setting the value, physical dimension, and
@@ -883,8 +878,28 @@ class Unit(DimObject):
 
     """Base class for a unit
 
-    In-place assignments are blocked because the value of a unit is predefined
+    In-place operations are blocked because the value of a unit is predefined
     and should not be changed.
+
+    **Initialization arguments:**
+
+    - *dimension*: Physical dimension
+
+         This can be a :class:`CompoundDimension` instance, a :class:`dict` of
+         similar form, or a string accepted by the
+         :meth:`~natu.exponents.Exponents.fromstr` constructor.
+
+    - *display*: Display unit
+
+         This can be a :class:`CompoundUnit` instance, a :class:`dict` of
+         similar form, or a string accepted by the
+         :meth:`~natu.exponents.Exponents.fromstr` constructor.
+
+    - *prefixable*: *True* if the unit can be prefixed
+
+    :attr:`~DimObject.dimension`, :attr:`~DimObject.dimensionless`, and
+    :attr:`prefixable` are read-only attributes, but :attr:`~DimObject.display`
+    can be set using the same format as the *display* argument above.
     """
 
     def __init__(self, dimension, display, prefixable=False):
@@ -926,39 +941,21 @@ class ScalarUnit(Quantity, Unit):
 
     **Initialization arguments:**
 
-    - *value*: Value of the quantity (a :class:`numbers.Number` instance)
-
-         This can be expressed as the product of a number and the value of a
-         unit.  A value of a quantity is independent of the unit; the number
-         scales inversely to the unit.
+    - *value*: Value of the unit (a :class:`numbers.Number` instance)
 
     - *dimension*: Physical dimension
 
-         This can be a :class:`CompoundDimension` instance, a standard Python_
-         dictionary (:class:`dict`) of the same form, or a string following the
-         syntax described in :meth:`~natu.exponents.Exponents.fromstr`.
+         This can be a :class:`CompoundDimension` instance, a :class:`dict` of
+         similar form, or a string accepted by the
+         :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display*: Display unit
 
-         This can be a :class:`CompoundUnit` instance, a standard Python_
-         dictionary (:class:`dict`) of the same form, or a string following the
-         syntax described in :meth:`~natu.exponents.Exponents.fromstr`.
+         This can be a :class:`CompoundUnit` instance, a :class:`dict` of
+         similar form, or a string accepted by the
+         :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *prefixable*: *True* if the unit can be prefixed
-
-    **Properties:**
-
-    - :attr:`dimension`: Physical dimension as a :class:`CompoundDimension`
-
-    - :attr:`dimensionless`: *True* if the quantity is dimensionless
-
-    - :attr:`display`: Display unit as a :class:`CompoundUnit`
-
-    - :attr:`prefixable`: *True* if the unit can be prefixed
-
-    :attr:`dimension`, :attr:`dimensionless`, and :attr:`prefixable` are
-    read-only, but :attr:`display` can be set using the same options as the
-    *display* argument above.
 
     **Examples:**
 
@@ -969,7 +966,7 @@ class ScalarUnit(Quantity, Unit):
     >>> kg*m**2/s**2
     ScalarUnit(1, 'L2*M/T2', 'J', False) (J)
 
-    Note that it's possible to change the display unit:
+    Note that the display unit can be changed:
 
     >>> m.display = 'ft'
     >>> m # doctest: +ELLIPSIS
@@ -978,8 +975,9 @@ class ScalarUnit(Quantity, Unit):
     .. testcleanup::
        >>> m.display = 'm'
 
-    Now any quantity generated from m will display in ft instead. However,
-    notice that the value is unchanged; m still represents the same length.
+    Now any quantity generated from the metre (m) will display in feet (ft)
+    instead. However, the value is unchanged; the metre still represents the
+    same length.
     """
 
     def __init__(self, value, dimension, display='', prefixable=False):
@@ -1082,31 +1080,17 @@ class LambdaUnit(Unit):
 
     - *dimension*: Physical dimension
 
-         This can be a :class:`CompoundDimension` instance, a standard Python_
-         dictionary (:class:`dict`) of the same form, or a string following the
-         syntax described in :meth:`~natu.exponents.Exponents.fromstr`.
+         This can be a :class:`CompoundDimension` instance, a :class:`dict` of
+         similar form, or a string accepted by the
+         :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display*: Display unit
 
-         This can be a :class:`CompoundUnit` instance, a standard Python_
-         dictionary (:class:`dict`) of the same form, or a string following the
-         syntax described in :meth:`~natu.exponents.Exponents.fromstr`.
+         This can be a :class:`CompoundUnit` instance, a :class:`dict` of
+         similar form, or a string accepted by the
+         :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *prefixable*: *True* if the unit can be prefixed
-
-    **Properties:**
-
-    - :attr:`dimension`: Physical dimension as a :class:`CompoundDimension`
-
-    - :attr:`dimensionless`: *True* if the quantity is dimensionless
-
-    - :attr:`display`: Display unit as a :class:`CompoundUnit`
-
-    - :attr:`prefixable`: *True* if the unit can be prefixed
-
-    :attr:`dimension`, :attr:`dimensionless`, and :attr:`prefixable` are
-    read-only, but :attr:`display` can be set using the same options as the
-    *display* argument above.
 
     **Examples:**
 
@@ -1273,8 +1257,8 @@ class CoherentRelations(list):
     """List of coherent relations among units
 
     Each item is a tuple consisting of a relation and a set of the dimensions
-    involved in the units of the relation.  Each relation is expressed as a
-    :class:`CompoundUnit` instance that resolves to unity.
+    involved in the units of the relation.  A relation is expressed as a
+    :class:`CompoundUnit` instance that evaluates to unity.
     """
     pass
 
@@ -1294,9 +1278,15 @@ class Units(dict):
         """Access a unit by *symbol* (a string).
 
         Prefixes are supported.
+
+        **Example:**
+
+        >>> from natu.units import _units
+        >>> _units['psi']
+        ScalarUnit(6894.76, 'M/(L*T2)', 'psi', False) (psi)
         """
         try:
-            return dict.__getitem__(self, symbol)  # Standard unit
+            return dict.__getitem__(self, symbol)  # Constant or standard unit
         except KeyError:
             pass  # Prefixed unit (below)
 
@@ -1334,7 +1324,7 @@ class Units(dict):
         raise error
 
     def __call__(self, **factors):
-        r"""Generate a compound unit from the unit space.
+        r"""Generate a compound, coherent unit from existing units.
 
         **Arguments:**
 
@@ -1470,37 +1460,38 @@ class Units(dict):
         r"""Simplify a compound unit.
 
         This function seeks to minimize the sum of the absolute values of the
-        exponents of the base factors.  It avoids using any factors that involve
-        dimensions not included in the original representation of the unit.
-        This function uses the internal :attr:`coherent_relations` list which is
-        generated while parsing the \*.ini files (in :meth:`load_ini`).  It will
-        not always find the simplest representation because some simplifications
-        involve first making the representation more complex.
+        exponents of the base factors by substituting coherently related units.
+        It does not use units that involve dimensions not included in the
+        original representation.  It uses the internal
+        :attr:`coherent_relations` list which is generated while parsing the
+        \*.ini files (in :meth:`load_ini`).  It will not always find the
+        simplest representation because some simplifications involve first
+        making the representation more complex.
 
         **Arguments:**
 
         - *unit*: Unit to be simplified
 
-             This can be a :class:`CompoundUnit` instance, a standard Python_
-             dictionary (:class:`dict`) of the same form, or a string following
-             the syntax described in :meth:`~natu.exponents.Exponents.fromstr`.
+             This can be a :class:`CompoundUnit` instance, a :class:`dict` of
+             similar form, or a string accepted by the
+             :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
         - *level*: Number of levels of recursion to perform
 
              This is the number of non-minimizing substitutions that can be made
-             while seeking the best representation of the unit.
+             while seeking the simplest representation of the unit.
 
-        **Returns:**  A :class:`CompoundUnit` instance indicating the best
+        **Returns:**  A :class:`CompoundUnit` instance indicating the new
         representation of the unit.
 
         **Example:**
 
-        >>> # High-level:
+        >>> # High-level/indirect:
         >>> from natu.units import *
         >>> print(kg*m**2/s**2)
         J
 
-        >>> # Low-level:
+        >>> # Low-level/direct:
         >>> from natu.units import _units
         >>> print(_units.simplify('kg*m2/s2'))
         J
@@ -1557,7 +1548,7 @@ class Units(dict):
 
 class UnitsModule(ModuleType):
 
-    r"""Class that wraps the :class:`Units` dictionary as a module
+    r"""Class that wraps a :class:`Units` dictionary as a module
 
     **Initialization arguments:**
 
@@ -1569,11 +1560,12 @@ class UnitsModule(ModuleType):
       units that should be inserted into the module
 
          It is not necessary to provide prefixed versions of the units unless
-         they should be available via ``from <units module> import *``.
+         they should be available via wildcard import (e.g.,
+         ``from units_module import *``).
 
-    Only one :class:`UnitsModule` can be instantiated from \*.ini files per
-    Python_ session.  This prevents conflicts that might arise if the units were
-    reloaded with different base constants.
+    Only one :class:`UnitsModule` can be instantiated directly from \*.ini files
+    per Python_ session.  This prevents conflicts that could arise if the units
+    were reloaded with different base constants.
     """
 
     def __init__(self, module, definitions):

@@ -1,9 +1,8 @@
 #!/usr/bin/python
-"""Contains a class and supporting functions to represent the product of factors
-with exponents
+"""Contains a class with methods to represent and operate on the product of
+factors containing exponents
 """
-# split_code(), _format(), _FORMATS, and _KNOWN_FORMATS are based on
-# pint.formatting
+# split_code(), _format(), and _FORMATS are based on pint.formatting
 # (https://github.com/hgrecco/pint, 7/11/14):
 # - Copyright 2013 by Pint Authors
 # - BSD license
@@ -23,54 +22,53 @@ _DEFAULT_FORMAT = dict(
     mul='*',
     div='/',
     group='({0})',
-    base_call=lambda x: x,
-    exp_call=lambda x: '(%s)' % x if isinstance(x, Fraction) else '%s' % x,
+    base_fmt=lambda x: x,
+    exp_fmt=lambda x: '(%s)' % x if isinstance(x, Fraction) else '%s' % x,
 )
 
 # Map format specifications to sets of keyword arguments for format.
 _FORMATS = {
     '': _DEFAULT_FORMAT,
-    'H':  # HTML format
+    'H':  # HTML
     dict(_DEFAULT_FORMAT,
          mul='&nbsp;',
          div=None,
-         exp_call=lambda x: '<sup>%s</sup>' % x,
+         exp_fmt=lambda x: '<sup>%s</sup>' % x,
          ),
-    'L':  # LaTeX format
+    'L':  # LaTeX
     dict(_DEFAULT_FORMAT,
          mul='\,',
          div=None,
          group=r'\left({0}\right)',
-         base_call=lambda x: r'\mathrm{%s}' % x,
-         exp_call=lambda x: ('^{%s}' % x
+         base_fmt=lambda x: r'\mathrm{%s}' % x,
+         exp_fmt=lambda x: ('^{%s}' % x
                              if isinstance(x, Fraction) or x < 0 else
                              '^%s' % x),
          ),
-    'M':  # Modelica format
+    'M':  # Modelica
     dict(_DEFAULT_FORMAT,
          mul='.',
          ),
-    'U':  # Unicode format
+    'U':  # Unicode
     dict(_DEFAULT_FORMAT,
          mul=' ',
          div=None,
-         exp_call=num2super,
+         exp_fmt=num2super,
          ),
     'V':  # Verbose
     dict(_DEFAULT_FORMAT,
          mul=' * ',
          div=' / ',
-         exp_call=lambda x: ('**(%s)' % x if isinstance(x, Fraction) else
+         exp_fmt=lambda x: ('**(%s)' % x if isinstance(x, Fraction) else
                              '**%s' % x),
          ),
     }
 
-_KNOWN_TYPES = frozenset(_FORMATS.keys())
+_KNOWN_FORMATS = frozenset(_FORMATS)
 
 
 def split_code(code):
-    """Split a string format code into standard and exponent-specific
-    components.
+    """Split a string format code into standard and exponent-specific parts.
     """
     # Based on pint.formatting (https://github.com/hgrecco/pint, 7/11/14).
     # Copyright 2013 by Pint Authors
@@ -79,41 +77,40 @@ def split_code(code):
     std_fmt = ''
     exp_fmt = ''
     for char in code:
-        if char in _KNOWN_TYPES:
+        if char in _KNOWN_FORMATS:
             if exp_fmt:
-                raise ValueError("multiple exponent format codes found")
-            else:
-                exp_fmt = char
+                raise ValueError("Multiple exponent format codes found")
+            exp_fmt = char
         else:
             std_fmt += char
     return std_fmt, exp_fmt
 
 
 def _format(factors, **kwargs):
-    """Format the product of (symbol, exponent) pairs as a string
+    """Format the product of (base, exponent) pairs as a string
 
     **Arguments:**
 
-    - *factors*: List of (symbol, exponent) pairs
+    - *factors*: List of (base, exponent) pairs
 
-       Each symbol is a string that represents the base of a factors and each
-       exponent is a number (:class:`numbers.Number` instance)
+       Each base is a string that represents the base of a factor.  Each
+       exponent is a number (:class:`numbers.Number` instance).
 
-    - *mul*: String used for multiplication
+    - *mul*: String used to represent multiplication
 
-    - *div*: String used for division
+    - *div*: String used to represent division
 
-       If *div* is *None*, then negative powers are used instead of division.
+         If *div* is *None*, then negative powers are used instead of division.
 
     - *group*: Format used to group an expression
 
-       This string must contain '{0}' as a placeholder for the grouped
-       expression.  If *group* is *None*, the multiple division operators will
-       be used if necessary.
+         This string must contain '{0}' as a placeholder for the grouped
+         expression.  If *group* is *None*, the multiple division operators will
+         be used if necessary.
 
-    - *base_call*: Function that takes a symbol and formats it as a string
+    - *base_fmt*: Function that takes a base and formats it as a string
 
-    - *exp_call*: Function that takes an exponent and formats it as a string
+    - *exp_fmt*: Function that takes an exponent and formats it as a string
     """
     # pylint: disable=I0011, R0912
 
@@ -121,35 +118,34 @@ def _format(factors, **kwargs):
         return ''
 
     # Process the arguments.
-    kwargs = dict(_DEFAULT_FORMAT, **kwargs)  # Apply the defaults.
     mul = kwargs['mul']
     div = kwargs['div']
     group = kwargs['group']
-    base_call = kwargs['base_call']
+    base_fmt = kwargs['base_fmt']
     if div:
-        exp_call = lambda x: kwargs['exp_call'](abs(x))
+        exp_fmt = lambda x: kwargs['exp_fmt'](abs(x))
     else:
-        exp_call = kwargs['exp_call']
+        exp_fmt = kwargs['exp_fmt']
 
-    # Generate lists of strings of the numerator and denominator terms
+    # Generate lists of strings of the numerator and denominator terms.
     num_terms = []
     den_terms = []
     for b, e in sorted(factors):
-        base = base_call(b)
+        base = base_fmt(b)
         if e == 1:
             num_terms.append(base)
         elif e > 0:
-            num_terms.append(base + exp_call(e))
+            num_terms.append(base + exp_fmt(e))
         elif e == -1 and div:
             den_terms.append(base)
         else:
-            den_terms.append(base + exp_call(e))
+            den_terms.append(base + exp_fmt(e))
 
     if not div:
-        # Show as product using negative exponents
+        # Show as product using negative exponents.
         return mul.join(num_terms + den_terms)
 
-    # Show as ratio, all factors with positive exponents
+    # Show as ratio, where all factors have positive exponents.
     num = mul.join(num_terms) or '1'
 
     if not den_terms:
@@ -204,26 +200,30 @@ class Exponents(Counter):
     r"""Dictionary-like class to track exponents of independent bases
 
     The keys are the bases and the values are the exponents.  The supported
-    mathematical operations---addition, subtraction, negation, multiplication,
-    and division---operate on the exponents, not on the bases.
+    mathematical operations (addition, subtraction, negation, multiplication,
+    and division) operate on the exponents, not on the bases.
 
     **Initialization signatures:**
 
-    - :class:`Exponents`\(): Returns an :class:`Exponents` instance with and
+    - :class:`Exponents`\(): Returns an :class:`Exponents` instance with an
       empty set of factors
 
-    - :class:`Exponents`\(a=*exp1*, b=*exp2*, ...), where *exp1* and *exp2* are
-      numbers: Returns an :class:`Exponents` instance that represents the
+    - :class:`Exponents`\(a=\ *exp1*, b=\ *exp2*, ...), where *exp1* and *exp2*
+      are numbers: Returns an :class:`Exponents` instance that represents the
       product of symbol 'a' raised to the power of *exp1* and symbol 'b' raised
       to the power of *exp2*
 
-    - :class:`Exponents`\(dict(a=*exp1*, b=*exp2*, ...)): Returns the same
-      result as the previous option
+    - :class:`Exponents`\(dict(a=\ *exp1*, b=\ *exp2*, ...)): Returns the same
+      result as the previous signature
+
+    - :class:`Exponents`\({a: *exp1*, b: *exp2*, ...}): Returns the same result
+      as the previous signature
 
     - :class:`Exponents`\(*string*): Returns an :class:`Exponents` instance
       indicated by *string*
 
-         *string* must follow the format accepted by :meth:`fromstr`.
+         *string* must follow the format accepted by the :meth:`fromstr`
+         constructor.
 
     **Formatting**
 
@@ -235,28 +235,29 @@ class Exponents(Counter):
 
          - Exponents directly follow the symbols of the bases.
          - '*' indicates multiplication and '/' indicates division.
-         - If the denominator contains multiple factors, they are grouped in
-           parentheses.
+         - If the denominator contains multiple factors, then they are grouped
+           in parentheses.
 
     - 'H' (HTML):
 
          - Exponents are written as superscripts ('<sup>...</sup>')
          - A non-breaking space ('&nbsp;') indicates multiplication and '/'
            indicates division.
-         - If the denominator contains multiple factors, they are grouped in
-           parentheses.
+         - If the denominator contains multiple factors, then they are grouped
+           in parentheses.
 
     - 'L' (LaTeX_ math):
 
          - Exponents are written as superscripts ('^...')
          - Back-to-back factors indicate multiplication and '/' indicates
            division.
-         - If the denominator contains multiple factors, they are grouped in
-           parentheses.
+         - If the denominator contains multiple factors, then they are grouped
+           in parentheses.
          - The output must be typeset in LaTeX_ math mode (e.g., surround it
            with '$...$').
 
-    - 'M' ([Modelica]_): Same as default except '.' indicates multiplication
+    - 'M' ([Modelica]_): Same as the default except '.' indicates multiplication
+      instead of '*'
 
     - 'U' (Unicode_):
 
@@ -267,16 +268,72 @@ class Exponents(Counter):
 
     - 'V' (verbose):
 
-         - Exponents are prefixed by '**'.
+         - Exponents are noted by '**'.
          - ' * ' indicates multiplication and ' / ' indicates division.
-         - If the denominator contains multiple factors, they are grouped in
-           parentheses.
+         - If the denominator contains multiple factors, then they are grouped
+           in parentheses.
 
-    **Example:**
+    **Examples:**
 
-    >>> x = Exponents(a=1, b=2, c=-1, d=-3)
-    >>> format(x)
-    'a*b2/(c*d3)'
+    Initialization and representation:
+
+    >>> x = Exponents(a=1, b=-1, c=-2)
+    >>> dict(x)
+    {'a': 1, 'b': -1, 'c': -2}
+    >>> str(x)
+    'a/(b*c2)'
+    >>> format(x, 'V')
+    'a / (b * c**2)'
+    >>> format(x, 'H')
+    'a&nbsp;b<sup>-1</sup>&nbsp;c<sup>-2</sup>'
+
+    .. role:: raw-html(raw)
+       :format: html
+
+    The last result displays in HTML as the following:
+    :raw-html:`a&nbsp;b<sup>-1</sup>&nbsp;c<sup>-2</sup>`.
+
+    Addition:
+
+    >>> print(x + x)
+    a2/(b2*c4)
+
+    Multiplication:
+
+    >>> print(x*2)
+    a2/(b2*c4)
+    >>> str(0*x)
+    ''
+
+    Division:
+
+    >>> print(x/2)
+    a0.5/(b0.5*c)
+
+    Negation:
+
+    >>> print(-x)
+    b*c2/a
+
+    Subtraction:
+
+    >>> str(x - x)
+    ''
+
+    Indexing:
+
+    >>> x['a']
+    1
+    >>> x['d']
+    0
+
+    Updating:
+
+    >>> x['a'] += 1
+    >>> x['d'] += 2
+    >>> x['b'] = 2
+    >>> str(x)
+    'a2*d2/(b2*c2)'
 
 
     .. _Unicode: https://en.wikipedia.org/wiki/Unicode
@@ -289,9 +346,21 @@ class Exponents(Counter):
     """
 
     def update(self, *args, **kwargs):
-        """D.update([E, ]**F) -> None.  Update D from dict/iterable E and F.
-        If E present, does:  for k in E: D[k] = E[k]
-        This is followed by: for k in F: D[k] = F[k]
+        """update([E, ]**F) -> None
+
+        Update this :class:`Exponents` instance from :class:`dict`/iterable *E*
+        and *F*.
+
+        If *E* is present, this does:
+
+           ``for k in E: D[k] = E[k]``
+
+        Then it does:
+
+           ``for k in F: D[k] = F[k]``
+
+        Alternatively, *E* can be a string that is compatible with the
+        :meth:`fromstr` constructor.
 
         **Example:**
 
@@ -478,6 +547,6 @@ class Exponents(Counter):
         return result
 
     def __str__(self):
-        """Return an informal string representation of the Exponents instance.
+        """Return an informal string representating the Exponents instance.
         """
         return format(self)
