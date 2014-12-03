@@ -30,18 +30,19 @@ constants and units with the indicated dimension:
 - :mod:`~natu.groups.velocity`
 - :mod:`~natu.groups.volume`
 
-These modules require that the `SI units`_ are defined in the selected
-:file:`\*.ini` files.  The `BIPM.ini file <BIPM-ini.html>`_ contains those
-definitions, and it is loaded by default.
+These modules require that the `SI units`_ are defined in the selected INI_
+files.  `BIPM.ini <BIPM-ini.html>`_ contains those definitions, and it is loaded
+by default.
 
 Each module can only be reloaded once.\ [#f1]_
 
 
 .. _SI units: http://en.wikipedia.org/wiki/International_System_of_Units
+.. _INI: http://en.wikipedia.org/wiki/INI_file
 
 .. rubric:: Footnotes
 
-.. [#f1] This is not unusual in Python.  From :func:`imp.reload`:
+.. [#f1] This is typical in Python.  From :func:`imp.reload`:
 
    "In many cases, however, extension modules are not designed to be initialized
    more than once, and may fail in arbitrary ways when reloaded."

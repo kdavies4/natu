@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 r"""Configuration settings
 
-This module contains the following settings (defaults summarized in
-parentheses):
+This module contains the following settings (defaults in parentheses):
 
 - *definitions* (`base-SI.ini <base-ini.html>`_, `derived.ini
   <derived-ini.html>`_, `BIPM.ini <BIPM-ini.html>`_, and `other.ini
@@ -15,7 +14,7 @@ parentheses):
 
      If *use_quantities* is *False*, then the constants and scalar units are
      :class:`float` instances rather than :class:`~natu.core.Quantity` and
-     class:`~natu.core.ScalarUnit` instances.  This reduces the computational
+     :class:`~natu.core.ScalarUnit` instances.  This reduces the computational
      overhead of the :mod:`natu` module to nearly zero while still allowing
      variables to be specified using various units.  However, this disables
      dimension checking and the string formatting of quantities as the product
@@ -43,8 +42,8 @@ parentheses):
      Each key is a format code and each value is a list of tuples of 1) the
      string to be replaced and 2) the string that it should be replaced with.
 
-To change a setting from the default, import this module and change the setting
-before importing any other :mod:`natu` submodules.
+Import this module and change these settings as desired before importing any
+other :mod:`natu` submodules.
 
 **Examples:**
 

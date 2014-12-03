@@ -89,7 +89,7 @@ def split_code(code):
 def _format(factors, **kwargs):
     """Format the product of (base, exponent) pairs as a string
 
-    **Arguments:**
+    **Parameters:**
 
     - *factors*: List of (base, exponent) pairs
 
@@ -389,7 +389,7 @@ class Exponents(Counter):
     def fromstr(cls, expr):
         """Create an :class:`Exponents` instance from a string expression.
 
-        **Arguments:**
+        **Parameters:**
 
         - *expr*: String expression that indicates the symbols and exponents
 

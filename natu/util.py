@@ -69,7 +69,7 @@ def delayed_exit(message="Exiting...", t=0.5):
 def flatten_list(l, ltypes=(list, tuple)):
     """Flatten a nested list.
 
-    **Arguments:**
+    **Parameters:**
 
     - *l*: List (may be nested to an arbitrary depth)
 
@@ -104,7 +104,7 @@ def flatten_list(l, ltypes=(list, tuple)):
 def format_e(num_str, code):
     """Format the scientific notation in a numeric string
 
-    **Arguments:**
+    **Parameters:**
 
     - *num_str*: A numeric string
 
@@ -223,7 +223,7 @@ def multiglob(pathnames, extensions={'*.mat'}):
     Unlike Python's :func:`glob.glob` function, this function runs an additional
     expansion on matches that are directories.
 
-    **Arguments:**
+    **Parameters:**
 
     - *pathnames*: String or set of strings used to match files or folders
 
@@ -318,7 +318,7 @@ def product(factors):
 def replace(fnames, rpls):
     r"""Perform a list of replacements on the text in a list of files.
 
-    **Arguments:**
+    **Parameters:**
 
     - *fnames*: Filename or list of filenames
 
@@ -414,7 +414,7 @@ class _GetchWindows(object):
 def yes(question):
     """Ask a yes/no question and return *True* if the answer is 'Y' or 'y'.
 
-    **Arguments:**
+    **Parameters:**
 
     - *question*: String representing the question to the user
 

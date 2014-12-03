@@ -33,7 +33,7 @@ else:
                        updated=WRAPPER_UPDATES):
         """Update a wrapper function to look like the wrapped function.
 
-        **Arguments:**
+        **Parameters:**
 
         - :func:`wrapper`: function to be updated
 

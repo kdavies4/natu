@@ -1334,7 +1334,7 @@ class Units(dict):
     def __call__(self, **factors):
         r"""Generate a compound, coherent unit from existing units.
 
-        **Arguments:**
+        **Parameters:**
 
         - *\*\*factors*: Factors of the compound unit
 
@@ -1477,7 +1477,7 @@ class Units(dict):
         simplest representation because some simplifications involve first
         making the representation more complex.
 
-        **Arguments:**
+        **Parameters:**
 
         - *unit*: Unit to be simplified
 
