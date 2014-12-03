@@ -17,10 +17,10 @@ This has the following advantages:
 - **Flexibility**: Different unit systems, including `natural units`_ (hence the
   name "natu"), can be represented by simply adjusting the physical constants.
 - **Simplicity**: Unit conversion is inherent.  This results in quick
-  computations and a small code base.  By default, dimensions and display units
-  are tracked to catch errors and for string formatting, respectively.  However,
-  this can be turned off to reduce the computational overhead to nearly zero
-  while still providing the core features.
+  computations and a small code base (< 1500 lines).  By default, dimensions and
+  display units are tracked to catch errors and for string formatting,
+  respectively.  However, this can be turned off to reduce the computational
+  overhead to nearly zero while still providing the core features.
 - **Scalability**: The values of the base physical constants can scaled to
   prevent exponent overflow, regardless of the units used [Davies2012]_,
   [#f1]_.

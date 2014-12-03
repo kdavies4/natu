@@ -1295,6 +1295,8 @@ class Units(dict):
 
         # Try prefixes.
         for len_prefix in [1, 2]:  # A prefix may have 1 or 2 characters.
+
+            # Get the base unit.
             try:
                 basesymbol = symbol[len_prefix:]
                 baseunit = dict.__getitem__(self, basesymbol)
@@ -1304,23 +1306,29 @@ class Units(dict):
             except KeyError:
                 # The base symbol isn't a valid unit; try a longer prefix.
                 continue
+
+            # Check that the unit is prefixable.
+            if use_quantities:
+                try:
+                    assert(baseunit.prefixable)
+                except (AttributeError, AssertionError):
+                    error = KeyError(basesymbol + " isn't prefixable.")
+                    continue # Try a longer prefix.
+
+            # Look up and apply the prefix.
             prefix = symbol[:len_prefix]
             try:
                 p = PREFIXES[prefix]
             except KeyError:
-                if not use_quantities or baseunit.prefixable:
-                    error = KeyError(prefix + " isn't a valid prefix.")
+                error = KeyError(prefix + " isn't a valid prefix.")
             else:
-                if not use_quantities or baseunit.prefixable:
-                    if isinstance(baseunit, ScalarUnit):
-                        return ScalarUnit(p * baseunit._value,
-                                          baseunit.dimension, symbol)
-                    if isinstance(baseunit, LambdaUnit):
-                        return LambdaUnit(lambda n: baseunit._toquantity(p * n),
-                                          lambda q: baseunit._tonumber(q) / p,
-                                          baseunit.dimension, symbol)
-                    return p * baseunit
-                error = KeyError(basesymbol + " isn't prefixable.")
+                if isinstance(baseunit, ScalarUnit):
+                    return ScalarUnit(p * baseunit._value,
+                                      baseunit.dimension, symbol)
+                if isinstance(baseunit, LambdaUnit):
+                    return LambdaUnit(lambda n: baseunit._toquantity(p * n),
+                                      lambda q: baseunit._tonumber(q) / p,
+                                      baseunit.dimension, symbol)
         raise error
 
     def __call__(self, **factors):
@@ -1342,8 +1350,7 @@ class Units(dict):
         Here, the unit was automatically simplified to psi using
         :attr:`_units.coherent_relations`.
         """
-        factors = [
-            self[base] ** exponent for base, exponent in factors.items()]
+        factors = [self[base] ** exponent for base, exponent in factors.items()]
         return product(factors)
 
     def load_ini(self, files):
@@ -1398,12 +1405,13 @@ class Units(dict):
                     print(msg)
                 try:
                     unit = eval(value, self, self)
-                    # self is provided as the global namespace as well so that
-                    # it's immediately used by the lambda functions.  This
-                    # doesn't allow prefixes in the lambda expressions since
-                    # eval() doesn't use __getitem__() for globals.
+                    # self is provided as the global namespace as well as the
+                    # local one so that it's immediately used by the lambda
+                    # functions.  This doesn't allow prefixes in the lambda
+                    # expressions since eval() doesn't use __getitem__() for
+                    # globals.
                     # TODO: Consider using pyparsing instead of eval() (for
-                    # safety, if it isn't too slow).
+                    # safety) if it isn't too slow.
                     if isinstance(unit, tuple):
                         unit, prefixable = unit
                         if isinstance(unit, tuple):
@@ -1432,7 +1440,8 @@ class Units(dict):
                                 for u in unit.display.keys():
                                     dimensions = dimensions.union(
                                         self[u].dimension)
-                                relation = (unit.display - {symbol: 1}, dimensions)
+                                relation = (unit.display - {symbol: 1},
+                                            dimensions)
                                 self.coherent_relations.append(relation)
                             unit = ScalarUnit.fromQuantity(
                                 unit, symbol, prefixable)
@@ -1509,7 +1518,7 @@ class Units(dict):
         # find the best solution, but it's straightforward to implement and
         # works well enough.
 
-        # In case unit is a string:
+        # In case the unit is a string:
         unit = CompoundUnit(unit)
 
         # Shortcut---no simplication:
@@ -1538,7 +1547,7 @@ class Units(dict):
                     if int_factor == factor:
                         temp = unit - identity * int_factor
                         if level > 1:
-                            temp = self.simplify(temp, level - 1)  # Recursion
+                            temp = self.simplify(temp, level - 1) # Recursion
                         if complexity(temp) < complexity(unit):
                             unit = temp
                             simpler = True
@@ -1587,7 +1596,7 @@ class UnitsModule(ModuleType):
 
         # Load the units.
         if isinstance(definitions, dict):
-            # Create a unit dictionary from a provided dictionary.
+            # Create a unit dictionary from the provided dictionary.
             self._units = Units(definitions)
         else:
             # Create an empty unit dictionary.
