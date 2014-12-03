@@ -1,14 +1,13 @@
-Derived physical constants (derived.ini_)
-=========================================
+Derived constants and units (derived.ini_)
+==========================================
 
 The table below lists the contents of the derived.ini_ file.  It contains
-constants that are derived from the base physical constants.
+constants and units that are derived from the base physical constants.
 
 The definitions depend on the following items:
 
 - Mathematical constants: *pi*
-- Base physical constants: *R_inf*, *c*, *k_J*, *R_K*, *k_F*, *R*, and
-  *k_Aprime*
+- Base constants: *R_inf*, *c*, *k_J*, *R_K*, *k_F*, *R*, and *k_Aprime*
 
 ============ =========================== ========== ============
 Symbol       Expression                  Prefixable Name & notes

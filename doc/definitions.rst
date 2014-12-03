@@ -3,12 +3,8 @@
 Definition files
 ================
 
-natu's constants and units are defined in INI_ files.  Four of these files are
-loaded by default.  Others may be added by appending the :attr:`definitions`
-list in :mod:`natu.config`.  The files are processed sequentially, and the
-definitions of symbols may depend on previous symbols.  The definitions begin
-with base constants and continue with derived constants, empirically related
-units, and derived units.
+natu's constants and units are defined in INI_ files.  Four files are loaded by
+default:
 
 .. toctree::
 
@@ -17,10 +13,23 @@ units, and derived units.
   BIPM-ini
   other-ini
 
-In the pages listed above, the symbols are presented in tables.  The INI_ format
-is very similar.  An equals sign separates the first two columns ("Symbol" and
-"Expression"), a comma starts the "Prefixable" column, and a semicolon
-starts the last column ("Name & notes").
+Other files can be added by appending the :attr:`definitions` list in
+:mod:`natu.config`.  The files are processed sequentially, and the definitions
+of symbols can reference previous symbols.  These constants, functions, and
+classes are defined before the first file:
+
+- *pi*
+- :func:`~math.exp`
+- :func:`~math.log`
+- :func:`~math.log10`
+- :func:`sqrt`
+- :class:`~natu.core.Quantity`
+- :class:`~natu.core.ScalarUnit`
+
+The INI_ format is very similar to the tables in the pages for the files listed
+above.  An equals sign separates the first two columns ("Symbol" and
+"Expression"), a comma starts the "Prefixable" column, and a semicolon starts
+the last column ("Name & notes").
 
 The "Prefixable" column may be *True*, *False*, or empty.  A unit has a *True*
 or a *False* "Prefixable" entry.  If a unit is prefixable, `SI prefixes`_ are
@@ -43,12 +52,16 @@ first function maps a number to a quantity.  The second function is its inverse.
 These are the first two arguments to construct a lambda unit
 (:class:`~natu.core.LambdaUnit`).
 
-`SI prefixes`_ can be applied to previously defined symbols except in the
-definition of lambda units.
+`SI prefixes`_ can be applied to previous symbols except in the definition of
+lambda units.
 
 The sections of the INI_ files are only for organization (though required).  The
-submodules :mod:`natu.groups` do not rely on the sections.  The dimensions of
+submodules of :mod:`natu.groups` do not rely on the sections.  The dimensions of
 the derived constants and units are calculated and used instead.
+
+.. warning::  Be sure that you use definition files from a trusted source.
+   Parts of the files are processed using :func:`eval`, which is susceptible to
+   malicious code.
 
 
 .. _INI: http://en.wikipedia.org/wiki/INI_file

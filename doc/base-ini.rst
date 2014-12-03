@@ -1,16 +1,16 @@
-Base physical constants (base-\*.ini)
-=====================================
+Base constants (base-\*.ini)
+============================
 
 The tables below list the physical constants which are defined in the
-:file:`base-*.ini` files.  All other units and constants are derived from these
-constants [#f1]_, and they can be charged to establish various unit systems.
+:file:`base-*.ini` files.  All other constants and units are derived from these
+[#f1]_, and they can be charged to establish various unit systems.
 
 The derived electromagnetic constants also depend on the *rational* setting.  If
 *rational* is *True*, the constants are rationalized
 (``epsilon_0 = 1/(4*pi*k_C)``) ala Lorentz-Heaviside_; otherwise,
 ``epsilon_0 = 1/k_C`` like the `Gaussian units`_.
 
-The following items are automatically provided for use in the definitions:
+The definitions depend on the following items:
 
 - Classes: :class:`~natu.core.Quantity`
 - Mathematical constants: *pi*

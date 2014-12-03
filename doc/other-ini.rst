@@ -1,6 +1,6 @@
 :orphan:
 
-Other units and constants (other.ini_)
+Other constants and units (other.ini_)
 ======================================
 
 The table below lists the contents of the other.ini_ file.  It establishes some
@@ -9,9 +9,9 @@ units besides the SI_ and non-SI units from [BIPM2006]_.
 The definitions below depend on the following items:
 
 - Mathematical constants: *pi*
-- Base physical constants: *c*
+- Base constants: *c*
 - SI_ and non-SI units from [BIPM2006]_
-- Other units and constants: cyc and *g_0*
+- Other constants and units: *g_0* and cyc
 
 =========== ============================================================ ========== =============
 Symbol      Expression                                                   Prefixable Name & notes
