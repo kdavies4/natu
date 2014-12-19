@@ -15,15 +15,15 @@ adjustable values and dimensions.  The value of a unit is factored into a
 quantity so that the quantity is not "in" any particular unit.  This has the
 following advantages:
 
-- **Flexibility**: Different unit systems, including `natural units`_ (hence the
+- **Flexible**: Different unit systems, including `natural units`_ (hence the
   name "natu"), can be represented by simply adjusting the physical constants.
-- **Simplicity**: Unit conversion is inherent.  This results in quick
-  computations and a small code base (< 1500 lines).  By default, dimensions and
-  display units are tracked to catch errors and for string formatting,
-  respectively.  However, this can be turned off to reduce the computational
-  overhead to nearly zero while still providing the core features.
-- **Scalability**: The values of the base physical constants can scaled to
-  prevent exponent overflow, regardless of the units used.
+- **Simple**: Unit conversion is inherent.  This results in quick computations
+  and a small code base (< 1500 lines).  By default, dimensions and display
+  units are tracked to catch errors and for string formatting, respectively.
+  However, this can be turned off to reduce the computational overhead to nearly
+  zero while still providing the core features.
+- **Scalable**: The values of the base physical constants can scaled to prevent
+  exponent overflow, regardless of the units used.
 - **Intuitive**: Each unit is a fixed quantity which can be treated as a
   mathematical entity.  A variable quantity is expressed as the product of a
   number and a unit, as stated by BIPM_.
