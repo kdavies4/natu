@@ -205,6 +205,7 @@ def assert_homogeneous(*args):
     ...
     AssertionError: The quantities must have the same dimension.
     """
+    return
     try:
         for row in zip(args):
             assert_homogeneous(row) # Recursive
@@ -470,7 +471,7 @@ class DimObject(object):
 
     """Base class that records physical dimension and display unit
 
-    **Initialization arguments:**
+    **Initialization parameters:**
 
     - *dimension*: Physical dimension
 
@@ -533,7 +534,7 @@ class Quantity(DimObject):
 
     """Class to represent a physical quantity
 
-    **Initialization arguments:**
+    **Initialization parameters:**
 
     - *value*: Value of the quantity (a :class:`numbers.Number` instance)
 
@@ -722,7 +723,7 @@ class Quantity(DimObject):
         number_str = format_e(format(number, number_code), unit_code)
         return number_str + _times(unit_code)
 
-    def __str__(self):
+    def __repr__(self):
         """Return a string representing the quantity as the product of a number
         and a unit.
 
@@ -733,25 +734,6 @@ class Quantity(DimObject):
         1.0 m
         """
         return format(self)
-
-    def __repr__(self):
-        """Return a formal string representation of the quantity.
-
-        The first part (``Quantity(...)``) is the expression that would generate
-        the quantity.  The part in the last parentheses is the value as the
-        generalized product of a number and a unit.
-
-        **Example:**
-
-        >>> from natu.units import *
-        >>> 1*m
-        Quantity(1, 'L', 'm') (1.0 m)
-        """
-        # Run this first to simplify self.display:
-        string = format(self)
-
-        return ("Quantity({0._value:g}, '{0._dimension}', '{0._display}') "
-                "({1})").format(self, string)
 
     def __int__(self):
         """Return the quantity as an integer.
@@ -881,7 +863,7 @@ class Unit(DimObject):
     In-place operations are blocked because the value of a unit is predefined
     and should not be changed.
 
-    **Initialization arguments:**
+    **Initialization parameters:**
 
     - *dimension*: Physical dimension
 
@@ -939,7 +921,7 @@ class ScalarUnit(Quantity, Unit):
 
     """Unit that involves just a scaling factor
 
-    **Initialization arguments:**
+    **Initialization parameters:**
 
     - *value*: Value of the unit (a :class:`numbers.Number` instance)
 
@@ -1027,7 +1009,7 @@ class ScalarUnit(Quantity, Unit):
         # Run this first to simplify self.display (see Units.load_ini):
         string = format(self)
 
-        return ("ScalarUnit({0._value:g}, '{0._dimension}', '{0._display}', "
+        return ("ScalarUnit({0._value:s}, '{0._dimension}', '{0._display}', "
                 "{0._prefixable}) ({1})").format(self, string)
 
     @as_scalarunit
@@ -1072,7 +1054,7 @@ class LambdaUnit(Unit):
 
     """Unit that involves a offset or other operations besides scaling
 
-    **Initialization arguments:**
+    **Initialization parameters:**
 
     - *toquantity*: Function that maps a number to a quantity
 
@@ -1559,7 +1541,7 @@ class UnitsModule(ModuleType):
 
     r"""Class that wraps a :class:`Units` dictionary as a module
 
-    **Initialization arguments:**
+    **Initialization parameters:**
 
     - *module*: The module into which the units should be wrapped
 
