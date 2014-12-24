@@ -205,7 +205,7 @@ def assert_homogeneous(*args):
     ...
     AssertionError: The quantities must have the same dimension.
     """
-    return
+    return # TODO temp
     try:
         for row in zip(args):
             assert_homogeneous(row) # Recursive
@@ -1009,7 +1009,7 @@ class ScalarUnit(Quantity, Unit):
         # Run this first to simplify self.display (see Units.load_ini):
         string = format(self)
 
-        return ("ScalarUnit({0._value:s}, '{0._dimension}', '{0._display}', "
+        return ("ScalarUnit({0._value}, '{0._dimension}', '{0._display}', "
                 "{0._prefixable}) ({1})").format(self, string)
 
     @as_scalarunit
@@ -1096,6 +1096,7 @@ class LambdaUnit(Unit):
         self._tonumber = tonumber
 
         # Set the dimension, display unit, and prefixable flag.
+        Unit.__init__(self, dimension, display, prefixable)
 
     def __repr__(self):
         """Return a formal string representation of the lambda unit.
@@ -1385,7 +1386,9 @@ class Units(dict):
                     # warn(msg)
                     print(msg)
                 try:
+                    print -1
                     unit = eval(value, self, self)
+                    print 0
                     # self is provided as the global namespace as well as the
                     # local one so that it's immediately used by the lambda
                     # functions.  This doesn't allow prefixes in the lambda
@@ -1397,22 +1400,30 @@ class Units(dict):
                         unit, prefixable = unit
                         if isinstance(unit, tuple):
                             # The unit is a lambda unit, defined via a tuple.
+                            print 1
                             toquantity, tonumber = unit
+                            print 2
                             try:
+                                print 3
                                 # Evaluate the unit with an arbitrary number
                                 # (zero) to determine the dimension.
                                 dim = toquantity(0).dimension
                             except AttributeError:
                                 # The result doesn't have a dimension; the unit
                                 # must be dimensionless.
+                                print 4
                                 dim = {}
+                            print 5
                             unit = LambdaUnit(toquantity, tonumber, dim, symbol,
                                               prefixable)
+                            print 6
                         elif isinstance(unit, LambdaUnit):
+                            print 7
                             # The unit is a lambda unit, defined directly.
                             unit = LambdaUnit(unit._toquantity, unit._tonumber,
                                               unit._dimension, unit._display,
                                               prefixable)
+                            print 8
                         elif isinstance(unit, Quantity):
                             # The unit should be a scalar unit.
                             if isinstance(unit, ScalarUnit) \
