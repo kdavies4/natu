@@ -1096,7 +1096,6 @@ class LambdaUnit(Unit):
         self._tonumber = tonumber
 
         # Set the dimension, display unit, and prefixable flag.
-        Unit.__init__(self, dimension, display, prefixable)
 
     def __repr__(self):
         """Return a formal string representation of the lambda unit.
@@ -1112,7 +1111,7 @@ class LambdaUnit(Unit):
         """Return an informal string represention of the lambda unit.
         """
         note = ("dimensionless LambdaUnit" if self.dimensionless else
-                "LambdaUnit with dimension " + self._dimension)
+                "LambdaUnit with dimension %s" % self._dimension)
         display_note = "displays as %s" % self._display
         prefixable_note = "prefixable" if self._prefixable else "not prefixable"
         return "; ".join([note, display_note, prefixable_note])
