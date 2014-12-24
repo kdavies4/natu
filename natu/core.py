@@ -1111,11 +1111,11 @@ class LambdaUnit(Unit):
     def __str__(self):
         """Return an informal string represention of the lambda unit.
         """
-        note = ("dimensionless LambdaUnit" if self.dimensionless else
-                "LambdaUnit with dimension %s" % self._dimension)
-        display_note = "displays as %s" % self._display
-        prefixable_note = "prefixable" if self._prefixable else "not prefixable"
-        return "; ".join([note, display_note, prefixable_note])
+        desc = "LambdaUnit %s" % self._display
+        desc = ("dimensionless {desc}" if self.dimensionless else
+                "{desc} with dimension %s" % self._dimension).format(desc=desc)
+        desc += " (prefixable)" if self._prefixable else " (not prefixable)"
+        return desc
 
     def __pow__(x, y):
         """x.__pow__(y) <==> pow(x, y)
