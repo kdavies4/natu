@@ -978,7 +978,7 @@ class ScalarUnit(Quantity, Unit):
         Unit.__init__(self, dimension, display, prefixable)
 
     @classmethod
-    def fromQuantity(cls, quantity, display, prefixable=False):
+    def from_quantity(cls, quantity, display, prefixable=False):
         """Convert a quantity (instance of :class:`Quantity`) to a scalar unit.
 
         The value and dimension are taken from *quantity*.  The display unit
@@ -1270,7 +1270,7 @@ class Units(dict):
         error = KeyError(symbol + " isn't a valid unit.")
 
         # Try prefixes.
-        for len_prefix in [1, 2]:  # A prefix may have 1 or 2 characters.
+        for len_prefix in [1, 2]:  # A prefix can have 1 or 2 characters.
 
             # Get the base unit.
             try:
@@ -1280,7 +1280,7 @@ class Units(dict):
                 # The unit isn't longer than the length of the prefix.
                 raise error
             except KeyError:
-                # The base symbol isn't a valid unit; try a longer prefix.
+                # The base symbol isn't a valid unit, so try a longer prefix.
                 continue
 
             # Check that the unit is prefixable.
@@ -1352,14 +1352,14 @@ class Units(dict):
         """
         # pylint: disable=I0011, R0912, R0914
 
-        # Temporarily add some constants, functions, classes, etc. to the unit
+        # Temporarily add some constants, functions, and classes to the unit
         # space for use in the *.ini files.
-        # TODO: Avoid this cyclic import:
         from fractions import Fraction
         sqrt = lambda x: x**Fraction(0.5)
+        # (Not using natu.math.sqrt to avoid cyclic import.)
         provided = dict(pi=math.pi, exp=math.exp, log=math.log,
-                        log10=math.log10, sqrt=sqrt, Quantity=Quantity,
-                        ScalarUnit=ScalarUnit)
+                        log10=math.log10, sqrt=sqrt,
+                        Quantity=Quantity, ScalarUnit=ScalarUnit)
         self.update(provided)
 
         # Load the units from the *.ini files.
@@ -1387,7 +1387,7 @@ class Units(dict):
                     # expressions since eval() doesn't use __getitem__() for
                     # globals.
                     # TODO: Consider using pyparsing instead of eval() (for
-                    # safety) if it isn't too slow.
+                    # safety) if it's not too slow.
                     if isinstance(unit, tuple):
                         unit, prefixable = unit
                         if isinstance(unit, tuple):
@@ -1409,9 +1409,10 @@ class Units(dict):
                                               unit._dimension, unit._display,
                                               prefixable)
                         elif isinstance(unit, Quantity):
-                            # The unit should be a scalar unit.
-                            if isinstance(unit, ScalarUnit) \
-                                    and 'ScalarUnit' not in value:
+                            # The unit is a scalar unit with dimension.
+                            if (isinstance(unit, ScalarUnit)
+                                and 'ScalarUnit' not in value):
+                                # The unit has been coherently derived.
                                 dimensions = set(unit.dimension)
                                 for u in unit.display.keys():
                                     dimensions = dimensions.union(
@@ -1419,25 +1420,25 @@ class Units(dict):
                                 relation = (unit.display - {symbol: 1},
                                             dimensions)
                                 self.coherent_relations.append(relation)
-                            unit = ScalarUnit.fromQuantity(
-                                unit, symbol, prefixable)
+                            unit = ScalarUnit.fromQuantity(unit, symbol,
+                                                           prefixable)
                         else:
-                            # The unit is dimensionless.
+                            # The unit is a dimensionless scalar unit.
                             unit = ScalarUnit(unit, {}, symbol, prefixable)
                 except (AssertionError, AttributeError, ConfigParserError,
                         NameError, SyntaxError, TypeError, ValueError) as e:
                     raise DefinitionError("can't load '%s' due to %s"
                                           % (symbol, type(e).__name__))
                 if isinstance(unit, Quantity) and not use_quantities:
-                    # Represent quantities (including scalar units) as pure
-                    # numbers.
+                    # Represent quantities as pure numbers (don't track the
+                    # dimension and display unit).
                     unit = unit._value
                 self[symbol] = unit
 
         # Remove the temporary items.
         for key in provided.keys():
             del self[key]
-        # __builtins__ was added because self is the global arg to eval()
+        # __builtins__ got added because self is the global argument to eval()
         # above.
         self.pop('__builtins__', None)
 
