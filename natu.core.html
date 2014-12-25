@@ -63,41 +63,43 @@
   <div class="section" id="module-natu.core">
 <span id="natu-core"></span><h1><a class="reference internal" href="#module-natu.core" title="natu.core"><tt class="xref py py-mod docutils literal"><span class="pre">natu.core</span></tt></a><a class="headerlink" href="#module-natu.core" title="Permalink to this headline">¶</a></h1>
 <p>Core classes of natu</p>
-<p>As shown in the diagram below, there are two types of units: scalar units
-and lambda units.  Scalar units are quantities, but lambda units are not.
-Lambda units are essentially invertible functions that map between numbers
-and quantities.  All units and quantities are dimensioned objects, meaning
-that their physical dimension is recorded (even if dimensionless).</p>
+<p>As shown in the diagram below, there are two types of units (<a class="reference internal" href="#natu.core.Unit" title="natu.core.Unit"><tt class="xref py py-class docutils literal"><span class="pre">Unit</span></tt></a>):
+scalar units (<a class="reference internal" href="#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>) and lambda units (<a class="reference internal" href="#natu.core.LambdaUnit" title="natu.core.LambdaUnit"><tt class="xref py py-class docutils literal"><span class="pre">LambdaUnit</span></tt></a>).
+Scalar units are quantities, but lambda units are not.  Lambda units are
+essentially invertible functions that map between numbers and quantities
+(<a class="reference internal" href="#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a>).  All units and quantities are dimensioned objects
+(<a class="reference internal" href="#natu.core.DimObject" title="natu.core.DimObject"><tt class="xref py py-class docutils literal"><span class="pre">DimObject</span></tt></a>), meaning that their physical dimension is recorded (even if
+dimensionless).</p>
 <p class="graphviz">
-<img src="images/inheritance-d96cfa9128a334a422e95859d4b77fe2dc2667e6.png" alt="Inheritance diagram of DimensionedObject, Unit, ScalarUnit, LambdaUnit, Quantity" usemap="#inheritance23f6634170" class="inheritance"/>
-<map id="inheritance23f6634170" name="inheritance23f6634170">
-<area shape="rect" id="node1" href="#natu.core.DimensionedObject" title="Base type that tracks physical dimension and display unit" alt="" coords="6,30,218,55"/>
-<area shape="rect" id="node3" href="#natu.core.Unit" title="Base class for a unit" alt="" coords="281,5,394,30"/>
-<area shape="rect" id="node4" href="#natu.core.Quantity" title="Class to represent a physical quantity" alt="" coords="267,54,408,79"/>
-<area shape="rect" id="node2" href="#natu.core.LambdaUnit" title="Unit that involves a offset or other operations besides scaling" alt="" coords="456,5,621,30"/>
-<area shape="rect" id="node5" href="#natu.core.ScalarUnit" title="Unit that involves just a scaling factor" alt="" coords="462,54,615,79"/>
+<img src="images/inheritance-06bea2fbf29a1c18e8f64e437ae876598700e4bf.png" alt="Inheritance diagram of DimObject, Unit, ScalarUnit, LambdaUnit, Quantity" usemap="#inheritance3e69560be6" class="inheritance"/>
+<map id="inheritance3e69560be6" name="inheritance3e69560be6">
+<area shape="rect" id="node1" href="#natu.core.DimObject" title="Base class that records physical dimension and display unit" alt="" coords="5,30,160,55"/>
+<area shape="rect" id="node3" href="#natu.core.Unit" title="Base class for a unit" alt="" coords="222,5,335,30"/>
+<area shape="rect" id="node4" href="#natu.core.Quantity" title="Class to represent a physical quantity" alt="" coords="208,54,349,79"/>
+<area shape="rect" id="node2" href="#natu.core.LambdaUnit" title="Unit that involves a offset or other operations besides scaling" alt="" coords="397,5,563,30"/>
+<area shape="rect" id="node5" href="#natu.core.ScalarUnit" title="Unit that involves just a scaling factor" alt="" coords="403,54,557,79"/>
 </map>
 </p>
 <p>Numbers, scalar units, and quantities can be used together in mathematical
-expressions as long as the expression is dimensionally consistent.
-Numbers (<tt class="xref py py-class docutils literal"><span class="pre">float</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">int</span></tt>, <a class="reference external" href="https://docs.python.org/library/fractions.html#fractions.Fraction" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Fraction</span></tt></a>, etc.)
-are considered dimensionless.</p>
-<p>Lambda units can only be used with numbers and quantities in special
-cases.  A lambda unit can be applied to generate a quantity for use in the
-rest of a mathematical expression.  The multiplication operator (<tt class="docutils literal"><span class="pre">*</span></tt>) is
-overloaded so that a number times a lambda unit calls the unit&#8217;s method to
-map the number to a quantity.  Likewise, the division operator (<tt class="docutils literal"><span class="pre">/</span></tt>)
-uses a lambda unit to map a quantity to a number.</p>
+expressions as long as the expression is dimensionally consistent.  Numbers
+(<a class="reference external" href="https://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">float</span></tt></a>, <a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">int</span></tt></a>, <a class="reference external" href="https://docs.python.org/library/fractions.html#fractions.Fraction" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Fraction</span></tt></a>, etc.) are
+considered dimensionless.</p>
+<p>Lambda units can only be used with numbers and quantities in certain ways.  A
+lambda unit can be applied to generate a quantity for use in the rest of a
+mathematical expression.  The multiplication operator (<tt class="docutils literal"><span class="pre">*</span></tt>) is overloaded so
+that a number times a lambda unit calls the unit&#8217;s method to map the number to a
+quantity.  Likewise, the division operator (<tt class="docutils literal"><span class="pre">/</span></tt>) uses a lambda unit to map a
+quantity to a number.</p>
 <p>The tables below summarize the type of result given by simple mathematical
-operations among numbers, scalar units, lambda units, and quantities.  The
-product or quotient of a number and a quantity or scalar unit is a
-quantity.  This is the case even if the number is zero; the product of
-zero and a unit or quantity still carries the dimension of the unit or
-quantity.  A quantity evaluates to <em>True</em> if its value is nonzero, but it
-is not equal to zero unless its value is zero and it is dimensionless.</p>
-<p>The display unit of the first term in addition or subtraction takes
-precedence.  If the first term is a number and the second term is a
-dimensionless quantity, the result is a number.</p>
+operations among numbers (N), scalar units (S), lambda units (L), and quantities
+(Q).  The product or quotient of a number and a quantity or scalar unit is a
+quantity.  This is the case even if the number is zero.  For example, the
+product of zero and a unit still carries the dimension of the unit.  In a
+Boolean expression, a quantity is cast as <em>False</em> if its value is zero.
+However, it is only equal to zero if its value is zero and it is dimensionless.
+The display unit of the first term in addition or subtraction takes precedence.
+If the first term is a number and the second term is a dimensionless quantity,
+then the result is a number.</p>
 <p>Results of multiplication and division:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -118,25 +120,25 @@ dimensionless quantity, the result is a number.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-odd"><td>N</td>
+<tr class="row-odd"><td><strong>N</strong></td>
 <td>N</td>
 <td>Q</td>
 <td>Q</td>
 <td>Q</td>
 </tr>
-<tr class="row-even"><td>Q</td>
+<tr class="row-even"><td><strong>Q</strong></td>
 <td>Q</td>
 <td>Q <a class="footnote-reference" href="#id9" id="id1">[1]</a></td>
 <td>Q <a class="footnote-reference" href="#id9" id="id2">[1]</a></td>
 <td>N</td>
 </tr>
-<tr class="row-odd"><td>S</td>
+<tr class="row-odd"><td><strong>S</strong></td>
 <td>Q</td>
 <td>Q <a class="footnote-reference" href="#id9" id="id3">[1]</a></td>
 <td>S <a class="footnote-reference" href="#id9" id="id4">[1]</a></td>
 <td>&#8211;</td>
 </tr>
-<tr class="row-even"><td>L</td>
+<tr class="row-even"><td><strong>L</strong></td>
 <td>&#8211;</td>
 <td>&#8211;</td>
 <td>&#8211;</td>
@@ -164,25 +166,25 @@ dimensionless quantity, the result is a number.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-odd"><td>N</td>
+<tr class="row-odd"><td><strong>N</strong></td>
 <td>N</td>
 <td>N <a class="footnote-reference" href="#id10" id="id5">[2]</a></td>
 <td>N <a class="footnote-reference" href="#id10" id="id6">[2]</a></td>
 <td>&#8211;</td>
 </tr>
-<tr class="row-even"><td>Q</td>
+<tr class="row-even"><td><strong>Q</strong></td>
 <td>Q <a class="footnote-reference" href="#id10" id="id7">[2]</a></td>
 <td>Q</td>
 <td>Q</td>
 <td>&#8211;</td>
 </tr>
-<tr class="row-odd"><td>S</td>
+<tr class="row-odd"><td><strong>S</strong></td>
 <td>Q <a class="footnote-reference" href="#id10" id="id8">[2]</a></td>
 <td>Q</td>
 <td>Q</td>
 <td>&#8211;</td>
 </tr>
-<tr class="row-even"><td>L</td>
+<tr class="row-even"><td><strong>L</strong></td>
 <td>&#8211;</td>
 <td>&#8211;</td>
 <td>&#8211;</td>
@@ -201,7 +203,7 @@ dimensionless quantity, the result is a number.</p>
 <table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>, <a class="fn-backref" href="#id4">4</a>)</em> If the result is dimensionless, it is returned as a number instead.</td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>, <a class="fn-backref" href="#id4">4</a>)</em> If the result is dimensionless, then it is returned as a number instead.</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id10" rules="none">
@@ -218,7 +220,7 @@ dimensionless quantity, the result is a number.</p>
 <li>Is <tt class="docutils literal"><span class="pre">0*m</span></tt> dimensionless? No</li>
 <li>Is <tt class="docutils literal"><span class="pre">m/ft</span></tt> a quantity or a number? Number (float)</li>
 <li>Is <tt class="docutils literal"><span class="pre">ohm*S</span></tt> a quantity or a number? Number (1.0)</li>
-<li>Is <tt class="docutils literal"><span class="pre">m*m</span></tt> a unit? Yes (<tt class="docutils literal"><span class="pre">'m2'</span></tt>)</li>
+<li>Is <tt class="docutils literal"><span class="pre">m*m</span></tt> a unit? Yes (with display unit <tt class="docutils literal"><span class="pre">'m2'</span></tt>)</li>
 <li>Is <tt class="docutils literal"><span class="pre">1*m*m</span></tt> a unit? No (only a quantity)</li>
 <li>Is <tt class="docutils literal"><span class="pre">1*ppm</span></tt> a unit or a number? Neither (a dimensionless quantity)</li>
 <li>Is <tt class="docutils literal"><span class="pre">m</span> <span class="pre">+</span> <span class="pre">0</span></tt> (or <tt class="docutils literal"><span class="pre">0</span> <span class="pre">+</span> <span class="pre">m</span></tt>) valid? No</li>
@@ -232,61 +234,63 @@ dimensionless quantity, the result is a number.</p>
 <p>Classes in this module:</p>
 <ul class="simple">
 <li><a class="reference internal" href="#natu.core.CoherentRelations" title="natu.core.CoherentRelations"><tt class="xref py py-class docutils literal"><span class="pre">CoherentRelations</span></tt></a> - List of coherent relations among units</li>
-<li><a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a> - Dictionary that contains base physical
-dimensions as keys and exponents of those dimensions as values</li>
-<li><a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> - Dictionary that contains the base factors of a
-display unit as keys and exponents of those units as values</li>
-<li><a class="reference internal" href="#natu.core.DimensionedObject" title="natu.core.DimensionedObject"><tt class="xref py py-class docutils literal"><span class="pre">DimensionedObject</span></tt></a> - Base type that tracks physical dimension
-and display unit</li>
-<li><a class="reference internal" href="#natu.core.LambdaUnit" title="natu.core.LambdaUnit"><tt class="xref py py-class docutils literal"><span class="pre">LambdaUnit</span></tt></a> - Unit that involves a offset or other operations
-besides scaling</li>
+<li><a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a> - Dictionary that contains base physical dimensions
+as keys and exponents of those dimensions as values</li>
+<li><a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> - Dictionary that contains the base factors of a display
+unit as keys and exponents of those units as values</li>
+<li><a class="reference internal" href="#natu.core.DimObject" title="natu.core.DimObject"><tt class="xref py py-class docutils literal"><span class="pre">DimObject</span></tt></a> - Base class that records physical dimension and display
+unit</li>
+<li><a class="reference internal" href="#natu.core.LambdaUnit" title="natu.core.LambdaUnit"><tt class="xref py py-class docutils literal"><span class="pre">LambdaUnit</span></tt></a> - Unit that involves an offset or other operations besides
+scaling</li>
 <li><a class="reference internal" href="#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> - Class to represent a physical quantity</li>
-<li><a class="reference internal" href="#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a> - Unit that involves just a scaling factor</li>
+<li><a class="reference internal" href="#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a> - Unit that involves only a scaling factor</li>
 <li><a class="reference internal" href="#natu.core.Unit" title="natu.core.Unit"><tt class="xref py py-class docutils literal"><span class="pre">Unit</span></tt></a> - Base class for a unit</li>
 <li><a class="reference internal" href="#natu.core.Units" title="natu.core.Units"><tt class="xref py py-class docutils literal"><span class="pre">Units</span></tt></a> - Dictionary of units with dynamic prefixing</li>
-<li><a class="reference internal" href="#natu.core.UnitsModule" title="natu.core.UnitsModule"><tt class="xref py py-class docutils literal"><span class="pre">UnitsModule</span></tt></a> - Class that wraps the <a class="reference internal" href="#natu.core.Units" title="natu.core.Units"><tt class="xref py py-class docutils literal"><span class="pre">Units</span></tt></a> dictionary as
-a module</li>
+<li><a class="reference internal" href="#natu.core.UnitsModule" title="natu.core.UnitsModule"><tt class="xref py py-class docutils literal"><span class="pre">UnitsModule</span></tt></a> - Class that wraps a <a class="reference internal" href="#natu.core.Units" title="natu.core.Units"><tt class="xref py py-class docutils literal"><span class="pre">Units</span></tt></a> dictionary as a
+module</li>
 </ul>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>Be careful if you use this package to produce conversion
-factors.  A factor may be the reciprocal of what you first think.  By
-the phrase &#8220;convert from x to y&#8221; (where x and y are units), we mean
-&#8220;convert from an expression of the quantity in x to an expression of
-the quantity in y&#8221;.  &#8220;Quantity in unit&#8221; is generally equivalent to
-&#8220;quantity <em>divided by</em> unit&#8221;, and to get from <em>Q</em>/x (where <em>Q</em> is a
-quantity) to <em>Q</em>/y, we must multiply by x/y.  As a practical example,
-the conversion factor from feet to meters is <tt class="docutils literal"><span class="pre">ft/m</span></tt> (0.3048) using
-<a class="reference internal" href="natu.units.html#module-natu.units" title="natu.units"><tt class="xref py py-mod docutils literal"><span class="pre">natu.units</span></tt></a>.</p>
+<p>Be careful if you use this package to produce conversion factors.
+The factor may be the reciprocal of what you first think.  By the phrase
+&#8220;convert from x to y&#8221; (where x and y are units), we mean &#8220;convert from an
+expression of the quantity in x to an expression of the quantity in y.&#8221;
+&#8220;Quantity in unit&#8221; is typically equivalent to &#8220;quantity <em>divided by</em> unit&#8221;,
+and to get from <em>Q</em>/x (where <em>Q</em> is a quantity) to <em>Q</em>/y, we must multiply by
+x/y.  For example, the conversion factor from feet to metres is <tt class="docutils literal"><span class="pre">ft/m</span></tt>
+(0.3048) using <a class="reference internal" href="natu.units.html#module-natu.units" title="natu.units"><tt class="xref py py-mod docutils literal"><span class="pre">natu.units</span></tt></a>.</p>
 <ul class="last simple">
 <li>Adapted from SciMath
 (<a class="reference external" href="http://docs.enthought.com/scimath/units/intro.html">http://docs.enthought.com/scimath/units/intro.html</a>, accessed
 7/10/2014)</li>
 </ul>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
 <p>Known issues:</p>
-<ul class="simple">
-<li>Python&#8217;s built-in <a class="reference external" href="https://docs.python.org/library/functions.html#sum" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">sum()</span></tt></a> will only accept dimensionless
-quantities.  Consider using <tt class="xref py py-func docutils literal"><span class="pre">natu.math.fsum()</span></tt> instead.</li>
+<ul class="last simple">
+<li>Python&#8217;s built-in <a class="reference external" href="https://docs.python.org/library/functions.html#sum" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">sum()</span></tt></a> will only accept dimensionless quantities.
+Consider using <tt class="xref py py-func docutils literal"><span class="pre">natu.math.fsum()</span></tt> instead.</li>
 </ul>
+</div>
 <dl class="class">
 <dt id="natu.core.CoherentRelations">
 <em class="property">class </em><tt class="descclassname">natu.core.</tt><tt class="descname">CoherentRelations</tt><a class="headerlink" href="#natu.core.CoherentRelations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">list</span></tt></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">list</span></tt></a></p>
 <p>List of coherent relations among units</p>
-<p>Each item is a tuple consisting of a relation and a set of the
-dimensions involved in the units of the relation.  Each relation is
-expressed as a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance that resolves to unity.</p>
+<p>Each item is a tuple consisting of a relation and a set of the dimensions
+involved in the units of the relation.  A relation is expressed as a
+<a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance that evaluates to unity.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="natu.core.CompoundDimension">
 <em class="property">class </em><tt class="descclassname">natu.core.</tt><tt class="descname">CompoundDimension</tt><big>(</big><em>iterable=None</em>, <em>**kwds</em><big>)</big><a class="headerlink" href="#natu.core.CompoundDimension" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">natu.exponents.Exponents</span></tt></a></p>
-<p>Dictionary that contains base physical dimensions as keys and
-exponents of those dimensions as values</p>
-<p>This is <a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">natu.exponents.Exponents</span></tt></a>&#8212;only extended and renamed
-for clarity.  Please see that class for details.</p>
+<p>Dictionary that contains base physical dimensions as keys and exponents
+of those dimensions as values</p>
+<p>This is <a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">natu.exponents.Exponents</span></tt></a>, only renamed for clarity.
+Please see that class for details and additional examples.</p>
 <p><strong>Example:</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">dim</span> <span class="o">=</span> <span class="n">CompoundDimension</span><span class="p">(</span><span class="s">&#39;L/T&#39;</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dim</span>
@@ -301,10 +305,10 @@ for clarity.  Please see that class for details.</p>
 <dt id="natu.core.CompoundUnit">
 <em class="property">class </em><tt class="descclassname">natu.core.</tt><tt class="descname">CompoundUnit</tt><big>(</big><em>iterable=None</em>, <em>**kwds</em><big>)</big><a class="headerlink" href="#natu.core.CompoundUnit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">natu.exponents.Exponents</span></tt></a></p>
-<p>Dictionary that contains the base units of a display unit as keys
-and exponents of those units as values</p>
-<p>This is <a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">natu.exponents.Exponents</span></tt></a>&#8212;only extended and renamed
-for clarity. Please see that class for details.</p>
+<p>Dictionary that contains the base units of a display unit as keys and
+exponents of those units as values</p>
+<p>This is <a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">natu.exponents.Exponents</span></tt></a>, only renamed for clarity.
+Please see that class for details and additional examples.</p>
 <p><strong>Example:</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">unit</span> <span class="o">=</span> <span class="n">CompoundUnit</span><span class="p">(</span><span class="s">&#39;m/s&#39;</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">unit</span>
@@ -316,47 +320,48 @@ for clarity. Please see that class for details.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="natu.core.DimensionedObject">
-<em class="property">class </em><tt class="descclassname">natu.core.</tt><tt class="descname">DimensionedObject</tt><big>(</big><em>dimension</em>, <em>display</em><big>)</big><a class="headerlink" href="#natu.core.DimensionedObject" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
-<p>Base type that tracks physical dimension and display unit</p>
-<p><strong>Initialization arguments:</strong></p>
+<dt id="natu.core.DimObject">
+<em class="property">class </em><tt class="descclassname">natu.core.</tt><tt class="descname">DimObject</tt><big>(</big><em>dimension</em>, <em>display</em><big>)</big><a class="headerlink" href="#natu.core.DimObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>Base class that records physical dimension and display unit</p>
+<p><strong>Initialization parameters:</strong></p>
 <ul>
 <li><p class="first"><em>dimension</em>: Physical dimension</p>
 <blockquote>
-<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a> instance, a standard
-<a class="reference external" href="https://www.python.org/">Python</a> dictionary (<a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a>) of the same form, or a string
-following the syntax described in
-<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a>.</p>
+<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a> instance, a <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> of
+similar form, or a string accepted by the
+<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a> constructor.</p>
 </div></blockquote>
 </li>
 <li><p class="first"><em>display</em>: Display unit</p>
 <blockquote>
-<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance, a standard <a class="reference external" href="https://www.python.org/">Python</a>
-dictionary (<a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a>) of the same form, or a string
-following the syntax described in
-<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a>.</p>
+<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance, a <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> of
+similar form, or a string accepted by the
+<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a> constructor.</p>
 </div></blockquote>
 </li>
 </ul>
 <p>Here, the physical dimension and the display unit are not checked for
 consistency.</p>
+<p><a class="reference internal" href="#natu.core.DimObject.dimension" title="natu.core.DimObject.dimension"><tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt></a> and <a class="reference internal" href="#natu.core.DimObject.dimensionless" title="natu.core.DimObject.dimensionless"><tt class="xref py py-attr docutils literal"><span class="pre">dimensionless</span></tt></a> are read-only attributes (see
+below), but <a class="reference internal" href="#natu.core.DimObject.display" title="natu.core.DimObject.display"><tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt></a> can be set using the same format as the
+<em>display</em> argument above.</p>
 <dl class="attribute">
-<dt id="natu.core.DimensionedObject.dimension">
-<tt class="descname">dimension</tt><a class="headerlink" href="#natu.core.DimensionedObject.dimension" title="Permalink to this definition">¶</a></dt>
-<dd><p>Physical dimension</p>
+<dt id="natu.core.DimObject.dimension">
+<tt class="descname">dimension</tt><a class="headerlink" href="#natu.core.DimObject.dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Physical dimension as a <a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a> instance</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="natu.core.DimensionedObject.dimensionless">
-<tt class="descname">dimensionless</tt><a class="headerlink" href="#natu.core.DimensionedObject.dimensionless" title="Permalink to this definition">¶</a></dt>
+<dt id="natu.core.DimObject.dimensionless">
+<tt class="descname">dimensionless</tt><a class="headerlink" href="#natu.core.DimObject.dimensionless" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>True</em> if the instance is dimensionless</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="natu.core.DimensionedObject.display">
-<tt class="descname">display</tt><a class="headerlink" href="#natu.core.DimensionedObject.display" title="Permalink to this definition">¶</a></dt>
-<dd><p>Display unit</p>
+<dt id="natu.core.DimObject.display">
+<tt class="descname">display</tt><a class="headerlink" href="#natu.core.DimObject.display" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display unit as a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance</p>
 </dd></dl>
 
 </dd></dl>
@@ -364,44 +369,32 @@ consistency.</p>
 <dl class="class">
 <dt id="natu.core.Quantity">
 <em class="property">class </em><tt class="descclassname">natu.core.</tt><tt class="descname">Quantity</tt><big>(</big><em>value</em>, <em>dimension</em>, <em>display=''</em><big>)</big><a class="headerlink" href="#natu.core.Quantity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#natu.core.DimensionedObject" title="natu.core.DimensionedObject"><tt class="xref py py-class docutils literal"><span class="pre">natu.core.DimensionedObject</span></tt></a></p>
+<dd><p>Bases: <a class="reference internal" href="#natu.core.DimObject" title="natu.core.DimObject"><tt class="xref py py-class docutils literal"><span class="pre">natu.core.DimObject</span></tt></a></p>
 <p>Class to represent a physical quantity</p>
-<p><strong>Initialization arguments:</strong></p>
+<p><strong>Initialization parameters:</strong></p>
 <ul>
 <li><p class="first"><em>value</em>: Value of the quantity (a <a class="reference external" href="https://docs.python.org/library/numbers.html#numbers.Number" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Number</span></tt></a> instance)</p>
 <blockquote>
-<div><p>This can be expressed as the product of a number and the value of
-a unit.  The value of a quantity is independent of the unit; the
-number scales inversely to the unit.</p>
+<div><p>This be expressed as the product of a number and the value of a
+unit.  It is independent of the unit since the number scales inversely
+to the unit.</p>
 </div></blockquote>
 </li>
 <li><p class="first"><em>dimension</em>: Physical dimension</p>
 <blockquote>
-<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a> instance, a standard
-<a class="reference external" href="https://www.python.org/">Python</a> dictionary (<a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a>) of the same form, or a string
-following the syntax described in
-<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a>.</p>
+<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a> instance, a <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> of
+similar form, or a string accepted by the
+<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a> constructor.</p>
 </div></blockquote>
 </li>
 <li><p class="first"><em>display</em>: Display unit</p>
 <blockquote>
-<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance, a standard <a class="reference external" href="https://www.python.org/">Python</a>
-dictionary (<a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a>) of the same form, or a string
-following the syntax described in
-<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a>.</p>
+<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance, a <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> of
+similar form, or a string accepted by the
+<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a> constructor.</p>
 </div></blockquote>
 </li>
 </ul>
-<p><strong>Properties:</strong></p>
-<ul class="simple">
-<li><tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>: Physical dimension as a
-<a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a></li>
-<li><tt class="xref py py-attr docutils literal"><span class="pre">dimensionless</span></tt>: <em>True</em> if the quantity is dimensionless</li>
-<li><tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt>: Display unit as a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a></li>
-</ul>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt> and <tt class="xref py py-attr docutils literal"><span class="pre">dimensionless</span></tt> are read-only, but
-<tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt> can be set using the same options as the <em>display</em>
-argument above.</p>
 <p><strong>Examples:</strong></p>
 <p>Instantiation and simple operations:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">natu.units</span>
@@ -414,15 +407,15 @@ argument above.</p>
 <span class="go">kg*m2/s2</span>
 </pre></div>
 </div>
-<p>However, it is easier to create a quantity as the product of a number
-and unit(s); see <a class="reference internal" href="natu.units.html#module-natu.units" title="natu.units"><tt class="xref py py-mod docutils literal"><span class="pre">natu.units</span></tt></a>.</p>
+<p>However, it is easier to create a quantity as the product of a number and
+unit(s); see <a class="reference internal" href="natu.units.html#module-natu.units" title="natu.units"><tt class="xref py py-mod docutils literal"><span class="pre">natu.units</span></tt></a>.</p>
 <p>Changing the display unit:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mass</span><span class="o">.</span><span class="n">display</span> <span class="o">=</span> <span class="s">&#39;lb&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">mass</span><span class="p">)</span> 
 <span class="go">2.20462... lb</span>
 </pre></div>
 </div>
-<p>Note that the value is unchanged:</p>
+<p>Note that the value has not changed:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mass</span> 
 <span class="go">Quantity(1, &#39;M&#39;, &#39;lb&#39;) (2.20462... lb)</span>
 </pre></div>
@@ -438,17 +431,40 @@ otherwise immutable.  The in-place operators create new instances:</p>
 <dl class="attribute">
 <dt id="natu.core.Quantity.unitspace">
 <tt class="descname">unitspace</tt><em class="property"> = None</em><a class="headerlink" href="#natu.core.Quantity.unitspace" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Underlying unit dictionary used to define quantities</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="natu.core.Unit">
 <em class="property">class </em><tt class="descclassname">natu.core.</tt><tt class="descname">Unit</tt><big>(</big><em>dimension</em>, <em>display</em>, <em>prefixable=False</em><big>)</big><a class="headerlink" href="#natu.core.Unit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#natu.core.DimensionedObject" title="natu.core.DimensionedObject"><tt class="xref py py-class docutils literal"><span class="pre">natu.core.DimensionedObject</span></tt></a></p>
+<dd><p>Bases: <a class="reference internal" href="#natu.core.DimObject" title="natu.core.DimObject"><tt class="xref py py-class docutils literal"><span class="pre">natu.core.DimObject</span></tt></a></p>
 <p>Base class for a unit</p>
-<p>In-place assignments are blocked because the value of a unit is
-predefined and should not be changed.</p>
+<p>In-place operations are blocked because the value of a unit is predefined
+and should not be changed.</p>
+<p><strong>Initialization parameters:</strong></p>
+<ul>
+<li><p class="first"><em>dimension</em>: Physical dimension</p>
+<blockquote>
+<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a> instance, a <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> of
+similar form, or a string accepted by the
+<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a> constructor.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><em>display</em>: Display unit</p>
+<blockquote>
+<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance, a <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> of
+similar form, or a string accepted by the
+<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a> constructor.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><em>prefixable</em>: <em>True</em> if the unit can be prefixed</p>
+</li>
+</ul>
+<p><a class="reference internal" href="#natu.core.DimObject.dimension" title="natu.core.DimObject.dimension"><tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt></a>, <a class="reference internal" href="#natu.core.DimObject.dimensionless" title="natu.core.DimObject.dimensionless"><tt class="xref py py-attr docutils literal"><span class="pre">dimensionless</span></tt></a>, and
+<a class="reference internal" href="#natu.core.Unit.prefixable" title="natu.core.Unit.prefixable"><tt class="xref py py-attr docutils literal"><span class="pre">prefixable</span></tt></a> are read-only attributes, but <a class="reference internal" href="#natu.core.DimObject.display" title="natu.core.DimObject.display"><tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt></a>
+can be set using the same format as the <em>display</em> argument above.</p>
 <dl class="attribute">
 <dt id="natu.core.Unit.prefixable">
 <tt class="descname">prefixable</tt><a class="headerlink" href="#natu.core.Unit.prefixable" title="Permalink to this definition">¶</a></dt>
@@ -470,45 +486,27 @@ predefined and should not be changed.</p>
 <em class="property">class </em><tt class="descclassname">natu.core.</tt><tt class="descname">ScalarUnit</tt><big>(</big><em>value</em>, <em>dimension</em>, <em>display=''</em>, <em>prefixable=False</em><big>)</big><a class="headerlink" href="#natu.core.ScalarUnit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">natu.core.Quantity</span></tt></a>, <a class="reference internal" href="#natu.core.Unit" title="natu.core.Unit"><tt class="xref py py-class docutils literal"><span class="pre">natu.core.Unit</span></tt></a></p>
 <p>Unit that involves just a scaling factor</p>
-<p><strong>Initialization arguments:</strong></p>
+<p><strong>Initialization parameters:</strong></p>
 <ul>
-<li><p class="first"><em>value</em>: Value of the quantity (a <a class="reference external" href="https://docs.python.org/library/numbers.html#numbers.Number" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Number</span></tt></a> instance)</p>
-<blockquote>
-<div><p>This can be expressed as the product of a number and the value of
-a unit.  A value of a quantity is independent of the unit; the
-number scales inversely to the unit.</p>
-</div></blockquote>
+<li><p class="first"><em>value</em>: Value of the unit (a <a class="reference external" href="https://docs.python.org/library/numbers.html#numbers.Number" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Number</span></tt></a> instance)</p>
 </li>
 <li><p class="first"><em>dimension</em>: Physical dimension</p>
 <blockquote>
-<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a> instance, a standard
-<a class="reference external" href="https://www.python.org/">Python</a> dictionary (<a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a>) of the same form, or a string
-following the syntax described in
-<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a>.</p>
+<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a> instance, a <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> of
+similar form, or a string accepted by the
+<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a> constructor.</p>
 </div></blockquote>
 </li>
 <li><p class="first"><em>display</em>: Display unit</p>
 <blockquote>
-<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance, a standard <a class="reference external" href="https://www.python.org/">Python</a>
-dictionary (<a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a>) of the same form, or a string
-following the syntax described in
-<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a>.</p>
+<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance, a <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> of
+similar form, or a string accepted by the
+<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a> constructor.</p>
 </div></blockquote>
 </li>
 <li><p class="first"><em>prefixable</em>: <em>True</em> if the unit can be prefixed</p>
 </li>
 </ul>
-<p><strong>Properties:</strong></p>
-<ul class="simple">
-<li><tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>: Physical dimension as a
-<a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a></li>
-<li><tt class="xref py py-attr docutils literal"><span class="pre">dimensionless</span></tt>: <em>True</em> if the quantity is dimensionless</li>
-<li><tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt>: Display unit as a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a></li>
-<li><tt class="xref py py-attr docutils literal"><span class="pre">prefixable</span></tt>: <em>True</em> if the unit can be prefixed</li>
-</ul>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>, <tt class="xref py py-attr docutils literal"><span class="pre">dimensionless</span></tt>, and <tt class="xref py py-attr docutils literal"><span class="pre">prefixable</span></tt> are
-read-only, but <tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt> can be set using the same options as
-the <em>display</em> argument above.</p>
 <p><strong>Examples:</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.units</span> <span class="kn">import</span> <span class="n">kg</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># F</span>
@@ -518,25 +516,24 @@ the <em>display</em> argument above.</p>
 <span class="go">ScalarUnit(1, &#39;L2*M/T2&#39;, &#39;J&#39;, False) (J)</span>
 </pre></div>
 </div>
-<p>Note that it&#8217;s possible to change the display unit:</p>
+<p>Note that the display unit can be changed:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">display</span> <span class="o">=</span> <span class="s">&#39;ft&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> 
 <span class="go">ScalarUnit(1, &#39;L&#39;, &#39;ft&#39;, True) (3.2808... ft)</span>
 </pre></div>
 </div>
-<p>Now any quantity generated from m will display in ft instead.
-However, notice that the value is unchanged; m still represents the
+<p>Now any quantity generated from the metre (m) will display in feet (ft)
+instead. However, the value is unchanged; the metre still represents the
 same length.</p>
 <dl class="classmethod">
-<dt id="natu.core.ScalarUnit.fromQuantity">
-<em class="property">classmethod </em><tt class="descname">fromQuantity</tt><big>(</big><em>quantity</em>, <em>display</em>, <em>prefixable=False</em><big>)</big><a class="headerlink" href="#natu.core.ScalarUnit.fromQuantity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a quantity (instance of <a class="reference internal" href="#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a>) to a scalar
-unit.</p>
-<p>The value and dimension are taken from <em>quantity</em>.  The display
-unit must be provided (via <em>display</em>).</p>
+<dt id="natu.core.ScalarUnit.from_quantity">
+<em class="property">classmethod </em><tt class="descname">from_quantity</tt><big>(</big><em>quantity</em>, <em>display</em>, <em>prefixable=False</em><big>)</big><a class="headerlink" href="#natu.core.ScalarUnit.from_quantity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a quantity (instance of <a class="reference internal" href="#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a>) to a scalar unit.</p>
+<p>The value and dimension are taken from <em>quantity</em>.  The display unit
+must be provided (via <em>display</em>).</p>
 <p><strong>Example:</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.units</span> <span class="kn">import</span> <span class="n">ns</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">shake</span> <span class="o">=</span> <span class="n">ScalarUnit</span><span class="o">.</span><span class="n">fromQuantity</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">ns</span><span class="p">,</span> <span class="s">&#39;shake&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shake</span> <span class="o">=</span> <span class="n">ScalarUnit</span><span class="o">.</span><span class="n">from_quantity</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">ns</span><span class="p">,</span> <span class="s">&#39;shake&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -548,7 +545,7 @@ unit must be provided (via <em>display</em>).</p>
 <em class="property">class </em><tt class="descclassname">natu.core.</tt><tt class="descname">LambdaUnit</tt><big>(</big><em>toquantity</em>, <em>tonumber</em>, <em>dimension</em>, <em>display=''</em>, <em>prefixable=False</em><big>)</big><a class="headerlink" href="#natu.core.LambdaUnit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#natu.core.Unit" title="natu.core.Unit"><tt class="xref py py-class docutils literal"><span class="pre">natu.core.Unit</span></tt></a></p>
 <p>Unit that involves a offset or other operations besides scaling</p>
-<p><strong>Initialization arguments:</strong></p>
+<p><strong>Initialization parameters:</strong></p>
 <ul>
 <li><p class="first"><em>toquantity</em>: Function that maps a number to a quantity</p>
 </li>
@@ -556,34 +553,21 @@ unit must be provided (via <em>display</em>).</p>
 </li>
 <li><p class="first"><em>dimension</em>: Physical dimension</p>
 <blockquote>
-<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a> instance, a standard
-<a class="reference external" href="https://www.python.org/">Python</a> dictionary (<a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a>) of the same form, or a string
-following the syntax described in
-<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a>.</p>
+<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a> instance, a <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> of
+similar form, or a string accepted by the
+<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a> constructor.</p>
 </div></blockquote>
 </li>
 <li><p class="first"><em>display</em>: Display unit</p>
 <blockquote>
-<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance, a standard <a class="reference external" href="https://www.python.org/">Python</a>
-dictionary (<a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a>) of the same form, or a string
-following the syntax described in
-<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a>.</p>
+<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance, a <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> of
+similar form, or a string accepted by the
+<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a> constructor.</p>
 </div></blockquote>
 </li>
 <li><p class="first"><em>prefixable</em>: <em>True</em> if the unit can be prefixed</p>
 </li>
 </ul>
-<p><strong>Properties:</strong></p>
-<ul class="simple">
-<li><tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>: Physical dimension as a
-<a class="reference internal" href="#natu.core.CompoundDimension" title="natu.core.CompoundDimension"><tt class="xref py py-class docutils literal"><span class="pre">CompoundDimension</span></tt></a></li>
-<li><tt class="xref py py-attr docutils literal"><span class="pre">dimensionless</span></tt>: <em>True</em> if the quantity is dimensionless</li>
-<li><tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt>: Display unit as a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a></li>
-<li><tt class="xref py py-attr docutils literal"><span class="pre">prefixable</span></tt>: <em>True</em> if the unit can be prefixed</li>
-</ul>
-<p><tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>, <tt class="xref py py-attr docutils literal"><span class="pre">dimensionless</span></tt>, and <tt class="xref py py-attr docutils literal"><span class="pre">prefixable</span></tt> are
-read-only, but <tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt> can be set using the same options as
-the <em>display</em> argument above.</p>
 <p><strong>Examples:</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.units</span> <span class="kn">import</span> <span class="n">degC</span><span class="p">,</span> <span class="n">K</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">degC</span> 
@@ -599,15 +583,25 @@ the <em>display</em> argument above.</p>
 <em class="property">class </em><tt class="descclassname">natu.core.</tt><tt class="descname">Units</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#natu.core.Units" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a></p>
 <p>Dictionary of units with dynamic prefixing (upon access)</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><p class="first"><tt class="xref py py-attr docutils literal"><span class="pre">coherent_relations</span></tt> - List of coherent relations among the units</p>
+<blockquote>
+<div><p>Each entry is a tuple of a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance that
+evaluates to unity and a set of the dimensions involved in the units in
+the <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a>.</p>
+</div></blockquote>
+</li>
+</ul>
 <dl class="method">
 <dt id="natu.core.Units.__call__">
 <tt class="descname">__call__</tt><big>(</big><em>**factors</em><big>)</big><a class="headerlink" href="#natu.core.Units.__call__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a compound unit from the unit space.</p>
-<p><strong>Arguments:</strong></p>
+<dd><p>Generate a compound, coherent unit from existing units.</p>
+<p><strong>Parameters:</strong></p>
 <ul>
 <li><p class="first"><em>**factors</em>: Factors of the compound unit</p>
-<p>The factors are expressed as keyword arguments where the keys
-are unit symbols and the values are exponents.</p>
+<p>The factors are expressed as keyword arguments where the keys are unit
+symbols and the values are exponents.</p>
 </li>
 </ul>
 <p><strong>Example:</strong></p>
@@ -625,13 +619,19 @@ are unit symbols and the values are exponents.</p>
 <tt class="descname">__getitem__</tt><big>(</big><em>symbol</em><big>)</big><a class="headerlink" href="#natu.core.Units.__getitem__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Access a unit by <em>symbol</em> (a string).</p>
 <p>Prefixes are supported.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.units</span> <span class="kn">import</span> <span class="n">_units</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_units</span><span class="p">[</span><span class="s">&#39;psi&#39;</span><span class="p">]</span>
+<span class="go">ScalarUnit(6894.76, &#39;M/(L*T2)&#39;, &#39;psi&#39;, False) (psi)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="natu.core.Units.load_ini">
 <tt class="descname">load_ini</tt><big>(</big><em>files</em><big>)</big><a class="headerlink" href="#natu.core.Units.load_ini" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add units to the unit dictionary from a *.ini file or list of
-files (<em>files</em>).</p>
+<dd><p>Add units to the unit dictionary from a *.ini file or list of files
+(<em>files</em>).</p>
 <p><strong>Examples:</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.core</span> <span class="kn">import</span> <span class="n">Units</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.config</span> <span class="kn">import</span> <span class="n">definitions</span>
@@ -648,41 +648,40 @@ files (<em>files</em>).</p>
 <dt id="natu.core.Units.simplify">
 <tt class="descname">simplify</tt><big>(</big><em>unit</em>, <em>level=2</em><big>)</big><a class="headerlink" href="#natu.core.Units.simplify" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simplify a compound unit.</p>
-<p>This function seeks to minimize the sum of the absolute values of
-the exponents of the base factors.  It avoids using any factors
-that involve dimensions not included in the original
-representation of the unit.  This function uses the internal
-<tt class="xref py py-attr docutils literal"><span class="pre">coherent_relations</span></tt> list which is generated while parsing
-the *.ini files (in <a class="reference internal" href="#natu.core.Units.load_ini" title="natu.core.Units.load_ini"><tt class="xref py py-meth docutils literal"><span class="pre">load_ini()</span></tt></a>).  It will not always find
-the simplest representation because some simplifications involve
-first making the representation more complex.</p>
-<p><strong>Arguments:</strong></p>
+<p>This function seeks to minimize the sum of the absolute values of the
+exponents of the base factors by substituting coherently related units.
+It does not use units that involve dimensions not included in the
+original representation.  It uses the internal
+<tt class="xref py py-attr docutils literal"><span class="pre">coherent_relations</span></tt> list which is generated while parsing the
+*.ini files (in <a class="reference internal" href="#natu.core.Units.load_ini" title="natu.core.Units.load_ini"><tt class="xref py py-meth docutils literal"><span class="pre">load_ini()</span></tt></a>).  It will not always find the
+simplest representation because some simplifications involve first
+making the representation more complex.</p>
+<p><strong>Parameters:</strong></p>
 <ul>
 <li><p class="first"><em>unit</em>: Unit to be simplified</p>
 <blockquote>
-<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance, a standard
-<a class="reference external" href="https://www.python.org/">Python</a> dictionary (<a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a>) of the same form, or a
-string following the syntax described in
-<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a>.</p>
+<div><p>This can be a <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance, a <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> of
+similar form, or a string accepted by the
+<a class="reference internal" href="natu.exponents.html#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a> constructor.</p>
 </div></blockquote>
 </li>
 <li><p class="first"><em>level</em>: Number of levels of recursion to perform</p>
 <blockquote>
-<div><p>This is the number of non-minimizing substitutions that can
-be made in seeking the best representation of the unit.</p>
+<div><p>This is the number of non-minimizing substitutions that can be made
+while seeking the simplest representation of the unit.</p>
 </div></blockquote>
 </li>
 </ul>
-<p><strong>Returns:</strong>  A <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance indicating the best
+<p><strong>Returns:</strong>  A <a class="reference internal" href="#natu.core.CompoundUnit" title="natu.core.CompoundUnit"><tt class="xref py py-class docutils literal"><span class="pre">CompoundUnit</span></tt></a> instance indicating the new
 representation of the unit.</p>
 <p><strong>Example:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># High-level:</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># High-level/indirect:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.units</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">kg</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="go">J</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Low-level:</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Low-level/direct:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.units</span> <span class="kn">import</span> <span class="n">_units</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">_units</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="s">&#39;kg*m2/s2&#39;</span><span class="p">))</span>
 <span class="go">J</span>
@@ -696,27 +695,26 @@ representation of the unit.</p>
 <dt id="natu.core.UnitsModule">
 <em class="property">class </em><tt class="descclassname">natu.core.</tt><tt class="descname">UnitsModule</tt><big>(</big><em>module</em>, <em>definitions</em><big>)</big><a class="headerlink" href="#natu.core.UnitsModule" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">module</span></tt></p>
-<p>Class that wraps the <a class="reference internal" href="#natu.core.Units" title="natu.core.Units"><tt class="xref py py-class docutils literal"><span class="pre">Units</span></tt></a> dictionary as a module</p>
-<p><strong>Initialization arguments:</strong></p>
+<p>Class that wraps a <a class="reference internal" href="#natu.core.Units" title="natu.core.Units"><tt class="xref py py-class docutils literal"><span class="pre">Units</span></tt></a> dictionary as a module</p>
+<p><strong>Initialization parameters:</strong></p>
 <ul>
 <li><p class="first"><em>module</em>: The module into which the units should be wrapped</p>
 <blockquote>
-<div><p>This must have the attributes <tt class="xref py py-attr docutils literal"><span class="pre">__name__</span></tt> and
-<tt class="xref py py-attr docutils literal"><span class="pre">__doc__</span></tt>.</p>
+<div><p>This must have the attributes <tt class="xref py py-attr docutils literal"><span class="pre">__name__</span></tt> and <tt class="xref py py-attr docutils literal"><span class="pre">__doc__</span></tt>.</p>
 </div></blockquote>
 </li>
 <li><p class="first"><em>definitions</em>: A *.ini file, list of files, or dictionary with
 units that should be inserted into the module</p>
 <blockquote>
-<div><p>It is not necessary to provide prefixed versions of the units
-unless they should be available via
-<tt class="docutils literal"><span class="pre">from</span> <span class="pre">&lt;units</span> <span class="pre">module&gt;</span> <span class="pre">import</span> <span class="pre">*</span></tt>.</p>
+<div><p>It is not necessary to provide prefixed versions of the units unless
+they should be available via wildcard import (e.g.,
+<tt class="docutils literal"><span class="pre">from</span> <span class="pre">units_module</span> <span class="pre">import</span> <span class="pre">*</span></tt>).</p>
 </div></blockquote>
 </li>
 </ul>
-<p>Only one <a class="reference internal" href="#natu.core.UnitsModule" title="natu.core.UnitsModule"><tt class="xref py py-class docutils literal"><span class="pre">UnitsModule</span></tt></a> can be instantiated from *.ini files
-per Python session.  This prevents conflicts that might arise if the
-units were reloaded with different base constants.</p>
+<p>Only one <a class="reference internal" href="#natu.core.UnitsModule" title="natu.core.UnitsModule"><tt class="xref py py-class docutils literal"><span class="pre">UnitsModule</span></tt></a> can be instantiated directly from *.ini files
+per <a class="reference external" href="https://www.python.org/">Python</a> session.  This prevents conflicts that could arise if the units
+were reloaded with different base constants.</p>
 </dd></dl>
 
 </div>
@@ -729,7 +727,7 @@ units were reloaded with different base constants.</p>
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
               <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
-            </a></p><h3>Project Info</h3>
+            </a></p><h3><a href="index.html">Project Info</a></h3>
   <ul>
   <li><a href="install.html">Installation</a></li>
   <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
@@ -751,11 +749,11 @@ units were reloaded with different base constants.</p>
 <li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
 <li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
 </ul>
-<h3><a href="apimodules.html">API Modules</a></h3>
+<h3><a href="api.html">API</a></h3>
 <ul>
 <!--
+  <li><a href="natu.core.html"><tt class="docutils literal"><span class="pre">natu.core</span></tt></a></li>
   <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
-  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
   <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
 -->
 </ul><h3>Useful Links</h3>
@@ -800,7 +798,7 @@ units were reloaded with different base constants.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute and Georgia Tech Research Corporation.
-      Last updated on Sep 05, 2014.
+      Last updated on Dec 26, 2014.
     </div>
   </body>
 </html>

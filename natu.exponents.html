@@ -62,34 +62,37 @@
             
   <div class="section" id="module-natu.exponents">
 <span id="natu-exponents"></span><h1><a class="reference internal" href="#module-natu.exponents" title="natu.exponents"><tt class="xref py py-mod docutils literal"><span class="pre">natu.exponents</span></tt></a><a class="headerlink" href="#module-natu.exponents" title="Permalink to this headline">¶</a></h1>
-<p>Contains a class and supporting functions to represent the product
-of factors with exponents</p>
+<p>Contains a class with methods to represent and operate on the product of
+factors with exponents</p>
 <dl class="class">
 <dt id="natu.exponents.Exponents">
 <em class="property">class </em><tt class="descclassname">natu.exponents.</tt><tt class="descname">Exponents</tt><big>(</big><em>iterable=None</em>, <em>**kwds</em><big>)</big><a class="headerlink" href="#natu.exponents.Exponents" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/library/collections.html#collections.Counter" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Counter</span></tt></a></p>
 <p>Dictionary-like class to track exponents of independent bases</p>
-<p>The keys are the bases and the values are the exponents.  The
-supported mathematical operations&#8212;addition, subtraction, negation,
-multiplication, and division&#8212;operate on the exponents, not on the
-bases.</p>
+<p>The keys are the bases and the values are the exponents.  The supported
+mathematical operations (addition, subtraction, negation, multiplication,
+and division) operate on the exponents, not on the bases.</p>
 <p><strong>Initialization signatures:</strong></p>
 <ul>
-<li><p class="first"><a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a>(): Returns an <a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a> instance with
-an empty set of factors</p>
+<li><p class="first"><a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a>(): Returns an <a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a> instance with an
+empty set of factors</p>
 </li>
-<li><p class="first"><a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a>(a=*exp1*, b=*exp2*, ...), where
-<em>exp1</em> and <em>exp2</em> are numbers: Returns an <a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a>
-instance that represents the product of symbol &#8216;a&#8217; raised to the
-power of <em>exp1</em> and symbol &#8216;b&#8217; raised to the power of <em>exp2</em></p>
+<li><p class="first"><a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a>(a=<em>exp1</em>, b=<em>exp2</em>, ...), where <em>exp1</em> and <em>exp2</em>
+are numbers: Returns an <a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a> instance that represents the
+product of symbol &#8216;a&#8217; raised to the power of <em>exp1</em> and symbol &#8216;b&#8217; raised
+to the power of <em>exp2</em></p>
 </li>
-<li><p class="first"><a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a>(dict(a=*exp1*, b=*exp2*, ...)): Returns the
-same result as the previous option</p>
+<li><p class="first"><a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a>(dict(a=<em>exp1</em>, b=<em>exp2</em>, ...)): Returns the same
+result as the previous signature</p>
 </li>
-<li><p class="first"><a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a>(<em>string</em>): Returns an <a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a>
-instance indicated by <em>string</em></p>
+<li><p class="first"><a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a>({a: <em>exp1</em>, b: <em>exp2</em>, ...}): Returns the same result
+as the previous signature</p>
+</li>
+<li><p class="first"><a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a>(<em>string</em>): Returns an <a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a> instance
+indicated by <em>string</em></p>
 <blockquote>
-<div><p><em>string</em> must follow the format accepted by <a class="reference internal" href="#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a>.</p>
+<div><p><em>string</em> must follow the format accepted by the <a class="reference internal" href="#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a>
+constructor.</p>
 </div></blockquote>
 </li>
 </ul>
@@ -102,7 +105,7 @@ format codes are:</p>
 <div><ul class="simple">
 <li>Exponents directly follow the symbols of the bases.</li>
 <li>&#8216;*&#8217; indicates multiplication and &#8216;/&#8217; indicates division.</li>
-<li>If the denominator contains multiple factors, they are grouped
+<li>If the denominator contains multiple factors, then they are grouped
 in parentheses.</li>
 </ul>
 </div></blockquote>
@@ -111,9 +114,9 @@ in parentheses.</li>
 <blockquote>
 <div><ul class="simple">
 <li>Exponents are written as superscripts (&#8216;&lt;sup&gt;...&lt;/sup&gt;&#8217;)</li>
-<li>A non-breaking space (&#8216;&amp;nbsp;&#8217;) indicates multiplication and
-&#8216;/&#8217; indicates division.</li>
-<li>If the denominator contains multiple factors, they are grouped
+<li>A non-breaking space (&#8216;&amp;nbsp;&#8217;) indicates multiplication and &#8216;/&#8217;
+indicates division.</li>
+<li>If the denominator contains multiple factors, then they are grouped
 in parentheses.</li>
 </ul>
 </div></blockquote>
@@ -124,18 +127,15 @@ in parentheses.</li>
 <li>Exponents are written as superscripts (&#8216;^...&#8217;)</li>
 <li>Back-to-back factors indicate multiplication and &#8216;/&#8217; indicates
 division.</li>
-<li>If the denominator contains multiple factors, they are grouped
+<li>If the denominator contains multiple factors, then they are grouped
 in parentheses.</li>
-<li>The output must be typeset in <a class="reference external" href="http://www.latex-project.org/">LaTeX</a> math mode (e.g.,
-surround it with &#8216;$...$&#8217;).</li>
+<li>The output must be typeset in <a class="reference external" href="http://www.latex-project.org/">LaTeX</a> math mode (e.g., surround it
+with &#8216;$...$&#8217;).</li>
 </ul>
 </div></blockquote>
 </li>
-<li><dl class="first docutils">
-<dt>&#8216;M&#8217; (<a class="reference internal" href="#modelica" id="id1">[Modelica]</a>): Same as default except &#8216;.&#8217; indicates</dt>
-<dd><p class="first last">multiplication</p>
-</dd>
-</dl>
+<li><p class="first">&#8216;M&#8217; (<a class="reference internal" href="#modelica" id="id1">[Modelica]</a>): Same as the default except &#8216;.&#8217; indicates multiplication
+instead of &#8216;*&#8217;</p>
 </li>
 <li><p class="first">&#8216;U&#8217; (<a class="reference external" href="https://en.wikipedia.org/wiki/Unicode">Unicode</a>):</p>
 <blockquote>
@@ -150,18 +150,69 @@ instead of division.</li>
 <li><p class="first">&#8216;V&#8217; (verbose):</p>
 <blockquote>
 <div><ul class="simple">
-<li>Exponents are prefixed by &#8216;**&#8217;.</li>
+<li>Exponents are noted by &#8216;**&#8217;.</li>
 <li>&#8216; * &#8216; indicates multiplication and &#8216; / &#8216; indicates division.</li>
-<li>If the denominator contains multiple factors, they are grouped
+<li>If the denominator contains multiple factors, then they are grouped
 in parentheses.</li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
-<p><strong>Example:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Exponents</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">d</span><span class="o">=-</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="go">&#39;a*b2/(c*d3)&#39;</span>
+<p><strong>Examples:</strong></p>
+<p>Initialization and representation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Exponents</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">{&#39;a&#39;: 1, &#39;b&#39;: -1, &#39;c&#39;: -2}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">&#39;a/(b*c2)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;V&#39;</span><span class="p">)</span>
+<span class="go">&#39;a / (b * c**2)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;H&#39;</span><span class="p">)</span>
+<span class="go">&#39;a&amp;nbsp;b&lt;sup&gt;-1&lt;/sup&gt;&amp;nbsp;c&lt;sup&gt;-2&lt;/sup&gt;&#39;</span>
+</pre></div>
+</div>
+<p>The last result displays in HTML as the following:
+<span class="raw-html">a&nbsp;b<sup>-1</sup>&nbsp;c<sup>-2</sup></span>.</p>
+<p>Addition:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">a2/(b2*c4)</span>
+</pre></div>
+</div>
+<p>Multiplication:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">a2/(b2*c4)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="mi">0</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Division:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">a0.5/(b0.5*c)</span>
+</pre></div>
+</div>
+<p>Negation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="go">b*c2/a</span>
+</pre></div>
+</div>
+<p>Subtraction:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Indexing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s">&#39;d&#39;</span><span class="p">]</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>Updating:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s">&#39;d&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">&#39;a2*d2/(b2*c2)&#39;</span>
 </pre></div>
 </div>
 <p class="rubric">References</p>
@@ -175,18 +226,15 @@ in parentheses.</li>
 <dl class="classmethod">
 <dt id="natu.exponents.Exponents.fromstr">
 <em class="property">classmethod </em><tt class="descname">fromstr</tt><big>(</big><em>expr</em><big>)</big><a class="headerlink" href="#natu.exponents.Exponents.fromstr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create an <a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a> instance from a string
-expression.</p>
-<p><strong>Arguments:</strong></p>
+<dd><p>Create an <a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a> instance from a string expression.</p>
+<p><strong>Parameters:</strong></p>
 <ul>
-<li><p class="first"><em>expr</em>: String expression that indicates the symbols and
-exponents</p>
+<li><p class="first"><em>expr</em>: String expression that indicates the symbols and exponents</p>
 <blockquote>
-<div><p>Each symbol may be followed directly by an exponent.  If
-the exponent is not an integer, it may be expressed using a
-decimal or as a fraction (with &#8216;/&#8217;) enclosed in parentheses.
-Factors may be multiplied(&#8216;*&#8217;), divided (&#8216;/&#8217;), or grouped
-(&#8216;(...)&#8217;).</p>
+<div><p>Each symbol may be followed directly by an exponent.  If the
+exponent is not an integer, it may be expressed using a decimal or
+as a fraction (with &#8216;/&#8217;) enclosed in parentheses.  Factors may be
+multiplied(&#8216;*&#8217;), divided (&#8216;/&#8217;), or grouped (&#8216;(...)&#8217;).</p>
 </div></blockquote>
 </li>
 </ul>
@@ -200,9 +248,17 @@ Factors may be multiplied(&#8216;*&#8217;), divided (&#8216;/&#8217;), or groupe
 
 <dl class="method">
 <dt id="natu.exponents.Exponents.update">
-<tt class="descname">update</tt><big>(</big><span class="optional">[</span><em>E</em>, <span class="optional">]</span><em>**F</em><big>)</big> &rarr; None.  Update D from dict/iterable E and F.<a class="headerlink" href="#natu.exponents.Exponents.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>If E present, does:  for k in E: D[k] = E[k]
-This is followed by: for k in F: D[k] = F[k]</p>
+<tt class="descname">update</tt><big>(</big><span class="optional">[</span><em>E</em>, <span class="optional">]</span><em>**F</em><big>)</big> &rarr; None<a class="headerlink" href="#natu.exponents.Exponents.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update this <a class="reference internal" href="#natu.exponents.Exponents" title="natu.exponents.Exponents"><tt class="xref py py-class docutils literal"><span class="pre">Exponents</span></tt></a> instance from <a class="reference external" href="https://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a>/iterable <em>E</em>
+and <em>F</em>.</p>
+<p>If <em>E</em> is present, this does:</p>
+<blockquote>
+<div><tt class="docutils literal"><span class="pre">for</span> <span class="pre">k</span> <span class="pre">in</span> <span class="pre">E:</span> <span class="pre">D[k]</span> <span class="pre">=</span> <span class="pre">E[k]</span></tt></div></blockquote>
+<p>Then it does:</p>
+<blockquote>
+<div><tt class="docutils literal"><span class="pre">for</span> <span class="pre">k</span> <span class="pre">in</span> <span class="pre">F:</span> <span class="pre">D[k]</span> <span class="pre">=</span> <span class="pre">F[k]</span></tt></div></blockquote>
+<p>Alternatively, <em>E</em> can be a string that is compatible with the
+<a class="reference internal" href="#natu.exponents.Exponents.fromstr" title="natu.exponents.Exponents.fromstr"><tt class="xref py py-meth docutils literal"><span class="pre">fromstr()</span></tt></a> constructor.</p>
 <p><strong>Example:</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="n">Exponents</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -219,8 +275,7 @@ This is followed by: for k in F: D[k] = F[k]</p>
 <dl class="function">
 <dt id="natu.exponents.split_code">
 <tt class="descclassname">natu.exponents.</tt><tt class="descname">split_code</tt><big>(</big><em>code</em><big>)</big><a class="headerlink" href="#natu.exponents.split_code" title="Permalink to this definition">¶</a></dt>
-<dd><p>Split a string format code into standard and exponent-specific
-components.</p>
+<dd><p>Split a string format code into standard and exponent-specific parts.</p>
 </dd></dl>
 
 </div>
@@ -233,7 +288,7 @@ components.</p>
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
               <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
-            </a></p><h3>Project Info</h3>
+            </a></p><h3><a href="index.html">Project Info</a></h3>
   <ul>
   <li><a href="install.html">Installation</a></li>
   <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
@@ -255,11 +310,11 @@ components.</p>
 <li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
 <li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
 </ul>
-<h3><a href="apimodules.html">API Modules</a></h3>
+<h3><a href="api.html">API</a></h3>
 <ul>
 <!--
+  <li><a href="natu.core.html"><tt class="docutils literal"><span class="pre">natu.core</span></tt></a></li>
   <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
-  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
   <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
 -->
 </ul><h3>Useful Links</h3>
@@ -304,7 +359,7 @@ components.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute and Georgia Tech Research Corporation.
-      Last updated on Sep 05, 2014.
+      Last updated on Dec 26, 2014.
     </div>
   </body>
 </html>

@@ -71,17 +71,17 @@
   <div class="section" id="module-natu.math">
 <span id="natu-math"></span><h1><a class="reference internal" href="#module-natu.math" title="natu.math"><tt class="xref py py-mod docutils literal"><span class="pre">natu.math</span></tt></a><a class="headerlink" href="#module-natu.math" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://docs.python.org/3/library/math.html">Python math</a>, adapted for use with physical quantities</p>
-<p>Many of the functions only accept dimensionless quantities, and they
-operate on the underlying values&#8212;not the values as represented in a
-particular display unit.  To operate on values in a display unit would be
-to favor a particular unit, which is against the <a class="reference external" href="index.html">design of the package</a>.</p>
+<p>Many of the functions only accept dimensionless quantities, and they operate on
+the underlying values&#8212;not the values as represented in a particular display
+unit.  To operate on values in a display unit would be to favor a particular
+unit, which is against the <a class="reference external" href="index.html">design of the package</a>.</p>
 <p>The constants (<em>pi</em>, <em>e</em>) are exactly as they are in <a class="reference external" href="https://docs.python.org/3/library/math.html">Python math</a>.</p>
 <p>These functions accept floats, integers, and dimensionless quantities:</p>
 <ul class="simple">
 <li>Number-theoretic and representation functions: <tt class="xref py py-func docutils literal"><span class="pre">factorial()</span></tt>,
 <tt class="xref py py-func docutils literal"><span class="pre">frexp()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">modf()</span></tt>, and <tt class="xref py py-func docutils literal"><span class="pre">trunc()</span></tt></li>
-<li>Power and logarithmic functions: <tt class="xref py py-func docutils literal"><span class="pre">exp()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">expm1()</span></tt>,
-<tt class="xref py py-func docutils literal"><span class="pre">log10()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">log1p()</span></tt>, and <tt class="xref py py-func docutils literal"><span class="pre">log()</span></tt></li>
+<li>Power and logarithmic functions: <tt class="xref py py-func docutils literal"><span class="pre">exp()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">expm1()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">log10()</span></tt>,
+<tt class="xref py py-func docutils literal"><span class="pre">log1p()</span></tt>, and <tt class="xref py py-func docutils literal"><span class="pre">log()</span></tt></li>
 <li>Hyperbolic functions: <tt class="xref py py-func docutils literal"><span class="pre">acosh()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">asinh()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">atanh()</span></tt>,
 <tt class="xref py py-func docutils literal"><span class="pre">cosh()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">sinh()</span></tt>, and <tt class="xref py py-func docutils literal"><span class="pre">tanh()</span></tt></li>
 <li>Special functions: <tt class="xref py py-func docutils literal"><span class="pre">erf()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">erfc()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">gamma()</span></tt>, and
@@ -92,8 +92,7 @@ to favor a particular unit, which is against the <a class="reference external" h
 <a class="reference external" href="http://bugs.python.org/issue21902">http://bugs.python.org/issue21902</a>).  The functions cast quantities cast as
 floats and return floats, except for <tt class="xref py py-func docutils literal"><span class="pre">factorial()</span></tt>, which casts quantities
 as integers and returns integers.</p>
-<p>All of the other functions (below) are different than those in <a class="reference external" href="https://docs.python.org/3/library/math.html">Python
-math</a>.</p>
+<p>All of the other functions (below) are different than those in <a class="reference external" href="https://docs.python.org/3/library/math.html">Python math</a>.</p>
 <p>These functions accept angle as a quantity:</p>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">cos()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">sin()</span></tt>, and <tt class="xref py py-func docutils literal"><span class="pre">tan()</span></tt></li>
@@ -106,8 +105,8 @@ math</a>.</p>
 <p>They return angles as quantities.</p>
 <p><tt class="xref py py-func docutils literal"><span class="pre">atan2()</span></tt> accepts accept floats, integers, and quantities of the same
 dimension.  It returns angle as a quantity.</p>
-<p>These functions are no longer applicable and have been deleted since angle
-is a quantity:</p>
+<p>These functions are no longer applicable and have been deleted since angle is a
+quantity:</p>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">degrees()</span></tt> and <tt class="xref py py-func docutils literal"><span class="pre">radians()</span></tt></li>
 </ul>
@@ -115,43 +114,40 @@ is a quantity:</p>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">ceil()</span></tt> and <tt class="xref py py-func docutils literal"><span class="pre">floor()</span></tt></li>
 </ul>
-<p>If the input is a float or an integer, the output is a float.  If the
-input is a <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a
-<a class="reference internal" href="natu.core.html#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is the same and has the same
-<tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>, <tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt>, etc.</p>
+<p>If the input is a float or an integer, the output is a float.  If the input is
+a <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a <a class="reference internal" href="natu.core.html#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result
+is the same and has the same <tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>, <tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt>, etc.</p>
 <p>These functions accept floats, integers, and quantities:</p>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">fabs()</span></tt> and <tt class="xref py py-func docutils literal"><span class="pre">copysign()</span></tt></li>
 </ul>
-<p>If the input is a float or an integer, the output is a float.  If the
-input is a <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a
-<a class="reference internal" href="natu.core.html#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is of the same type and has
-the same <tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>, <tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt>, etc. (of the first argument
-in the case of <tt class="xref py py-func docutils literal"><span class="pre">copysign()</span></tt>).</p>
+<p>If the input is a float or an integer, the output is a float.  If the input is a
+<a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a <a class="reference internal" href="natu.core.html#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is
+of the same type and has the same <tt class="xref py py-attr docutils literal"><span class="pre">dimension</span></tt>, <tt class="xref py py-attr docutils literal"><span class="pre">display</span></tt>, etc. (of
+the first argument in the case of <tt class="xref py py-func docutils literal"><span class="pre">copysign()</span></tt>).</p>
 <p>These functions also accept floats, integers, and quantities:</p>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">ldexp()</span></tt>, <a class="reference external" href="https://docs.python.org/library/functions.html#pow" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">pow()</span></tt></a>, and <tt class="xref py py-func docutils literal"><span class="pre">sqrt()</span></tt></li>
 </ul>
-<p>If the input is an float or an integer, the output is a float.  If the
-input is a <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a
-<a class="reference internal" href="natu.core.html#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result is the same.  The dimensions
-and display units are handled according to the power.</p>
-<p><tt class="xref py py-func docutils literal"><span class="pre">fmod()</span></tt> accepts floats, integers, and quantities of the same
-dimension. The output is always a float.</p>
+<p>If the input is an float or an integer, the output is a float.  If the input is
+a <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> or a <a class="reference internal" href="natu.core.html#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a>, the result
+is the same.  The dimensions and display units are handled according to the
+power.</p>
+<p><tt class="xref py py-func docutils literal"><span class="pre">fmod()</span></tt> accepts floats, integers, and quantities of the same dimension.
+The output is always a float.</p>
 <p>These functions also accept floats, integers, and quantities of the same
 dimension:</p>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">fsum()</span></tt> and <tt class="xref py py-func docutils literal"><span class="pre">hypot()</span></tt></li>
 </ul>
-<p>The display unit (and <tt class="xref py py-attr docutils literal"><span class="pre">prefixable</span></tt> attribute, if applicable) of the
-first argument or entry is propagated to the output.</p>
+<p>The display unit (and <tt class="xref py py-attr docutils literal"><span class="pre">prefixable</span></tt> attribute, if applicable) of the first
+argument or entry is propagated to the output.</p>
 <p>These functions accept floats or quantities:</p>
 <ul class="simple">
 <li><tt class="xref py py-func docutils literal"><span class="pre">isinf()</span></tt>, <tt class="xref py py-func docutils literal"><span class="pre">isfinite()</span></tt> (only available in Python &gt;= 3.2), and
 <tt class="xref py py-func docutils literal"><span class="pre">isnan()</span></tt></li>
 </ul>
-<p>Only the value of a quantity is used; dimension and display unit are
-ignored.</p>
+<p>Only the value of a quantity is used; dimension and display unit are ignored.</p>
 </div>
 
 
@@ -162,7 +158,7 @@ ignored.</p>
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
               <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
-            </a></p><h3>Project Info</h3>
+            </a></p><h3><a href="index.html">Project Info</a></h3>
   <ul>
   <li><a href="install.html">Installation</a></li>
   <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
@@ -184,11 +180,11 @@ ignored.</p>
 <li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
 <li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
 </ul>
-<h3><a href="apimodules.html">API Modules</a></h3>
+<h3><a href="api.html">API</a></h3>
 <ul>
 <!--
+  <li><a href="natu.core.html"><tt class="docutils literal"><span class="pre">natu.core</span></tt></a></li>
   <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
-  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
   <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
 -->
 </ul><h3>Useful Links</h3>
@@ -239,7 +235,7 @@ ignored.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute and Georgia Tech Research Corporation.
-      Last updated on Sep 05, 2014.
+      Last updated on Dec 26, 2014.
     </div>
   </body>
 </html>

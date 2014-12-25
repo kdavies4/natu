@@ -70,7 +70,7 @@
             
   <div class="section" id="module-natu.groups">
 <span id="natu-groups"></span><h1><a class="reference internal" href="#module-natu.groups" title="natu.groups"><tt class="xref py py-mod docutils literal"><span class="pre">natu.groups</span></tt></a><a class="headerlink" href="#module-natu.groups" title="Permalink to this headline">¶</a></h1>
-<p>Modules with groups of units</p>
+<p>Modules with selected groups of units</p>
 <p>The <a class="reference internal" href="natu.groups.si.html#module-natu.groups.si" title="natu.groups.si"><tt class="xref py py-mod docutils literal"><span class="pre">si</span></tt></a> module includes all of the base and derived <a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">SI
 units</a>.  The <a class="reference internal" href="natu.groups.constants.html#module-natu.groups.constants" title="natu.groups.constants"><tt class="xref py py-mod docutils literal"><span class="pre">constants</span></tt></a> module contains all constants
 (physical quantities which are not units).  These modules contain all of the
@@ -100,18 +100,17 @@ constants and units with the indicated dimension:</p>
 <li><a class="reference internal" href="natu.groups.velocity.html#module-natu.groups.velocity" title="natu.groups.velocity"><tt class="xref py py-mod docutils literal"><span class="pre">velocity</span></tt></a></li>
 <li><a class="reference internal" href="natu.groups.volume.html#module-natu.groups.volume" title="natu.groups.volume"><tt class="xref py py-mod docutils literal"><span class="pre">volume</span></tt></a></li>
 </ul>
-<p>These modules require that the <a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">SI units</a> are defined in the selected
-<tt class="file docutils literal"><span class="pre">*.ini</span></tt> files.  The <a class="reference external" href="BIPM-ini.html">BIPM.ini file</a> contains those
-definitions, and it is loaded by default.</p>
+<p>These modules require that the <a class="reference external" href="http://en.wikipedia.org/wiki/International_System_of_Units">SI units</a> are defined in the selected <a class="reference external" href="http://en.wikipedia.org/wiki/INI_file">INI</a>
+files.  <a class="reference external" href="BIPM-ini.html">BIPM.ini</a> contains those definitions, and it is loaded
+by default.</p>
 <p>Each module can only be reloaded once.<a class="footnote-reference" href="#f1" id="id1">[1]</a></p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><p class="first">This is not unusual in Python.  From <tt class="xref py py-func docutils literal"><span class="pre">imp.reload()</span></tt>:</p>
-<p class="last">&#8220;In many cases, however, extension modules are not designed to be
-initialized more than once, and may fail in arbitrary ways when
-reloaded.&#8221;</p>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><p class="first">This is typical in Python.  From <tt class="xref py py-func docutils literal"><span class="pre">imp.reload()</span></tt>:</p>
+<p class="last">&#8220;In many cases, however, extension modules are not designed to be initialized
+more than once, and may fail in arbitrary ways when reloaded.&#8221;</p>
 </td></tr>
 </tbody>
 </table>
@@ -125,7 +124,7 @@ reloaded.&#8221;</p>
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
               <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
-            </a></p><h3>Project Info</h3>
+            </a></p><h3><a href="index.html">Project Info</a></h3>
   <ul>
   <li><a href="install.html">Installation</a></li>
   <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
@@ -147,11 +146,11 @@ reloaded.&#8221;</p>
 <li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
 <li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
 </ul>
-<h3><a href="apimodules.html">API Modules</a></h3>
+<h3><a href="api.html">API</a></h3>
 <ul>
 <!--
+  <li><a href="natu.core.html"><tt class="docutils literal"><span class="pre">natu.core</span></tt></a></li>
   <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
-  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
   <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
 -->
 </ul><h3>Useful Links</h3>
@@ -202,7 +201,7 @@ reloaded.&#8221;</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute and Georgia Tech Research Corporation.
-      Last updated on Sep 05, 2014.
+      Last updated on Dec 26, 2014.
     </div>
   </body>
 </html>

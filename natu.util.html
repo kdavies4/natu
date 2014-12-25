@@ -72,15 +72,14 @@
 expression and everything after it.</li>
 <li><a class="reference internal" href="#natu.util.list_packages" title="natu.util.list_packages"><tt class="xref py py-func docutils literal"><span class="pre">list_packages()</span></tt></a> - Return a list of the names of a module and its
 subpackages.</li>
-<li><a class="reference internal" href="#natu.util.multiglob" title="natu.util.multiglob"><tt class="xref py py-func docutils literal"><span class="pre">multiglob()</span></tt></a> - Return a set of filenames that match sets of pathnames
-and extensions.</li>
+<li><a class="reference internal" href="#natu.util.multiglob" title="natu.util.multiglob"><tt class="xref py py-func docutils literal"><span class="pre">multiglob()</span></tt></a> - Return a set of filenames that match sets of pathnames and
+extensions.</li>
 <li><a class="reference internal" href="#natu.util.num2super" title="natu.util.num2super"><tt class="xref py py-func docutils literal"><span class="pre">num2super()</span></tt></a> - Convert a number to <a class="reference external" href="http://www.unicode.org/">Unicode</a> superscript.</li>
-<li><a class="reference internal" href="#natu.util.product" title="natu.util.product"><tt class="xref py py-func docutils literal"><span class="pre">product()</span></tt></a> - Return the product of a list of numbers.</li>
 <li><a class="reference internal" href="#natu.util.replace" title="natu.util.replace"><tt class="xref py py-func docutils literal"><span class="pre">replace()</span></tt></a> - Perform a list of replacements on the text in a list of
 files.</li>
 <li><a class="reference internal" href="#natu.util.str2super" title="natu.util.str2super"><tt class="xref py py-func docutils literal"><span class="pre">str2super()</span></tt></a> - Convert a numeric string to <a class="reference external" href="http://www.unicode.org/">Unicode</a> superscript.</li>
-<li><a class="reference internal" href="#natu.util.yes" title="natu.util.yes"><tt class="xref py py-func docutils literal"><span class="pre">yes()</span></tt></a> - Ask a yes/no question and return <em>True</em> if the answer is &#8216;Y&#8217;
-or &#8216;y&#8217;.</li>
+<li><a class="reference internal" href="#natu.util.yes" title="natu.util.yes"><tt class="xref py py-func docutils literal"><span class="pre">yes()</span></tt></a> - Ask a yes/no question and return <em>True</em> if the answer is &#8216;Y&#8217; or
+&#8216;y&#8217;.</li>
 </ul>
 <dl class="function">
 <dt id="natu.util.delayed_exit">
@@ -97,7 +96,7 @@ or &#8216;y&#8217;.</li>
 <dt id="natu.util.flatten_list">
 <tt class="descclassname">natu.util.</tt><tt class="descname">flatten_list</tt><big>(</big><em>l</em>, <em>ltypes=(&lt;type 'list'&gt;</em>, <em>&lt;type 'tuple'&gt;)</em><big>)</big><a class="headerlink" href="#natu.util.flatten_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flatten a nested list.</p>
-<p><strong>Arguments:</strong></p>
+<p><strong>Parameters:</strong></p>
 <ul>
 <li><p class="first"><em>l</em>: List (may be nested to an arbitrary depth)</p>
 <blockquote>
@@ -118,7 +117,7 @@ or &#8216;y&#8217;.</li>
 <dt id="natu.util.format_e">
 <tt class="descclassname">natu.util.</tt><tt class="descname">format_e</tt><big>(</big><em>num_str</em>, <em>code</em><big>)</big><a class="headerlink" href="#natu.util.format_e" title="Permalink to this definition">¶</a></dt>
 <dd><p>Format the scientific notation in a numeric string</p>
-<p><strong>Arguments:</strong></p>
+<p><strong>Parameters:</strong></p>
 <ul>
 <li><p class="first"><em>num_str</em>: A numeric string</p>
 <blockquote>
@@ -137,10 +136,10 @@ returned directly.</p>
 <dl class="function">
 <dt id="natu.util.get_group">
 <tt class="descclassname">natu.util.</tt><tt class="descname">get_group</tt><big>(</big><em>expr</em><big>)</big><a class="headerlink" href="#natu.util.get_group" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return 1) the contents of a parenthetical expression and 2)
-everything after it.</p>
-<p>The parenthetical expression starts at the beginning of <em>expr</em> and may
-be nested.</p>
+<dd><p>Return 1) the contents of a parenthetical expression and 2) everything
+after it.</p>
+<p>The parenthetical expression starts at the beginning of <em>expr</em> and may be
+nested.</p>
 <p><strong>Example:</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">get_group</span><span class="p">(</span><span class="s">&quot;((abc)*d)*2&quot;</span><span class="p">)</span> 
 <span class="go">(&#39;(abc)*d&#39;, &#39;*2&#39;)</span>
@@ -152,8 +151,8 @@ be nested.</p>
 <dt id="natu.util.list_packages">
 <tt class="descclassname">natu.util.</tt><tt class="descname">list_packages</tt><big>(</big><em>package</em><big>)</big><a class="headerlink" href="#natu.util.list_packages" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of the names of a package and its subpackages.</p>
-<p>This only works if the package has a <tt class="xref py py-attr docutils literal"><span class="pre">__path__</span></tt> attribute, which
-is not the case for some (all?) of the built-in packages.</p>
+<p>This only works if the package has a <tt class="xref py py-attr docutils literal"><span class="pre">__path__</span></tt> attribute, which is
+not the case for some (all?) of the built-in packages.</p>
 <p><strong>Example:</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu</span> <span class="kn">import</span> <span class="n">groups</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">list_packages</span><span class="p">(</span><span class="n">groups</span><span class="p">):</span>
@@ -195,7 +194,7 @@ is not the case for some (all?) of the built-in packages.</p>
 <blockquote>
 <div><p>Unlike Python&#8217;s <a class="reference external" href="https://docs.python.org/library/glob.html#glob.glob" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">glob.glob()</span></tt></a> function, this function runs an additional
 expansion on matches that are directories.</p>
-<p><strong>Arguments:</strong></p>
+<p><strong>Parameters:</strong></p>
 <ul>
 <li><p class="first"><em>pathnames</em>: String or set of strings used to match files or folders</p>
 <blockquote>
@@ -246,21 +245,10 @@ match files in any directories generated from <em>pathnames</em></p>
 </dd></dl>
 
 <dl class="function">
-<dt id="natu.util.product">
-<tt class="descclassname">natu.util.</tt><tt class="descname">product</tt><big>(</big><em>factors</em><big>)</big><a class="headerlink" href="#natu.util.product" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the product of a sequence of numbers (<em>factors</em>).</p>
-<p><strong>Example:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">product</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="go">6</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
 <dt id="natu.util.replace">
 <tt class="descclassname">natu.util.</tt><tt class="descname">replace</tt><big>(</big><em>fnames</em>, <em>rpls</em><big>)</big><a class="headerlink" href="#natu.util.replace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a list of replacements on the text in a list of files.</p>
-<p><strong>Arguments:</strong></p>
+<p><strong>Parameters:</strong></p>
 <ul>
 <li><p class="first"><em>fnames</em>: Filename or list of filenames</p>
 </li>
@@ -294,7 +282,7 @@ expressions; see <a class="reference external" href="https://docs.python.org/2/l
 <dt id="natu.util.yes">
 <tt class="descclassname">natu.util.</tt><tt class="descname">yes</tt><big>(</big><em>question</em><big>)</big><a class="headerlink" href="#natu.util.yes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ask a yes/no question and return <em>True</em> if the answer is &#8216;Y&#8217; or &#8216;y&#8217;.</p>
-<p><strong>Arguments:</strong></p>
+<p><strong>Parameters:</strong></p>
 <ul class="simple">
 <li><em>question</em>: String representing the question to the user</li>
 </ul>
@@ -315,7 +303,7 @@ expressions; see <a class="reference external" href="https://docs.python.org/2/l
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
               <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
-            </a></p><h3>Project Info</h3>
+            </a></p><h3><a href="index.html">Project Info</a></h3>
   <ul>
   <li><a href="install.html">Installation</a></li>
   <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
@@ -337,11 +325,11 @@ expressions; see <a class="reference external" href="https://docs.python.org/2/l
 <li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
 <li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
 </ul>
-<h3><a href="apimodules.html">API Modules</a></h3>
+<h3><a href="api.html">API</a></h3>
 <ul>
 <!--
+  <li><a href="natu.core.html"><tt class="docutils literal"><span class="pre">natu.core</span></tt></a></li>
   <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
-  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
   <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
 -->
 </ul><h3>Useful Links</h3>
@@ -386,7 +374,7 @@ expressions; see <a class="reference external" href="https://docs.python.org/2/l
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute and Georgia Tech Research Corporation.
-      Last updated on Sep 05, 2014.
+      Last updated on Dec 26, 2014.
     </div>
   </body>
 </html>

@@ -71,33 +71,30 @@
   <div class="section" id="module-natu.config">
 <span id="natu-config"></span><h1><a class="reference internal" href="#module-natu.config" title="natu.config"><tt class="xref py py-mod docutils literal"><span class="pre">natu.config</span></tt></a><a class="headerlink" href="#module-natu.config" title="Permalink to this headline">¶</a></h1>
 <p>Configuration settings</p>
-<p>This module contains the following settings (defaults summarized in
-parentheses):</p>
+<p>This module contains the following settings (defaults in parentheses):</p>
 <ul>
 <li><p class="first"><em>definitions</em> (<a class="reference external" href="base-ini.html">base-SI.ini</a>, <a class="reference external" href="derived-ini.html">derived.ini</a>, <a class="reference external" href="BIPM-ini.html">BIPM.ini</a>, and <a class="reference external" href="other-ini.html">other.ini</a> from the installation directory) - List of files that
 define the constants and units</p>
 </li>
-<li><p class="first"><em>use_quantities</em> (<em>True</em>) - <em>True</em> to use quantities to track dimensions
-and display units</p>
+<li><p class="first"><em>use_quantities</em> (<em>True</em>) - <em>True</em> to use quantities to track dimensions and
+display units</p>
 <blockquote>
-<div><p>If <em>use_quantities</em> is <em>False</em>, then the constants and scalar units
-are <tt class="xref py py-class docutils literal"><span class="pre">float</span></tt> instances rather than <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a>
-and <a class="reference internal" href="natu.core.html#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a> instances.  This reduces the
-computational overhead of the <tt class="xref py py-mod docutils literal"><span class="pre">natu</span></tt> module to nearly zero
-while still allowing variables to be specified using various units.
-However, this disables dimension checking and the string formatting of
-quantities as the product of a number and a unit, so it is probably
-best to leave <em>use_quantities</em> set to <em>True</em> until you have validated
-your unit-dependent code.</p>
+<div><p>If <em>use_quantities</em> is <em>False</em>, then the constants and scalar units are
+<a class="reference external" href="https://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">float</span></tt></a> instances rather than <a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> and
+<a class="reference internal" href="natu.core.html#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a> instances.  This reduces the computational
+overhead of the <tt class="xref py py-mod docutils literal"><span class="pre">natu</span></tt> module to nearly zero while still allowing
+variables to be specified using various units.  However, this disables
+dimension checking and the string formatting of quantities as the product
+of a number and a unit, so it is probably best to leave <em>use_quantities</em>
+set to <em>True</em> until you have validated your unit-dependent code.</p>
 </div></blockquote>
 </li>
-<li><p class="first"><em>simplification_level</em> (2) - Number of non-minimizing substitutions
-that can be made in seeking the best display unit</p>
+<li><p class="first"><em>simplification_level</em> (2) - Number of non-minimizing substitutions that can
+be made in seeking the best display unit</p>
 <blockquote>
-<div><p>A higher number increases the likelihood that the simplest display
-unit will be found, but it also increases the time required to
-process <a class="reference external" href="https://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">str()</span></tt></a>, <a class="reference external" href="https://docs.python.org/library/functions.html#print" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">print()</span></tt></a>, <a class="reference external" href="https://docs.python.org/library/functions.html#format" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">format()</span></tt></a>, and related
-functions.</p>
+<div><p>A higher number increases the likelihood that the simplest display unit
+will be found, but it also increases the time required to process
+<tt class="xref py py-func docutils literal"><span class="pre">str()</span></tt>, <a class="reference external" href="https://docs.python.org/library/functions.html#print" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">print()</span></tt></a>, <a class="reference external" href="https://docs.python.org/library/functions.html#format" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">format()</span></tt></a>, and related functions.</p>
 </div></blockquote>
 </li>
 <li><p class="first"><em>unit_replacements</em>
@@ -108,17 +105,16 @@ functions.</p>
 in <a class="reference external" href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> (&#8216;U&#8217; format code):
 &#8216;deg&#8217; → &#8216;°&#8217;,
 &#8216;ohm&#8217; → &#8216;Ω&#8217;, and
-&#8216;angstrom&#8217; → &#8216;Å&#8217;) - Dictionary of special replacements
-for formatting a unit string</p>
+&#8216;angstrom&#8217; → &#8216;Å&#8217;): Dictionary of special replacements for formatting a unit
+string</p>
 <blockquote>
-<div><p>Each key is a format code and each value is a list of tuples of 1)
-the string to be replaced and 2) the string that it should be
-replaced with.</p>
+<div><p>Each key is a format code and each value is a list of tuples of 1) the
+string to be replaced and 2) the string that it should be replaced with.</p>
 </div></blockquote>
 </li>
 </ul>
-<p>To change a setting from the default, import this module and change the
-setting before importing any other <tt class="xref py py-mod docutils literal"><span class="pre">natu</span></tt> submodules.</p>
+<p>Import this module and change these settings as desired before importing any
+other <tt class="xref py py-mod docutils literal"><span class="pre">natu</span></tt> submodules.</p>
 <p><strong>Examples:</strong></p>
 <p>To turn off unit simplification:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu</span> <span class="kn">import</span> <span class="n">config</span>
@@ -143,7 +139,7 @@ setting before importing any other <tt class="xref py py-mod docutils literal"><
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
               <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
-            </a></p><h3>Project Info</h3>
+            </a></p><h3><a href="index.html">Project Info</a></h3>
   <ul>
   <li><a href="install.html">Installation</a></li>
   <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
@@ -165,11 +161,11 @@ setting before importing any other <tt class="xref py py-mod docutils literal"><
 <li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
 <li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
 </ul>
-<h3><a href="apimodules.html">API Modules</a></h3>
+<h3><a href="api.html">API</a></h3>
 <ul>
 <!--
+  <li><a href="natu.core.html"><tt class="docutils literal"><span class="pre">natu.core</span></tt></a></li>
   <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
-  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
   <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
 -->
 </ul><h3>Useful Links</h3>
@@ -220,7 +216,7 @@ setting before importing any other <tt class="xref py py-mod docutils literal"><
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute and Georgia Tech Research Corporation.
-      Last updated on Sep 05, 2014.
+      Last updated on Dec 26, 2014.
     </div>
   </body>
 </html>

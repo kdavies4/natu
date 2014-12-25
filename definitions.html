@@ -62,24 +62,33 @@
             
   <div class="section" id="definition-files">
 <h1>Definition files<a class="headerlink" href="#definition-files" title="Permalink to this headline">¶</a></h1>
-<p>natu&#8217;s constants and units are defined in <a class="reference external" href="http://en.wikipedia.org/wiki/INI_file">INI</a> files.  Four of these files are
-loaded by default.  Others may be added by appending the <tt class="xref py py-attr docutils literal"><span class="pre">definitions</span></tt>
-list in <a class="reference internal" href="natu.config.html#module-natu.config" title="natu.config"><tt class="xref py py-mod docutils literal"><span class="pre">natu.config</span></tt></a>.  The files are processed sequentially, and the
-definitions of symbols may depend on previous symbols.  The definitions begin
-with base constants and continue with derived constants, empirically related
-units, and derived units.</p>
+<p>natu&#8217;s constants and units are defined in <a class="reference external" href="http://en.wikipedia.org/wiki/INI_file">INI</a> files.  Four files are loaded by
+default:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="base-ini.html">Base physical constants (base-*.ini)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="derived-ini.html">Derived physical constants (derived.ini)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base-ini.html">Base constants (base-*.ini)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="derived-ini.html">Derived constants and units (derived.ini)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BIPM-ini.html">BIPM units (BIPM.ini)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="other-ini.html">Other units and constants (other.ini)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other-ini.html">Other constants and units (other.ini)</a></li>
 </ul>
 </div>
-<p>In the pages listed above, the symbols are presented in tables.  The <a class="reference external" href="http://en.wikipedia.org/wiki/INI_file">INI</a> format
-is very similar.  An equals sign separates the first two columns (&#8220;Symbol&#8221; and
-&#8220;Expression&#8221;), a comma starts the &#8220;Prefixable&#8221; column, and a semicolon
-starts the last column (&#8220;Name &amp; notes&#8221;).</p>
+<p>Other files can be added by appending the <tt class="xref py py-attr docutils literal"><span class="pre">definitions</span></tt> list in
+<a class="reference internal" href="natu.config.html#module-natu.config" title="natu.config"><tt class="xref py py-mod docutils literal"><span class="pre">natu.config</span></tt></a>.  The files are processed sequentially, and the definitions
+of symbols can reference previous symbols.  These constants, functions, and
+classes are defined before the first file:</p>
+<ul class="simple">
+<li><em>pi</em></li>
+<li><a class="reference external" href="https://docs.python.org/library/math.html#math.exp" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">exp()</span></tt></a></li>
+<li><a class="reference external" href="https://docs.python.org/library/math.html#math.log" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">log()</span></tt></a></li>
+<li><a class="reference external" href="https://docs.python.org/library/math.html#math.log10" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">log10()</span></tt></a></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">sqrt()</span></tt></li>
+<li><a class="reference internal" href="natu.core.html#natu.core.Quantity" title="natu.core.Quantity"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a></li>
+<li><a class="reference internal" href="natu.core.html#natu.core.ScalarUnit" title="natu.core.ScalarUnit"><tt class="xref py py-class docutils literal"><span class="pre">ScalarUnit</span></tt></a></li>
+</ul>
+<p>The <a class="reference external" href="http://en.wikipedia.org/wiki/INI_file">INI</a> format is very similar to the tables in the pages for the files listed
+above.  An equals sign separates the first two columns (&#8220;Symbol&#8221; and
+&#8220;Expression&#8221;), a comma starts the &#8220;Prefixable&#8221; column, and a semicolon starts
+the last column (&#8220;Name &amp; notes&#8221;).</p>
 <p>The &#8220;Prefixable&#8221; column may be <em>True</em>, <em>False</em>, or empty.  A unit has a <em>True</em>
 or a <em>False</em> &#8220;Prefixable&#8221; entry.  If a unit is prefixable, <a class="reference external" href="http://en.wikipedia.org/wiki/Metric_prefix">SI prefixes</a> are
 added upon access.  A constant has an empty &#8220;Prefixable&#8221; entry.  Constants are
@@ -96,11 +105,17 @@ ones.  For example, if a unit named &#8216;dam&#8217; is established, it will ov
 first function maps a number to a quantity.  The second function is its inverse.
 These are the first two arguments to construct a lambda unit
 (<a class="reference internal" href="natu.core.html#natu.core.LambdaUnit" title="natu.core.LambdaUnit"><tt class="xref py py-class docutils literal"><span class="pre">LambdaUnit</span></tt></a>).</p>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Metric_prefix">SI prefixes</a> can be applied to previously defined symbols except in the
-definition of lambda units.</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Metric_prefix">SI prefixes</a> can be applied to previous symbols except in the definition of
+lambda units.</p>
 <p>The sections of the <a class="reference external" href="http://en.wikipedia.org/wiki/INI_file">INI</a> files are only for organization (though required).  The
-submodules <a class="reference internal" href="natu.groups.html#module-natu.groups" title="natu.groups"><tt class="xref py py-mod docutils literal"><span class="pre">natu.groups</span></tt></a> do not rely on the sections.  The dimensions of
+submodules of <a class="reference internal" href="natu.groups.html#module-natu.groups" title="natu.groups"><tt class="xref py py-mod docutils literal"><span class="pre">natu.groups</span></tt></a> do not rely on the sections.  The dimensions of
 the derived constants and units are calculated and used instead.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be sure that you use definition files from a trusted source.
+Parts of the files are processed using <a class="reference external" href="https://docs.python.org/library/functions.html#eval" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">eval()</span></tt></a>, which is susceptible to
+malicious code.</p>
+</div>
 </div>
 
 
@@ -111,7 +126,7 @@ the derived constants and units are calculated and used instead.</p>
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
               <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
-            </a></p><h3>Project Info</h3>
+            </a></p><h3><a href="index.html">Project Info</a></h3>
   <ul>
   <li><a href="install.html">Installation</a></li>
   <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
@@ -133,11 +148,11 @@ the derived constants and units are calculated and used instead.</p>
 <li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
 <li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
 </ul>
-<h3><a href="apimodules.html">API Modules</a></h3>
+<h3><a href="api.html">API</a></h3>
 <ul>
 <!--
+  <li><a href="natu.core.html"><tt class="docutils literal"><span class="pre">natu.core</span></tt></a></li>
   <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
-  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
   <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
 -->
 </ul><h3>Useful Links</h3>
@@ -182,7 +197,7 @@ the derived constants and units are calculated and used instead.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute and Georgia Tech Research Corporation.
-      Last updated on Sep 05, 2014.
+      Last updated on Dec 26, 2014.
     </div>
   </body>
 </html>

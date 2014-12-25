@@ -79,50 +79,90 @@ constants with adjustable values and dimensions.  The value of a unit is
 factored into a quantity so that the quantity is not &#8220;in&#8221; any particular unit.
 This has the following advantages:</p>
 <ul class="simple">
-<li><strong>Flexibility</strong>: Different unit systems, including <a class="reference external" href="http://en.wikipedia.org/wiki/Natural_units">natural units</a> (hence the
-name &#8220;natu&#8221;), can be represented by simply adjusting the physical constants.</li>
-<li><strong>Simplicity</strong>: Unit conversion is inherent.  This results in quick
-computations and a small code base.  By default, dimensions and display units
-are tracked to catch errors and for string formatting, respectively.  However,
-this can be turned off to reduce the computational overhead to nearly zero
-while still providing the core features.</li>
-<li><strong>Scalability</strong>: The values of the base physical constants can scaled to
-prevent exponent overflow, regardless of the units used <a class="reference internal" href="#davies2012" id="id1">[Davies2012]</a>,
-<a class="footnote-reference" href="#f1" id="id2">[1]</a>.</li>
-<li><strong>Intuitive</strong>: Each unit is a fixed quantity which can be treated as a
+<li><strong>Flexible</strong>: It&#8217;s possible to represent different systems, including
+<a class="reference external" href="http://en.wikipedia.org/wiki/Natural_units">natural units</a> (hence the name &#8220;natu&#8221;), by simply adjusting the <a class="reference external" href="base-ini.html">base
+physical constants</a>.</li>
+<li><strong>Simple</strong>: Unit conversion is inherent.  This results in quick computations
+and a small code base (&lt; 1500 lines).  By default, dimensions and display
+units are tracked to catch errors and for string formatting.  This can be
+disabled to reduce the computational overhead to nearly zero while still
+providing the core features.</li>
+<li><strong>Intuitive</strong>: Each unit is a fixed quantity that is treated as a
 mathematical entity.  A variable quantity is expressed as the product of a
-number and a unit, as stated in <a class="reference internal" href="other-ini.html#bipm2006" id="id3">[BIPM2006]</a>.</li>
-<li><strong>Representative</strong>: The structure of the package reflects the way modern units
-are defined: standards organizations such as <a class="reference external" href="http://www.nist.gov/">NIST</a> assign values to universal
-physical constants so that the values of units can be determined by physical
+number and a unit, as stated in <a class="reference internal" href="other-ini.html#bipm2006" id="id1">[BIPM2006]</a>.</li>
+<li><strong>Representative</strong>: The design reflects the way modern units are defined:
+standards organizations such as <a class="reference external" href="http://www.nist.gov/">NIST</a> assign values to universal physical
+constants so that the values of units can be determined by physical
 experiments instead of prototypes.</li>
+<li><strong>Scalable</strong>: The values of the base physical constants can scaled to prevent
+exponent overflow, regardless of the units used <a class="reference internal" href="#davies2012" id="id2">[Davies2012]</a>, <a class="footnote-reference" href="#f1" id="id3">[1]</a>.</li>
 </ul>
-<p>natu incorporates some of the best features of the existing packages and
-introduces some novel features:</p>
-<ul class="simple">
-<li>Constants and units are defined in <a class="reference external" href="definitions.html">INI files</a>.  Units can
-be added or removed.</li>
-<li>Units with offsets (e.g., <a class="reference external" href="http://en.wikipedia.org/wiki/Celsius">Celsius</a>) and even nonlinear functions (e.g., the
-<a class="reference external" href="http://en.wikipedia.org/wiki/Decibel">decibel</a>) are supported.</li>
-<li>Display units can be simplified automatically using <a class="reference external" href="http://en.wikipedia.org/wiki/Coherence_(units_of_measurement)">coherent relations</a>
-gathered from the unit definitions.</li>
-<li>Units are automatically copied and sorted into convenient submodules (see
-<a class="reference internal" href="natu.groups.html#module-natu.groups" title="natu.groups"><tt class="xref py py-mod docutils literal"><span class="pre">natu.groups</span></tt></a>).</li>
-<li>Prefixes are automatically available.</li>
-<li>Rationalized and unrationalized unit systems are supported.</li>
-<li>Drop-in, quantity-aware replacements are available for <a class="reference external" href="https://docs.python.org/library/math.html#module-math" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">math</span></tt></a> and
-<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.8)"><tt class="xref py py-mod docutils literal"><span class="pre">numpy</span></tt></a>.</li>
-<li>There are no external dependencies.  Only the <a class="reference external" href="https://docs.python.org/3/library/">Python Standard Library</a> is
-required; <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.8)"><tt class="xref py py-mod docutils literal"><span class="pre">numpy</span></tt></a> is optional.</li>
-<li>Fractional exponents can be used for units and quantities (e.g., for the
-<a class="reference external" href="http://en.wikipedia.org/wiki/Statcoulomb">statcoulomb</a>).</li>
-</ul>
-<p>For example, you can do this:</p>
+<p>natu incorporates some of the best features of the <a class="reference external" href="seealso.html">existing packages</a>:</p>
+<ul>
+<li><p class="first">Units with offsets and even nonlinear functions are supported.  For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.units</span> <span class="kn">import</span> <span class="n">degC</span><span class="p">,</span> <span class="n">K</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="mi">0</span><span class="o">*</span><span class="n">degC</span> <span class="o">+</span> <span class="mi">100</span><span class="o">*</span><span class="n">K</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">0</span><span class="o">*</span><span class="n">degC</span> <span class="o">+</span> <span class="mi">100</span><span class="o">*</span><span class="n">K</span>
 <span class="go">100.0 degC</span>
 </pre></div>
 </div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.units</span> <span class="kn">import</span> <span class="n">dB</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">10</span><span class="o">/</span><span class="n">dB</span> <span class="o">+</span> <span class="mi">10</span><span class="o">/</span><span class="n">dB</span><span class="p">)</span><span class="o">*</span><span class="n">dB</span>  <span class="c"># Multiply by adding logarithms.</span>
+<span class="go">100.0</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Prefixes are automatically applied.  For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.units</span> <span class="kn">import</span> <span class="n">km</span><span class="p">,</span> <span class="n">m</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">km</span><span class="o">/</span><span class="n">m</span>
+<span class="go">1000</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Display units are simplified using <a class="reference external" href="http://en.wikipedia.org/wiki/Coherence_(units_of_measurement)">coherent relations</a> automatically
+gathered from the unit definitions:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.units</span> <span class="kn">import</span> <span class="n">kg</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span><span class="o">*</span><span class="n">kg</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span>
+<span class="go">1.0 J</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Units are automatically sorted into convenient submodules such as
+<a class="reference internal" href="natu.groups.length.html#module-natu.groups.length" title="natu.groups.length"><tt class="xref py py-mod docutils literal"><span class="pre">natu.groups.length</span></tt></a>.</p>
+</li>
+<li><p class="first">Nearly 40 physical constants are included.  For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">natu.groups.constants</span> <span class="kn">import</span> <span class="n">c</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">299792458.0 m/s</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Additional constants and units can be easily added to the <a class="reference external" href="definitions.html">definition files</a> or defined in code.</p>
+</li>
+<li><p class="first">There are drop-in, quantity-aware replacements for <a class="reference external" href="https://docs.python.org/library/math.html#module-math" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">math</span></tt></a> and
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.9)"><tt class="xref py py-mod docutils literal"><span class="pre">numpy</span></tt></a>.  Quantities can be used in <a class="reference external" href="http://www.numpy.org/">NumPy</a> arrays or vice versa (see
+<a class="reference external" href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb#Arrays-and-other-data-types">here</a>).</p>
+</li>
+<li><p class="first">There are no dependencies except for the <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.9)"><tt class="xref py py-mod docutils literal"><span class="pre">numpy</span></tt></a> replacements (previous
+feature).</p>
+</li>
+<li><p class="first">Units can have fractional powers.  For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">**</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">ScalarUnit m(1/2) with dimension L(1/2) (not prefixable)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Units and quantities can be formatted for HTML, <a class="reference external" href="http://www.latex-project.org/">LaTeX</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Unicode">Unicode</a>, and
+<a class="reference external" href="https://www.modelica.org/documents/ModelicaSpec33Revision1.pdf">Modelica</a>.  For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;{:H}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&#39;10.0&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;&#39;</span>
+</pre></div>
+</div>
+<p>This renders in HTML as 10.0 m<sup>2</sup>.</p>
+</li>
+<li><p class="first">Rationalized and unrationalized unit systems are supported.</p>
+</li>
+</ul>
 <p>Please <a class="reference external" href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">see the tutorial</a>
 for more examples.  The links in the sidebar give the <a class="reference external" href="install.html">installation instructions</a> and more information.</p>
 <p><strong>License terms and development</strong></p>
@@ -138,7 +178,7 @@ an issue</a>.</p>
 <table class="docutils citation" frame="void" id="davies2012" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[Davies2012]</a></td><td>K. Davies and C. Paredis, &#8220;<a class="reference external" href="http://www.ep.liu.se/ecp_article/index.en.aspx?issue=076;article=082">Natural Unit Representation in
+<tr><td class="label"><a class="fn-backref" href="#id2">[Davies2012]</a></td><td>K. Davies and C. Paredis, &#8220;<a class="reference external" href="http://www.ep.liu.se/ecp_article/index.en.aspx?issue=076;article=082">Natural Unit Representation in
 Modelica</a>,&#8221;
 in Modelica Conference (Munich, Germany), Modelica Assoc.,
 Sep. 2012.</td></tr>
@@ -147,7 +187,7 @@ Sep. 2012.</td></tr>
 <table class="docutils citation" frame="void" id="bipm2006" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[BIPM2006]</a></td><td>International Bureau of Weights and Measures (BIPM),
+<tr><td class="label"><a class="fn-backref" href="#id1">[BIPM2006]</a></td><td>International Bureau of Weights and Measures (BIPM),
 &#8220;<a class="reference external" href="http://www.bipm.org/utils/common/pdf/si_brochure_8_en.pdf">The International System of Units (SI)</a>,&#8221;
 8th ed., 2006.</td></tr>
 </tbody>
@@ -156,7 +196,7 @@ Sep. 2012.</td></tr>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><p class="first">Post by C. Bruns at
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td><p class="first">Post by C. Bruns at
 <a class="reference external" href="http://stackoverflow.com/questions/2125076/unit-conversion-in-python">http://stackoverflow.com/questions/2125076/unit-conversion-in-python</a>
 (Feb. 5, 2010):</p>
 <blockquote class="last">
@@ -177,7 +217,7 @@ overflow in commonly used molecular force calculations.&#8221;</div></blockquote
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="#">
               <img class="logo" src="javascripts/logo.svg" alt="Logo"/>
-            </a></p><h3>Project Info</h3>
+            </a></p><h3><a href="index.html">Project Info</a></h3>
   <ul>
   <li><a href="install.html">Installation</a></li>
   <li><a href="http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb">Tutorial</a></li>
@@ -199,11 +239,11 @@ overflow in commonly used molecular force calculations.&#8221;</div></blockquote
 <li class="toctree-l1"><a class="reference internal" href="natu.numpy.html"><tt class="docutils literal"><span class="pre">natu.numpy</span></tt></a></li>
 <li class="toctree-l1"><a class="reference internal" href="natu.units.html"><tt class="docutils literal"><span class="pre">natu.units</span></tt></a></li>
 </ul>
-<h3><a href="apimodules.html">API Modules</a></h3>
+<h3><a href="api.html">API</a></h3>
 <ul>
 <!--
+  <li><a href="natu.core.html"><tt class="docutils literal"><span class="pre">natu.core</span></tt></a></li>
   <li><a href="natu.exponents.html"><tt class="docutils literal"><span class="pre">natu.exponents</span></tt></a></li>
-  <li><a href="natu.types.html"><tt class="docutils literal"><span class="pre">natu.types</span></tt></a></li>
   <li><a href="natu.util.html"><tt class="docutils literal"><span class="pre">natu.util</span></tt></a></li>
 -->
 </ul><h3>Useful Links</h3>
@@ -251,7 +291,7 @@ overflow in commonly used molecular force calculations.&#8221;</div></blockquote
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute and Georgia Tech Research Corporation.
-      Last updated on Sep 05, 2014.
+      Last updated on Dec 26, 2014.
     </div>
   </body>
 </html>
