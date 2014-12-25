@@ -21,8 +21,6 @@
 
 - :func:`num2super` - Convert a number to Unicode_ superscript.
 
-- :func:`product` - Return the product of a list of numbers.
-
 - :func:`replace` - Perform a list of replacements on the text in a list of
   files.
 
@@ -294,25 +292,6 @@ def str2super(num_str):
     for n in range(10):
         exp_str = exp_str.replace(str(n), _UNICODE_EXPS[n])
     return exp_str
-
-
-def product(factors):
-    """Return the product of a sequence of numbers (*factors*).
-
-    **Example:**
-
-    >>> product([1, 2, 3])
-    6
-    """
-    # import operator
-    # return reduce(operator.mul, factors, 1)
-    # Avoid multiplication if only one factor:
-    if not factors:
-        return 1
-    prod = factors[0]
-    for factor in factors[1:]:
-        prod = prod * factor  # *= not used because it isn't allowed by units
-    return prod
 
 
 def replace(fnames, rpls):

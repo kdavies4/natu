@@ -168,7 +168,7 @@ from os.path import dirname
 from types import ModuleType
 from functools import wraps
 # from warnings import warn
-from .util import format_e, product, str2super
+from .util import format_e, str2super
 from ._prefixes import PREFIXES
 from .config import simplification_level, use_quantities, unit_replacements
 from .exponents import Exponents, split_code, u, i
@@ -338,10 +338,11 @@ def value(x):
 
 
 def add_unit(meth):
-    """Decorate a function to add a unit to the formatted representation.
+    """Decorate a method to add a unit to the formatted representation.
     """
     @wraps(meth)
     def wrapped(self, code):
+
         # Get the display unit.
         self.display = Quantity.unitspace.simplify(self.display)
         unit = Quantity.unitspace(**self.display)
@@ -646,10 +647,10 @@ class Quantity(DimObject):
         """x.__mul__(y) <==> x*y
         """
         try:
-            value = y._value * x._value
+            value = y._value * x._value # Product of quantities
         except AttributeError:
-            if isinstance(y, DimObject):
-                return NotImplemented  # Defer; y could be a LambdaUnit.
+            if isinstance(y, LambdaUnit):
+                return NotImplemented  # Defer to LambdaUnit's _toquantity().
             return Quantity(y * x._value, x.dimension, x.display)
         dimension = y._dimension + x._dimension
         if dimension:
@@ -1000,17 +1001,18 @@ class ScalarUnit(Quantity, Unit):
         return quantity
 
     def __repr__(self):
-        """Return a formal string representation of the scalar unit.
+        """Return a string representation of the scalar unit.
 
         The first part (``ScalarUnit(...)``) is the expression that would
         generated the unit.  The part in the last parentheses is the value as
         the product of a number and a unit.
         """
         # Run this first to simplify self.display (see Units.load_ini):
-        string = format(self)
-
-        return ("ScalarUnit({0._value}, '{0._dimension}', '{0._display}', "
-                "{0._prefixable}) ({1})").format(self, string)
+        desc = "ScalarUnit %s" % self._display
+        desc = ("dimensionless {}" if self.dimensionless else
+                "{} with dimension %s" % self._dimension).format(desc)
+        desc += " (prefixable)" if self._prefixable else " (not prefixable)"
+        return desc
 
     @as_scalarunit
     def __mul__(x, y):
@@ -1099,21 +1101,11 @@ class LambdaUnit(Unit):
         Unit.__init__(self, dimension, display, prefixable)
 
     def __repr__(self):
-        """Return a formal string representation of the lambda unit.
-
-        The first part (``ScalarUnit(...)``) is the expression that would
-        generated the unit.  The part in the last parentheses is the value as a
-        number and a unit.
-        """
-        return ("LambdaUnit({0._tonumber}, {0._toquantity}, '{0._dimension}', "
-                "'{0._display}', {0._prefixable})").format(self)
-
-    def __str__(self):
-        """Return an informal string represention of the lambda unit.
+        """Return a string represention of the lambda unit.
         """
         desc = "LambdaUnit %s" % self._display
-        desc = ("dimensionless {desc}" if self.dimensionless else
-                "{desc} with dimension %s" % self._dimension).format(desc=desc)
+        desc = ("dimensionless {}" if self.dimensionless else
+                "{} with dimension %s" % self._dimension).format(desc)
         desc += " (prefixable)" if self._prefixable else " (not prefixable)"
         return desc
 
@@ -1140,8 +1132,10 @@ class LambdaUnit(Unit):
         """
         display = unit.display
         if isinstance(number, Quantity):
-            assert number.dimensionless, ("The argument to the lambda unit "
-                                          "must be dimensionless.")
+            assert not isinstance(number, Unit), (
+                "Lambda units cannot be combined with other units.")
+            assert number.dimensionless, (
+                "The argument to the lambda unit must be dimensionless.")
             display += number.display
             as_quantity = False
         else:
@@ -1192,15 +1186,15 @@ class LambdaUnit(Unit):
         """Not supported
         """
         # pylint: disable=I0011, R0201
-        raise AttributeError("The lambda unit can only be used on the right "
-                             "side of a product.")
+        raise AttributeError("Lambda units can only be used on the right side "
+                             "of a product.")
 
     def __truediv__(self, other):
         """Not supported
         """
         # pylint: disable=R0201, W0613
-        raise AttributeError("The lambda unit can only be used as the "
-                             "denominator of a quotient.")
+        raise AttributeError("Lambda units can only be used as the denominator "
+                             "of a quotient.")
 
     __div__ = __truediv__
 
@@ -1332,8 +1326,8 @@ class Units(dict):
         Here, the unit was automatically simplified to psi using
         :attr:`_units.coherent_relations`.
         """
-        factors = [self[base] ** exponent for base, exponent in factors.items()]
-        return product(factors)
+        factors = [self[base] ** exp for base, exp in factors.items()]
+        return reduce(lambda x, y: x * y, factors)
 
     def load_ini(self, files):
         r"""Add units to the unit dictionary from a \*.ini file or list of files
@@ -1386,9 +1380,7 @@ class Units(dict):
                     # warn(msg)
                     print(msg)
                 try:
-                    print -1
                     unit = eval(value, self, self)
-                    print 0
                     # self is provided as the global namespace as well as the
                     # local one so that it's immediately used by the lambda
                     # functions.  This doesn't allow prefixes in the lambda
@@ -1400,30 +1392,22 @@ class Units(dict):
                         unit, prefixable = unit
                         if isinstance(unit, tuple):
                             # The unit is a lambda unit, defined via a tuple.
-                            print 1
                             toquantity, tonumber = unit
-                            print 2
                             try:
-                                print 3
                                 # Evaluate the unit with an arbitrary number
                                 # (zero) to determine the dimension.
                                 dim = toquantity(0).dimension
                             except AttributeError:
                                 # The result doesn't have a dimension; the unit
                                 # must be dimensionless.
-                                print 4
                                 dim = {}
-                            print 5
                             unit = LambdaUnit(toquantity, tonumber, dim, symbol,
                                               prefixable)
-                            print 6
                         elif isinstance(unit, LambdaUnit):
-                            print 7
                             # The unit is a lambda unit, defined directly.
                             unit = LambdaUnit(unit._toquantity, unit._tonumber,
                                               unit._dimension, unit._display,
                                               prefixable)
-                            print 8
                         elif isinstance(unit, Quantity):
                             # The unit should be a scalar unit.
                             if isinstance(unit, ScalarUnit) \

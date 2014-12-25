@@ -1,9 +1,12 @@
 #!/usr/bin/python
-r"""Module with all units defined by the :file:`\*.ini` files in
+r"""Module with all units defined by the `definition files`_ listed in
 :attr:`natu.config.definitions`
 
 This module cannot be reloaded.  This prevents conflicts that could arise if the
 units were redefined with different `base constants <base-ini.html>`_.
+
+
+.. _definition files: definitions.html
 """
 __author__ = "Kevin Davies"
 __email__ = "kdavies4@gmail.com"
