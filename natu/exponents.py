@@ -1,6 +1,6 @@
 #!/usr/bin/python
 """Contains a class with methods to represent and operate on the product of
-factors containing exponents
+factors with exponents
 """
 # split_code(), _format(), and _FORMATS are based on pint.formatting
 # (https://github.com/hgrecco/pint, 7/11/14):

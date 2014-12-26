@@ -123,7 +123,7 @@ statT       ``statWb/cm**2``                                             *True* 
 *m_e*       ``Phi_0/kappa``                                                         `electron rest mass per elementary charge <http://en.wikipedia.org/wiki/Electron_mass>`_
 *r_e*       ``k_A/m_e``                                                             `classical electron radius per elementary charge <http://en.wikipedia.org/wiki/Classical_electron_radius>`_ (aka Lorentz radius or Thomson scattering length)
 *mu_B*      ``kappa*e*sp/2``                                                        `Bohr magnetron <https://en.wikipedia.org/wiki/Bohr_magneton>`_
-*M_e*       ``m_e*e``                                                               mass of an electron (aka Hartree mass)
+*M_e*       ``m_e*e``                                                               mass of an electron (aka Hartree mass or natural unit of mass)
 *t_H*       ``a_0*sqrt(M_e/Ha)``                                                    Hartree time
 *l_n*       ``h*rad/(M_e*c)``                                                       natural unit of length
 *t_n*       ``l_n/c``                                                               natural unit of time

@@ -65,7 +65,7 @@ deg      ``cyc/360``                                            *False*    `degr
 arcmin   ``deg/60``                                             *False*    `arcminute <http://en.wikipedia.org/wiki/Arcminute>`_
 arcsec   ``arcmin/60``                                          *False*    `arcsecond <http://en.wikipedia.org/wiki/Arcsecond>`_
 ha       ``hm**2``                                              *False*    `hectare <http://en.wikipedia.org/wiki/Hectare>`_
-L        ``dm**3``                                              *True*     `liter <http://en.wikipedia.org/wiki/Liter>`_
+L        ``dm**3``                                              *True*     `litre <http://en.wikipedia.org/wiki/Litre>`_
 t        ``Mg``                                                 *False*    `tonne <http://en.wikipedia.org/wiki/Tonne>`_
 ------ Other non-SI units (BIPM2006_, Table 8) ------
 ---------------------------------------------------------------------------------------

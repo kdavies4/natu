@@ -99,6 +99,7 @@ UnitsModule
 ini
 stilb
 abvolt
+litre
 Unum
 barad
 arcsinh
@@ -154,7 +155,6 @@ mho
 mmHg
 Gy
 io
-fromQuantity
 CoherentRelations
 radians
 udunitspy

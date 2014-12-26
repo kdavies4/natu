@@ -1,5 +1,5 @@
 #!/usr/bin/python
-r"""Module with all units defined by the `definition files`_ listed in
+r"""Module with all units from the `definition files`_ listed in
 :attr:`natu.config.definitions`
 
 This module cannot be reloaded.  This prevents conflicts that could arise if the

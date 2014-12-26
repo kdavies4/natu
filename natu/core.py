@@ -205,7 +205,7 @@ def assert_homogeneous(*args):
     ...
     AssertionError: The quantities must have the same dimension.
     """
-    return # TODO temp
+    return # TODO: Remove this line and fix the code below.
     try:
         for row in zip(args):
             assert_homogeneous(row) # Recursive
@@ -987,7 +987,7 @@ class ScalarUnit(Quantity, Unit):
         **Example:**
 
         >>> from natu.units import ns
-        >>> shake = ScalarUnit.fromQuantity(10*ns, 'shake')
+        >>> shake = ScalarUnit.from_quantity(10*ns, 'shake')
 
         .. testcleanup::
            >>> from natu import units
@@ -1139,7 +1139,7 @@ class LambdaUnit(Unit):
             display += number.display
             as_quantity = False
         else:
-            as_quantity = bool(display)
+            as_quantity = bool(display) and use_quantities
         try:
             quantity = unit._toquantity(number)
         except AssertionError:
@@ -1160,7 +1160,7 @@ class LambdaUnit(Unit):
             display += quantity.display
             as_quantity = False
         else:
-            as_quantity = display and unit.dimensionless
+            as_quantity = display and unit.dimensionless and use_quantities
         try:
             number = unit._tonumber(quantity)
         except AssertionError:
@@ -1242,6 +1242,14 @@ class CoherentRelations(list):
 class Units(dict):
 
     """Dictionary of units with dynamic prefixing (upon access)
+
+    **Properties:**
+
+    - :attr:`coherent_relations` - List of coherent relations among the units
+
+         Each entry is a tuple of a :class:`CompoundUnit` instance that
+         evaluates to unity and a set of the dimensions involved in the units in
+         the :class:`CompoundUnit`.
     """
 
     def __init__(self, *args, **kwargs):
@@ -1284,12 +1292,11 @@ class Units(dict):
                 continue
 
             # Check that the unit is prefixable.
-            if use_quantities:
-                try:
-                    assert(baseunit.prefixable)
-                except (AttributeError, AssertionError):
-                    error = KeyError(basesymbol + " isn't prefixable.")
-                    continue # Try a longer prefix.
+            try:
+                assert(not use_quantities or baseunit.prefixable)
+            except (AttributeError, AssertionError):
+                error = KeyError(basesymbol + " isn't prefixable.")
+                continue # Try a longer prefix.
 
             # Look up and apply the prefix.
             prefix = symbol[:len_prefix]
@@ -1305,6 +1312,8 @@ class Units(dict):
                     return LambdaUnit(lambda n: baseunit._toquantity(p * n),
                                       lambda q: baseunit._tonumber(q) / p,
                                       baseunit.dimension, symbol)
+                return p * baseunit # Scalar unit, but not using quantities
+
         raise error
 
     def __call__(self, **factors):
@@ -1420,7 +1429,7 @@ class Units(dict):
                                 relation = (unit.display - {symbol: 1},
                                             dimensions)
                                 self.coherent_relations.append(relation)
-                            unit = ScalarUnit.fromQuantity(unit, symbol,
+                            unit = ScalarUnit.from_quantity(unit, symbol,
                                                            prefixable)
                         else:
                             # The unit is a dimensionless scalar unit.

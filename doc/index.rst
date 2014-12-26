@@ -14,48 +14,86 @@ constants with adjustable values and dimensions.  The value of a unit is
 factored into a quantity so that the quantity is not "in" any particular unit.
 This has the following advantages:
 
-- **Flexible**: Different unit systems, including `natural units`_ (hence the
-  name "natu"), can be represented by simply adjusting the physical constants.
+- **Flexible**: It's possible to represent different systems, including
+  `natural units`_ (hence the name "natu"), by simply adjusting the `base
+  physical constants <base-ini.html>`_.
 - **Simple**: Unit conversion is inherent.  This results in quick computations
   and a small code base (< 1500 lines).  By default, dimensions and display
-  units are tracked to catch errors and for string formatting, respectively.
-  However, this can be turned off to reduce the computational overhead to nearly
-  zero while still providing the core features.
-- **Scalable**: The values of the base physical constants can scaled to prevent
-  exponent overflow, regardless of the units used [Davies2012]_, [#f1]_.
-- **Intuitive**: Each unit is a fixed quantity which can be treated as a
+  units are tracked to catch errors and for string formatting.  This can be
+  disabled to reduce the computational overhead to nearly zero while still
+  providing the core features.
+- **Intuitive**: Each unit is a fixed quantity that is treated as a
   mathematical entity.  A variable quantity is expressed as the product of a
   number and a unit, as stated in [BIPM2006]_.
-- **Representative**: The structure of the package reflects the way modern units
-  are defined: standards organizations such as NIST_ assign values to universal
-  physical constants so that the values of units can be determined by physical
+- **Representative**: The design reflects the way modern units are defined:
+  standards organizations such as NIST_ assign values to universal physical
+  constants so that the values of units can be determined by physical
   experiments instead of prototypes.
+- **Scalable**: The values of the base physical constants can scaled to prevent
+  exponent overflow, regardless of the units used [Davies2012]_, [#f1]_.
 
-natu incorporates some of the best features of the existing packages and
-introduces some novel features:
+natu incorporates some of the best features of the `existing packages
+<seealso.html>`_:
 
-- Constants and units are defined in `INI files <definitions.html>`_.  Units can
-  be added or removed.
-- Units with offsets (e.g., `Celsius`_) and even nonlinear functions (e.g., the
-  `decibel`_) are supported.
-- Display units can be simplified automatically using `coherent relations`_
-  gathered from the unit definitions.
-- Units are automatically copied and sorted into convenient submodules (see
-  :mod:`natu.groups`).
-- Prefixes are automatically available.
+- Units with offsets and even nonlinear functions are supported.  For example:
+
+  >>> from natu.units import degC, K
+  >>> 0*degC + 100*K
+  100.0 degC
+
+  >>> from natu.units import dB
+  >>> (10/dB + 10/dB)*dB  # Multiply by adding logarithms.
+  100.0
+
+- Prefixes are automatically applied.  For example:
+
+  >>> from natu.units import km, m
+  >>> km/m
+  1000
+
+- Display units are simplified using `coherent relations`_ automatically
+  gathered from the unit definitions:
+
+  >>> from natu.units import kg, m, s
+  >>> 1*kg*m**2/s**2
+  1.0 J
+
+- Units are automatically sorted into convenient submodules such as
+  :mod:`natu.groups.length`.
+
+- Nearly 40 physical constants are included.  For example:
+
+  >>> from natu.groups.constants import c
+  >>> c
+  299792458.0 m/s
+
+- Additional constants and units can be easily added to the `definition files
+  <definitions.html>`_ or defined in code.
+
+- There are drop-in, quantity-aware replacements for :mod:`math` and
+  :mod:`numpy`.  Quantities can be used in NumPy_ arrays or vice versa (see
+  `here
+  <http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb#Arrays-and-other-data-types>`_).
+
+- There are no dependencies except for the :mod:`numpy` replacements (previous
+  feature).
+
+- Units can have fractional powers.  For example:
+
+  >>> from fractions import Fraction
+  >>> m**Fraction(1, 2)
+  ScalarUnit m(1/2) with dimension L(1/2) (not prefixable)
+
+- Units and quantities can be formatted for HTML, LaTeX_, Unicode_, and
+  Modelica_.  For example:
+
+  >>> '{:H}'.format(10*m**2)
+  '10.0&nbsp;m<sup>2</sup>'
+
+  This renders in HTML as 10.0 m\ :sup:`2`\ .
+
 - Rationalized and unrationalized unit systems are supported.
-- Drop-in, quantity-aware replacements are available for :mod:`math` and
-  :mod:`numpy`.
-- There are no external dependencies.  Only the `Python Standard Library`_ is
-  required; :mod:`numpy` is optional.
-- Fractional exponents can be used for units and quantities (e.g., for the
-  statcoulomb_).
 
-For example, you can do this:
-
-    >>> from natu.units import degC, K
-    >>> print(0*degC + 100*K)
-    100.0 degC
 
 Please `see the tutorial
 <http://nbviewer.ipython.org/github/kdavies4/natu/blob/master/examples/tutorial.ipynb>`_
@@ -82,19 +120,23 @@ an issue <https://github.com/kdavies4/natu/issues/new>`_.
 
 
 .. _natural units: http://en.wikipedia.org/wiki/Natural_units
-.. _Python Standard Library: https://docs.python.org/3/library/
 .. _GitHub repository: https://github.com/kdavies4/natu
 .. _NIST: http://www.nist.gov/
 .. _BIPM: http://www.bipm.org/
 .. _Celsius: http://en.wikipedia.org/wiki/Celsius
 .. _decibel: http://en.wikipedia.org/wiki/Decibel
 .. _coherent relations: http://en.wikipedia.org/wiki/Coherence_(units_of_measurement)
+.. _NumPy: http://www.numpy.org/
 .. _statcoulomb: http://en.wikipedia.org/wiki/Statcoulomb
+.. _Unicode: https://en.wikipedia.org/wiki/Unicode
+.. _LaTeX: http://www.latex-project.org/
+.. _Modelica: https://www.modelica.org/documents/ModelicaSpec33Revision1.pdf
 
 .. rubric:: References
 
 .. [Davies2012] K. Davies and C. Paredis, "`Natural Unit Representation in
-                Modelica <http://www.ep.liu.se/ecp_article/index.en.aspx?issue=076;article=082>`_,"
+                Modelica
+                <http://www.ep.liu.se/ecp_article/index.en.aspx?issue=076;article=082>`_,"
                 in Modelica Conference (Munich, Germany), Modelica Assoc.,
                 Sep. 2012.
 .. [BIPM2006] International Bureau of Weights and Measures (BIPM),

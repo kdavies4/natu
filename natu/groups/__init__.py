@@ -1,5 +1,5 @@
 #!/usr/bin/python
-r"""Modules with groups of units
+r"""Modules with selected groups of units
 
 The :mod:`~natu.groups.si` module includes all of the base and derived `SI
 units`_.  The :mod:`~natu.groups.constants` module contains all constants
