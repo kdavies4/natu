@@ -14,19 +14,19 @@ constants with adjustable values and dimensions.  The value of a unit is
 factored into a quantity so that the quantity is not "in" any particular unit.
 This has the following advantages:
 
-- **Flexible**: It's possible to represent different systems, including
-  `natural units`_ (hence the name "natu"), by simply adjusting the `base
-  physical constants <base-ini.html>`_.
+- **Flexible**: Different unit systems, including `natural units`_ (hence the
+  name "natu"), can be represented by simply adjusting the `base physical
+  constants <base-ini.html>`_.
 - **Simple**: Unit conversion is inherent.  This results in quick computations
   and a small code base (< 1500 lines).  By default, dimensions and display
   units are tracked to catch errors and for string formatting.  This can be
-  disabled to reduce the computational overhead to nearly zero while still
-  providing the core features.
+  disabled to nearly eliminate the computational overhead while still providing
+  the core features.
 - **Intuitive**: Each unit is a fixed quantity that is treated as a
   mathematical entity.  A variable quantity is expressed as the product of a
   number and a unit, as stated in [BIPM2006]_.
-- **Representative**: The design reflects the way modern units are defined:
-  standards organizations such as NIST_ assign values to universal physical
+- **Representative**: The design reflects the way modern units are defined.
+  Standards organizations such as NIST_ assign values to universal physical
   constants so that the values of units can be determined by physical
   experiments instead of prototypes.
 - **Scalable**: The values of the base physical constants can scaled to prevent

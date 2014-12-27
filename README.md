@@ -14,26 +14,28 @@ factored into a quantity so that the quantity is not "in" any particular unit.
 This has the following advantages:
 
 - **Flexible**: Different unit systems, including [natural units] (hence the
-  name "natu"), can be represented by simply adjusting the physical constants.
+  name "natu"), can be represented by simply adjusting the
+  [base physical constants].
 - **Simple**: Unit conversion is inherent.  This results in quick computations
-  and a small code base (< 1500 lines).  By default, dimensions and display
-  units are tracked to catch errors and for string formatting, respectively.
-  However, this can be turned off to reduce the computational overhead to nearly
-  zero while still providing the core features.
+  and a small code base (<&nbsp;1500 lines).  By default, dimensions and display
+  units are tracked to catch errors and for string formatting.  This can be
+  disabled to nearly eliminate the computational overhead while still providing
+  the core features.
+- **Intuitive**: Each unit is a fixed quantity that is treated as a mathematical
+  entity.  A variable quantity is expressed as the product of a number and a
+  unit, as stated by [BIPM].
+- **Representative**: The design reflects the way modern units are defined.
+  Standards organizations such as [NIST] assign values to universal physical
+  constants so that the values of units can be determined by physical
+  experiments instead of prototypes.
 - **Scalable**: The values of the base physical constants can scaled to prevent
   exponent overflow, regardless of the units used.
-- **Intuitive**: Each unit is a fixed quantity which can be treated as a
-  mathematical entity.  A variable quantity is expressed as the product of a
-  number and a unit, as stated by [BIPM].
-- **Representative**: The structure of the package reflects the way modern units
-  are defined: standards organizations such as [NIST] assign values to universal
-  physical constants so that the values of units can be determined by physical
-  experiments instead of prototypes.
+
 
 For example, you can do this:
 
     >>> from natu.units import degC, K
-    >>> print(0*degC + 100*K)
+    >>> 0*degC + 100*K
     100.0 degC
 
 Please
@@ -65,6 +67,7 @@ leave a comment, please
 
 
 [natu]: http://kdavies4.github.io/natu
+[base physical constants]: http://kdavies4.github.io/natu/base-ini.html
 [natural units]: http://en.wikipedia.org/wiki/Natural_units
 [Python Standard Library]: https://docs.python.org/3/library/
 [GitHub repository]: https://github.com/kdavies4/natu
