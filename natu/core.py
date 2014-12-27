@@ -689,6 +689,13 @@ class Quantity(DimObject):
 
     __rdiv__ = __rtruediv__
 
+    @copy_props
+    def __getitem__(self, item):
+        """Index the value and put it in a new quantity with the same dimension
+        and display unit.
+        """
+        return self._value.__getitem__(item)
+
     def __pow__(x, y):
         """x.__pow__(y) <==> pow(x, y)
 
@@ -1051,6 +1058,11 @@ class ScalarUnit(Quantity, Unit):
             number_str = format_e(format(number, number_code), unit_code)
             return number_str + _times(unit_code)
 
+    def __getitem__(self, item):
+        """Raise an error upon indexing.
+        """
+        raise AttributeError("Scalar units can't be indexed.")
+
 
 class LambdaUnit(Unit):
 
@@ -1133,7 +1145,7 @@ class LambdaUnit(Unit):
         display = unit.display
         if isinstance(number, Quantity):
             assert not isinstance(number, Unit), (
-                "Lambda units cannot be combined with other units.")
+                "Lambda units can't be combined with other units.")
             assert number.dimensionless, (
                 "The argument to the lambda unit must be dimensionless.")
             display += number.display
@@ -1259,7 +1271,7 @@ class Units(dict):
         self.coherent_relations = CoherentRelations()
 
     def __getitem__(self, symbol):
-        """Access a unit by *symbol* (a string).
+        """Access a simple (not compound) unit by *symbol* (a string).
 
         Prefixes are supported.
 
@@ -1316,25 +1328,33 @@ class Units(dict):
 
         raise error
 
-    def __call__(self, **factors):
+    def __call__(self, *args, **factors):
         r"""Generate a compound, coherent unit from existing units.
 
-        **Parameters:**
+        **Call signatures (where units is a :class:`Units` instance):**
 
-        - *\*\*factors*: Factors of the compound unit
+        - units(*unitstring*): Returns a unit by parsing *unitstring*
 
-          The factors are expressed as keyword arguments where the keys are unit
-          symbols and the values are exponents.
+             *unitstring* must contain valid units in the form accepted by
+             :class:`~natu.exponents.Exponents`.
+
+        - units(unit1=\ *exp1*, unit2=\ *exp2*, ...): Returns the product of
+          unit1 raised to the power *exp1*, unit2 raised to the power *exp2*,
+          etc.
 
         **Example:**
 
         >>> from natu.units import _units
+        >>> _units('lbf/inch2')
+        ScalarUnit lbf/inch2 with dimension M/(L*T2) (not prefixable)
         >>> _units(lbf=1, inch=-2)
-        ScalarUnit(6894.76, 'M/(L*T2)', 'psi', False) (psi)
-
-        Here, the unit was automatically simplified to psi using
-        :attr:`_units.coherent_relations`.
+        ScalarUnit lbf/inch2 with dimension M/(L*T2) (not prefixable)
         """
+        if args:
+            assert len(args) == 1, "Only one positional argument is allowed."
+            assert not factors, ("The positional argument can't be used with "
+                                 "keyword arguments.")
+            factors = CompoundUnit(args[0])
         factors = [self[base] ** exp for base, exp in factors.items()]
         return reduce(lambda x, y: x * y, factors)
 
