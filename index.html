@@ -32,7 +32,7 @@
     <link rel="top" title="Natural units in Python" href="#" />
     <link rel="next" title="natu.config" href="natu.config.html" />
     <meta name="description" content="Python module for natural units">
-    <meta name="keywords" content="quantity, calculus, quantities, unit, conversion, natural, SI, physics, dimension">
+    <meta name="keywords" content="Python, units, quantities, quantity, calculus, natural, unit, conversion, SI, physics, dimension">
     <meta name="author" content="Kevin Davies">
     <link rel="icon" type="image/png" href="javascripts/favicon-196x196.png" sizes="196x196">
     <link rel="icon" type="image/png" href="javascripts/favicon-160x160.png" sizes="160x160">
@@ -79,19 +79,19 @@ constants with adjustable values and dimensions.  The value of a unit is
 factored into a quantity so that the quantity is not &#8220;in&#8221; any particular unit.
 This has the following advantages:</p>
 <ul class="simple">
-<li><strong>Flexible</strong>: It&#8217;s possible to represent different systems, including
-<a class="reference external" href="http://en.wikipedia.org/wiki/Natural_units">natural units</a> (hence the name &#8220;natu&#8221;), by simply adjusting the <a class="reference external" href="base-ini.html">base
-physical constants</a>.</li>
+<li><strong>Flexible</strong>: Different unit systems, including <a class="reference external" href="http://en.wikipedia.org/wiki/Natural_units">natural units</a> (hence the
+name &#8220;natu&#8221;), can be represented by simply adjusting the <a class="reference external" href="base-ini.html">base physical
+constants</a>.</li>
 <li><strong>Simple</strong>: Unit conversion is inherent.  This results in quick computations
 and a small code base (&lt; 1500 lines).  By default, dimensions and display
 units are tracked to catch errors and for string formatting.  This can be
-disabled to reduce the computational overhead to nearly zero while still
-providing the core features.</li>
+disabled to nearly eliminate the computational overhead while still providing
+the core features.</li>
 <li><strong>Intuitive</strong>: Each unit is a fixed quantity that is treated as a
 mathematical entity.  A variable quantity is expressed as the product of a
 number and a unit, as stated in <a class="reference internal" href="other-ini.html#bipm2006" id="id1">[BIPM2006]</a>.</li>
-<li><strong>Representative</strong>: The design reflects the way modern units are defined:
-standards organizations such as <a class="reference external" href="http://www.nist.gov/">NIST</a> assign values to universal physical
+<li><strong>Representative</strong>: The design reflects the way modern units are defined.
+Standards organizations such as <a class="reference external" href="http://www.nist.gov/">NIST</a> assign values to universal physical
 constants so that the values of units can be determined by physical
 experiments instead of prototypes.</li>
 <li><strong>Scalable</strong>: The values of the base physical constants can scaled to prevent
