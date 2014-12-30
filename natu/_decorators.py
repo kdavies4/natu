@@ -81,24 +81,9 @@ else:
 # Standard functions
 # ------------------
 
-
-def merge(value, prototype):
-    """Merge *value* into a new :class:`~natu.core.ScalarUnit` or
-    :class:`~natu.core.Quantity` with the properties (:attr:`dimension`,
-    :attr:`display`, etc.) of *prototype*.
-
-    If *prototype* is not a :class:`~natu.core.ScalarUnit` or
-    :class:`~natu.core.Quantity`, then return *value* directly.
-    """
-    if isinstance(prototype, ScalarUnit):
-        return ScalarUnit(value, prototype.dimension, prototype.display,
-                          prototype.prefixable)
-    return core.merge(value, prototype)
-
-
 def merge_raise(value, prototype, power):
-    """Same as :func:`merge`, but raise the dimension and display unit to
-    *power*
+    """Same as :func:`~natu.core.merge`, but raise the dimension and display
+    unit to *power*
     """
     if isinstance(prototype, ScalarUnit):
         return ScalarUnit(value, power * prototype.dimension,
@@ -112,7 +97,6 @@ def merge_raise(value, prototype, power):
 # Elementary wrappers
 # -------------------
 
-
 def arg_x(func):
     """Decorate a function to accept *x* as a keyword argument.
     """
@@ -120,7 +104,6 @@ def arg_x(func):
     def wrapped(x):
         return func(x)
     return wrapped
-
 
 def arg_xi(func):
     """Decorate a function to accept *x* and *i* as keyword arguments.
@@ -130,7 +113,6 @@ def arg_xi(func):
         return func(x, i)
     return wrapped
 
-
 def arg_yx(func):
     """Decorate a function to accept *y* and *x* as keyword arguments.
     """
@@ -138,7 +120,6 @@ def arg_yx(func):
     def wrapped(y, x):
         return func(y, x)
     return wrapped
-
 
 def change_doc(func, doc=None):
     """Update the docstring of a function.
@@ -158,7 +139,6 @@ def change_doc(func, doc=None):
         return wrapped
     return func
 
-
 def copy_props(func):
     """Decorate a function to return a :class:`~natu.core.ScalarUnit` or
     :class:`~natu.core.Quantity` instance that matches the first argument except
@@ -173,7 +153,6 @@ def copy_props(func):
         "\n:attr:`display`, etc.) are copied to the result.\n")
     return wrapped
 
-
 def dimensionless(func):
     """Decorate a function to accept a number or a dimensionless quantity.
 
@@ -184,7 +163,6 @@ def dimensionless(func):
         return func(*map(dimensionless_value, args))
 
     return wrapped
-
 
 def dimensionless_implicit(func):
     """Decorate a function to give a special :class:`TypeError` message about

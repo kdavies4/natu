@@ -252,7 +252,7 @@ def multiglob(pathnames, extensions={'*.*'}):
     >>> import natu
     >>> from os.path import dirname, join
     >>> dname = dirname(natu.__file__)
-    >>> multiglob([join(dname, '*d*'), join(dname, '*/*d*')], {'*.py'}) # doctest:  +ELLIPSIS +SKIP
+    >>> multiglob([join(dname, '*d*'), join(dname, '*/*d*')], {'*.py'}) # doctest: +ELLIPSIS +SKIP
     {'...natu/_decorators.py',
      '...natu/config/derived.ini',
      '...natu/groups/conductance.py',

@@ -266,24 +266,29 @@ def display(quantity):
         return CompoundUnit()
 
 def merge(value, prototype):
-    """Merge *value* into a new :class:`Quantity` with the properties
-    (:attr:`~Quantity.dimension` and :attr:`~Quantity.display`) of *prototype*.
+    """Merge *value* into a new :class:`~natu.core.ScalarUnit` or
+    :class:`~natu.core.Quantity` with the properties (:attr:`dimension`,
+    :attr:`display`, etc.) of *prototype*.
 
-    If *prototype* is not a :class:`~natu.core.Quantity`, then *value* is
-    returned directly.
+    If *prototype* is not a :class:`~natu.core.ScalarUnit` or
+    :class:`~natu.core.Quantity`, then return *value* directly.
 
     **Example:**
 
-    >>> from natu.units import m, km
-    >>> from natu.core import merge
-    >>> merge(value(1000*m), km)
-    Quantity(1000, 'L', 'km') (1.0 km)
+    >>> from natu.units import m, ft
+    >>> from natu.core import value
+    >>> merge(value(1*m), 1*ft)
+    3.2808... ft
     """
     try:
-        return Quantity(value, prototype.dimension, prototype.display)
+        dimension = prototype.dimension
     except AttributeError:
         return value
-
+    try:
+        prefixable = prototype.prefixable
+    except AttributeError:
+        return Quantity(value, dimension, prototype.display)
+    return ScalarUnit(value, dimension, prototype.display, prefixable)
 
 def prohibited(self, other):
     """Not allowed; raises a TypeError"""
