@@ -8,7 +8,8 @@
 
 - :func:`flatten_list` - Flatten a nested list.
 
-- :func:`format_e`: Format the scientific notation in a numeric string
+- :func:`format_e`: Format the scientific notation in a numeric string to HTML,
+  LaTeX_, or Unicode_.
 
 - :func:`get_group` - Return a tuple with the contents of a parenthetical
   expression and everything after it.
@@ -30,6 +31,7 @@
   'y'.
 
 
+.. _LaTeX: http://www.latex-project.org/
 .. _Unicode: http://www.unicode.org/
 """
 from __future__ import division, unicode_literals
@@ -100,7 +102,8 @@ def flatten_list(l, ltypes=(list, tuple)):
     return ltype(l)
 
 def format_e(num_str, code):
-    """Format the scientific notation in a numeric string
+    """Format the scientific notation in a numeric string to HTML, LaTeX_, or
+    Unicode_.
 
     **Parameters:**
 
@@ -112,9 +115,6 @@ def format_e(num_str, code):
     - *code*: Format code
 
          'H' is for HTML, 'L' is for LaTeX_, and 'U' is for Unicode_.
-
-
-    .. _LaTeX: http://www.latex-project.org/
     """
     # TODO: Add examples.
     num_str = num_str.replace('E', 'e')
@@ -132,7 +132,7 @@ def format_e(num_str, code):
             return base + '&times;10<sup>%s</sup>' % exp
         if code == 'L':
             return base + r' \times 10^{%s}' % exp
-        if code == 'P':
+        if code == 'U':
             return base + r'✕10' + str2super(exp)
     return num_str
 
