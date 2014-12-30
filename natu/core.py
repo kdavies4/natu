@@ -234,7 +234,6 @@ def dimension(quantity):
     except AttributeError:
         return CompoundDimension()
 
-
 def dimensionless_value(x):
     """Return the value of the quantity if it is dimensionless.
 
@@ -246,7 +245,6 @@ def dimensionless_value(x):
     except AttributeError:
         return x
     raise TypeError("The quantity is not dimensionless.")
-
 
 def display_unit(quantity):
     """Return the display unit of *quantity*.
@@ -294,7 +292,6 @@ def prohibited(self, other):
     """Not allowed; raises a TypeError"""
     # pylint: disable=I0011, W0613
     raise TypeError("In-pace assignments aren't allowed for units.")
-
 
 def quantity_only(operation):
     """Return a method that raises a :class:`TypeError` with a message pertinent
@@ -386,7 +383,6 @@ def as_scalarunit(meth):
 
     return wrapped
 
-
 def copy_props(func):
     """Decorate a function to return a :class:`~natu.core.Quantity` that matches
     the first argument except for the computed value.
@@ -399,7 +395,6 @@ def copy_props(func):
         "\nThe :attr:`dimension` and :attr:`display_unit` properties of the "
         "\nfirst term are propagated to the result.\n")
     return wrapped
-
 
 def homogeneous(func):
     """Decorate a function to accept quantities of the same dimension.
@@ -424,6 +419,7 @@ class DefinitionError(Exception):
     """Error in the definition of a unit or constant in an INI file
     """
     pass
+
 
 class CompoundDimension(Exponents):
 
@@ -464,12 +460,12 @@ class CompoundUnit(Exponents):
     # pylint: disable=I0011, R0904
     pass
 
-# Note that in the DimObject below, dimension and display_unit are properties that
-# return copies of the internal _dimension and _display_unit attributes.  Generally,
-# only dimension and display_unit should be accessed from the outside to prevent
-# mutating the internal _dimension and _display_unit dictionaries.  However, in the
-# code below, this rule is strategically broken to avoid the overhead of making
-# copies.
+# Note that in the DimObject below, dimension and display_unit are properties
+# that return copies of the internal _dimension and _display_unit attributes.
+# Generally, only dimension and display_unit should be accessed from the outside
+# to prevent mutating the internal _dimension and _display_unit dictionaries.
+# However, in the code below, this rule is strategically broken to avoid the
+# overhead of making copies.
 
 
 class DimObject(object):
@@ -823,9 +819,9 @@ class Quantity(DimObject):
         """x.__ne__(y) <==> x!=y
 
         To be considered equal, it is not necessary that quantities have the
-        same display unit (:attr:`display_unit`)---only the same value and dimension.
-        A quantity is equal to zero if its value is zero, regardless of
-        dimension.
+        same display unit (:attr:`display_unit`)---only the same value and
+        dimension.  A quantity is equal to zero if its value is zero, regardless
+        of dimension.
         """
         try:
             return (x._dimension != y._dimension or
@@ -925,8 +921,9 @@ class Unit(DimObject):
     - *prefixable*: *True* if the unit can be prefixed
 
     :attr:`~DimObject.dimension`, :attr:`~DimObject.dimensionless`, and
-    :attr:`prefixable` are read-only attributes, but :attr:`~DimObject.display_unit`
-    can be set using the same format as the *display_unit* argument above.
+    :attr:`prefixable` are read-only attributes, but
+    :attr:`~DimObject.display_unit` can be set using the same format as the
+    *display_unit* argument above.
     """
 
     def __init__(self, dimension, display_unit, prefixable=False):

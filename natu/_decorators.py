@@ -184,13 +184,11 @@ def dimensionless_implicit(func):
 # Compound wrappers
 # -----------------
 
-
 def dimensionless_copy_props(func, doc=None):
     """Wrap a function to accept dimensionless quantities and pass the
     dimension, display unit, etc.  Change the docstring to *doc*.
     """
     return change_doc(arg_x(copy_props(dimensionless_implicit(func))), doc)
-
 
 def trig(func, doc=None):
     """Wrap a trigonometric function that accepts angle in radians to accept
@@ -205,7 +203,6 @@ def trig(func, doc=None):
 
     return change_doc(wrapped, doc)
 
-
 def inv_trig(func, doc=None):
     """Wrap an inverse trigonometric function that returns angle in radians to
     return angle as a quantity.
@@ -215,7 +212,6 @@ def inv_trig(func, doc=None):
         return func(x) * rad
 
     return change_doc(wrapped, doc)
-
 
 def inv_trig_yx(func, doc=None):
     """Wrap a dual-input inverse trigonometric function that returns angle in
@@ -231,14 +227,12 @@ def inv_trig_yx(func, doc=None):
 
     return change_doc(wrapped, doc)
 
-
 def homogeneous_copy_props(func):
     """Wrap a function to use the :attr:`value` of quantities and pass the
     dimension, display unit, etc. of the first argument.  Check that the
     quantities have the same dimension.
     """
     return copy_props(homogeneous(func))
-
 
 def homogeneous_copy_props_iter(func):
     """Decorate a function to use the values of an iterable of quantities and
@@ -251,7 +245,6 @@ def homogeneous_copy_props_iter(func):
 
     return wrapped
 
-
 def use_value(func, doc=None):
     """Wrap a function to use the value of a quantity.
     """
@@ -261,13 +254,11 @@ def use_value(func, doc=None):
 
     return change_doc(wrapped, doc)
 
-
 def use_value_copy_props(func, doc):
     """Wrap a function to use the :attr:`value` of a quantity and pass the
     dimension, display unit, etc.  Change the docstring to *doc*.
     """
     return change_doc(arg_x(copy_props(use_value(func))), doc)
-
 
 def use_value_raise(func, y=None):
     """Wrap a function to use the value of a quantity and raise the dimension
@@ -286,7 +277,6 @@ def use_value_raise(func, y=None):
 
     return wrapped if y is None else wrapped_fixed
 
-
 def use_values_copy_props(func, doc=None):
     """Decorate a function to use the values of two quantities and pass the
     properties (:attr:`dimension`, :attr:`display`, etc.) of the first.
@@ -297,7 +287,6 @@ def use_values_copy_props(func, doc=None):
         return func(value(x), value(y))
 
     return change_doc(wrapped, doc)
-
 
 def use_values_copy_props_xi(func, doc=None):
     """Wrap a function to use the :attr:`value` of quantities and pass the
