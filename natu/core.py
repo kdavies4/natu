@@ -647,14 +647,14 @@ class Quantity(DimObject):
         """x.__mul__(y) <==> x*y
         """
         try:
-            value = y._value * x._value # Product of quantities
+            value = x._value * y._value # Product of quantities
         except AttributeError:
             if isinstance(y, LambdaUnit):
                 return NotImplemented  # Defer to LambdaUnit's _toquantity().
-            return Quantity(y * x._value, x.dimension, x.display)
-        dimension = y._dimension + x._dimension
+            return Quantity(x._value * y, x.dimension, x.display)
+        dimension = x._dimension + y._dimension
         if dimension:
-            return Quantity(value, dimension, y._display + x._display)
+            return Quantity(value, dimension, x._display + y._display)
         return value
 
     __rmul__ = __mul__
@@ -665,8 +665,8 @@ class Quantity(DimObject):
         try:
             value = x._value / y._value
         except AttributeError:
-            if isinstance(y, DimObject):
-                return NotImplemented  # Defer; y could be a LambdaUnit.
+            if isinstance(y, LambdaUnit):
+                return NotImplemented  # Deferto LambdaUnit's _tonumber().
             return Quantity(x._value / y, x.dimension, x.display)
         dimension = x._dimension - y._dimension
         if dimension:
@@ -695,6 +695,38 @@ class Quantity(DimObject):
         and display unit.
         """
         return self._value.__getitem__(item)
+
+    def __getattr__(self, attr):
+        """If an attribute is unknown, look for it within :attr:`_value`.  If
+        the attribute's value is a property, return it.  If it is a method,
+        wrap the method to either:
+
+        1. act the same as the original method, if the return value has a
+           different type than :attr:`_value`
+
+        2. cast the return value as a quantity with the same dimension and
+           display unit as the original quantity, if the return value has the
+           same type as :attr:`_value`
+
+        If a quantity has a value that is a NumPy_ array, this allows access of
+        properties like :attr:`shape` as well as methods like :meth:`any`
+        (follows action #1 above) and :meth:`clip` (follows action #2 above).
+
+
+        .. _NumPy: http://numpy.scipy.org/
+        """
+        try:
+            attr_value = self._value.__getattribute__(attr)
+        except AttributeError:
+            attr_value = self._value.__getattr__(attr)
+        if callable(attr_value):
+            def new_meth(*args, **kwargs):
+                value = attr_value(*args, **kwargs)
+                if type(value) == type(self._value):
+                    return merge(value, self)
+                return value
+            return new_meth
+        return attr_value
 
     def __pow__(x, y):
         """x.__pow__(y) <==> pow(x, y)
@@ -1058,10 +1090,17 @@ class ScalarUnit(Quantity, Unit):
             number_str = format_e(format(number, number_code), unit_code)
             return number_str + _times(unit_code)
 
+    def __getattr__(self, attr):
+        """Raise an error upon accessing an unknown attribute.
+        """
+        raise AttributeError("'%s' object has no attribute '%s'"
+                             % (self.__class__.__name__, attr))
+
     def __getitem__(self, item):
         """Raise an error upon indexing.
         """
         raise AttributeError("Scalar units can't be indexed.")
+
 
 
 class LambdaUnit(Unit):
