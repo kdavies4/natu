@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '',
+        VERSION:     '0.1.0-b',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -51,7 +51,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+        <li><a href="index.html">natu v0.1.0-b documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -67,7 +67,8 @@
 <ul class="simple">
 <li><a class="reference internal" href="#natu.util.delayed_exit" title="natu.util.delayed_exit"><tt class="xref py py-func docutils literal"><span class="pre">delayed_exit()</span></tt></a> - Exit with a message and a delay.</li>
 <li><a class="reference internal" href="#natu.util.flatten_list" title="natu.util.flatten_list"><tt class="xref py py-func docutils literal"><span class="pre">flatten_list()</span></tt></a> - Flatten a nested list.</li>
-<li><a class="reference internal" href="#natu.util.format_e" title="natu.util.format_e"><tt class="xref py py-func docutils literal"><span class="pre">format_e()</span></tt></a>: Format the scientific notation in a numeric string</li>
+<li><a class="reference internal" href="#natu.util.format_e" title="natu.util.format_e"><tt class="xref py py-func docutils literal"><span class="pre">format_e()</span></tt></a>: Format the scientific notation in a numeric string to HTML,
+<a class="reference external" href="http://www.latex-project.org/">LaTeX</a>, or <a class="reference external" href="http://www.unicode.org/">Unicode</a>.</li>
 <li><a class="reference internal" href="#natu.util.get_group" title="natu.util.get_group"><tt class="xref py py-func docutils literal"><span class="pre">get_group()</span></tt></a> - Return a tuple with the contents of a parenthetical
 expression and everything after it.</li>
 <li><a class="reference internal" href="#natu.util.list_packages" title="natu.util.list_packages"><tt class="xref py py-func docutils literal"><span class="pre">list_packages()</span></tt></a> - Return a list of the names of a module and its
@@ -116,7 +117,8 @@ files.</li>
 <dl class="function">
 <dt id="natu.util.format_e">
 <tt class="descclassname">natu.util.</tt><tt class="descname">format_e</tt><big>(</big><em>num_str</em>, <em>code</em><big>)</big><a class="headerlink" href="#natu.util.format_e" title="Permalink to this definition">¶</a></dt>
-<dd><p>Format the scientific notation in a numeric string</p>
+<dd><p>Format the scientific notation in a numeric string to HTML, <a class="reference external" href="http://www.latex-project.org/">LaTeX</a>, or
+<a class="reference external" href="http://www.unicode.org/">Unicode</a>.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><p class="first"><em>num_str</em>: A numeric string</p>
@@ -131,6 +133,15 @@ returned directly.</p>
 </div></blockquote>
 </li>
 </ul>
+<p><strong>Examples:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">format_e</span><span class="p">(</span><span class="s">&#39;2.0e5&#39;</span><span class="p">,</span> <span class="s">&#39;H&#39;</span><span class="p">)</span>
+<span class="go">2.0&amp;times;10&lt;sup&gt;5&lt;/sup&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">format_e</span><span class="p">(</span><span class="s">&#39;5e-10&#39;</span><span class="p">,</span> <span class="s">&#39;L&#39;</span><span class="p">))</span>
+<span class="go">5 \times 10^{-10}</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -189,7 +200,7 @@ not the case for some (all?) of the built-in packages.</p>
 
 <dl class="function">
 <dt id="natu.util.multiglob">
-<tt class="descclassname">natu.util.</tt><tt class="descname">multiglob</tt><big>(</big><em>pathnames</em>, <em>extensions=set([u'*.mat'])</em><big>)</big><a class="headerlink" href="#natu.util.multiglob" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">natu.util.</tt><tt class="descname">multiglob</tt><big>(</big><em>pathnames</em>, <em>extensions=set([u'*.*'])</em><big>)</big><a class="headerlink" href="#natu.util.multiglob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a set of filenames that match a pathname pattern.</p>
 <blockquote>
 <div><p>Unlike Python&#8217;s <a class="reference external" href="https://docs.python.org/library/glob.html#glob.glob" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">glob.glob()</span></tt></a> function, this function runs an additional
@@ -236,6 +247,20 @@ match files in any directories generated from <em>pathnames</em></p>
 </div></blockquote>
 </li>
 </ul>
+<blockquote>
+<div><p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">natu</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">join</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dname</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">(</span><span class="n">natu</span><span class="o">.</span><span class="n">__file__</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">multiglob</span><span class="p">([</span><span class="n">join</span><span class="p">(</span><span class="n">dname</span><span class="p">,</span> <span class="s">&#39;*d*&#39;</span><span class="p">),</span> <span class="n">join</span><span class="p">(</span><span class="n">dname</span><span class="p">,</span> <span class="s">&#39;*/*d*&#39;</span><span class="p">)],</span> <span class="p">{</span><span class="s">&#39;*.py&#39;</span><span class="p">})</span> 
+<span class="go">{&#39;...natu/_decorators.py&#39;,</span>
+<span class="go"> &#39;...natu/config/derived.ini&#39;,</span>
+<span class="go"> &#39;...natu/groups/conductance.py&#39;,</span>
+<span class="go"> &#39;...natu/groups/dimensionless.py&#39;,</span>
+<span class="go"> &#39;...natu/groups/magnetic_flux_density.py&#39;}</span>
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="function">
@@ -353,8 +378,8 @@ expressions; see <a class="reference external" href="https://docs.python.org/2/l
 <script type="text/javascript">$('#searchbox').show(0);</script><h3>Download</h3>
   <ul>
     <li><a itemprop="downloadUrl"
-           href="https://pypi.python.org/packages/source/n/natu/natu-0.1.0-a5.tar.gz"
-           rel="nofollow">Latest version<br>(v0.1.0-a5, 2014-12-26)</a></li>
+           href="https://pypi.python.org/packages/source/n/natu/natu-0.1.0-b.tar.gz"
+           rel="nofollow">Latest version<br>(v0.1.0-b, 2014-12-30)</a></li>
   </ul>
         </div>
       </div>
@@ -369,12 +394,12 @@ expressions; see <a class="reference external" href="https://docs.python.org/2/l
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">natu documentation</a> &raquo;</li> 
+        <li><a href="index.html">natu v0.1.0-b documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy Institute and Georgia Tech Research Corporation.
-      Last updated on Dec 26, 2014.
+      Last updated on Dec 30, 2014.
     </div>
   </body>
 </html>
