@@ -270,7 +270,7 @@ def merge(value, prototype):
     (:attr:`~Quantity.dimension` and :attr:`~Quantity.display`) of *prototype*.
 
     If *prototype* is not a :class:`~natu.core.Quantity`, then *value* is
-    returned directly---as a quantity.
+    returned directly.
 
     **Example:**
 
@@ -336,7 +336,6 @@ def value(x):
 # Decorators
 # ----------
 
-
 def add_unit(meth):
     """Decorate a method to add a unit to the formatted representation.
     """
@@ -366,7 +365,6 @@ def add_unit(meth):
         return meth(self / unit, number_code, unit_code) + unit_str
 
     return wrapped
-
 
 def as_scalarunit(meth):
     """Decorate *meth* so that it returns a :class:`ScalarUnit` if both

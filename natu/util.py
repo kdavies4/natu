@@ -102,7 +102,7 @@ def flatten_list(l, ltypes=(list, tuple)):
     return ltype(l)
 
 def format_e(num_str, code):
-    """Format the scientific notation in a numeric string to HTML, LaTeX_, or
+    r"""Format the scientific notation in a numeric string to HTML, LaTeX_, or
     Unicode_.
 
     **Parameters:**
@@ -115,8 +115,15 @@ def format_e(num_str, code):
     - *code*: Format code
 
          'H' is for HTML, 'L' is for LaTeX_, and 'U' is for Unicode_.
+
+    **Examples:**
+
+    >>> format_e('2.0e5', 'H')
+    2.0&times;10<sup>5</sup>
+
+    >>> print(format_e('5e-10', 'L'))
+    5 \times 10^{-10}
     """
-    # TODO: Add examples.
     num_str = num_str.replace('E', 'e')
     try:
         base, exp = num_str.split('e')
@@ -162,7 +169,6 @@ def get_group(expr):
         if count == 0:
             return expr[1:i], expr[i + 1:]
         i += 1
-
 
 def list_packages(package):
     """Return a list of the names of a package and its subpackages.
@@ -215,7 +221,7 @@ def list_packages(package):
     return names
 
 
-def multiglob(pathnames, extensions={'*.mat'}):
+def multiglob(pathnames, extensions={'*.*'}):
     r"""Return a set of filenames that match a pathname pattern.
 
     Unlike Python's :func:`glob.glob` function, this function runs an additional
@@ -240,17 +246,27 @@ def multiglob(pathnames, extensions={'*.mat'}):
      match files in any directories generated from *pathnames*
 
         These may also use the shell-style patterns above.
-    """
-    # TODO: Add an example.
-    # **Example:**
-    # >>> multiglob("examples/ChuaCircuit/*/") # doctest: +SKIP
-    # ['examples/ChuaCircuit/1/dsres.mat', 'examples/ChuaCircuit/2/dsres.mat']
-    # .. testcleanup::
-    #    >>> sorted(multiglob("examples/ChuaCircuit/*/"))
-    #    ['examples/ChuaCircuit/1/dsres.mat', 'examples/ChuaCircuit/2/dsres.mat']
 
-    # Since order is arbitrary, the doctest is skipped here and included in
-    # tests/tests.txt instead.
+    **Example:**
+
+    >>> import natu
+    >>> from os.path import dirname, join
+    >>> dname = dirname(natu.__file__)
+    >>> multiglob([join(dname, '*d*'), join(dname, '*/*d*')], {'*.py'}) # doctest:  +ELLIPSIS +SKIP
+    {'...natu/_decorators.py',
+     '...natu/config/derived.ini',
+     '...natu/groups/conductance.py',
+     '...natu/groups/dimensionless.py',
+     '...natu/groups/magnetic_flux_density.py'}
+
+    .. testcleanup::
+        >>> sorted(multiglob([join(dname, '*d*'), join(dname, '*/*d*')], {'*.py'})) # doctest: +ELLIPSIS
+        ['...natu/_decorators.py',
+         '...natu/config/derived.ini',
+         '...natu/groups/conductance.py',
+         '...natu/groups/dimensionless.py',
+         '...natu/groups/magnetic_flux_density.py']
+    """
     fnames = set()
     for pathname in flatten_list(pathnames):
         items = glob(pathname)

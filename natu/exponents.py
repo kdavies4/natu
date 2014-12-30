@@ -42,8 +42,8 @@ _FORMATS = {
          group=r'\left({0}\right)',
          base_fmt=lambda x: r'\mathrm{%s}' % x,
          exp_fmt=lambda x: ('^{%s}' % x
-                             if isinstance(x, Fraction) or x < 0 else
-                             '^%s' % x),
+                            if isinstance(x, Fraction) or x < 0 else
+                            '^%s' % x),
          ),
     'M':  # Modelica
     dict(_DEFAULT_FORMAT,
@@ -60,7 +60,7 @@ _FORMATS = {
          mul=' * ',
          div=' / ',
          exp_fmt=lambda x: ('**(%s)' % x if isinstance(x, Fraction) else
-                             '**%s' % x),
+                            '**%s' % x),
          ),
     }
 
@@ -68,7 +68,7 @@ _KNOWN_FORMATS = frozenset(_FORMATS)
 
 
 def split_code(code):
-    """Split a string format code into standard and exponent-specific parts.
+    """Split a string format code into standard and exponent-related parts.
     """
     # Based on pint.formatting (https://github.com/hgrecco/pint, 7/11/14).
     # Copyright 2013 by Pint Authors
@@ -93,8 +93,8 @@ def _format(factors, **kwargs):
 
     - *factors*: List of (base, exponent) pairs
 
-       Each base is a string that represents the base of a factor.  Each
-       exponent is a number (:class:`numbers.Number` instance).
+         Each base is a string that represents the base of a factor.  Each
+         exponent is a number (:class:`numbers.Number` instance).
 
     - *mul*: String used to represent multiplication
 
@@ -108,9 +108,10 @@ def _format(factors, **kwargs):
          expression.  If *group* is *None*, the multiple division operators will
          be used if necessary.
 
-    - *base_fmt*: Function that takes a base and formats it as a string
+    - *base_fmt*: Function that takes a base (string) and formats it as a string
 
-    - *exp_fmt*: Function that takes an exponent and formats it as a string
+    - *exp_fmt*: Function that takes an exponent (number) and formats it as a
+     string
     """
     # pylint: disable=I0011, R0912
 
@@ -170,7 +171,7 @@ fr = i + '/' + u  # Fraction
 
 # Regular expression parser for a base and an exponent:
 base = '([A-Za-z][A-Za-z_]*)'
-exponent = r'(?:(?:\((%s)\))|(%s)|(%s))' % (fr, fl, i)
+exponent = r'(?:(?:\(({fr})\))|({fl})|({i}))'.format(fr=fr, fl=fl, i=i)
 remainder = '(.*)'
 parser = re.compile('%s%s?%s?' % (base, exponent, remainder))
 del fl1, fl2, fl, fr, base, exponent, remainder
@@ -411,8 +412,8 @@ class Exponents(Counter):
         def process_expression(expr, exponents, add=True):
             """Process a factor from the left of a string expression (expr).
 
-            Add (if add == True) the factor to exponents if add == True.
-            Otherwise, subtract it.  Return the remainder of the expression.
+            Add the factor to exponents if add == True.  Otherwise, subtract it.
+            Return the remainder of the expression.
             """
             # Pass if the expression is unity.
             if expr[0] == '1':
