@@ -248,27 +248,27 @@ def dimensionless_value(x):
     raise TypeError("The quantity is not dimensionless.")
 
 
-def display(quantity):
+def display_unit(quantity):
     """Return the display unit of *quantity*.
 
-    If *quantity* does not have a :attr:`~DimObject.display` property, then an
-    empty :class:`CompoundUnit` is returned.
+    If *quantity* does not have a :attr:`~DimObject.display_unit` property, then
+    an empty :class:`CompoundUnit` is returned.
 
     **Example:**
 
     >>> from natu.units import m
-    >>> print(display(100*m))
+    >>> print(display_unit(100*m))
     m
     """
     try:
-        return quantity.display
+        return quantity.display_unit
     except AttributeError:
         return CompoundUnit()
 
 def merge(value, prototype):
     """Merge *value* into a new :class:`~natu.core.ScalarUnit` or
     :class:`~natu.core.Quantity` with the properties (:attr:`dimension`,
-    :attr:`display`, etc.) of *prototype*.
+    :attr:`display_unit`, etc.) of *prototype*.
 
     If *prototype* is not a :class:`~natu.core.ScalarUnit` or
     :class:`~natu.core.Quantity`, then return *value* directly.
@@ -287,8 +287,8 @@ def merge(value, prototype):
     try:
         prefixable = prototype.prefixable
     except AttributeError:
-        return Quantity(value, dimension, prototype.display)
-    return ScalarUnit(value, dimension, prototype.display, prefixable)
+        return Quantity(value, dimension, prototype.display_unit)
+    return ScalarUnit(value, dimension, prototype.display_unit, prefixable)
 
 def prohibited(self, other):
     """Not allowed; raises a TypeError"""
@@ -348,19 +348,19 @@ def add_unit(meth):
     def wrapped(self, code):
 
         # Get the display unit.
-        self.display = Quantity.unitspace.simplify(self.display)
-        unit = Quantity.unitspace(**self.display)
+        self.display_unit = Quantity.unitspace.simplify(self.display_unit)
+        unit = Quantity.unitspace(**self.display_unit)
         unit_dim = dimension(unit)
         assert self.dimension == unit_dim, (
-            "The display unit ({0.display}; dimension {1}) and the quantity "
-            "(dimension {0.dimension}) are incompatible.").format(self,
-                                                                  unit_dim)
+            "The display unit ({0.display_unit}; dimension {1}) and the "
+            "quantity (dimension {0.dimension}) are "
+            "incompatible.").format(self, unit_dim)
 
         # Parse the format code.
         number_code, unit_code = split_code(code)
 
         # Create the unit string.
-        unit_str = format(self.display, unit_code)
+        unit_str = format(self.display_unit, unit_code)
         try:
             for rpl in UNIT_REPLACEMENTS[unit_code]:
                 unit_str = rpl[0].sub(rpl[1], unit_str)
@@ -380,7 +380,8 @@ def as_scalarunit(meth):
     def wrapped(self, other):
         result = meth(self, other)
         if isinstance(other, ScalarUnit) and isinstance(result, Quantity):
-            return ScalarUnit(result._value, result._dimension, result._display)
+            return ScalarUnit(result._value, result._dimension,
+                              result._display_unit)
         return result
 
     return wrapped
@@ -395,8 +396,8 @@ def copy_props(func):
         return merge(func(x, y), x)
 
     wrapped.__doc__ += (
-        "\nThe :attr:`dimension` and :attr:`display` properties of the first "
-        "\nterm are propagated to the result.\n")
+        "\nThe :attr:`dimension` and :attr:`display_unit` properties of the "
+        "\nfirst term are propagated to the result.\n")
     return wrapped
 
 
@@ -463,10 +464,10 @@ class CompoundUnit(Exponents):
     # pylint: disable=I0011, R0904
     pass
 
-# Note that in the DimObject below, dimension and display are properties that
-# return copies of the internal _dimension and _display attributes.  Generally,
-# only dimension and display should be accessed from the outside to prevent
-# mutating the internal _dimension and _display dictionaries.  However, in the
+# Note that in the DimObject below, dimension and display_unit are properties that
+# return copies of the internal _dimension and _display_unit attributes.  Generally,
+# only dimension and display_unit should be accessed from the outside to prevent
+# mutating the internal _dimension and _display_unit dictionaries.  However, in the
 # code below, this rule is strategically broken to avoid the overhead of making
 # copies.
 
@@ -483,7 +484,7 @@ class DimObject(object):
          similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
-    - *display*: Display unit
+    - *display_unit*: Display unit
 
          This can be a :class:`CompoundUnit` instance, a :class:`dict` of
          similar form, or a string accepted by the
@@ -493,17 +494,17 @@ class DimObject(object):
     consistency.
 
     :attr:`dimension` and :attr:`dimensionless` are read-only attributes (see
-    below), but :attr:`display` can be set using the same format as the
-    *display* argument above.
+    below), but :attr:`display_unit` can be set using the same format as the
+    *display_unit* argument above.
     """
 
-    def __init__(self, dimension, display):
+    def __init__(self, dimension, display_unit):
         """Initialize by setting the physical dimension and display unit.
 
         See the top-level class documentation.
         """
         self._dimension = CompoundDimension(dimension)
-        self._display = CompoundUnit(display)
+        self._display_unit = CompoundUnit(display_unit)
 
     @property
     def dimension(self):
@@ -516,12 +517,12 @@ class DimObject(object):
         return not self._dimension
 
     @property
-    def display(self):
+    def display_unit(self):
         """Display unit as a :class:`CompoundUnit` instance"""
-        return self._display.copy()
+        return self._display_unit.copy()
 
-    @display.setter
-    def display(self, display):
+    @display_unit.setter
+    def display_unit(self, display_unit):
         """Set the display unit.
 
         *display* can be a :class:`CompoundUnit` instance, a :class:`dict` of
@@ -531,7 +532,7 @@ class DimObject(object):
         Here, the display unit is not checked for dimensional consistency (with
         :attr:`dimension`).
         """
-        self._display = CompoundUnit(display)
+        self._display_unit = CompoundUnit(display_unit)
 
 
 class Quantity(DimObject):
@@ -552,7 +553,7 @@ class Quantity(DimObject):
          similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
-    - *display*: Display unit
+    - *display_unit*: Display unit
 
          This can be a :class:`CompoundUnit` instance, a :class:`dict` of
          similar form, or a string accepted by the
@@ -568,7 +569,7 @@ class Quantity(DimObject):
     >>> energy = mass*velocity**2
     >>> print(energy.dimension)
     L2*M/T2
-    >>> print(energy.display)
+    >>> print(energy.display_unit)
     kg*m2/s2
 
     However, it is easier to create a quantity as the product of a number and
@@ -576,7 +577,7 @@ class Quantity(DimObject):
 
     Changing the display unit:
 
-    >>> mass.display = 'lb'
+    >>> mass.display_unit = 'lb'
     >>> print(mass) # doctest: +ELLIPSIS
     2.20462... lb
 
@@ -585,7 +586,7 @@ class Quantity(DimObject):
     >>> mass # doctest: +ELLIPSIS
     Quantity(1, 'M', 'lb') (2.20462... lb)
 
-    Although the :attr:`display` property can be changed, quantities are
+    Although the :attr:`display_unit` property can be changed, quantities are
     otherwise immutable.  The in-place operators create new instances:
 
     >>> initial_id = id(velocity)
@@ -600,7 +601,7 @@ class Quantity(DimObject):
     unitspace = None
     """Underlying unit dictionary used to define quantities"""
 
-    def __init__(self, value, dimension, display=''):
+    def __init__(self, value, dimension, display_unit):
         """Initialize a quantity by setting the value, physical dimension, and
         display unit.
 
@@ -610,7 +611,7 @@ class Quantity(DimObject):
         self._value = value
 
         # Set the dimension and display unit.
-        DimObject.__init__(self, dimension, display)
+        DimObject.__init__(self, dimension, display_unit)
 
     @copy_props
     @homogeneous
@@ -654,10 +655,10 @@ class Quantity(DimObject):
         except AttributeError:
             if isinstance(y, LambdaUnit):
                 return NotImplemented  # Defer to LambdaUnit's _toquantity().
-            return Quantity(x._value * y, x.dimension, x.display)
+            return Quantity(x._value * y, x.dimension, x.display_unit)
         dimension = x._dimension + y._dimension
         if dimension:
-            return Quantity(value, dimension, x._display + y._display)
+            return Quantity(value, dimension, x._display_unit + y._display_unit)
         return value
 
     __rmul__ = __mul__
@@ -670,10 +671,10 @@ class Quantity(DimObject):
         except AttributeError:
             if isinstance(y, LambdaUnit):
                 return NotImplemented  # Deferto LambdaUnit's _tonumber().
-            return Quantity(x._value / y, x.dimension, x.display)
+            return Quantity(x._value / y, x.dimension, x.display_unit)
         dimension = x._dimension - y._dimension
         if dimension:
-            return Quantity(value, dimension, x._display - y._display)
+            return Quantity(value, dimension, x._display_unit - y._display_unit)
         return value
 
     __div__ = __truediv__
@@ -684,10 +685,10 @@ class Quantity(DimObject):
         try:
             value = y._value / x._value
         except AttributeError:
-            return Quantity(y / x._value, -x._dimension, -x._display)
+            return Quantity(y / x._value, -x._dimension, -x._display_unit)
         dimension = y._dimension - x._dimension
         if dimension:
-            return Quantity(value, dimension, y._display - x._display)
+            return Quantity(value, dimension, y._display_unit - x._display_unit)
         return value
 
     __rdiv__ = __rtruediv__
@@ -745,7 +746,7 @@ class Quantity(DimObject):
             raise TypeError("The exponent must be dimensionless.")
         except AttributeError:
             pass
-        return x.__class__(x._value ** y, x._dimension * y, x._display * y)
+        return x.__class__(x._value ** y, x._dimension * y, x._display_unit * y)
 
     def __rpow__(x, y):
         """y.__pow__(x) <==> pow(x, y)
@@ -809,7 +810,8 @@ class Quantity(DimObject):
     def __eq__(x, y):
         """x.__eq__(y) <==> x==y
         To be considered equal, it is not necessary that quantities have the
-        same display unit (:attr:`display`)---only the same value and dimension.
+        same display unit (:attr:`display_unit`)---only the same value and
+        dimension.
         """
         try:
             return (x._dimension == y._dimension and
@@ -821,7 +823,7 @@ class Quantity(DimObject):
         """x.__ne__(y) <==> x!=y
 
         To be considered equal, it is not necessary that quantities have the
-        same display unit (:attr:`display`)---only the same value and dimension.
+        same display unit (:attr:`display_unit`)---only the same value and dimension.
         A quantity is equal to zero if its value is zero, regardless of
         dimension.
         """
@@ -914,7 +916,7 @@ class Unit(DimObject):
          similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
-    - *display*: Display unit
+    - *display_unit*: Display unit
 
          This can be a :class:`CompoundUnit` instance, a :class:`dict` of
          similar form, or a string accepted by the
@@ -923,17 +925,17 @@ class Unit(DimObject):
     - *prefixable*: *True* if the unit can be prefixed
 
     :attr:`~DimObject.dimension`, :attr:`~DimObject.dimensionless`, and
-    :attr:`prefixable` are read-only attributes, but :attr:`~DimObject.display`
-    can be set using the same format as the *display* argument above.
+    :attr:`prefixable` are read-only attributes, but :attr:`~DimObject.display_unit`
+    can be set using the same format as the *display_unit* argument above.
     """
 
-    def __init__(self, dimension, display, prefixable=False):
+    def __init__(self, dimension, display_unit, prefixable=False):
         """Initialize by setting the dimension, display unit, and prefixable
         flag.
 
         See the top-level class documentation.
         """
-        DimObject.__init__(self, dimension, display)
+        DimObject.__init__(self, dimension, display_unit)
         self._prefixable = prefixable
 
     @property
@@ -974,7 +976,7 @@ class ScalarUnit(Quantity, Unit):
          similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
-    - *display*: Display unit
+    - *display_unit*: Display unit
 
          This can be a :class:`CompoundUnit` instance, a :class:`dict` of
          similar form, or a string accepted by the
@@ -993,19 +995,19 @@ class ScalarUnit(Quantity, Unit):
 
     Note that the display unit can be changed:
 
-    >>> m.display = 'ft'
+    >>> m.display_unit = 'ft'
     >>> m # doctest: +ELLIPSIS
     ScalarUnit(1, 'L', 'ft', True) (3.2808... ft)
 
     .. testcleanup::
-       >>> m.display = 'm'
+       >>> m.display_unit = 'm'
 
     Now any quantity generated from the metre (m) will display in feet (ft)
     instead. However, the value is unchanged; the metre still represents the
     same length.
     """
 
-    def __init__(self, value, dimension, display='', prefixable=False):
+    def __init__(self, value, dimension, display_unit='', prefixable=False):
         """Initialize a scalar unit by setting the value, physical dimension,
         display unit, and prefixable flag.
 
@@ -1017,14 +1019,14 @@ class ScalarUnit(Quantity, Unit):
         self._value = value
 
         # Set the dimension, display unit, and prefixable flag.
-        Unit.__init__(self, dimension, display, prefixable)
+        Unit.__init__(self, dimension, display_unit, prefixable)
 
     @classmethod
-    def from_quantity(cls, quantity, display, prefixable=False):
+    def from_quantity(cls, quantity, display_unit, prefixable=False):
         """Convert a quantity (instance of :class:`Quantity`) to a scalar unit.
 
         The value and dimension are taken from *quantity*.  The display unit
-        must be provided (via *display*).
+        must be provided (via *display_unit*).
 
         **Example:**
 
@@ -1038,7 +1040,7 @@ class ScalarUnit(Quantity, Unit):
            ScalarUnit(1e-08, 'T', 'shake', False) (shake)
         """
         quantity.__class__ = cls
-        quantity.display = display
+        quantity.display_unit = display_unit
         quantity._prefixable = prefixable
         return quantity
 
@@ -1050,7 +1052,7 @@ class ScalarUnit(Quantity, Unit):
         the product of a number and a unit.
         """
         # Run this first to simplify self.display (see Units.load_ini):
-        desc = "ScalarUnit %s" % self._display
+        desc = "ScalarUnit %s" % self._display_unit
         desc = ("dimensionless {}" if self.dimensionless else
                 "{} with dimension %s" % self._dimension).format(desc)
         desc += " (prefixable)" if self._prefixable else " (not prefixable)"
@@ -1122,7 +1124,7 @@ class LambdaUnit(Unit):
          similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
-    - *display*: Display unit
+    - *display_unit*: Display unit
 
          This can be a :class:`CompoundUnit` instance, a :class:`dict` of
          similar form, or a string accepted by the
@@ -1139,7 +1141,7 @@ class LambdaUnit(Unit):
     298.15
     """
 
-    def __init__(self, toquantity, tonumber, dimension, display='',
+    def __init__(self, toquantity, tonumber, dimension, display_unit='',
                  prefixable=False):
         """Initialize a lambda unit by setting the function and its inverse,
         physical dimension, display unit, and prefixable flag.
@@ -1152,12 +1154,12 @@ class LambdaUnit(Unit):
         self._tonumber = tonumber
 
         # Set the dimension, display unit, and prefixable flag.
-        Unit.__init__(self, dimension, display, prefixable)
+        Unit.__init__(self, dimension, display_unit, prefixable)
 
     def __repr__(self):
         """Return a string represention of the lambda unit.
         """
-        desc = "LambdaUnit %s" % self._display
+        desc = "LambdaUnit %s" % self._display_unit
         desc = ("dimensionless {}" if self.dimensionless else
                 "{} with dimension %s" % self._dimension).format(desc)
         desc += " (prefixable)" if self._prefixable else " (not prefixable)"
@@ -1177,44 +1179,44 @@ class LambdaUnit(Unit):
             return 1
         if y == -1:
             return LambdaUnit(x._tonumber, x._toquantity,  # Swapped
-                              -x._dimension, -x._display)
+                              -x._dimension, -x._display_unit)
         raise TypeError("Lambda units can only be raised to the power of -1, "
                         "0, or 1.")
 
     def __rmul__(unit, number):
         """unit.__rmul__(number) <==> number*unit
         """
-        display = unit.display
+        display_unit = unit.display_unit
         if isinstance(number, Quantity):
             assert not isinstance(number, Unit), (
                 "Lambda units can't be combined with other units.")
             assert number.dimensionless, (
                 "The argument to the lambda unit must be dimensionless.")
-            display += number.display
+            display_unit += number.display_unit
             as_quantity = False
         else:
-            as_quantity = bool(display) and use_quantities
+            as_quantity = bool(display_unit) and use_quantities
         try:
             quantity = unit._toquantity(number)
         except AssertionError:
             raise AssertionError("The number isn't a valid argument for the "
                                  "lambda unit.")
         if isinstance(quantity, Quantity):
-            quantity.display = display
+            quantity.display_unit = display_unit
             return quantity
         elif as_quantity:
-            return Quantity(quantity, {}, display)
+            return Quantity(quantity, {}, display_unit)
         return quantity
 
     def __rtruediv__(unit, quantity):
         """unit.__rtruediv__(quantity) <==> quantity/unit
         """
-        display = -unit._display
+        display_unit = -unit._display_unit
         if isinstance(quantity, Quantity):
-            display += quantity.display
+            display_unit += quantity.display_unit
             as_quantity = False
         else:
-            as_quantity = display and unit.dimensionless and use_quantities
+            as_quantity = display_unit and unit.dimensionless and use_quantities
         try:
             number = unit._tonumber(quantity)
         except AssertionError:
@@ -1224,12 +1226,12 @@ class LambdaUnit(Unit):
             assert number.dimensionless, ("The result of the inverse of the "
                                           "lambda unit should be "
                                           "dimensionless.")
-            number.display = display
+            number.display_unit = display_unit
             return number
         elif as_quantity:
             # E.g., keep unit of B-1 when doing 1/B but not unit of K/degC when
             # doing 300*K/degC.
-            return Quantity(number, {}, display)
+            return Quantity(number, {}, display_unit)
         return number
 
     __rdiv__ = __rtruediv__
@@ -1477,18 +1479,18 @@ class Units(dict):
                         elif isinstance(unit, LambdaUnit):
                             # The unit is a lambda unit, defined directly.
                             unit = LambdaUnit(unit._toquantity, unit._tonumber,
-                                              unit._dimension, unit._display,
-                                              prefixable)
+                                              unit._dimension,
+                                              unit._display_unit, prefixable)
                         elif isinstance(unit, Quantity):
                             # The unit is a scalar unit with dimension.
                             if (isinstance(unit, ScalarUnit)
                                 and 'ScalarUnit' not in value):
                                 # The unit has been coherently derived.
                                 dimensions = set(unit.dimension)
-                                for u in unit.display.keys():
+                                for u in unit.display_unit.keys():
                                     dimensions = dimensions.union(
                                         self[u].dimension)
-                                relation = (unit.display - {symbol: 1},
+                                relation = (unit.display_unit - {symbol: 1},
                                             dimensions)
                                 self.coherent_relations.append(relation)
                             unit = ScalarUnit.from_quantity(unit, symbol,

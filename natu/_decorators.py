@@ -5,9 +5,8 @@
 # pylint: disable=I0011, C0103, C0111, E0611, E1101, W0141, W0142, W0621
 
 from sys import version
-from . import core
 from .core import (Quantity, ScalarUnit, assert_homogeneous, homogeneous,
-                    value, dimensionless_value)
+                   merge, value, dimensionless_value)
 from .units import rad
 
 # TODO: Combine some of these once Python can propagate a function's signature
@@ -85,14 +84,16 @@ def merge_raise(value, prototype, power):
     """Same as :func:`~natu.core.merge`, but raise the dimension and display
     unit to *power*
     """
-    if isinstance(prototype, ScalarUnit):
-        return ScalarUnit(value, power * prototype.dimension,
-                          power * prototype.display, prototype.prefixable)
     try:
-        return Quantity(value, power * prototype.dimension,
-                        power * prototype.display)
+        dimension = prototype.dimension
     except AttributeError:
         return value
+    try:
+        prefixable = prototype.prefixable
+    except AttributeError:
+        return Quantity(value, power*dimension, power*prototype.display_unit)
+    return ScalarUnit(value, power*dimension, power*prototype.display_unit,
+                      prefixable)
 
 # Elementary wrappers
 # -------------------
@@ -150,7 +151,7 @@ def copy_props(func):
 
     wrapped.__doc__ += (
         "\nThe properties of the first term (:attr:`dimension`, \n"
-        "\n:attr:`display`, etc.) are copied to the result.\n")
+        "\n:attr:`display_unit`, etc.) are copied to the result.\n")
     return wrapped
 
 def dimensionless(func):
