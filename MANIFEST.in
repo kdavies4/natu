@@ -2,7 +2,7 @@ include MANIFEST.in
 include *.md
 include *.txt
 include *.sh
-include *.ini
+include natu/config/*.ini
 
 # Files to build the documentation
 include doc/*.md

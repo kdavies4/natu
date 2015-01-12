@@ -15,10 +15,10 @@ from setuptools import setup
 here = path.abspath(path.dirname(__file__))
 
 versioneer.VCS = 'git'
-versioneer.versionfile_source = 'modelicares/_version.py'
-versioneer.versionfile_build = 'modelicares/_version.py'
+versioneer.versionfile_source = 'natu/_version.py'
+versioneer.versionfile_build = 'natu/_version.py'
 versioneer.tag_prefix = 'v' # Tags are like 1.2.0
-versioneer.parentdir_prefix = 'ModelicaRes-'
+versioneer.parentdir_prefix = 'natu-'
 version = versioneer.get_version()
 
 with open(path.join(here, 'doc/long-description.txt')) as f:
