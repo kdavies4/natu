@@ -28,6 +28,11 @@ This module contains the following settings (defaults in parentheses):
      will be found, but it also increases the time required to process
      :func:`str`, :func:`print`, :func:`format`, and related functions.
 
+- *default_format* ('') - Default format for printing units and dimensions
+
+     For a list and description of valid values, see the Formatting section of
+     :class:`~natu.exponents.Exponents`.
+
 - *unit_replacements*
   (in LaTeX_ ('L' format code):
   'deg' → '^{\\circ}',
@@ -83,6 +88,9 @@ use_quantities = True
 # Number of non-minimizing substitutions that can be made in seeking the
 # best display unit:
 simplification_level = 2
+
+# Default format for printing units and dimensions
+default_format = ''
 
 # Dictionary of special replacements for formatting a unit string
 unit_replacements = {'L':  # In LaTeX

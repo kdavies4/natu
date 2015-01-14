@@ -15,6 +15,7 @@ import re
 
 from collections import Counter
 from fractions import Fraction
+from . import config
 from .util import get_group, num2super
 
 # Default keyword arguments sent to format()
@@ -550,4 +551,4 @@ class Exponents(Counter):
     def __str__(self):
         """Return an informal string representating the Exponents instance.
         """
-        return format(self)
+        return format(self, config.default_format)
