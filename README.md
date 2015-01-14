@@ -17,7 +17,7 @@ This has the following advantages:
   name "natu"), can be represented by simply adjusting the
   [base physical constants].
 - **Simple**: Unit conversion is inherent.  This results in quick computations
-  and a small code base (<&nbsp;1500 lines).  By default, dimensions and display
+  and a small code base (about 1500 lines).  By default, dimensions and display
   units are tracked to catch errors and for string formatting.  This can be
   disabled to nearly eliminate the computational overhead while still providing
   the core features.

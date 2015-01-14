@@ -241,7 +241,7 @@ def dimensionless_value(x):
             return x._value
     except AttributeError:
         return x
-    raise TypeError("The quantity is not dimensionless.")
+    raise TypeError("The quantity isn't dimensionless.")
 
 def display_unit(quantity):
     """Return the display unit of *quantity*.
@@ -709,6 +709,15 @@ class Quantity(DimObject):
                 return value
             return new_meth
         return attr_value
+
+    def __len__(self):
+        """Return the length of the value if it is defined.
+        """
+        try:
+            return len(self._value)
+        except TypeError:
+            raise TypeError(
+                "object of type '%s' has no len()" % self.__class__.__name__)
 
     def __pow__(x, y):
         """x.__pow__(y) <==> pow(x, y)
