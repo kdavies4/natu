@@ -113,6 +113,9 @@ Classes in this module:
 
 - :class:`Unit` - Base class for a unit
 
+- :class:`UnitExponents` - Dictionary that contains the base units of a
+  display unit as keys and exponents of those units as values
+
 - :class:`Units` - Dictionary of units with dynamic prefixing
 
 - :class:`UnitsModule` - Class that wraps a :class:`Units` dictionary as a
@@ -153,7 +156,7 @@ __copyright__ = ("Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy "
 __license__ = "BSD-compatible (see LICENSE.txt)"
 
 __all__ = ('CoherentRelations DimObject Quantity Unit ScalarUnit LambdaUnit '
-           'Units UnitsModule'.split())
+           'Units UnitsModule UnitExponents'.split())
 
 import math
 import re
@@ -214,7 +217,7 @@ def dimension(quantity):
     """Return the dimension of *quantity*.
 
     If *quantity* does not have a :attr:`~DimObject.dimension` property, it is
-    assumed to be dimensionless and an empty :class:`~natu.exponents.Exponents` 
+    assumed to be dimensionless and an empty :class:`~natu.exponents.Exponents`
     instance is returned.
 
     **Example:**
@@ -404,7 +407,22 @@ def homogeneous(func):
 # -------
 
 class UnitExponents(Exponents):
-    """TODO
+    """Dictionary that contains the base units of a display unit as keys and
+    exponents of those units as values
+
+    This is :class:`natu.exponents.Exponents`, except that special replacements
+    (see *unit_replacements* in mod:`~natu.config`) are made in certain
+    formatted strings.
+
+    **Example:**
+
+    >>> unit = UnitExponents('angstrom/s')*2
+    >>> dict(unit)
+    {'angstrom': 2, 's': -2}
+    >>> unit
+    angstrom2/s2
+    >>> print(format(unit, 'U'))
+    Å² s⁻²
     """
     def __format__(self, format_code=''):
         """Format the Exponents instance according to format_code.
@@ -439,13 +457,13 @@ class DimObject(object):
 
     - *dimension*: Physical dimension
 
-         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         This can be an :class:`~natu.exponents.Exponents` instance, a
          :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display_unit*: Display unit
 
-         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         This can be an :class:`~natu.exponents.Exponents` instance, a
          :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
@@ -485,7 +503,7 @@ class DimObject(object):
     def display_unit(self, display_unit):
         """Set the display unit.
 
-        *display* can be an :class:`~natu.exponents.Exponents` instance, a 
+        *display* can be an :class:`~natu.exponents.Exponents` instance, a
         :class:`dict` of similar form, or a string accepted by the
         :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
@@ -509,13 +527,13 @@ class Quantity(DimObject):
 
     - *dimension*: Physical dimension
 
-         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         This can be an :class:`~natu.exponents.Exponents` instance, a
          :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display_unit*: Display unit
 
-         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         This can be an :class:`~natu.exponents.Exponents` instance, a
          :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
@@ -737,6 +755,9 @@ class Quantity(DimObject):
         >>> print(1*m)
         1.0 m
         """
+        #try:
+        #    return format(self, 'g')
+        #except ValueError:
         return format(self)
 
     def __int__(self):
@@ -872,13 +893,13 @@ class Unit(DimObject):
 
     - *dimension*: Physical dimension
 
-         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         This can be an :class:`~natu.exponents.Exponents` instance, a
          :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display_unit*: Display unit
 
-         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         This can be an :class:`~natu.exponents.Exponents` instance, a
          :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
@@ -933,13 +954,13 @@ class ScalarUnit(Quantity, Unit):
 
     - *dimension*: Physical dimension
 
-         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         This can be an :class:`~natu.exponents.Exponents` instance, a
          :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display_unit*: Display unit
 
-         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         This can be an :class:`~natu.exponents.Exponents` instance, a
          :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
@@ -1081,13 +1102,13 @@ class LambdaUnit(Unit):
 
     - *dimension*: Physical dimension
 
-         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         This can be an :class:`~natu.exponents.Exponents` instance, a
          :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display_unit*: Display unit
 
-         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         This can be an :class:`~natu.exponents.Exponents` instance, a
          :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
@@ -1264,8 +1285,8 @@ class Units(dict):
 
     - :attr:`coherent_relations` - List of coherent relations among the units
 
-         Each entry is a tuple of units in an :class:`~natu.exponents.Exponents` 
-         instance that evaluates to unity and a set of the dimensions involved 
+         Each entry is a tuple of units in an :class:`~natu.exponents.Exponents`
+         instance that evaluates to unity and a set of the dimensions involved
          in the units.
     """
 
@@ -1492,7 +1513,7 @@ class Units(dict):
 
         - *unit*: Unit to be simplified
 
-             This can be an :class:`~natu.exponents.Exponents` instance, a 
+             This can be an :class:`~natu.exponents.Exponents` instance, a
              :class:`dict` of similar form, or a string accepted by the
              :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
@@ -1501,7 +1522,7 @@ class Units(dict):
              This is the number of non-minimizing substitutions that can be made
              while seeking the simplest representation of the unit.
 
-        **Returns:**  An :class:`~natu.exponents.Exponents` instance indicating 
+        **Returns:**  An :class:`~natu.exponents.Exponents` instance indicating
         the new representation of the unit.
 
         **Example:**

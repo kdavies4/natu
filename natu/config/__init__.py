@@ -36,7 +36,11 @@ This module contains the following settings (defaults in parentheses):
      :meth:`~natu.exponents.Exponents.from_str`.
 
 - *unit_replacements*
-  (in LaTeX_ ('L' format code):
+  (in HTML ('H' format code):
+  'deg' → '&deg;',
+  'ohm' → '&Omega;', and
+  'angstrom' → '&Aring;';
+  in LaTeX_ ('L' format code):
   'deg' → '^{\\circ}',
   'ohm' → '\\Omega', and
   'angstrom' → '\\AA';
@@ -95,12 +99,16 @@ simplification_level = 2
 default_format = ''
 
 # Dictionary of special replacements for formatting a unit string
-unit_replacements = {'L':  # In LaTeX
+unit_replacements = {'H':  # In HTML:
+                     [('deg', '&deg;'),
+                      ('ohm', '&Omega;'),
+                      ('angstrom', '&Aring;')],
+                     'L':  # In LaTeX:
                      [('deg', r'^{\circ}'),
                       ('ohm', r'\Omega'),
                       ('angstrom', r'\AA')],
-                     'U':  # In Unicode format
-                     [('deg', '°'),
-                      ('ohm', 'Ω'),
-                      ('angstrom', 'Å')],
+                     'U':  # In Unicode:
+                     [('deg', u'°'),
+                      ('ohm', u'Ω'),
+                      ('angstrom', u'Å')],
                     }
