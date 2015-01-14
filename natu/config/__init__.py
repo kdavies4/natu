@@ -31,7 +31,9 @@ This module contains the following settings (defaults in parentheses):
 - *default_format* ('') - Default format for printing units and dimensions
 
      For a list and description of valid values, see the Formatting section of
-     :class:`~natu.exponents.Exponents`.
+     :class:`~natu.exponents.Exponents`.  Regardless of this setting, units and
+     dimensions must be entered using the format accepted by 
+     :meth:`~natu.exponents.Exponents.from_str`.
 
 - *unit_replacements*
   (in LaTeX_ ('L' format code):

@@ -548,7 +548,7 @@ class Exponents(Counter):
         result = _format(self.items(), **fmt)
         return result
 
-    def __str__(self):
+    def __repr__(self):
         """Return an informal string representating the Exponents instance.
         """
         return format(self, config.default_format)
