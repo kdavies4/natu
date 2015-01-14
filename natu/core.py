@@ -101,12 +101,6 @@ Classes in this module:
 
 - :class:`CoherentRelations` - List of coherent relations among units
 
-- :class:`CompoundDimension` - Dictionary that contains base physical dimensions
-  as keys and exponents of those dimensions as values
-
-- :class:`CompoundUnit` - Dictionary that contains the base factors of a display
-  unit as keys and exponents of those units as values
-
 - :class:`DimObject` - Base class that records physical dimension and display
   unit
 
@@ -158,8 +152,8 @@ __copyright__ = ("Copyright 2013-2014, Kevin Davies, Hawaii Natural Energy "
                  "Institute, and Georgia Tech Research Corporation")
 __license__ = "BSD-compatible (see LICENSE.txt)"
 
-__all__ = ('CoherentRelations CompoundDimension CompoundUnit DimObject '
-           'Quantity Unit ScalarUnit LambdaUnit Units UnitsModule'.split())
+__all__ = ('CoherentRelations DimObject Quantity Unit ScalarUnit LambdaUnit '
+           'Units UnitsModule'.split())
 
 import math
 import re
@@ -220,8 +214,8 @@ def dimension(quantity):
     """Return the dimension of *quantity*.
 
     If *quantity* does not have a :attr:`~DimObject.dimension` property, it is
-    assumed to be dimensionless and an empty :class:`CompoundDimension` is
-    returned.
+    assumed to be dimensionless and an empty :class:`~natu.exponents.Exponents` 
+    instance is returned.
 
     **Example:**
 
@@ -232,7 +226,7 @@ def dimension(quantity):
     try:
         return quantity.dimension
     except AttributeError:
-        return CompoundDimension()
+        return Exponents()
 
 def dimensionless_value(x):
     """Return the value of the quantity if it is dimensionless.
@@ -250,7 +244,7 @@ def display_unit(quantity):
     """Return the display unit of *quantity*.
 
     If *quantity* does not have a :attr:`~DimObject.display_unit` property, then
-    an empty :class:`CompoundUnit` is returned.
+    an empty :class:`~natu.exponents.Exponents` instance is returned.
 
     **Example:**
 
@@ -261,7 +255,7 @@ def display_unit(quantity):
     try:
         return quantity.display_unit
     except AttributeError:
-        return CompoundUnit()
+        return Exponents()
 
 def merge(value, prototype):
     """Merge *value* into a new :class:`~natu.core.ScalarUnit` or
@@ -420,46 +414,6 @@ class DefinitionError(Exception):
     """
     pass
 
-
-class CompoundDimension(Exponents):
-
-    """Dictionary that contains base physical dimensions as keys and exponents
-    of those dimensions as values
-
-    This is :class:`natu.exponents.Exponents`, only renamed for clarity.
-    Please see that class for details and additional examples.
-
-    **Example:**
-
-    >>> dim = CompoundDimension('L/T')*2
-    >>> dim
-    CompoundDimension({'L': 2, 'T': -2})
-    >>> print(dim)
-    L2/T2
-    """
-    # pylint: disable=I0011, R0904
-    pass
-
-
-class CompoundUnit(Exponents):
-
-    """Dictionary that contains the base units of a display unit as keys and
-    exponents of those units as values
-
-    This is :class:`natu.exponents.Exponents`, only renamed for clarity.
-    Please see that class for details and additional examples.
-
-    **Example:**
-
-    >>> unit = CompoundUnit('m/s')*2
-    >>> unit
-    CompoundUnit({'m': 2, 's': -2})
-    >>> print(unit)
-    m2/s2
-    """
-    # pylint: disable=I0011, R0904
-    pass
-
 # Note that in the DimObject below, dimension and display_unit are properties
 # that return copies of the internal _dimension and _display_unit attributes.
 # Generally, only dimension and display_unit should be accessed from the outside
@@ -476,14 +430,14 @@ class DimObject(object):
 
     - *dimension*: Physical dimension
 
-         This can be a :class:`CompoundDimension` instance, a :class:`dict` of
-         similar form, or a string accepted by the
+         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display_unit*: Display unit
 
-         This can be a :class:`CompoundUnit` instance, a :class:`dict` of
-         similar form, or a string accepted by the
+         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     Here, the physical dimension and the display unit are not checked for
@@ -499,12 +453,13 @@ class DimObject(object):
 
         See the top-level class documentation.
         """
-        self._dimension = CompoundDimension(dimension)
-        self._display_unit = CompoundUnit(display_unit)
+        self._dimension = Exponents(dimension)
+        self._display_unit = Exponents(display_unit)
 
     @property
     def dimension(self):
-        """Physical dimension as a :class:`CompoundDimension` instance"""
+        """Physical dimension as an :class:`~natu.exponents.Exponents` instance
+        """
         return self._dimension.copy()
 
     @property
@@ -514,21 +469,21 @@ class DimObject(object):
 
     @property
     def display_unit(self):
-        """Display unit as a :class:`CompoundUnit` instance"""
+        """Display unit as an :class:`~natu.exponents.Exponents` instance"""
         return self._display_unit.copy()
 
     @display_unit.setter
     def display_unit(self, display_unit):
         """Set the display unit.
 
-        *display* can be a :class:`CompoundUnit` instance, a :class:`dict` of
-        similar form, or a string accepted by the
+        *display* can be an :class:`~natu.exponents.Exponents` instance, a 
+        :class:`dict` of similar form, or a string accepted by the
         :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
         Here, the display unit is not checked for dimensional consistency (with
         :attr:`dimension`).
         """
-        self._display_unit = CompoundUnit(display_unit)
+        self._display_unit = Exponents(display_unit)
 
 
 class Quantity(DimObject):
@@ -545,14 +500,14 @@ class Quantity(DimObject):
 
     - *dimension*: Physical dimension
 
-         This can be a :class:`CompoundDimension` instance, a :class:`dict` of
-         similar form, or a string accepted by the
+         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display_unit*: Display unit
 
-         This can be a :class:`CompoundUnit` instance, a :class:`dict` of
-         similar form, or a string accepted by the
+         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     **Examples:**
@@ -908,14 +863,14 @@ class Unit(DimObject):
 
     - *dimension*: Physical dimension
 
-         This can be a :class:`CompoundDimension` instance, a :class:`dict` of
-         similar form, or a string accepted by the
+         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display_unit*: Display unit
 
-         This can be a :class:`CompoundUnit` instance, a :class:`dict` of
-         similar form, or a string accepted by the
+         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *prefixable*: *True* if the unit can be prefixed
@@ -969,14 +924,14 @@ class ScalarUnit(Quantity, Unit):
 
     - *dimension*: Physical dimension
 
-         This can be a :class:`CompoundDimension` instance, a :class:`dict` of
-         similar form, or a string accepted by the
+         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display_unit*: Display unit
 
-         This can be a :class:`CompoundUnit` instance, a :class:`dict` of
-         similar form, or a string accepted by the
+         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *prefixable*: *True* if the unit can be prefixed
@@ -1117,14 +1072,14 @@ class LambdaUnit(Unit):
 
     - *dimension*: Physical dimension
 
-         This can be a :class:`CompoundDimension` instance, a :class:`dict` of
-         similar form, or a string accepted by the
+         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *display_unit*: Display unit
 
-         This can be a :class:`CompoundUnit` instance, a :class:`dict` of
-         similar form, or a string accepted by the
+         This can be an :class:`~natu.exponents.Exponents` instance, a 
+         :class:`dict` of similar form, or a string accepted by the
          :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
     - *prefixable*: *True* if the unit can be prefixed
@@ -1287,7 +1242,7 @@ class CoherentRelations(list):
 
     Each item is a tuple consisting of a relation and a set of the dimensions
     involved in the units of the relation.  A relation is expressed as a
-    :class:`CompoundUnit` instance that evaluates to unity.
+    :class:`~natu.exponents.Exponents` instance that evaluates to unity.
     """
     pass
 
@@ -1300,9 +1255,9 @@ class Units(dict):
 
     - :attr:`coherent_relations` - List of coherent relations among the units
 
-         Each entry is a tuple of a :class:`CompoundUnit` instance that
-         evaluates to unity and a set of the dimensions involved in the units in
-         the :class:`CompoundUnit`.
+         Each entry is a tuple of units in an :class:`~natu.exponents.Exponents` 
+         instance that evaluates to unity and a set of the dimensions involved 
+         in the units.
     """
 
     def __init__(self, *args, **kwargs):
@@ -1395,7 +1350,7 @@ class Units(dict):
             assert len(args) == 1, "Only one positional argument is allowed."
             assert not factors, ("The positional argument can't be used with "
                                  "keyword arguments.")
-            factors = CompoundUnit(args[0])
+            factors = Exponents(args[0])
         factors = [self[base] ** exp for base, exp in factors.items()]
         return reduce(lambda x, y: x * y, factors)
 
@@ -1528,8 +1483,8 @@ class Units(dict):
 
         - *unit*: Unit to be simplified
 
-             This can be a :class:`CompoundUnit` instance, a :class:`dict` of
-             similar form, or a string accepted by the
+             This can be an :class:`~natu.exponents.Exponents` instance, a 
+             :class:`dict` of similar form, or a string accepted by the
              :meth:`~natu.exponents.Exponents.fromstr` constructor.
 
         - *level*: Number of levels of recursion to perform
@@ -1537,8 +1492,8 @@ class Units(dict):
              This is the number of non-minimizing substitutions that can be made
              while seeking the simplest representation of the unit.
 
-        **Returns:**  A :class:`CompoundUnit` instance indicating the new
-        representation of the unit.
+        **Returns:**  An :class:`~natu.exponents.Exponents` instance indicating 
+        the new representation of the unit.
 
         **Example:**
 
@@ -1566,7 +1521,7 @@ class Units(dict):
         # works well enough.
 
         # In case the unit is a string:
-        unit = CompoundUnit(unit)
+        unit = Exponents(unit)
 
         # Shortcut---no simplication:
         if level == 0 or complexity(unit) <= 1:

@@ -63,7 +63,7 @@ DOC_LINE_LENGTH = 74
 def _update_module(name, units, dimension=None):
     """Update the module with name *name* (:class`str`) to contain the units in
     :class:`dict` *units*, optionally filtered to those with
-    :class:`~natu.core.CompoundDimension` *dimension*.
+    :class:`~natu.exponents.Exponents` *dimension*.
 
     If *dimension* is *None*, all units are included.
     """
