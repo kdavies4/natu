@@ -352,11 +352,6 @@ def add_unit(meth):
 
         # Create the unit string.
         unit_str = format(self.display_unit, unit_code)
-        try:
-            for rpl in UNIT_REPLACEMENTS[unit_code]:
-                unit_str = rpl[0].sub(rpl[1], unit_str)
-        except KeyError:
-            pass
 
         return meth(self / unit, number_code, unit_code) + unit_str
 
@@ -408,6 +403,20 @@ def homogeneous(func):
 # Classes
 # -------
 
+class UnitExponents(Exponents):
+    """TODO
+    """
+    def __format__(self, format_code=''):
+        """Format the Exponents instance according to format_code.
+        """
+        unit_str = Exponents.__format__(self, format_code)
+        try:
+            for rpl in UNIT_REPLACEMENTS[format_code]:
+                unit_str = rpl[0].sub(rpl[1], unit_str)
+        except KeyError:
+            pass
+        return unit_str
+
 class DefinitionError(Exception):
 
     """Error in the definition of a unit or constant in an INI file
@@ -454,7 +463,7 @@ class DimObject(object):
         See the top-level class documentation.
         """
         self._dimension = Exponents(dimension)
-        self._display_unit = Exponents(display_unit)
+        self._display_unit = UnitExponents(display_unit)
 
     @property
     def dimension(self):
@@ -483,7 +492,7 @@ class DimObject(object):
         Here, the display unit is not checked for dimensional consistency (with
         :attr:`dimension`).
         """
-        self._display_unit = Exponents(display_unit)
+        self._display_unit = UnitExponents(display_unit)
 
 
 class Quantity(DimObject):
@@ -1350,7 +1359,7 @@ class Units(dict):
             assert len(args) == 1, "Only one positional argument is allowed."
             assert not factors, ("The positional argument can't be used with "
                                  "keyword arguments.")
-            factors = Exponents(args[0])
+            factors = UnitExponents(args[0])
         factors = [self[base] ** exp for base, exp in factors.items()]
         return reduce(lambda x, y: x * y, factors)
 
@@ -1521,7 +1530,7 @@ class Units(dict):
         # works well enough.
 
         # In case the unit is a string:
-        unit = Exponents(unit)
+        unit = UnitExponents(unit)
 
         # Shortcut---no simplication:
         if level == 0 or complexity(unit) <= 1:
