@@ -346,15 +346,18 @@ def add_unit(meth):
     @wraps(meth)
     def wrapped(self, code):
 
-        # If the display unit is compound and contains lambda units, update it
-        # to use scalar units only.  This modifies self._display_unit.
+        # Modify self._display_unit to handle lambda units.
+        # If the display unit is compound, replace any lambda units with scalar
+        # units. If the display unit is a lambda unit raised to a power other
+        # than -1, 0, or 1, use a scalar unit instead.
         display_unit = self._display_unit
-        if len(display_unit) > 1:
-            for unit_str, exp in display_unit.items():
-                unit = unitspace[unit_str]
-                if isinstance(unit, LambdaUnit):
-                    del display_unit[unit_str]
-                    display_unit += unit._toquantity(1).display_unit * exp
+        n_units = len(display_unit)
+        for unit_str, exp in display_unit.items():
+            unit = unitspace[unit_str]
+            if isinstance(unit, LambdaUnit) and (n_units > 1
+                                                 or exp not in [-1, 0, 1]):
+                del display_unit[unit_str]
+                display_unit += unit._toquantity(1).display_unit * exp
 
         # Create the ScalarUnit.
         unit = unitspace(**display_unit)
