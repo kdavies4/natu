@@ -165,7 +165,7 @@ from os.path import dirname
 from types import ModuleType
 from functools import wraps
 # from warnings import warn
-from .util import format_e, str2super
+from .util import format_e
 from ._prefixes import PREFIXES
 from .config import simplification_level, use_quantities, unit_replacements
 from .exponents import Exponents, split_code, u, i
@@ -183,6 +183,10 @@ UNIT_REPLACEMENTS = {fmt:
                      [(re.compile(rpl[0]), rpl[1]) for rpl in rpls]
                      for fmt, rpls in unit_replacements.items()}
 
+
+# Global variable to record the active dictionary of unit definitions (only one
+# allowed)
+unitspace = None
 
 # Standard functions
 # ------------------
@@ -213,8 +217,40 @@ def assert_homogeneous(*args):
             assert dimension(arg) == dim, \
                 "The quantities must have the same dimension."
 
+def value(x):
+    """Return the :attr:`_value` attribute of *x* if it exists.
+
+    Otherwise, return *x* directly (pass-through).
+
+    **Example:**
+
+    >>> from natu.units import m
+    >>> value(10*m) # doctest: +SKIP
+    10
+
+    .. testcleanup::
+       >>> assert abs(value(10*m) - 10) < 1e-10
+    """
+    try:
+        return x._value
+    except AttributeError:
+        return x
+
+def dimensionless_value(x):
+    """Return the value of the quantity if it is dimensionless.
+
+    Otherwise, raise a :class:`TypeError`.
+    """
+    try:
+        if x.dimensionless:
+            return x._value
+    except AttributeError:
+        return x
+    raise TypeError("The quantity isn't dimensionless.")
+
 def dimension(quantity):
-    """Return the dimension of *quantity*.
+    """Return the dimension of *quantity* as an
+    :class:`~natu.exponents.Exponents` instance.
 
     If *quantity* does not have a :attr:`~DimObject.dimension` property, it is
     assumed to be dimensionless and an empty :class:`~natu.exponents.Exponents`
@@ -231,18 +267,6 @@ def dimension(quantity):
     except AttributeError:
         return Exponents()
 
-def dimensionless_value(x):
-    """Return the value of the quantity if it is dimensionless.
-
-    Otherwise, raise a :class:`TypeError`.
-    """
-    try:
-        if x.dimensionless:
-            return x._value
-    except AttributeError:
-        return x
-    raise TypeError("The quantity isn't dimensionless.")
-
 def display_unit(quantity):
     """Return the display unit of *quantity*.
 
@@ -258,7 +282,7 @@ def display_unit(quantity):
     try:
         return quantity.display_unit
     except AttributeError:
-        return Exponents()
+        return UnitExponents()
 
 def merge(value, prototype):
     """Merge *value* into a new :class:`~natu.core.ScalarUnit` or
@@ -313,37 +337,17 @@ def _times(code):
         return '\,'
     return ' '
 
-def value(x):
-    """Return the :attr:`_value` attribute of *x* if it exists.
-
-    Otherwise, return *x* directly (pass-through).
-
-    **Example:**
-
-    >>> from natu.units import m
-    >>> value(10*m) # doctest: +SKIP
-    10
-
-    .. testcleanup::
-       >>> assert abs(value(10*m) - 10) < 1e-10
-    """
-    try:
-        return x._value
-    except AttributeError:
-        return x
-
 # Decorators
 # ----------
 
 def add_unit(meth):
-    """Decorate a method to add a unit to the formatted representation.
+    """Decorate a method to add a unit to a formatted string.
     """
     @wraps(meth)
     def wrapped(self, code):
 
         # Get the display unit.
-        self.display_unit = Quantity.unitspace.simplify(self.display_unit)
-        unit = Quantity.unitspace(**self.display_unit)
+        unit = unitspace(**self.display_unit)
         unit_dim = dimension(unit)
         assert self.dimension == unit_dim, (
             "The display unit ({0.display_unit}; dimension {1}) and the "
@@ -361,9 +365,8 @@ def add_unit(meth):
     return wrapped
 
 def as_scalarunit(meth):
-    """Decorate *meth* so that it returns a :class:`ScalarUnit` if both
-    arguments are :class:`ScalarUnit` instances and the result is not
-    dimensionless.
+    """Decorate a method to return a :class:`ScalarUnit` if both arguments are
+    :class:`ScalarUnit` instances and the result is not dimensionless.
     """
     @wraps(meth)
     def wrapped(self, other):
@@ -448,10 +451,10 @@ class DefinitionError(Exception):
 # However, in the code below, this rule is strategically broken to avoid the
 # overhead of making copies.
 
-
 class DimObject(object):
 
-    """Base class that records physical dimension and display unit
+    """Base class that records physical dimension and display unit (aka
+    "dimensioned object")
 
     **Initialization parameters:**
 
@@ -481,7 +484,7 @@ class DimObject(object):
         See the top-level class documentation.
         """
         self._dimension = Exponents(dimension)
-        self._display_unit = UnitExponents(display_unit)
+        self.display_unit = display_unit
 
     @property
     def dimension(self):
@@ -510,8 +513,7 @@ class DimObject(object):
         Here, the display unit is not checked for dimensional consistency (with
         :attr:`dimension`).
         """
-        self._display_unit = UnitExponents(display_unit)
-
+        self._display_unit = unitspace.simplify(UnitExponents(display_unit))
 
 class Quantity(DimObject):
 
@@ -576,22 +578,15 @@ class Quantity(DimObject):
     .. _Python: https://www.python.org/
     """
 
-    unitspace = None
-    """Underlying unit dictionary used to define quantities"""
-
     def __init__(self, value, dimension, display_unit):
         """Initialize a quantity by setting the value, physical dimension, and
         display unit.
 
         See the top-level class documentation.
         """
-        # Set the value.
         self._value = value
-
-        # Set the dimension and display unit.
-        # DimObject.__init__(self, dimension, display_unit)
         self._dimension = Exponents(dimension)
-        self._display_unit = UnitExponents(display_unit)
+        self.display_unit = display_unit
 
     @copy_props
     @homogeneous
@@ -928,7 +923,8 @@ class Unit(DimObject):
 
         See the top-level class documentation.
         """
-        DimObject.__init__(self, dimension, display_unit)
+        self._dimension = Exponents(dimension)
+        self.display_unit = display_unit
         self._prefixable = prefixable
 
     @property
@@ -1000,7 +996,7 @@ class ScalarUnit(Quantity, Unit):
     same length.
     """
 
-    def __init__(self, value, dimension, display_unit='', prefixable=False):
+    def __init__(self, value, dimension, display_unit={}, prefixable=False):
         """Initialize a scalar unit by setting the value, physical dimension,
         display unit, and prefixable flag.
 
@@ -1277,17 +1273,6 @@ class LambdaUnit(Unit):
     __abs__ = quantity_only('Absolute value')
 
 
-class CoherentRelations(list):
-
-    """List of coherent relations among units
-
-    Each item is a tuple consisting of a relation and a set of the dimensions
-    involved in the units of the relation.  A relation is expressed as a
-    :class:`~natu.exponents.Exponents` instance that evaluates to unity.
-    """
-    pass
-
-
 class Units(dict):
 
     """Dictionary of units with dynamic prefixing (upon access)
@@ -1296,16 +1281,15 @@ class Units(dict):
 
     - :attr:`coherent_relations` - List of coherent relations among the units
 
-         Each entry is a tuple of units in an :class:`~natu.exponents.Exponents`
-         instance that evaluates to unity and a set of the dimensions involved
-         in the units.
+         Each entry is an :class:`UnitExponents` instance that evaluates to
+         unity.
     """
 
     def __init__(self, *args, **kwargs):
         dict.__init__(self, *args, **kwargs)
 
         # Initialize an empty list of coherent relations.
-        self.coherent_relations = CoherentRelations()
+        self.coherent_relations = []
 
     def __getitem__(self, symbol):
         """Access a simple (not compound) unit by *symbol* (a string).
@@ -1479,12 +1463,7 @@ class Units(dict):
                             if (isinstance(unit, ScalarUnit)
                                 and 'ScalarUnit' not in value):
                                 # The unit has been coherently derived.
-                                dimensions = set(unit.dimension)
-                                for u in unit.display_unit.keys():
-                                    dimensions = dimensions.union(
-                                        self[u].dimension)
-                                relation = (unit.display_unit - {symbol: 1},
-                                            dimensions)
+                                relation = unit.display_unit - {symbol: 1}
                                 self.coherent_relations.append(relation)
                             unit = ScalarUnit.from_quantity(unit, symbol,
                                                            prefixable)
@@ -1513,28 +1492,26 @@ class Units(dict):
 
         This function seeks to minimize the sum of the absolute values of the
         exponents of the base factors by substituting coherently related units.
-        It does not use units that involve dimensions not included in the
-        original representation.  It uses the internal
-        :attr:`coherent_relations` list which is generated while parsing the
-        \*.ini files (in :meth:`load_ini`).  It will not always find the
-        simplest representation because some simplifications involve first
-        making the representation more complex.
+        It uses the internal :attr:`coherent_relations` list which is generated
+        while parsing the \*.ini files (in :meth:`load_ini`).  It will not
+        always find the simplest representation because some simplifications
+        involve first making the representation more complex.
 
         **Parameters:**
 
         - *unit*: Unit to be simplified
 
-             This can be an :class:`~natu.exponents.Exponents` instance, a
-             :class:`dict` of similar form, or a string accepted by the
-             :meth:`~natu.exponents.Exponents.fromstr` constructor.
+             This can be an :class:`UnitExponents` instance or a :class:`dict`
+             of similar form.
 
         - *level*: Number of levels of recursion to perform
 
              This is the number of non-minimizing substitutions that can be made
-             while seeking the simplest representation of the unit.
+             while seeking the simplest representation of the unit.  The default
+             is
 
-        **Returns:**  An :class:`~natu.exponents.Exponents` instance indicating
-        the new representation of the unit.
+        **Returns:**  The new representation of the unit as an instance of the
+        same class as the original representation (*unit*).
 
         **Example:**
 
@@ -1551,7 +1528,7 @@ class Units(dict):
         # pylint: disable=I0011, E1103
 
         # Objective to minimize
-        complexity = lambda x: sum(abs(exp) for exp in x.values())
+        complexity = lambda x: sum(map(abs, x.values()))
         # This is the L1 norm (sum of the absolute values of the exponents),
         # making this problem L1 minimization.  There isn't a simple solution,
         # and there isn't a simple Python package to find it without a lot of
@@ -1561,31 +1538,24 @@ class Units(dict):
         # find the best solution, but it's straightforward to implement and
         # works well enough.
 
-        # In case the unit is a string:
-        unit = UnitExponents(unit)
-
         # Shortcut---no simplication:
         if level == 0 or complexity(unit) <= 1:
             return unit
 
-        # Set of dimensions involved in the unit:
-        dimensions = set(self(**unit).dimension)
-
-        # Loop to try each of the coherent relations that involve a subset of
-        # the dimensions of the unit.
+        # Loop to try each of the coherent relations.
         simpler = True
         while simpler:
             simpler = False
-            for identity, dim in self.coherent_relations:
-                # if not dim.issubset(dimensions):
-                    # Skip; the relation involves different dimensions.
-                #     continue
+            for identity in self.coherent_relations:
                 common = set(identity).intersection(unit)
                 if len(common) < len(identity) / 2 - 0.5:
                     # Skip for speed; the relation isn't worth it.
                     continue
                 for factor in common:
-                    factor = float(unit[factor]) / identity[factor]
+                    try:
+                        factor = float(unit[factor]) / identity[factor]
+                    except KeyError:
+                        return unit # A factor has not yet been defined.
                     int_factor = int(factor)
                     if int_factor == factor:
                         temp = unit - identity * int_factor
@@ -1627,6 +1597,8 @@ class UnitsModule(ModuleType):
         """
         # pylint: disable=I0011, E1002, W0233
 
+        global unitspace
+
         # Copy attributes from the original module.
         super(UnitsModule, self).__init__(module.__name__, module.__doc__)
         for attr in ['__author__', '__email__', '__copyright__', '__license__',
@@ -1645,10 +1617,9 @@ class UnitsModule(ModuleType):
             # Create an empty unit dictionary.
             self._units = Units()
 
-            # Monkey-patch the Quantity class to use only that unit dictionary.
-            assert not Quantity.unitspace, (
-                "The units module can only be loaded once.")
-            Quantity.unitspace = self._units
+            # Allow only one unit dictionary.
+            assert not unitspace, "The units module can only be loaded once."
+            unitspace = self._units
 
             # Load units from the ini files.
             self._use_quantities = use_quantities # Save in case changed later.
@@ -1656,7 +1627,7 @@ class UnitsModule(ModuleType):
                 self._units.load_ini(definitions)
             except (DefinitionError, ParsingError):
                 # Allow the user to fix the INI files and try to import again.
-                Quantity.unitspace = None
+                unitspace = None
                 raise
 
         self.__all__ = list(self._units)
