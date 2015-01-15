@@ -206,16 +206,10 @@ def assert_homogeneous(*args):
     ...
     AssertionError: The quantities must have the same dimension.
     """
-    return # TODO: Remove this line and fix the code below.
-    try:
-        for row in zip(args):
-            assert_homogeneous(row) # Recursive
-            return
-    except TypeError:
-        dim = dimension(args[0])
-        for arg in args[1:]:
-            assert dimension(arg) == dim, \
-                "The quantities must have the same dimension."
+    dim = dimension(args[0])
+    for arg in args[1:]:
+        assert dimension(arg) == dim, \
+            "The quantities must have the same dimension."
 
 def value(x):
     """Return the :attr:`_value` attribute of *x* if it exists.
@@ -419,6 +413,19 @@ def homogeneous(func):
         "\nquantity is dimensionless.\n")
     return wrapped
 
+def homogeneous2(func):
+    """Decorate a function to accept quantities of the same dimension.
+    """
+    @wraps(func)
+    def wrapped(x, y):
+        #assert_homogeneous(x, y)
+        return func(value(x), value(y))
+
+    wrapped.__doc__ += (
+        "\nThe terms must have the same dimension.  A quantity can only be "
+        "\nadded to, compared to, or subtracted from a non-quantity if the "
+        "\nquantity is dimensionless.\n")
+    return wrapped
 
 # Classes
 # -------
@@ -858,11 +865,13 @@ class Quantity(DimObject):
         """
         return x > y
 
-    @homogeneous
+    # TODO: Allow mixed-dimension NumPy arrays display with this check enabled.
+    #@homogeneous
     def __lt__(x, y):
         """x.__lt__(y) <==> x<y
         """
-        return x < y
+        #return x < y
+        return value(x) < value(y)
 
     @homogeneous
     def __divmod__(x, y):
@@ -1435,8 +1444,8 @@ class Units(dict):
                     # functions.  This doesn't allow prefixes in the lambda
                     # expressions since eval() doesn't use __getitem__() for
                     # globals.
-                    # TODO: Consider using pyparsing instead of eval() (for
-                    # safety) if it's not too slow.
+                    # TODO: Consider pyparsing instead of eval() (for safety)
+                    # if it's not too slow.
                     if isinstance(unit, tuple):
                         unit, prefixable = unit
                         if isinstance(unit, tuple):
