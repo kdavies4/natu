@@ -589,7 +589,9 @@ class Quantity(DimObject):
         self._value = value
 
         # Set the dimension and display unit.
-        DimObject.__init__(self, dimension, display_unit)
+        # DimObject.__init__(self, dimension, display_unit)
+        self._dimension = Exponents(dimension)
+        self._display_unit = UnitExponents(display_unit)
 
     @copy_props
     @homogeneous
@@ -1389,7 +1391,7 @@ class Units(dict):
             assert len(args) == 1, "Only one positional argument is allowed."
             assert not factors, ("The positional argument can't be used with "
                                  "keyword arguments.")
-            factors = UnitExponents(args[0])
+            factors = Exponents(args[0])
         factors = [self[base] ** exp for base, exp in factors.items()]
         return reduce(lambda x, y: x * y, factors)
 
@@ -1649,6 +1651,7 @@ class UnitsModule(ModuleType):
             Quantity.unitspace = self._units
 
             # Load units from the ini files.
+            self._use_quantities = use_quantities # Save in case changed later.
             try:
                 self._units.load_ini(definitions)
             except (DefinitionError, ParsingError):
