@@ -346,13 +346,24 @@ def add_unit(meth):
     @wraps(meth)
     def wrapped(self, code):
 
-        # Get the display unit.
-        unit = unitspace(**self.display_unit)
-        unit_dim = dimension(unit)
-        assert self.dimension == unit_dim, (
-            "The display unit ({0.display_unit}; dimension {1}) and the "
-            "quantity (dimension {0.dimension}) are "
-            "incompatible.").format(self, unit_dim)
+        # If the display unit is compound and contains lambda units, update it
+        # to use scalar units only.  This modifies self._display_unit.
+        display_unit = self._display_unit
+        if len(display_unit) > 1:
+            for unit_str, exp in display_unit.items():
+                unit = unitspace[unit_str]
+                if isinstance(unit, LambdaUnit):
+                    del display_unit[unit_str]
+                    display_unit += unit._toquantity(1).display_unit * exp
+
+        # Create the ScalarUnit.
+        unit = unitspace(**display_unit)
+
+        # Check the dimension.
+        unit_dim = unit._dimension
+        assert self._dimension == unit_dim, ("The display unit "
+            "({0.display_unit}) and the quantity have different dimensions "
+            "({1} vs. {0.dimension}).").format(self, unit_dim)
 
         # Parse the format code.
         number_code, unit_code = split_code(code)
@@ -428,7 +439,7 @@ class UnitExponents(Exponents):
     Å² s⁻²
     """
     def __format__(self, format_code=''):
-        """Format the Exponents instance according to format_code.
+        """Format the UnitExponents instance according to format_code.
         """
         unit_str = Exponents.__format__(self, format_code)
         try:
@@ -585,8 +596,7 @@ class Quantity(DimObject):
         See the top-level class documentation.
         """
         self._value = value
-        self._dimension = Exponents(dimension)
-        self.display_unit = display_unit
+        DimObject.__init__(self, dimension, display_unit)
 
     @copy_props
     @homogeneous
@@ -923,8 +933,7 @@ class Unit(DimObject):
 
         See the top-level class documentation.
         """
-        self._dimension = Exponents(dimension)
-        self.display_unit = display_unit
+        DimObject.__init__(self, dimension, display_unit)
         self._prefixable = prefixable
 
     @property
@@ -1075,7 +1084,6 @@ class ScalarUnit(Quantity, Unit):
     def __format__(number, number_code, unit_code):
         """Format the scalar unit as a string according to *code*.
         """
-
         TOLERANCE = 1e-14
         if abs(number - 1) < TOLERANCE:
             # Exclude the number since it's nearly 1.
@@ -1291,6 +1299,24 @@ class Units(dict):
         # Initialize an empty list of coherent relations.
         self.coherent_relations = []
 
+    def __call__(self, **factors):
+        r"""Generate a compound, coherent unit from existing units.
+
+        **Call signature (where units is a :class:`Units` instance):**
+
+        - units(unit1=\ *exp1*, unit2=\ *exp2*, ...): Returns the product of
+          unit1 raised to the power *exp1*, unit2 raised to the power *exp2*,
+          etc.
+
+        **Example:**
+
+        >>> from natu.units import _units
+        >>> _units(lbf=1, inch=-2)
+        ScalarUnit lbf/inch2 with dimension M/(L*T2) (not prefixable)
+        """
+        factors = [self[base] ** exp for base, exp in factors.items()]
+        return reduce(lambda x, y: x * y, factors)
+
     def __getitem__(self, symbol):
         """Access a simple (not compound) unit by *symbol* (a string).
 
@@ -1348,36 +1374,6 @@ class Units(dict):
                 return p * baseunit # Scalar unit, but not using quantities
 
         raise error
-
-    def __call__(self, *args, **factors):
-        r"""Generate a compound, coherent unit from existing units.
-
-        **Call signatures (where units is a :class:`Units` instance):**
-
-        - units(*unitstring*): Returns a unit by parsing *unitstring*
-
-             *unitstring* must contain valid units in the form accepted by
-             :class:`~natu.exponents.Exponents`.
-
-        - units(unit1=\ *exp1*, unit2=\ *exp2*, ...): Returns the product of
-          unit1 raised to the power *exp1*, unit2 raised to the power *exp2*,
-          etc.
-
-        **Example:**
-
-        >>> from natu.units import _units
-        >>> _units('lbf/inch2')
-        ScalarUnit lbf/inch2 with dimension M/(L*T2) (not prefixable)
-        >>> _units(lbf=1, inch=-2)
-        ScalarUnit lbf/inch2 with dimension M/(L*T2) (not prefixable)
-        """
-        if args:
-            assert len(args) == 1, "Only one positional argument is allowed."
-            assert not factors, ("The positional argument can't be used with "
-                                 "keyword arguments.")
-            factors = Exponents(args[0])
-        factors = [self[base] ** exp for base, exp in factors.items()]
-        return reduce(lambda x, y: x * y, factors)
 
     def load_ini(self, files):
         r"""Add units to the unit dictionary from a \*.ini file or list of files
