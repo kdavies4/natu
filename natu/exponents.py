@@ -136,7 +136,7 @@ def _format(factors, **kwargs):
         base = base_fmt(b)
         if e == 1:
             num_terms.append(base)
-        elif e > 0:
+        elif e >= 0:
             num_terms.append(base + exp_fmt(e))
         elif e == -1 and div:
             den_terms.append(base)
