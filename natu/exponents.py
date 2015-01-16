@@ -41,7 +41,6 @@ _FORMATS = {
          mul='\,',
          div=None,
          group=r'\left({0}\right)',
-         base_fmt=lambda x: r'\mathrm{%s}' % x,
          exp_fmt=lambda x: ('^{%s}' % x
                             if isinstance(x, Fraction) or x < 0 else
                             '^%s' % x),

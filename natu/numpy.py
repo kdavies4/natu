@@ -161,6 +161,7 @@ tanh = decor.dimensionless(tanh)
 #'fabs'
 #'sign'
 #'maximum'
+max = decor.copy_props(max)
 #'minimum'
 #'fmax'
 #'fmin'
