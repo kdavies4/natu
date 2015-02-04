@@ -488,8 +488,9 @@ class DimObject(object):
     - *display_unit*: Display unit
 
          This can be an :class:`~natu.exponents.Exponents` instance, a
-         :class:`dict` of similar form, or a string accepted by the
-         :meth:`~natu.exponents.Exponents.fromstr` constructor.
+         :class:`UnitExponents` instance, a :class:`dict` of similar form, or a
+         string accepted by the :meth:`~natu.exponents.Exponents.fromstr`
+         constructor.
 
     Here, the physical dimension and the display unit are not checked for
     consistency.
@@ -506,6 +507,23 @@ class DimObject(object):
         """
         self._dimension = Exponents(dimension)
         self.display_unit = display_unit
+
+    @classmethod
+    def quicknew(cls, dimension, display_unit):
+        """Initialize by directly setting the physical dimension and display
+        unit.
+
+        **Parameters:**
+
+        - *dimension*: Physical dimension as an
+          :class:`~natu.exponents.Exponents` instance
+
+        - *display_unit*: Display unit as a :class:`UnitExponents` instance
+        """
+        new = cls.__new__(cls)
+        new._dimension = dimension
+        new._display_unit = display_unit
+        return new
 
     @property
     def dimension(self):
@@ -557,8 +575,9 @@ class Quantity(DimObject):
     - *display_unit*: Display unit
 
          This can be an :class:`~natu.exponents.Exponents` instance, a
-         :class:`dict` of similar form, or a string accepted by the
-         :meth:`~natu.exponents.Exponents.fromstr` constructor.
+         :class:`UnitExponents` instance, a :class:`dict` of similar form, or a
+         string accepted by the :meth:`~natu.exponents.Exponents.fromstr`
+         constructor.
 
     **Examples:**
 
@@ -607,6 +626,28 @@ class Quantity(DimObject):
         """
         self._value = value
         DimObject.__init__(self, dimension, display_unit)
+
+    @classmethod
+    def quicknew(cls, value, dimension, display_unit):
+        """Initialize by directly setting the value, physical dimension, and
+        display unit.
+
+        - *value*: Value of the quantity (a :class:`numbers.Number` instance)
+
+             This be expressed as the product of a number and the value of a
+             unit.  It is independent of the unit since the number scales
+             inversely to the unit.
+
+        - *dimension*: Physical dimension as an
+          :class:`~natu.exponents.Exponents` instance
+
+        - *display_unit*: Display unit as a :class:`UnitExponents` instance
+        """
+        new = cls.__new__(cls)
+        new._value = value
+        new._dimension = dimension
+        new._display_unit = display_unit
+        return new
 
     @copy_props
     @homogeneous
@@ -714,10 +755,7 @@ class Quantity(DimObject):
 
         .. _NumPy: http://numpy.scipy.org/
         """
-        try:
-            attr_value = self._value.__getattribute__(attr)
-        except AttributeError:
-            attr_value = self._value.__getattr__(attr)
+        attr_value = getattr(self._value, attr)
         if callable(attr_value):
             def new_meth(*args, **kwargs):
                 value = attr_value(*args, **kwargs)
@@ -781,10 +819,10 @@ class Quantity(DimObject):
         >>> print(1*m)
         1.0 m
         """
-        #try:
-        #    return format(self, 'g')
-        #except ValueError:
-        return format(self)
+        try:
+            return format(self, 'g')
+        except ValueError:
+            return format(self)
 
     def __int__(self):
         """Return the quantity as an integer.
@@ -928,8 +966,9 @@ class Unit(DimObject):
     - *display_unit*: Display unit
 
          This can be an :class:`~natu.exponents.Exponents` instance, a
-         :class:`dict` of similar form, or a string accepted by the
-         :meth:`~natu.exponents.Exponents.fromstr` constructor.
+         :class:`UnitExponents` instance, a :class:`dict` of similar form, or a
+         string accepted by the :meth:`~natu.exponents.Exponents.fromstr`
+         constructor.
 
     - *prefixable*: *True* if the unit can be prefixed
 
@@ -989,8 +1028,9 @@ class ScalarUnit(Quantity, Unit):
     - *display_unit*: Display unit
 
          This can be an :class:`~natu.exponents.Exponents` instance, a
-         :class:`dict` of similar form, or a string accepted by the
-         :meth:`~natu.exponents.Exponents.fromstr` constructor.
+         :class:`UnitExponents` instance, a :class:`dict` of similar form, or a
+         string accepted by the :meth:`~natu.exponents.Exponents.fromstr`
+         constructor.
 
     - *prefixable*: *True* if the unit can be prefixed
 
@@ -1136,8 +1176,9 @@ class LambdaUnit(Unit):
     - *display_unit*: Display unit
 
          This can be an :class:`~natu.exponents.Exponents` instance, a
-         :class:`dict` of similar form, or a string accepted by the
-         :meth:`~natu.exponents.Exponents.fromstr` constructor.
+         :class:`UnitExponents` instance, a :class:`dict` of similar form, or a
+         string accepted by the :meth:`~natu.exponents.Exponents.fromstr`
+         constructor.
 
     - *prefixable*: *True* if the unit can be prefixed
 
@@ -1320,14 +1361,18 @@ class Units(dict):
           unit1 raised to the power *exp1*, unit2 raised to the power *exp2*,
           etc.
 
+             If there are no arguments, then unity (1.0) is returned.
+
         **Example:**
 
         >>> from natu.units import _units
         >>> _units(lbf=1, inch=-2)
         ScalarUnit lbf/inch2 with dimension M/(L*T2) (not prefixable)
         """
-        factors = [self[base] ** exp for base, exp in factors.items()]
-        return reduce(lambda x, y: x * y, factors)
+        if factors:
+            factors = [self[base] ** exp for base, exp in factors.items()]
+            return reduce(lambda x, y: x * y, factors)
+        return 1.0
 
     def __getitem__(self, symbol):
         """Access a simple (not compound) unit by *symbol* (a string).

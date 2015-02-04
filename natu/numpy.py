@@ -38,6 +38,8 @@ these need to be adapted (`Issue #7
 
 from __future__ import absolute_import
 
+import numpy as np
+
 from numpy import *
 from . import _decorators as decor
 
@@ -153,15 +155,19 @@ tanh = decor.dimensionless(tanh)
 
 # Miscellaneous
 # -------------
+max = decor.copy_props(np.max) # TODO: assert homogeneous
+min = decor.copy_props(np.min) # TODO: assert homogeneous
+abs = decor.copy_props(np.abs)
+
 # convolve
 # clip
-#'sqrt'
+from fractions import Fraction
+sqrt = decor.use_value_raise(np.sqrt, Fraction(1, 2))
 #'square'
 #'absolute'
 #'fabs'
 #'sign'
 #'maximum'
-max = decor.copy_props(max)
 #'minimum'
 #'fmax'
 #'fmin'
@@ -197,4 +203,4 @@ max = decor.copy_props(max)
 #'seterrobj'
 #'spacing'
 
-del decor
+del decor, np

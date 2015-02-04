@@ -93,7 +93,7 @@ use_quantities = True
 
 # Number of non-minimizing substitutions that can be made in seeking the
 # best display unit:
-simplification_level = 2
+simplification_level = 1
 
 # Default format for printing units and dimensions
 default_format = ''

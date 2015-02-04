@@ -147,7 +147,11 @@ def copy_props(func):
     """
     @wraps(func)
     def wrapped(x, *args, **kwargs):
-        return merge(func(x, *args, **kwargs), x)
+        try:
+            value = x._value
+        except AttributeError:
+            return func(x, *args, **kwargs) # Pass-through
+        return merge(func(value, *args, **kwargs), x)
 
     wrapped.__doc__ += (
         "\nThe properties of the first term (:attr:`dimension`, \n"
