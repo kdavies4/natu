@@ -6,52 +6,57 @@
                       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://kdavies4.github.io/natu/</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/BIPM-ini.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/natu/__pycache__/</loc>
+  <lastmod>2015-04-09T02:17:53Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/api.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/apimodules.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/base-ini.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/changes.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/credits.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/definitions.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/derived-ini.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/genindex.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
@@ -72,6 +77,16 @@
  <url>
   <loc>http://kdavies4.github.io/natu/images/inheritance-4956e630db15357487afde53dea6b17478a0e13c.png.map</loc>
   <lastmod>2014-08-20T18:46:46Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/natu/images/inheritance-53266910cb03990b18eb84287648b61a542ceb44.png</loc>
+  <lastmod>2015-04-09T02:24:40Z</lastmod>
+  <priority>0.5000</priority>
+ </url>
+ <url>
+  <loc>http://kdavies4.github.io/natu/images/inheritance-53266910cb03990b18eb84287648b61a542ceb44.png.map</loc>
+  <lastmod>2015-04-09T02:24:40Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
@@ -106,202 +121,202 @@
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/install.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/license.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.config.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.core.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.exponents.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.acceleration.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.amount.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.angle.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.area.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.charge.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.conductance.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.constants.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.current.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.dimensionless.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.energy.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.force.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.frequency.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.length.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.magnetic_flux.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.magnetic_flux_density.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.mass.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.potential.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.power.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.pressure.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.resistance.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.si.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.temperature.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.time.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.velocity.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.groups.volume.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.math.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.numpy.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.units.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/natu.util.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/other-ini.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/py-modindex.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/search.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/seealso.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
  <url>
   <loc>http://kdavies4.github.io/natu/usermodules.html</loc>
-  <lastmod>2014-12-30T20:47:03Z</lastmod>
+  <lastmod>2015-04-09T02:31:17Z</lastmod>
   <priority>0.5000</priority>
  </url>
 </urlset>
