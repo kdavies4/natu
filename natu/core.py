@@ -163,7 +163,7 @@ import re
 
 from os.path import dirname
 from types import ModuleType
-from functools import wraps
+from functools import wraps, reduce
 # from warnings import warn
 from .util import format_e
 from ._prefixes import PREFIXES
