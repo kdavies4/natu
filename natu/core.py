@@ -736,6 +736,7 @@ class Quantity(DimObject):
         """
         return self._value.__getitem__(item)
 
+
     def __getattr__(self, attr):
         """If an attribute is unknown, look for it within :attr:`_value`.  If
         the attribute's value is a property, return it.  If it is a method,
@@ -755,6 +756,8 @@ class Quantity(DimObject):
 
         .. _NumPy: http://numpy.scipy.org/
         """
+        if '_value' not in dir(self):
+            raise AttributeError()
         attr_value = getattr(self._value, attr)
         if callable(attr_value):
             def new_meth(*args, **kwargs):
